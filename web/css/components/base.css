@@ -5,14 +5,26 @@
   --gray: #8090a0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   background: #f8f8f8;
   font-family: var(--sans);
   color: #505060;
 }
 
+html,
+body {
+  height: 100%;
+}
+
+.app-root {
+  min-height: 100%;
+}
+
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-

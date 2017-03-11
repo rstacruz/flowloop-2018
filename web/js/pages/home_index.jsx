@@ -4,16 +4,25 @@ import Title from 'react-document-title'
 
 class HomeIndex extends React.Component {
   render () {
-    return <div>
+    return <div className="timer-layout">
       <Title title='Timer' />
 
-      <div>
+      <div className="timer-heading">
         Hello.
       </div>
 
-      <div className="actions">
-        <button onClick={() => this.props.onStartClick('work')}>Work</button>
-        <button onClick={() => this.props.onStartClick('break')}>Break</button>
+      <div className="timer-actions">
+        <button
+          className="button timer-button -work"
+          onClick={() => this.props.onStartClick('work')}>
+          Work
+        </button>
+
+        <button
+          className="button timer-button -break"
+          onClick={() => this.props.onStartClick('break')}>
+          Break
+        </button>
       </div>
     </div>
   }

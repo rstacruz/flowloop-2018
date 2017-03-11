@@ -1,0 +1,16 @@
+:root {
+  --button-shadow: 0 4px 8px color(#567 alpha(10%));
+  --timer-button-size: 80px;
+}
+
+.timer-button {
+  display: inline-block;
+  background: white;
+  border: 0;
+  box-shadow: var(--button-shadow);
+  cursor: pointer;
+  width: var(--timer-button-size);
+  height: var(--timer-button-size);
+  line-height: var(--timer-button-size);
+  border-radius: 50%;
+}

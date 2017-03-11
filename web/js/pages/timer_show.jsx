@@ -11,23 +11,41 @@ class TimerShow extends React.Component {
 
     const elapsed = new Date().getTime() - +this.props.startedAt
 
-    return <div>
+    return <div className="timer-layout">
       <Title title={'(' + (+elapsed) + ') ' + this.props.timerType} />
-      <h2>{this.props.timerType}</h2>
-      <div>
+
+      <div className="timer-heading">
+        <h2>{this.props.timerType}</h2>
         {+elapsed}
         of {+this.props.duration}
       </div>
-      <button onClick={() => this.props.onStop()}>Stop</button>
+
+      <div className="timer-actions">
+        <button
+          className="timer-button button -stop"
+          onClick={() => this.props.onStop()}>
+          Stop
+        </button>
+      </div>
     </div>
   }
 }
 
-function NoTimerActive () {
-  return <div>
+function NoTimerActive ({ onHome }) {
+  return <div className="timer-layout">
     <Title title='No timer' />
-    No timer active.
-    <button onClick={() => this.props.onHome()}>Back</button>
+
+    <div className="timer-heading">
+      No timer active.
+    </div>
+
+    <div className="timer-actions">
+      <button
+        className="timer-button button -back"
+        onClick={() => onHome()}>
+        Back
+      </button>
+    </div>
   </div>
 }
 
