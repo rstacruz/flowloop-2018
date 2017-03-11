@@ -4,11 +4,11 @@ import get from '101/pluck'
 
 class TimerShow extends React.Component {
   render () {
-    const remaining = +this.props.endsAt - new Date().getTime()
+    const elapsed = new Date().getTime() - +this.props.startedAt
 
     return <div>
       <h2>{this.props.timerType}</h2>
-      <div>{+remaining}</div>
+      <div>{+elapsed}</div>
     </div>
   }
 }

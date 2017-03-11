@@ -10,8 +10,15 @@ export default function Router () {
       dispatch({ type: 'route:change', page: 'HomeIndex' })
     })
 
+    route('/timer/stop', (timerType) => {
+      dispatch({ type: 'timer:halt' })
+      setTimeout(() => { dispatch({ type: 'route:nav', to: '/', replace: true }) })
+    })
+
     route('/timer/*', (timerType) => {
+      dispatch({ type: 'timer:halt' })
       dispatch({ type: 'timer:start', timerType: timerType })
+      dispatch({ type: 'ticker:start' })
       setTimeout(() => { dispatch({ type: 'route:nav', to: '/timer', replace: true }) })
     })
 

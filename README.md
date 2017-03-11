@@ -1,4 +1,3 @@
-
 # $PROJECT_NAME
 
 ## Set up

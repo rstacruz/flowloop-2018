@@ -26,7 +26,7 @@ export default function buildRouter (options = {}, addRoutes) {
    */
 
   return function routerMiddleware (store) {
-    addRoutes({ route, dispatch: store.dispatch })
+    addRoutes({ route, store, dispatch: store.dispatch })
     setTimeout(() => { route.start(true) })
 
     return function (dispatch) {

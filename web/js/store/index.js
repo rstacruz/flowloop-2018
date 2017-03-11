@@ -12,10 +12,17 @@ export default function reducer (state, action) {
       const duration = 5 * 60 * 1000
 
       return put(state, {
+        'timer.active': true,
         'timer.startedAt': now,
         'timer.endsAt': new Date(+now + duration),
         'timer.type': action.timerType,
         'timer.duration': 5 * 60 * 1000,
+      })
+
+    case 'timer:halt':
+      return put(state, {
+        'timer': {},
+        'timer.active': false,
       })
 
     case 'time:tick':
