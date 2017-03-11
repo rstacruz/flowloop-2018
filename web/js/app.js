@@ -5,9 +5,13 @@ import { Provider } from 'react-redux'
 import Chrome from './components/chrome'
 import Router from './router'
 import { createStore, applyMiddleware } from 'redux'
+import createLogger from 'redux-logger'
+import Ticker from './services/ticker'
 
 const store = createStore(reducer, {}, applyMiddleware(
-  Router()
+  Ticker(),
+  Router(),
+  createLogger()
 ))
 
 ReactDOM.render(
