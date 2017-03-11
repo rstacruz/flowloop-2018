@@ -22,8 +22,6 @@ class TimerShow extends React.Component {
         <p>
           {this.props.timerType}
           <span> - </span>
-          {elapsed}
-          <span> - </span>
           {ms(elapsed)}
           <span> of </span>
           {ms(this.props.duration)}
