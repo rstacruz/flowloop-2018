@@ -7,24 +7,54 @@
 .timer-button {
   & {
     display: inline-block;
-    background: white;
+    background-color: white;
     border: 0;
     box-shadow: var(--button-shadow);
     cursor: pointer;
     width: var(--timer-button-size);
     height: var(--timer-button-size);
-    line-height: var(--timer-button-size);
+    line-height: calc(var(--timer-button-size) + 1px);
     border-radius: 50%;
     color: var(--text-color);
     animation: pop-in 300ms ease-out;
+    transform: translate3d(0, 0, 0);
+    transition:
+      transform 25ms ease-out,
+      box-shadow 75ms ease-out,
+      background-color 75ms linear;
   }
 
-  &.-break {
-    background: transparent;
-    box-shadow: inset 0 0 0 1px var(--line-color);
+  &:hover,
+  &:focus {
+    box-shadow: var(--button-shadow-active);
+  }
+
+  &:active {
+    transform: translate3d(0, 1px, 0);
+    box-shadow: var(--button-shadow);
+    transition: all 25ms ease-out;
   }
 
   &.-stop {
     animation: fade-in 600ms ease-out;
+  }
+}
+
+.timer-button.-break {
+  & {
+    background: transparent;
+    box-shadow: inset 0 0 0 1px var(--line-color);
+  }
+
+  &:hover,
+  &:focus {
+    transform: translate3d(0, 0, 0);
+    background-color: color(var(--accent) alpha(5%));
+    color: color(var(--accent) shade(50%));
+  }
+
+  &:active {
+    transform: translate3d(0, 1px, 0);
+    background-color: color(var(--accent) alpha(10%));
   }
 }

@@ -4,6 +4,11 @@
   text-align: center;
   animation: fade-in 600ms ease-out;
 
+  @media (--horizontal-layout) {
+    width: 144px;
+    margin-left: -80px;
+  }
+
   & > h1,
   & > p {
     margin: 0;

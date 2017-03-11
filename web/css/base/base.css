@@ -6,7 +6,7 @@
 }
 
 html {
-  background: #f8f9fa;
+  background: var(--background);
   font-family: var(--sans);
   color: var(--text-color);
   line-height: 1.6;
