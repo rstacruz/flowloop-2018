@@ -5,14 +5,17 @@ export default function ticker (options = {}) {
 
   let started = false
 
+  let timer
+
   return function (store) {
     return function (dispatch) {
       return function (action) {
         if (action.type === 'ticker:start') {
           started = true
-          tick(dispatch)
+          start(dispatch)
         } else if (action.type === 'ticker:stop') {
           started = false
+          stop()
         }
 
         return dispatch(action)
@@ -21,9 +24,19 @@ export default function ticker (options = {}) {
   }
 
   function tick (dispatch) {
-    requestAnimationFrame(() => {
-      dispatch({ type: 'time:tick', now: new Date() })
-      if (started) setTimeout(() => { tick(dispatch) }, INTERVAL)
-    })
+    dispatch({ type: 'time:tick', now: new Date() })
+    if (!started) return
+    timer = setTimeout(() => {
+      requestAnimationFrame(() => tick(dispatch))
+    }, INTERVAL)
+  }
+
+  function stop () {
+    if (timer) clearTimeout(timer)
+    timer = null
+  }
+
+  function start (dispatch) {
+    if (!timer) tick(dispatch)
   }
 }

@@ -29,3 +29,18 @@ yarn run build  # Build for production (builds into /public)
 heroku create --app my-app
 git push heroku master
 ```
+
+## Settings
+
+When timer runs out: (`settings.timerMode`)
+
+- Continue
+- Switch to break
+- Stop immediately
+
+## To do
+
+- [x] Timer
+- [ ] Saving logs
+- [ ] Rolling over
+  - [ ] Ding ding

@@ -14,6 +14,8 @@ const store = createStore(reducer, {}, applyMiddleware(
   createLogger()
 ))
 
+store.dispatch({ type: 'init' })
+
 ReactDOM.render(
   <Provider store={store}>
     <Chrome />

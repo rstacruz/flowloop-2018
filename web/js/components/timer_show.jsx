@@ -8,7 +8,11 @@ class TimerShow extends React.Component {
 
     return <div>
       <h2>{this.props.timerType}</h2>
-      <div>{+elapsed}</div>
+      <div>
+        {+elapsed}
+        of {+this.props.duration}
+      </div>
+      <button onClick={() => this.props.onStop()}>Stop</button>
     </div>
   }
 }
@@ -20,6 +24,10 @@ TimerShow = connect(
     timerType: get(state, 'timer.type'),
     duration: get(state, 'timer.duration'),
   }),
-  dispatch => ({}))(TimerShow)
+  dispatch => ({
+    onStop: () => {
+      dispatch({ type: 'router:nav', to: '/timer/stop', replace: true })
+    }
+  }))(TimerShow)
 
 export default TimerShow

@@ -12,6 +12,7 @@ export default function Router () {
 
     route('/timer/stop', (timerType) => {
       dispatch({ type: 'timer:halt' })
+      dispatch({ type: 'ticker:stop' })
       setTimeout(() => { dispatch({ type: 'router:nav', to: '/', replace: true }) })
     })
 
