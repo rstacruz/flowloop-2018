@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import get from '101/pluck'
 import Title from 'react-document-title'
 import ms from '../helpers/timer_display'
+import TimerLayout from '../components/timer_layout'
 
 class TimerShow extends React.Component {
   render () {
@@ -14,8 +15,10 @@ class TimerShow extends React.Component {
     const elapsed = +now - +startedAt
     const remaining = +startedAt + duration - +now
 
-    return <div className="timer-layout">
-      <Title title={'(' + ms(remaining, true) + ') ' + timerType} />
+    const trueLabel = timerType === 'work' ? label : 'Break'
+
+    return <TimerLayout page="timer">
+      <Title title={`${ms(remaining, true)} - ${trueLabel}`} />
 
       <div className="timer-heading">
         <p>
@@ -29,9 +32,13 @@ class TimerShow extends React.Component {
         </p>
       </div>
 
+      <div className="timer-spacer" />
+
       <div className="timer-display">
         <span className="label">{ms(remaining, true)}</span>
       </div>
+
+      <div className="timer-spacer" />
 
       <div className="timer-actions">
         <button
@@ -40,7 +47,7 @@ class TimerShow extends React.Component {
           Stop
         </button>
       </div>
-    </div>
+    </TimerLayout>
   }
 }
 
@@ -51,12 +58,14 @@ class LabelSelector extends React.Component {
 }
 
 function NoTimerActive ({ onHome }) {
-  return <div className="timer-layout">
+  return <TimerLayout>
     <Title title='No timer' />
 
     <div className="timer-heading">
       No timer active.
     </div>
+
+    <div className="timer-spacer" />
 
     <div className="timer-actions">
       <button
@@ -65,7 +74,7 @@ function NoTimerActive ({ onHome }) {
         Back
       </button>
     </div>
-  </div>
+  </TimerLayout>
 }
 
 TimerShow = connect(

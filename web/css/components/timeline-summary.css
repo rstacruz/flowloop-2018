@@ -1,0 +1,25 @@
+@import '../variables.css';
+
+.timeline-summary {
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  font-size: 0.86em;
+  color: var(--gray-text);
+  position: relative;
+
+  @media (height > 500px) {
+    height: 64px;
+    line-height: 64px;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    border-top: solid 1px var(--line-color);
+    position: absolute;
+    top: -1px;
+    left: 32px;
+    right: 32px;
+  }
+}

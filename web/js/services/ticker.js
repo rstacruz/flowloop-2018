@@ -1,5 +1,3 @@
-const requestAnimationFrame = require('raf')
-
 export default function ticker (options = {}) {
   const INTERVAL = options.interval || 1000
   let started = false
@@ -25,7 +23,7 @@ export default function ticker (options = {}) {
     dispatch({ type: 'ticker:tick', now: new Date() })
     if (!started) return
     timer = setTimeout(() => {
-      requestAnimationFrame(() => tick(dispatch))
+      tick(dispatch)
     }, INTERVAL)
   }
 

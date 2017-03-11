@@ -1,12 +1,33 @@
 .timer-layout {
   display: flex;
   flex-direction: column;
-  padding: 64px;
   min-height: 100vh;
+
+  & > .bottom {
+    flex: 0 0 auto;
+  }
+
+  & > .body {
+    flex: 1 0 auto;
+  }
+}
+
+.timer-layout > .body {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
   justify-content: center;
   align-items: center;
 
+  @media (width > 768px) {
+    flex-direction: row;
+  }
+
   & > * {
     flex: 0 0 auto;
+  }
+
+  & > .space {
+    flex: 1 1 50%;
   }
 }

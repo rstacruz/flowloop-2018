@@ -1,8 +1,19 @@
 .timer-actions {
-  text-align: center;
-  margin: 32px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 
   & > .button {
     margin: 0 16px;
+    flex: 0 0 auto;
+  }
+
+  @media (width > 768px) {
+    flex-direction: column;
+
+    & > .button {
+      margin: 16px 0;
+    }
   }
 }

@@ -2,7 +2,7 @@ export default function Notifier () {
   return store => dispatch => action => {
     switch (action.type) {
       case 'notifier:request!':
-        console.log('reqeust perm')
+        console.log('Notifier: requesting permissions')
         window.Notification.requestPermission(p => {})
         break
 

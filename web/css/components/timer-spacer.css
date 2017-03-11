@@ -1,0 +1,14 @@
+.timer-spacer {
+  width: 16px;
+  height: 16px;
+
+  @media (width > 480px) {
+    width: 32px;
+    height: 32px;
+  }
+
+  @media (width > 992px) {
+    width: 48px;
+    height: 48px;
+  }
+}

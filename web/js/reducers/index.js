@@ -83,8 +83,8 @@ const settings = buildReducer({
   'init': (state) => {
     return put(state, {
       'settings': {},
-      'settings.duration.work': 4 * 1000, // 25 * 60 * 1000,
-      'settings.duration.break': 5 * 60 * 1000,
+      'settings.duration.work': 6 * 1000, // 25 * 60 * 1000,
+      'settings.duration.break': 1 * 60 * 1000,
       'settings.duration.longBreak': 10 * 60 * 1000,
       'settings.labels.labels': ['Work', 'Chore', 'Side work'],
       'settings.labels.default': 'Work',

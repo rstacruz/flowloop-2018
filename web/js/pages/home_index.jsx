@@ -1,15 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Title from 'react-document-title'
+import TimerLayout from '../components/timer_layout'
 
 class HomeIndex extends React.Component {
   render () {
-    return <div className="timer-layout">
+    return <TimerLayout page="home">
       <Title title='Timer' />
-
-      <div className="timer-heading">
-        Hello.
-      </div>
 
       <div className="timer-actions">
         <button
@@ -24,7 +21,7 @@ class HomeIndex extends React.Component {
           Break
         </button>
       </div>
-    </div>
+    </TimerLayout>
   }
 }
 

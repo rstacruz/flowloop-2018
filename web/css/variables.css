@@ -2,5 +2,7 @@
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --gray: #8090a0;
   --text-color: #505060;
+  --line-color: color(var(--text-color) alpha(10%));
   --button-shadow: 0 4px 8px color(#567 alpha(10%));
+  --gray-text: #8090a0;
 }
