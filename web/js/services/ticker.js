@@ -7,20 +7,16 @@ export default function ticker (options = {}) {
 
   let timer
 
-  return function (store) {
-    return function (dispatch) {
-      return function (action) {
-        if (action.type === 'ticker:start!') {
-          started = true
-          start(dispatch)
-        } else if (action.type === 'ticker:stop!') {
-          started = false
-          stop()
-        }
-
-        return dispatch(action)
-      }
+  return store => dispatch => action => {
+    if (action.type === 'ticker:start!') {
+      started = true
+      start(dispatch)
+    } else if (action.type === 'ticker:stop!') {
+      started = false
+      stop()
     }
+
+    return dispatch(action)
   }
 
   function tick (dispatch) {
