@@ -6,3 +6,6 @@
   --button-shadow: 0 4px 8px color(#567 alpha(10%));
   --gray-text: #8090a0;
 }
+
+@custom-media --horizontal-layout (width > 768px);
+@custom-media --vertical-layout (width <= 768px);

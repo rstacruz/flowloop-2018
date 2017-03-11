@@ -1,14 +1,29 @@
+@import '../variables.css';
+
 .timer-spacer {
   width: 16px;
   height: 16px;
+  transition: width 150ms ease-out, height 150ms ease-out;
 
-  @media (width > 480px) {
-    width: 32px;
-    height: 32px;
+  @media (--vertical-layout) {
+    @media (height >= 580px) {
+      width: 32px;
+      height: 32px;
+    }
+
+    @media (height >= 640px) {
+      width: 48px;
+      height: 48px;
+    }
   }
 
-  @media (width > 992px) {
-    width: 64px;
-    height: 64px;
+  @media (--horizontal-layout) {
+    width: 32px;
+    height: 32px;
+
+    @media (width > 992px) {
+      width: 64px;
+      height: 64px;
+    }
   }
 }

@@ -1,3 +1,5 @@
+@import '../variables.css';
+
 .timer-layout {
   display: flex;
   flex-direction: column;
@@ -19,7 +21,7 @@
   justify-content: center;
   align-items: center;
 
-  @media (width > 768px) {
+  @media (--horizontal-layout) {
     flex-direction: row;
   }
 
