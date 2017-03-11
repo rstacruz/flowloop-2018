@@ -40,13 +40,10 @@ module.exports = {
               loader: 'css-loader',
               options: DEBUG
                 ? {
-                  url: false,
                   sourceMap: true,
                   importLoaders: 1
                 } :
-                {
-                  url: false
-                }
+                { }
             },
             {
               loader: 'postcss-loader',
@@ -58,13 +55,28 @@ module.exports = {
         })
       },
       {
+        test: /\.(png|jpg|jpeg|gif|ico|woff|woff2|eot|otf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/[name].[hash:12].[ext]',
+              publicPath: '../../'
+            }
+          }
+        ]
+      },
+      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
             options: {
-              presets: ['env'],
+              presets: [
+                'env',
+                'react'
+              ],
               cacheDirectory: true
             }
           }
@@ -75,6 +87,10 @@ module.exports = {
 
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+        'react': 'preact-compat',
+        'react-dom': 'preact-compat',
+    }
   },
 
   plugins: [
@@ -94,7 +110,7 @@ module.exports = {
 
     // Copying files directly
     new CopyWebpackPlugin([
-      { from: `${SRC}/assets`, to: './assets' },
+      // { from: `${SRC}/assets`, to: './assets' },
       { from: `${SRC}/html`, to: '.' },
     ]),
   ].concat(DEBUG ? [

@@ -16,7 +16,7 @@
     display: inline-block;
     width: 64px;
     height: 64px;
-    background: url('icon.png') 0 0 / 64px 64px no-repeat;
+    background: url('../../assets/icon.png') 0 0 / 64px 64px no-repeat;
   }
 
   & > p {
