@@ -10,22 +10,15 @@ export default function Icon () {
   return store => dispatch => action => {
     switch (action.type) {
       case 'icon:reset!':
-        Piecon.reset()
+        setWorkStyle()
+        Piecon.setProgress(0)
         break
 
       case 'icon:start!':
         if (action.timerType === 'work') {
-          Piecon.setOptions({
-            color: COLORS.accent,
-            background: COLORS.bg,
-            shadow: COLORS.bg,
-          })
+          setWorkStyle()
         } else {
-          Piecon.setOptions({
-            color: COLORS.secondary,
-            background: COLORS.bg,
-            shadow: COLORS.bg,
-          })
+          setBreakStyle()
         }
         break
 
@@ -36,4 +29,20 @@ export default function Icon () {
 
     return dispatch(action)
   }
+}
+
+function setWorkStyle () {
+  Piecon.setOptions({
+    color: COLORS.accent,
+    background: COLORS.bg,
+    shadow: COLORS.bg,
+  })
+}
+
+function setBreakStyle () {
+  Piecon.setOptions({
+    color: COLORS.secondary,
+    background: COLORS.bg,
+    shadow: COLORS.bg,
+  })
 }

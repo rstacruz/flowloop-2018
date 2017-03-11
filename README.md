@@ -45,3 +45,7 @@ When timer runs out: (`settings.timerMode`)
 - [ ] Rolling over
 - [x] Push notifications
 - [ ] Ding sound
+
+## Sources
+
+- https://notificationsounds.com/standard-ringtones/echoed-ding-459

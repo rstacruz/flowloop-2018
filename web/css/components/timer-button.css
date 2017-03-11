@@ -16,10 +16,15 @@
     line-height: var(--timer-button-size);
     border-radius: 50%;
     color: var(--text-color);
+    animation: pop-in 300ms ease-out;
   }
 
   &.-break {
     background: transparent;
     box-shadow: inset 0 0 0 1px var(--line-color);
+  }
+
+  &.-stop {
+    animation: fade-in 300ms ease-out;
   }
 }

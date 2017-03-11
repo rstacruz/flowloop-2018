@@ -1,3 +1,5 @@
+import ding from '../helpers/ding'
+
 export default function Notifier () {
   return store => dispatch => action => {
     switch (action.type) {
@@ -7,6 +9,7 @@ export default function Notifier () {
         break
 
       case 'notifier:notifyDone!':
+        ding()
         const notif = new window.Notification('Timer done', {
           body: 'That was quick.',
           // icon: ''

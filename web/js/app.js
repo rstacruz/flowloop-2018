@@ -23,6 +23,7 @@ const store = createStore(reducer, {}, composeEnhancers(applyMiddleware(
 
 store.dispatch({ type: 'init' })
 store.dispatch({ type: 'persistence:load!' })
+store.dispatch({ type: 'icon:reset!' })
 
 ReactDOM.render(
   <Provider store={store}>

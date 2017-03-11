@@ -30,3 +30,16 @@ button:active,
 a:active {
   outline: 0;
 }
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+}

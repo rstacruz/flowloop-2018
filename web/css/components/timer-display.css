@@ -6,6 +6,7 @@
 }
 
 .timer-display {
+  animation: pop-in 300ms ease-out;
   height: var(--timer-display-small);
   line-height: var(--timer-display-small);
   width: var(--timer-display-small);
