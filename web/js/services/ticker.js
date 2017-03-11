@@ -24,7 +24,7 @@ export default function ticker (options = {}) {
   }
 
   function tick (dispatch) {
-    dispatch({ type: 'time:tick', now: new Date() })
+    dispatch({ type: 'ticker:tick', now: new Date() })
     if (!started) return
     timer = setTimeout(() => {
       requestAnimationFrame(() => tick(dispatch))

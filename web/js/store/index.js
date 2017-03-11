@@ -14,7 +14,7 @@ const time = buildReducer({
     })
   },
 
-  'time:tick': (state, { now }) => {
+  'ticker:tick': (state, { now }) => {
     return put(state, {
       'time.now': now
     })
@@ -81,7 +81,7 @@ const settings = buildReducer({
   'init': (state) => {
     return put(state, {
       'settings': {},
-      'settings.duration.work': 25 * 60 * 1000,
+      'settings.duration.work': 4 * 1000, // 25 * 60 * 1000,
       'settings.duration.break': 5 * 60 * 1000,
       'settings.duration.longBreak': 10 * 60 * 1000,
     })
