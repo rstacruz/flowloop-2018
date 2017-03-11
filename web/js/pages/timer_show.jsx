@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import get from '101/pluck'
 import Title from 'react-document-title'
+import ms from '../helpers/timer_display'
 
 class TimerShow extends React.Component {
   render () {
@@ -9,15 +10,24 @@ class TimerShow extends React.Component {
       return <NoTimerActive {...this.props} />
     }
 
-    const elapsed = new Date().getTime() - +this.props.startedAt
+    const now = +this.props.now
+    const elapsed = +now - +this.props.startedAt
+    const remaining = +this.props.startedAt + this.props.duration - now
 
     return <div className="timer-layout">
-      <Title title={'(' + (+elapsed) + ') ' + this.props.timerType} />
+      <Title title={'(' + ms(remaining) + ') ' + this.props.timerType} />
 
       <div className="timer-heading">
-        <h2>{this.props.timerType}</h2>
-        {+elapsed}
-        of {+this.props.duration}
+        <h1>{ms(remaining)}</h1>
+        <p>
+          {this.props.timerType}
+          <span> - </span>
+          {elapsed}
+          <span> - </span>
+          {ms(elapsed)}
+          <span> of </span>
+          {ms(this.props.duration)}
+        </p>
       </div>
 
       <div className="timer-actions">
@@ -51,6 +61,7 @@ function NoTimerActive ({ onHome }) {
 
 TimerShow = connect(
   state => ({
+    now: get(state, 'time.now'),
     active: get(state, 'timer.active'),
     startedAt: get(state, 'timer.startedAt'),
     endsAt: get(state, 'timer.endsAt'),

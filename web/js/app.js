@@ -11,10 +11,10 @@ import TimerActions from './services/timer_actions'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducer, {}, composeEnhancers(applyMiddleware(
-  Ticker(),
   TimerActions(),
-  Router(),
-  createLogger()
+  Ticker(),
+  Router()
+  // createLogger()
 )))
 
 store.dispatch({ type: 'init' })
