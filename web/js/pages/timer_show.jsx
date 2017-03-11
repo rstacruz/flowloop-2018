@@ -18,7 +18,7 @@ class TimerShow extends React.Component {
     const trueLabel = timerType === 'work' ? label : 'Break'
 
     return <TimerLayout page="timer">
-      <Title title={`${ms(remaining, true)} - ${trueLabel}`} />
+      <Title title={`${ms(remaining, true)} • ${trueLabel}`} />
 
       <div className="timer-heading">
         <h1>

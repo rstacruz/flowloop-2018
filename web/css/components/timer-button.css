@@ -2,6 +2,7 @@
 
 :root {
   --timer-button-size: 80px;
+  --timer-button-large: 96px;
 }
 
 .timer-button {
@@ -21,7 +22,18 @@
     transition:
       transform 25ms ease-out,
       box-shadow 75ms ease-out,
+      height 75ms ease-out,
+      width 75ms ease-out,
+      line-height 75ms ease-out,
       background-color 75ms linear;
+  }
+
+  @media (width > 992px) {
+    &.-large {
+      width: var(--timer-button-large);
+      height: var(--timer-button-large);
+      line-height: calc(var(--timer-button-large) + 1px);
+    }
   }
 
   &:hover,

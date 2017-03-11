@@ -10,13 +10,13 @@ class HomeIndex extends React.Component {
 
       <div className="timer-actions">
         <button
-          className="button timer-button -work"
+          className="button timer-button -work -large"
           onClick={() => this.props.onStartClick('work')}>
           Work
         </button>
 
         <button
-          className="button timer-button -break"
+          className="button timer-button -break -large"
           onClick={() => this.props.onStartClick('break')}>
           Break
         </button>
