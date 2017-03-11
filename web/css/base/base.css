@@ -12,13 +12,21 @@ html {
   font-family: var(--sans);
   color: var(--text-color);
   line-height: 1.6;
-  cursor: default;
   user-select: none;
 }
 
 html,
 body {
   height: 100%;
+}
+
+body {
+  cursor: default;
+}
+
+a,
+button {
+  cursor: pointer;
 }
 
 .app-root {
