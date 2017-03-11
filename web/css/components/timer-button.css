@@ -5,14 +5,21 @@
 }
 
 .timer-button {
-  display: inline-block;
-  background: white;
-  border: 0;
-  box-shadow: var(--button-shadow);
-  cursor: pointer;
-  width: var(--timer-button-size);
-  height: var(--timer-button-size);
-  line-height: var(--timer-button-size);
-  border-radius: 50%;
-  color: var(--text-color);
+  & {
+    display: inline-block;
+    background: white;
+    border: 0;
+    box-shadow: var(--button-shadow);
+    cursor: pointer;
+    width: var(--timer-button-size);
+    height: var(--timer-button-size);
+    line-height: var(--timer-button-size);
+    border-radius: 50%;
+    color: var(--text-color);
+  }
+
+  &.-break {
+    background: transparent;
+    box-shadow: inset 0 0 0 1px var(--line-color);
+  }
 }

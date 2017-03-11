@@ -1,3 +1,17 @@
+@import '../variables.css';
+
 .timer-heading {
   text-align: center;
+
+  & > h1,
+  & > p {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    font-weight: normal;
+  }
+
+  & > p {
+    color: var(--gray-text);
+  }
 }

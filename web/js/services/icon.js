@@ -1,5 +1,11 @@
 import Piecon from 'piecon'
 
+const COLORS = {
+  bg: '#ddd',
+  secondary: '#fff',
+  accent: '#42a5f5'
+}
+
 export default function Icon () {
   return store => dispatch => action => {
     switch (action.type) {
@@ -10,15 +16,15 @@ export default function Icon () {
       case 'icon:start!':
         if (action.timerType === 'work') {
           Piecon.setOptions({
-            color: '#ff0084',
-            background: '#bbb',
-            shadow: '#bbb',
+            color: COLORS.accent,
+            background: COLORS.bg,
+            shadow: COLORS.bg,
           })
         } else {
           Piecon.setOptions({
-            color: '#ffffff',
-            background: '#bbb',
-            shadow: '#bbb',
+            color: COLORS.secondary,
+            background: COLORS.bg,
+            shadow: COLORS.bg,
           })
         }
         break

@@ -21,11 +21,12 @@ class TimerShow extends React.Component {
       <Title title={`${ms(remaining, true)} - ${trueLabel}`} />
 
       <div className="timer-heading">
-        <p>
+        <h1>
           {timerType === 'work'
             ? <LabelSelector label={label} />
             : <em>Break</em>}
-          <br />
+        </h1>
+        <p>
           {ms(elapsed)}
           <span> of </span>
           {ms(duration)}

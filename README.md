@@ -43,4 +43,5 @@ When timer runs out: (`settings.timerMode`)
 - [x] Timer
 - [ ] Saving logs
 - [ ] Rolling over
-  - [ ] Ding ding
+- [x] Push notifications
+- [ ] Ding sound
