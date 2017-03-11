@@ -6,6 +6,13 @@ class TimerShow extends React.Component {
   render () {
     const elapsed = new Date().getTime() - +this.props.startedAt
 
+    if (!this.props.active) {
+      return <div>
+        No timer active.
+        <button onClick={() => this.props.onHome()}>Back</button>
+      </div>
+    }
+
     return <div>
       <h2>{this.props.timerType}</h2>
       <div>
@@ -19,6 +26,7 @@ class TimerShow extends React.Component {
 
 TimerShow = connect(
   state => ({
+    active: get(state, 'timer.active'),
     startedAt: get(state, 'timer.startedAt'),
     endsAt: get(state, 'timer.endsAt'),
     timerType: get(state, 'timer.type'),
@@ -26,7 +34,10 @@ TimerShow = connect(
   }),
   dispatch => ({
     onStop: () => {
-      dispatch({ type: 'router:nav!', to: '/timer/stop', replace: true })
+      dispatch({ type: 'timer:stop!' })
+    },
+    onHome: () => {
+      dispatch({ type: 'router:nav!', to: '/' })
     }
   }))(TimerShow)
 

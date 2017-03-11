@@ -7,12 +7,12 @@ import reducer from './store'
 import Chrome from './components/chrome'
 import Router from './services/router'
 import Ticker from './services/ticker'
-import TimerConcluder from './services/timer_concluder'
+import TimerActions from './services/timer_actions'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducer, {}, composeEnhancers(applyMiddleware(
   Ticker(),
-  TimerConcluder(),
+  TimerActions(),
   Router(),
   createLogger()
 )))

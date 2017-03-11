@@ -2,18 +2,20 @@ const requestAnimationFrame = require('raf')
 
 export default function ticker (options = {}) {
   const INTERVAL = options.interval || 1000
-
   let started = false
-
   let timer
 
   return store => dispatch => action => {
-    if (action.type === 'ticker:start!') {
-      started = true
-      start(dispatch)
-    } else if (action.type === 'ticker:stop!') {
-      started = false
-      stop()
+    switch (action.type) {
+      case 'ticker:start!':
+        started = true
+        start(store.dispatch)
+        break
+
+      case 'ticker:stop!':
+        started = false
+        stop()
+        break
     }
 
     return dispatch(action)

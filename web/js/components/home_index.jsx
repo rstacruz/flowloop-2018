@@ -20,7 +20,7 @@ HomeIndex = connect(
   state => ({}),
   dispatch => ({
     onStartClick (timer) {
-      dispatch({ type: 'router:nav!', to: '/timer/{timer}', timer })
+      dispatch({ type: 'timer:start!', timerType: timer })
     }
   }))(HomeIndex)
 
