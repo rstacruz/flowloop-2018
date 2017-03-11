@@ -55,10 +55,12 @@ const timer = buildReducer({
     const now = new Date()
     const durations = get(state, 'settings.duration')
     const duration = get(durations, timerType)
+    const defaultLabel = get(state, 'settings.labels.default')
 
     return put(state, {
       'timer.active': true,
       'timer.startedAt': now,
+      'timer.label': defaultLabel,
       'timer.endsAt': new Date(+now + duration),
       'timer.type': timerType,
       'timer.duration': duration,
@@ -84,6 +86,8 @@ const settings = buildReducer({
       'settings.duration.work': 4 * 1000, // 25 * 60 * 1000,
       'settings.duration.break': 5 * 60 * 1000,
       'settings.duration.longBreak': 10 * 60 * 1000,
+      'settings.labels.labels': ['Work', 'Chore', 'Side work'],
+      'settings.labels.default': 'Work',
     })
   },
 })

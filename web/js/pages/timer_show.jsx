@@ -10,22 +10,27 @@ class TimerShow extends React.Component {
       return <NoTimerActive {...this.props} />
     }
 
-    const now = +this.props.now
-    const elapsed = +now - +this.props.startedAt
-    const remaining = +this.props.startedAt + this.props.duration - now
+    const { now, timerType, startedAt, duration, label } = this.props
+    const elapsed = +now - +startedAt
+    const remaining = +startedAt + duration - +now
 
     return <div className="timer-layout">
-      <Title title={'(' + ms(remaining, true) + ') ' + this.props.timerType} />
+      <Title title={'(' + ms(remaining, true) + ') ' + timerType} />
 
       <div className="timer-heading">
-        <h1>{ms(remaining, true)}</h1>
         <p>
-          {this.props.timerType}
-          <span> - </span>
+          {timerType === 'work'
+            ? <LabelSelector label={label} />
+            : <em>Break</em>}
+          <br />
           {ms(elapsed)}
           <span> of </span>
-          {ms(this.props.duration)}
+          {ms(duration)}
         </p>
+      </div>
+
+      <div className="timer-display">
+        <span className="label">{ms(remaining, true)}</span>
       </div>
 
       <div className="timer-actions">
@@ -36,6 +41,12 @@ class TimerShow extends React.Component {
         </button>
       </div>
     </div>
+  }
+}
+
+class LabelSelector extends React.Component {
+  render () {
+    return <strong>{this.props.label}</strong>
   }
 }
 
@@ -60,6 +71,7 @@ function NoTimerActive ({ onHome }) {
 TimerShow = connect(
   state => ({
     now: get(state, 'time.now'),
+    label: get(state, 'timer.label'),
     active: get(state, 'timer.active'),
     startedAt: get(state, 'timer.startedAt'),
     endsAt: get(state, 'timer.endsAt'),

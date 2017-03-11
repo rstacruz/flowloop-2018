@@ -4,6 +4,7 @@
   padding: 64px;
   min-height: 100vh;
   justify-content: center;
+  align-items: center;
 
   & > * {
     flex: 0 0 auto;
