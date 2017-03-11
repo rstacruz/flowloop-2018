@@ -1,17 +1,13 @@
-import { Component } from 'react'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { buildStore } from './store'
+import { Provider } from 'react-redux'
+import Chrome from './components/chrome'
 
-window.React = React
+const store = buildStore()
 
-setTimeout(() => {
-  document.querySelector('.webpack-welcome').className += ' -show'
-}, 100)
-
-class Chrome extends Component {
-  render () {
-    return <div>Hello, {this.props.name}</div>
-  }
-}
-
-ReactDOM.render(<Chrome name='John' />, document.body)
+ReactDOM.render(
+  <Provider store={store}>
+    <Chrome name='John' />
+  </Provider>
+, document.querySelector('#root'))
