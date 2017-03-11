@@ -1,19 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import get from '101/pluck'
+import Title from 'react-document-title'
 
 class TimerShow extends React.Component {
   render () {
-    const elapsed = new Date().getTime() - +this.props.startedAt
-
     if (!this.props.active) {
-      return <div>
-        No timer active.
-        <button onClick={() => this.props.onHome()}>Back</button>
-      </div>
+      return <NoTimerActive {...this.props} />
     }
 
+    const elapsed = new Date().getTime() - +this.props.startedAt
+
     return <div>
+      <Title title={'(' + (+elapsed) + ') ' + this.props.timerType} />
       <h2>{this.props.timerType}</h2>
       <div>
         {+elapsed}
@@ -22,6 +21,14 @@ class TimerShow extends React.Component {
       <button onClick={() => this.props.onStop()}>Stop</button>
     </div>
   }
+}
+
+function NoTimerActive () {
+  return <div>
+    <Title title='No timer' />
+    No timer active.
+    <button onClick={() => this.props.onHome()}>Back</button>
+  </div>
 }
 
 TimerShow = connect(
