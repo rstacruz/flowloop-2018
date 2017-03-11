@@ -2,7 +2,7 @@
 
 .timer-heading {
   text-align: center;
-  animation: fade-in 300ms ease-out;
+  animation: fade-in 600ms ease-out;
 
   & > h1,
   & > p {
