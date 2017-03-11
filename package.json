@@ -6,6 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "101": "1.6.2",
     "babel-core": "6.23.1",
     "babel-loader": "6.3.2",
     "babel-preset-env": "1.1.10",
@@ -28,9 +29,11 @@
     "react-redux": "5.0.3",
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
+    "riot-route": "3.1.0",
     "style-loader": "0.13.2",
     "stylelint": "7.9.0",
     "stylelint-config-standard": "16.0.0",
+    "url-template": "2.0.8",
     "webpack": "2.2.1",
     "webpack-dev-server": "2.4.1",
     "webpack-livereload-plugin": "0.10.0"

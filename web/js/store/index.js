@@ -1,10 +1,13 @@
-import { createStore } from 'redux'
+import put from '101/put'
 
-export function buildStore () {
-  return createStore(reducer, {})
-}
+export default function reducer (state, action) {
+  switch (action.type) {
+    case 'route:change':
+      return put(state, {
+        'route': action
+      })
 
-function reducer (state, action) {
-  console.log('=>', action)
-  return state
+    default:
+      return state
+  }
 }

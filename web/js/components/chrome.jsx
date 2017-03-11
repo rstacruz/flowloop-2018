@@ -1,27 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import HomeIndex from './home_index'
+import TimerShow from './timer_show'
+import get from '101/pluck'
 
 class Chrome extends React.Component {
   render () {
-    return <div>
-      <div>
-        Hello.
-      </div>
-
-      <div className="actions">
-        <button onClick={() => this.props.onStartClick('work')}>Work!</button>
-        <button onClick={() => this.props.onStartClick('break')}>Break.</button>
-      </div>
-    </div>
+    switch (this.props.page) {
+      case 'HomeIndex':
+        return <HomeIndex />
+      case 'TimerShow':
+        return <TimerShow />
+      default:
+        return <div>?</div>
+    }
   }
 }
 
 Chrome = connect(
-  () => ({}),
+  state => ({
+    page: get(state, 'route.page'),
+  }),
   dispatch => ({
-    onStartClick (timer) {
-      dispatch({ type: 'work:start', timer })
-    }
   }))(Chrome)
 
 export default Chrome

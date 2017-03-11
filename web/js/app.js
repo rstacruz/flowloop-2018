@@ -1,13 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { buildStore } from './store'
+import reducer from './store'
 import { Provider } from 'react-redux'
 import Chrome from './components/chrome'
+import Router from './router'
+import { createStore, applyMiddleware } from 'redux'
 
-const store = buildStore()
+const store = createStore(reducer, {}, applyMiddleware(
+  Router()
+))
 
 ReactDOM.render(
   <Provider store={store}>
-    <Chrome name='John' />
+    <Chrome />
   </Provider>
 , document.querySelector('#root'))
