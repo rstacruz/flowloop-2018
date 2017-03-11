@@ -49,12 +49,23 @@
   &:hover,
   &:focus {
     transform: translate3d(0, 0, 0);
-    background-color: color(var(--accent) alpha(5%));
-    color: color(var(--accent) shade(50%));
+    background-color: color(var(--gray-text) alpha(5%));
   }
 
   &:active {
     transform: translate3d(0, 1px, 0);
-    background-color: color(var(--accent) alpha(10%));
+    background-color: color(var(--gray-text) alpha(10%));
+  }
+}
+
+.timer-button.-stop {
+  &::before {
+    content: '+';
+    display: inline-block;
+    font-size: 40px;
+    font-weight: 300;
+    transform: rotate(45deg);
+    position: relative;
+    left: 1px;
   }
 }
