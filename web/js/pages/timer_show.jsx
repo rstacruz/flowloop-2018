@@ -93,7 +93,7 @@ TimerShow = connect(
       dispatch({ type: 'timer:stop!' })
     },
     onHome: () => {
-      dispatch({ type: 'router:nav!', to: '/' })
+      dispatch({ type: 'router:nav!', to: '/', replace: true })
     }
   }))(TimerShow)
 
