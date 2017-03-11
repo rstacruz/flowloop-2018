@@ -9,8 +9,8 @@ class HomeIndex extends React.Component {
       </div>
 
       <div className="actions">
-        <button onClick={() => this.props.onStartClick('work')}>Work!</button>
-        <button onClick={() => this.props.onStartClick('break')}>Break.</button>
+        <button onClick={() => this.props.onStartClick('work')}>Work</button>
+        <button onClick={() => this.props.onStartClick('break')}>Break</button>
       </div>
     </div>
   }
@@ -20,7 +20,7 @@ HomeIndex = connect(
   state => ({}),
   dispatch => ({
     onStartClick (timer) {
-      dispatch({ type: 'router:nav', to: '/timer/{timer}', timer })
+      dispatch({ type: 'router:nav!', to: '/timer/{timer}', timer })
     }
   }))(HomeIndex)
 

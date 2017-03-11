@@ -14,12 +14,12 @@ import UrlTemplate from 'url-template'
  *
  *     const store = createStore(reducer, {}, applyMiddleware(...wares))
  *
- *     store.dispatch({ type: 'router:nav', to: '/' })
- *     store.dispatch({ type: 'router:nav', to: '/', replace: true })
+ *     store.dispatch({ type: 'router:nav!', to: '/' })
+ *     store.dispatch({ type: 'router:nav!', to: '/', replace: true })
  */
 
 export default function buildRouter (options = {}, addRoutes) {
-  const ACTION_NAME = options.action || 'router:nav'
+  const ACTION_NAME = options.action || 'router:nav!'
 
   /*
    * Redux middleware

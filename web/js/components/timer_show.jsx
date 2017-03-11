@@ -26,7 +26,7 @@ TimerShow = connect(
   }),
   dispatch => ({
     onStop: () => {
-      dispatch({ type: 'router:nav', to: '/timer/stop', replace: true })
+      dispatch({ type: 'router:nav!', to: '/timer/stop', replace: true })
     }
   }))(TimerShow)
 

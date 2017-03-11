@@ -10,10 +10,10 @@ export default function ticker (options = {}) {
   return function (store) {
     return function (dispatch) {
       return function (action) {
-        if (action.type === 'ticker:start') {
+        if (action.type === 'ticker:start!') {
           started = true
           start(dispatch)
-        } else if (action.type === 'ticker:stop') {
+        } else if (action.type === 'ticker:stop!') {
           started = false
           stop()
         }
