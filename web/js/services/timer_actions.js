@@ -14,6 +14,7 @@ export default function TimerActions () {
         break
 
       case 'timer:start!':
+        dispatch({ type: 'notifier:request!' })
         store.dispatch({ type: 'timer:start', timerType: action.timerType })
         store.dispatch({ type: 'ticker:start!' })
         store.dispatch({ type: 'router:nav!', to: '/timer', replace: true })
@@ -31,6 +32,7 @@ function checkConclusion (action, dispatch, state) {
 
   if (+now > (+startedAt + +duration)) {
     // dispatch({ type: 'timer:store' }) // TODO
+    dispatch({ type: 'notifier:notifyDone!' })
     dispatch({ type: 'timer:stop!' })
 
     // or:

@@ -8,11 +8,13 @@ import Chrome from './pages/chrome'
 import Router from './services/router'
 import Ticker from './services/ticker'
 import TimerActions from './services/timer_actions'
+import Notifier from './services/notifier'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducer, {}, composeEnhancers(applyMiddleware(
   TimerActions(),
   Ticker(),
+  Notifier(),
   Router()
   // createLogger()
 )))

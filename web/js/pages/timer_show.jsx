@@ -15,10 +15,10 @@ class TimerShow extends React.Component {
     const remaining = +this.props.startedAt + this.props.duration - now
 
     return <div className="timer-layout">
-      <Title title={'(' + ms(remaining) + ') ' + this.props.timerType} />
+      <Title title={'(' + ms(remaining, true) + ') ' + this.props.timerType} />
 
       <div className="timer-heading">
-        <h1>{ms(remaining)}</h1>
+        <h1>{ms(remaining, true)}</h1>
         <p>
           {this.props.timerType}
           <span> - </span>

@@ -1,5 +1,6 @@
+@import '../variables.css';
+
 :root {
-  --button-shadow: 0 4px 8px color(#567 alpha(10%));
   --timer-button-size: 80px;
 }
 
@@ -13,4 +14,5 @@
   height: var(--timer-button-size);
   line-height: var(--timer-button-size);
   border-radius: 50%;
+  color: var(--text-color);
 }
