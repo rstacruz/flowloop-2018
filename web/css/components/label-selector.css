@@ -1,10 +1,11 @@
 @import '../variables.css';
 
 .label-selector {
+  @apply --font-size-1;
+
   display: inline-block;
   cursor: pointer;
   white-space: nowrap;
-  font-size: 1.2em;
 
   &::after {
     content: '';

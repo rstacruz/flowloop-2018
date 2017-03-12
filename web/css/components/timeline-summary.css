@@ -1,10 +1,11 @@
 @import '../variables.css';
 
 .timeline-summary {
+  @apply --font-size--1;
+
   height: 48px;
   line-height: 48px;
   text-align: center;
-  font-size: 0.86em;
   color: var(--gray-text);
   position: relative;
 

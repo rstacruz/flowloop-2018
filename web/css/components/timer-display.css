@@ -3,9 +3,12 @@
 :root {
   --timer-display-small: 128px;
   --timer-display-large: 196px;
+  --timer-display-xl: 240px;
 }
 
 .timer-display {
+  @apply --font-size-4;
+
   height: var(--timer-display-small);
   line-height: var(--timer-display-small);
   width: var(--timer-display-small);
@@ -14,12 +17,20 @@
   border-radius: 50%;
   font-weight: 300;
   text-align: center;
-  font-size: 2em;
 
   @media (height > 580px) {
+    @apply --font-size-5;
+
     height: var(--timer-display-large);
     line-height: var(--timer-display-large);
     width: var(--timer-display-large);
-    font-size: 3em;
+  }
+
+  @media (width > 992px) {
+    @apply --font-size-6;
+
+    height: var(--timer-display-xl);
+    line-height: var(--timer-display-xl);
+    width: var(--timer-display-xl);
   }
 }
