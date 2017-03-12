@@ -1,6 +1,10 @@
 @import 'normalize.css';
 @import '../variables.css';
 
+/*
+ * Reset, antialias
+ */
+
 * {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
@@ -15,10 +19,22 @@ html {
   user-select: none;
 }
 
+/*
+ * Height
+ */
+
 html,
 body {
   height: 100%;
 }
+
+.app-root {
+  min-height: 100%;
+}
+
+/*
+ * Cursor
+ */
 
 body {
   cursor: default;
@@ -29,19 +45,34 @@ button {
   cursor: pointer;
 }
 
-.app-root {
-  min-height: 100%;
+/*
+ * Font size
+ */
+
+html {
+  font-size: 14px;
+
+  @media (width > 480px) {
+    font-size: 15px;
+  }
+
+  @media (width > 768px) {
+    font-size: 16px;
+  }
 }
 
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/*
+ * Button outline
+ */
 
 button:active,
 a:active {
   outline: 0;
 }
+
+/*
+ * Animation/
+ */
 
 @keyframes pop-in {
   0% {
