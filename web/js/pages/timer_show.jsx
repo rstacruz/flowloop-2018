@@ -4,6 +4,7 @@ import get from '101/pluck'
 import Title from 'react-document-title'
 import ms from '../helpers/timer_display'
 import TimerLayout from '../components/timer_layout'
+import LabelSelector from '../components/label_selector'
 
 class TimerShow extends React.Component {
   render () {
@@ -49,12 +50,6 @@ class TimerShow extends React.Component {
         </button>
       </div>
     </TimerLayout>
-  }
-}
-
-class LabelSelector extends React.Component {
-  render () {
-    return <strong>{this.props.label}</strong>
   }
 }
 
