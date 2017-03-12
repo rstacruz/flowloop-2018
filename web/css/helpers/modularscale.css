@@ -1,0 +1,86 @@
+/*
+ * Modular scale helpers.
+ *
+ *     @import 'modularscale.css';
+ *
+ * To use:
+ *
+ *     div {
+ *       @apply --font-size-4;
+ *     }
+ *
+ * To configure it, use these (optional):
+ *
+ *     :root {
+ *       --ms-ratio-sm: 1.15;
+ *       --ms-ratio-md: 1.17;
+ *       --ms-ratio-lg: 1.2;
+ *     }
+ *
+ *     @custom-media --ms-viewport-md (width > 480px);
+ *     @custom-media --ms-viewport-lg (width > 768px);
+ */
+
+@custom-media --ms-viewport-md (width > 480px);
+@custom-media --ms-viewport-lg (width > 768px);
+
+:root {
+  --ms-ratio-sm: 1.15;
+  --ms-ratio-md: 1.17;
+  --ms-ratio-lg: 1.2;
+  --ms-base: 1rem;
+
+  --font-size--1: {
+    font-size: calc(var(--ms-base) / var(--ms-ratio-sm));
+    @media (--ms-viewport-md) { font-size: calc(var(--ms-base) / var(--ms-ratio-md)); }
+    @media (--ms-viewport-lg) { font-size: calc(var(--ms-base) / var(--ms-ratio-lg)); }
+  }
+
+  --font-size-1: {
+    font-size: calc(var(--ms-base) * var(--ms-ratio-sm));
+    @media (--ms-viewport-md) { font-size: calc(var(--ms-base) * var(--ms-ratio-md)); }
+    @media (--ms-viewport-lg) { font-size: calc(var(--ms-base) * var(--ms-ratio-lg)); }
+  }
+
+  --font-size-2: {
+    font-size: calc(var(--ms-base) * var(--ms-ratio-sm) * var(--ms-ratio-sm));
+    @media (--ms-viewport-md) { font-size: calc(var(--ms-base) * var(--ms-ratio-md) * var(--ms-ratio-md)); }
+    @media (--ms-viewport-lg) { font-size: calc(var(--ms-base) * var(--ms-ratio-lg) * var(--ms-ratio-lg)); }
+  }
+
+  --font-size-3: {
+    font-size: calc(var(--ms-base) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm));
+    @media (--ms-viewport-md) { font-size: calc(var(--ms-base) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md)); }
+    @media (--ms-viewport-lg) { font-size: calc(var(--ms-base) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg)); }
+  }
+
+  --font-size-4: {
+    font-size: calc(var(--ms-base) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm));
+    @media (--ms-viewport-md) { font-size: calc(var(--ms-base) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md)); }
+    @media (--ms-viewport-lg) { font-size: calc(var(--ms-base) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg)); }
+  }
+
+  --font-size-5: {
+    font-size: calc(var(--ms-base) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm));
+    @media (--ms-viewport-md) { font-size: calc(var(--ms-base) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md)); }
+    @media (--ms-viewport-lg) { font-size: calc(var(--ms-base) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg)); }
+  }
+
+  --font-size-6: {
+    font-size: calc(var(--ms-base) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm));
+    @media (--ms-viewport-md) { font-size: calc(var(--ms-base) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md)); }
+    @media (--ms-viewport-lg) { font-size: calc(var(--ms-base) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg)); }
+  }
+
+  --font-size-7: {
+    font-size: calc(var(--ms-base) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm));
+    @media (--ms-viewport-md) { font-size: calc(var(--ms-base) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md)); }
+    @media (--ms-viewport-lg) { font-size: calc(var(--ms-base) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg)); }
+  }
+
+  --font-size-8: {
+    font-size: calc(var(--ms-base) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm) * var(--ms-ratio-sm));
+    @media (--ms-viewport-md) { font-size: calc(var(--ms-base) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md) * var(--ms-ratio-md)); }
+    @media (--ms-viewport-lg) { font-size: calc(var(--ms-base) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg) * var(--ms-ratio-lg)); }
+  }
+}
