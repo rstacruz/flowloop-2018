@@ -2,13 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import values from 'object-loops/values'
 import c from 'classnames'
+import { recents } from '../log'
 
 class TimelineSummary extends React.Component {
   render () {
-    console.log(this.props.log)
-
+    console.log('recents:', this.props.items)
     return <div className="timeline-summary fixed">
-      {values(this.props.log).map(item => {
+      {values(this.props.items).map(item => {
         return <span className={c('timeline-small-item', {
           '-break': item.timerType === 'break',
           '-work': item.timerType === 'work',
@@ -22,7 +22,7 @@ class TimelineSummary extends React.Component {
 
 TimelineSummary = connect(
   state => ({
-    log: state.log
+    items: recents(state)
   }),
   dispatch => ({})
 )(TimelineSummary)
