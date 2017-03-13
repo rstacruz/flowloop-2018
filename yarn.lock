@@ -2733,10 +2733,6 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
   dependencies:
     minimist "0.0.8"
 
-"modularscale.css@github:rstacruz/modularscale.css":
-  version "1.0.0"
-  resolved "https://codeload.github.com/rstacruz/modularscale.css/tar.gz/698317cf97f393112c84c8d47ed9307053d32ff5"
-
 ms@0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
@@ -4067,6 +4063,10 @@ resolve-from@^2.0.0:
 resolve@^1.1.6, resolve@^1.1.7:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.2.0.tgz#9589c3f2f6149d1417a40becc1663db6ec6bc26c"
+
+responsive-modular-scale.css@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/responsive-modular-scale.css/-/responsive-modular-scale.css-0.1.0.tgz#67ede53793d09b51fce642c0e03e557415393a07"
 
 rgb-hex@^1.0.0:
   version "1.0.0"
