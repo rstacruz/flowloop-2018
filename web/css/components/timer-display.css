@@ -4,6 +4,20 @@
   --timer-display-small: 128px;
   --timer-display-large: 196px;
   --timer-display-xl: 240px;
+
+  --use-timer-display-large: {
+    font-size: 2.48rem;
+    height: var(--timer-display-large);
+    line-height: var(--timer-display-large);
+    width: var(--timer-display-large);
+  }
+
+  --use-timer-display-xl: {
+    font-size: 2.98rem;
+    height: var(--timer-display-xl);
+    line-height: var(--timer-display-xl);
+    width: var(--timer-display-xl);
+  }
 }
 
 .timer-display {
@@ -17,17 +31,19 @@
   font-weight: 300;
   text-align: center;
 
-  @media (height > 580px) {
-    font-size: 2.48rem;
-    height: var(--timer-display-large);
-    line-height: var(--timer-display-large);
-    width: var(--timer-display-large);
+  @media (--vertical-layout) and (height > 580px) {
+    @apply --use-timer-display-large;
   }
 
-  @media (width > 992px) {
-    font-size: 2.98rem;
-    height: var(--timer-display-xl);
-    line-height: var(--timer-display-xl);
-    width: var(--timer-display-xl);
+  @media (--vertical-layout) and (height > 800px) {
+    @apply --use-timer-display-large;
+  }
+
+  @media (--horizontal-layout) {
+    @apply --use-timer-display-large;
+  }
+
+  @media (--horizontal-layout) and (width > 992px) {
+    @apply --use-timer-display-xl;
   }
 }
