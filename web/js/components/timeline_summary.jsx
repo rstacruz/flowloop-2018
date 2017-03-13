@@ -49,6 +49,7 @@ function Items ({ items }) {
 function Item ({ item }) {
   return <span
     aria-label={item.label}
+    key={item.id}
     className={c('timeline-small-item', {
       'hint--top': true,
       'hint--no-animate': true,

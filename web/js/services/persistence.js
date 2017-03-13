@@ -1,16 +1,22 @@
+import get from '101/pluck'
+
 /**
  * Simple localStorage-based persistence
  */
 
 export default function Persistence () {
   return store => dispatch => action => {
+    dispatch(action)
+
     switch (action.type) {
       case 'persistence:load!':
         load(store.dispatch)
         break
-    }
 
-    return dispatch(action)
+      case 'log:addCurrent':
+        setTimeout(() => { save(store.getState()) })
+        break
+    }
   }
 }
 
@@ -27,6 +33,23 @@ function load (dispatch) {
   loadData('TimerLog', items => {
     dispatch({ type: 'log:load', payload: items })
   })
+}
+
+/**
+ * Saves settings to localStorage
+ * @private
+ */
+
+function save (state) {
+  // TODO: implement reselect for settings
+  // window.localStorage.TimerSettings = JSON.stringify(get(state, 'settings'))
+
+  console.log('Persistence: saving TimerLog')
+  const newLog = get(state, 'log')
+  const oldLog = JSON.parse(window.localStorage.TimerLog || '{}') || {}
+  const combinedLog = Object.assign({}, oldLog, newLog)
+
+  window.localStorage.TimerLog = JSON.stringify(combinedLog)
 }
 
 /*

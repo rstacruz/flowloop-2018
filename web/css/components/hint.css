@@ -7,7 +7,6 @@
 [class*="hint--"]::before,
 [class*="hint--"]::after {
   box-shadow: none;
-  transition: all 150ms ease;
 }
 
 [class*="hint--"]:hover::before,

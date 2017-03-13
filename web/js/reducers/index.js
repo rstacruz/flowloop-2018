@@ -3,6 +3,7 @@ import get from '101/pluck'
 import reduceReducers from 'reduce-reducers'
 import buildReducer from 'build-reducer'
 import uuid from 'uuid'
+import mapObject from 'object-loops/map'
 
 /*
  * Time
@@ -114,6 +115,20 @@ const log = buildReducer({
     return put(state, {
       'log': {}
     })
+  },
+
+  'log:load': (state, { payload }) => {
+    let log = Object.assign({}, get(state, 'log') || {}, payload)
+
+    // Unpack dates
+    log = mapObject(log, item => {
+      return Object.assign({}, item, {
+        startedAt: new Date(item.startedAt),
+        endedAt: new Date(item.endedAt),
+      })
+    })
+
+    return put(state, 'log', log)
   },
 
   'log:addCurrent': (state) => {
