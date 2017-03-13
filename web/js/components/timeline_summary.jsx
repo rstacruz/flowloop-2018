@@ -47,11 +47,15 @@ function Items ({ items }) {
  */
 
 function Item ({ item }) {
-  return <span className={c('timeline-small-item', {
-    '-break': item.timerType === 'break',
-    '-work': item.timerType === 'work',
-  })}>
-    {item.label}
+  return <span
+    aria-label={item.label}
+    className={c('timeline-small-item', {
+      'hint--top': true,
+      'hint--no-animate': true,
+      '-break': item.timerType === 'break',
+      '-work': item.timerType === 'work',
+    })}>
+    <span className="peg" />
   </span>
 }
 
