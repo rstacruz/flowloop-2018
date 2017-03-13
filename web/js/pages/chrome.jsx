@@ -12,7 +12,7 @@ class Chrome extends React.Component {
       case 'TimerShow':
         return <TimerShow />
       default:
-        return <div>?</div>
+        return <div></div>
     }
   }
 }

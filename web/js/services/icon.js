@@ -10,8 +10,7 @@ export default function Icon () {
   return store => dispatch => action => {
     switch (action.type) {
       case 'icon:reset!':
-        setWorkStyle()
-        Piecon.setProgress(0)
+        Piecon.reset()
         break
 
       case 'icon:start!':
