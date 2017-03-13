@@ -73,7 +73,9 @@ html {
  */
 
 button:active,
-a:active {
+button:focus,
+a:active,
+a:focus {
   outline: 0;
 }
 
