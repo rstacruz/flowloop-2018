@@ -2,7 +2,7 @@
 
 > A polite web-based timer for hyper-productivity
 
-![](docs/images/screenshot.png)
+[![](docs/images/screenshot.png)](http://ricostacruz.com/palabok/)
 
 <details>
 <summary>Set up instructions</summary>
