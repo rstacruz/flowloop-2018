@@ -97,7 +97,7 @@ module.exports = {
 
     // Compress React (and others)
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development'
+      NODE_ENV: process.env.NODE_ENV || 'development'
     }),
 
     // Copying files directly
@@ -105,6 +105,9 @@ module.exports = {
       // { from: `${SRC}/assets`, to: './assets' },
       { from: `${SRC}/html`, to: '.' },
     ]),
+
+    // Ignore locales because it's around 400kb
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ].concat(DEBUG ? [
     // LiveReload in development
     new LiveReloadPlugin({

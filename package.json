@@ -5,7 +5,7 @@
     "update-ghpages": "git-update-ghpages --force rstacruz/palabok public",
     "watch": "webpack --progress --colors --watch",
     "start": "webpack-dev-server",
-    "webpack:size": "webpack --json | webpack-bundle-size-analyzer",
+    "webpack:size": "webpack -p --json | webpack-bundle-size-analyzer",
     "test": "jest"
   },
   "dependencies": {
