@@ -7,16 +7,20 @@ export default function Notifier () {
     switch (action.type) {
       case 'notifier:request!':
         console.log('Notifier: requesting permissions')
-        window.Notification.requestPermission(p => {})
+        try {
+          window.Notification.requestPermission(p => {})
+        } catch (e) { }
         break
 
       case 'notifier:notifyDone!':
         ding()
-        const notif = new window.Notification('Timer done', {
-          body: 'That was quick.',
-          // icon: ''
-        })
-        // notif.onclick = () => {...}
+        try {
+          const notif = new window.Notification('Timer done', {
+            body: 'That was quick.',
+            // icon: ''
+          })
+          // notif.onclick = () => {...}
+        } catch (e)
         break
     }
   }
