@@ -4,7 +4,13 @@ export default function ticker (options = {}) {
   let timer
 
   return store => dispatch => action => {
+    dispatch(action)
+
     switch (action.type) {
+      case 'init':
+        dispatch({ type: 'ticker:tick', now: new Date() })
+        break
+
       case 'ticker:start!':
         started = true
         start(store.dispatch)
@@ -15,8 +21,6 @@ export default function ticker (options = {}) {
         stop()
         break
     }
-
-    return dispatch(action)
   }
 
   function tick (dispatch) {

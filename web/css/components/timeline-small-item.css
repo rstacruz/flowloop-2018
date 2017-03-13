@@ -1,0 +1,31 @@
+@import '../variables.css';
+
+.timeline-small-items {
+  white-space: nowrap;
+}
+
+.timeline-small-item {
+  & {
+    display: inline-block;
+    padding: 0 8px;
+  }
+
+  & > .peg {
+    display: inline-block;
+    vertical-align: middle;
+    height: 20px;
+    width: 4px;
+    border-radius: 16px;
+    background: var(--accent);
+    transform: translate3d(0, 0, 0);
+    transition: transform 150ms ease-out;
+  }
+
+  &.-break > .peg {
+    background: #eee;
+  }
+
+  &:hover > .peg {
+    transform: translate3d(0, -6px, 0);
+  }
+}

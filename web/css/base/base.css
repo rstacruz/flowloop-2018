@@ -1,5 +1,12 @@
 @import 'normalize.css';
 @import '../variables.css';
+@import 'hint.css';
+
+/*
+ * Fonts
+ */
+
+@apply --ion-font;
 
 /*
  * Reset, antialias

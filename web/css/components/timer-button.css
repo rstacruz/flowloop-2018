@@ -70,15 +70,11 @@
   }
 }
 
-.timer-button.-stop {
-  &::before {
-    content: '+';
-    display: inline-block;
-    font-size: 40px;
-    font-weight: 300;
-    transform: rotate(45deg);
-    position: relative;
-    left: 3px;
-    top: -5px;
-  }
+.timer-button.-stop > .icon::before {
+  @apply --ion-icon;
+  @apply --ion-icon-md-close;
+
+  position: relative;
+  top: -1px;
+  font-size: 24px;
 }

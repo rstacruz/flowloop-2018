@@ -1,0 +1,33 @@
+@import '../variables.css';
+
+.icon-button {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+
+  &::before {
+    @apply --ion-icon;
+    @apply --ion-icon-md-close;
+
+    font-size: 24px;
+  }
+}
+
+.actions-list {
+  @apply --clearfix;
+
+  margin-bottom: 32px;
+
+  & > .left {
+    float: left;
+  }
+
+  & > .right {
+    float: right;
+  }
+}

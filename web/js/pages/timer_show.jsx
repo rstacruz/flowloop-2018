@@ -47,6 +47,7 @@ class TimerShow extends React.Component {
           aria-label="Stop"
           className="timer-button button -stop"
           onClick={() => this.props.onStop()}>
+          <span className="icon" />
         </button>
       </div>
     </TimerLayout>

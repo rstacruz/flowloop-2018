@@ -1,0 +1,21 @@
+@import '../variables.css';
+
+/*
+ * Extensions for hint.css
+ */
+
+[class*="hint--"]::before,
+[class*="hint--"]::after {
+  box-shadow: none;
+}
+
+[class*="hint--"]:hover::before,
+[class*="hint--"]:hover::after {
+  transition: none;
+}
+
+[class*="hint--"]::after {
+  border-radius: 2px;
+  text-shadow: none;
+  font-family: var(--sans);
+}
