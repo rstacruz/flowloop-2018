@@ -10,6 +10,7 @@
   position: relative;
   background-color: color(white alpha(0%));
   transition: background-color 150ms linear;
+  cursor: pointer;
 
   @media (height > 500px) {
     height: 64px;
@@ -28,11 +29,32 @@
 
   &:hover {
     background: white;
-    transition: none;
+    transition: background-color 50ms linear;
   }
 
   &:hover::before {
     left: 0;
     right: 0;
+  }
+}
+
+/*
+ * The little notch
+ */
+
+.timeline-summary > .triangle {
+  & {
+    display: inline-block;
+    width: 32px;
+    text-align: center;
+  }
+
+  &::before {
+    @apply --ion-icon;
+    @apply --ion-icon-ios-arrow-up;
+
+    font-size: 24px;
+    position: relative;
+    top: -2px;
   }
 }

@@ -1,4 +1,5 @@
 @import 'responsive-modular-scale.css';
+@import 'iconfonts/stylesheets/ionicons@3.cssnext.css';
 
 :root {
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;

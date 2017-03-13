@@ -2,6 +2,12 @@
 @import '../variables.css';
 
 /*
+ * Fonts
+ */
+
+@apply --ion-font;
+
+/*
  * Reset, antialias
  */
 
