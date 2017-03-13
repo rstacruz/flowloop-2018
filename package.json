@@ -1,6 +1,8 @@
 {
   "scripts": {
     "build": "webpack --progress --colors -p",
+    "deploy": "run-s build update-ghpages",
+    "update-ghpages": "git-update-ghpages rstacruz/palabok public --force",
     "watch": "webpack --progress --colors --watch",
     "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -48,5 +50,9 @@
     "webpack": "2.2.1",
     "webpack-dev-server": "2.4.1",
     "webpack-livereload-plugin": "0.10.0"
+  },
+  "devDependencies": {
+    "git-update-ghpages": "1.3.0",
+    "npm-run-all": "4.0.2"
   }
 }
