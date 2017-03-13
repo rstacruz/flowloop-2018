@@ -20,7 +20,7 @@ export default function Notifier () {
             // icon: ''
           })
           // notif.onclick = () => {...}
-        } catch (e)
+        } catch (e) {}
         break
     }
   }
