@@ -1,5 +1,12 @@
 # $PROJECT_NAME
 
+> A polite web-based timer for hyper-productivity
+
+![](docs/images/screenshot.png)
+
+<details>
+<summary>Set up instructions</summary>
+
 ## Set up
 
 Requires Node 6+ and Yarn.
@@ -29,23 +36,24 @@ yarn run build  # Build for production (builds into /public)
 heroku create --app my-app
 git push heroku master
 ```
+</details>
 
-## Settings
-
-When timer runs out: (`settings.timerMode`)
-
-- Continue
-- Switch to break
-- Stop immediately
+<details>
+<summary>To do list</summary>
 
 ## To do
 
 - [x] Timer
-- [ ] Saving logs
-- [ ] Rolling over
+- [x] Saving logs
 - [x] Push notifications
-- [ ] Ding sound
+- [x] Ding sound
+- [ ] Rolling over
+</details>
+
+<details>
+<summary>Sources</summary>
 
 ## Sources
 
 - https://notificationsounds.com/standard-ringtones/echoed-ding-459
+</details>
