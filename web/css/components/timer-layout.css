@@ -5,11 +5,19 @@
   flex-direction: column;
   min-height: 100vh;
 
+  &.-log {
+    background: white;
+  }
+
   & > .bottom {
     flex: 0 0 auto;
   }
 
   & > .body {
+    flex: 1 0 auto;
+  }
+
+  & > .rawbody {
     flex: 1 0 auto;
   }
 }

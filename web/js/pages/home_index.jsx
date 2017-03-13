@@ -31,6 +31,7 @@ HomeIndex = connect(
     onStartClick (timer) {
       dispatch({ type: 'timer:start!', timerType: timer })
     }
-  }))(HomeIndex)
+  })
+)(HomeIndex)
 
 export default HomeIndex

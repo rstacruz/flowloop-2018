@@ -1,0 +1,40 @@
+@import '../variables';
+
+.log-date {
+  & {
+    border-bottom: solid 1px var(--line-color);
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  &:first-child {
+    border-top: solid 1px var(--line-color);
+  }
+
+  & > .date {
+    @apply --font-size--1;
+
+    flex: 0 0 120px;
+    margin: 0;
+    padding: 0;
+    color: var(--gray-text);
+    font-weight: normal;
+    line-height: 32px;
+    white-space: nowrap;
+  }
+
+  @media (width > 480px) {
+    display: flex;
+
+    & > .date {
+      flex: 0 0 120px;
+      text-align: right;
+      margin-right: 16px;
+    }
+
+    & > .dates {
+      flex: 1 0 auto;
+      margin-top: 1px;
+    }
+  }
+}

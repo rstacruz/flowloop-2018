@@ -10,17 +10,12 @@ export default function Router () {
       dispatch({ type: 'route:change', page: 'HomeIndex' })
     })
 
-    // TODO: move these to timer actions
-    route('/timer/stop', (timerType) => {
-      dispatch({ type: 'timer:stop!' })
-    })
-
-    route('/timer/*', (timerType) => {
-      dispatch({ type: 'timer:start!', timerType })
-    })
-
     route('/timer', () => {
       dispatch({ type: 'route:change', page: 'TimerShow' })
+    })
+
+    route('/log', () => {
+      dispatch({ type: 'route:change', page: 'LogIndex' })
     })
   })
 }

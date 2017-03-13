@@ -34,7 +34,13 @@ export default function buildRouter (options = {}, addRoutes) {
         if (action.type === ACTION_NAME) {
           const url = UrlTemplate.parse(action.to).expand(action)
 
-          if (action.replace) {
+          if (action.back) {
+            if (window.history.length) {
+              window.history.go(-1)
+            } else {
+              route(url)
+            }
+          } else if (action.replace) {
             route(url, null, true)
           } else {
             route(url)

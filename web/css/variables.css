@@ -11,6 +11,15 @@
   --button-shadow: 0 4px 8px color(#567 alpha(10%));
   --button-shadow-active: 0 6px 12px color(#567 alpha(20%));
   --gray-text: #8090a0;
+
+  --clearfix: {
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+      zoom: 1;
+    }
+  }
 }
 
 @custom-media --horizontal-layout (width > 768px);

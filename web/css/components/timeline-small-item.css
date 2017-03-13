@@ -21,6 +21,10 @@
     transition: transform 150ms ease-out;
   }
 
+  &.-break > .peg {
+    background: #eee;
+  }
+
   &:hover > .peg {
     transform: translate3d(0, -6px, 0);
   }

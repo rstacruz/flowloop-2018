@@ -1,0 +1,14 @@
+.slim-container {
+  padding: 16px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (width > 480px) {
+    padding: 32px;
+  }
+
+  @media (width > 768px) {
+    max-width: 760px;
+    padding: 64px;
+  }
+}
