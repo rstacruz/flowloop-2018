@@ -16,6 +16,8 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none; /* disable callout, image save panel (popup) */
+  -webkit-tap-highlight-color: transparent; /* turn off link highlight */
 }
 
 html {
