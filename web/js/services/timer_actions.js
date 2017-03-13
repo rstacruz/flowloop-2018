@@ -2,6 +2,8 @@ import get from '101/pluck'
 
 export default function TimerActions () {
   return store => dispatch => action => {
+    dispatch(action)
+
     switch (action.type) {
       case 'ticker:tick':
         updateIcon(action, store.dispatch, store.getState())
@@ -23,8 +25,6 @@ export default function TimerActions () {
         store.dispatch({ type: 'router:nav!', to: '/timer', replace: true })
         break
     }
-
-    return dispatch(action)
   }
 }
 
@@ -34,9 +34,10 @@ function checkConclusion (action, dispatch, state) {
   const now = action.now
 
   if (+now > (+startedAt + +duration)) {
-    dispatch({ type: 'log:addCurrent' })
-    dispatch({ type: 'notifier:notifyDone!' })
-    dispatch({ type: 'timer:stop!' })
+    setTimeout(() => {
+      dispatch({ type: 'log:addCurrent' })
+      dispatch({ type: 'notifier:notifyDone!' })
+      dispatch({ type: 'timer:stop!' })
   }
 }
 
