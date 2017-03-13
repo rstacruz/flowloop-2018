@@ -11,6 +11,7 @@
   background-color: color(white alpha(0%));
   transition: background-color 150ms linear;
   cursor: pointer;
+  white-space: nowrap;
 
   @media (height > 500px) {
     height: 64px;
@@ -35,6 +36,21 @@
   &:hover::before {
     left: 0;
     right: 0;
+    opacity: 0.1;
+  }
+
+  & > .text {
+    margin: 0 16px;
+    display: inline-block;
+    width: 90px;
+  }
+
+  & > .text.-left {
+    text-align: right;
+  }
+
+  & > .text.-right {
+    text-align: left;
   }
 }
 

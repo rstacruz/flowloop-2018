@@ -1,6 +1,11 @@
 @import '../variables.css';
 
+.timeline-small-items {
+  white-space: nowrap;
+}
+
 .timeline-small-item {
+  display: inline-block;
   min-width: 16px;
   height: 16px;
   line-height: 16px;

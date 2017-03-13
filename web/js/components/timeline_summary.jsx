@@ -3,16 +3,22 @@ import { connect } from 'react-redux'
 import values from 'object-loops/values'
 import c from 'classnames'
 import { recents } from '../log'
+import Moment from 'moment'
+import get from '101/pluck'
 
 class TimelineSummary extends React.Component {
   render () {
-    const items = values(this.props.items)
-    const isEmpty = items.length === 0
+    const isEmpty = values(this.props.items).length === 0
+    const now = this.props.now
 
     return <div className="timeline-summary fixed">
+      <span className="-left text">{Moment(now).format('dddd')}</span>
+
       {isEmpty
         ? <Empty />
-        : items.map(item => <Item item={item} />)}
+        : <Items items={this.props.items} />}
+
+      <span className="-right text">{Moment(now).format('MMM D')}</span>
     </div>
   }
 }
@@ -23,6 +29,17 @@ class TimelineSummary extends React.Component {
 
 function Empty () {
   return <span className='triangle' />
+}
+
+/*
+ * List of items
+ */
+
+function Items ({ items }) {
+  return <span className='timeline-small-items'>
+    {values(items).map(item =>
+      <Item item={item} />)}
+  </span>
 }
 
 /*
@@ -44,7 +61,8 @@ function Item ({ item }) {
 
 TimelineSummary = connect(
   state => ({
-    items: recents(state)
+    items: recents(state),
+    now: get(state, 'time.now')
   }),
   dispatch => ({})
 )(TimelineSummary)
