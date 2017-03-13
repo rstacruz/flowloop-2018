@@ -2,6 +2,8 @@ import ding from '../helpers/ding'
 
 export default function Notifier () {
   return store => dispatch => action => {
+    dispatch(action)
+
     switch (action.type) {
       case 'notifier:request!':
         console.log('Notifier: requesting permissions')
@@ -17,7 +19,5 @@ export default function Notifier () {
         // notif.onclick = () => {...}
         break
     }
-
-    return dispatch(action)
   }
 }

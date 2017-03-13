@@ -8,6 +8,8 @@ const COLORS = {
 
 export default function Icon () {
   return store => dispatch => action => {
+    dispatch(action)
+
     switch (action.type) {
       case 'icon:reset!':
         Piecon.reset()
@@ -25,8 +27,6 @@ export default function Icon () {
         Piecon.setProgress(action.progress * 100)
         break
     }
-
-    return dispatch(action)
   }
 }
 

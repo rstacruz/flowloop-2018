@@ -34,10 +34,9 @@ function checkConclusion (action, dispatch, state) {
   const now = action.now
 
   if (+now > (+startedAt + +duration)) {
-    setTimeout(() => {
-      dispatch({ type: 'log:addCurrent' })
-      dispatch({ type: 'notifier:notifyDone!' })
-      dispatch({ type: 'timer:stop!' })
+    dispatch({ type: 'log:addCurrent' })
+    dispatch({ type: 'notifier:notifyDone!' })
+    dispatch({ type: 'timer:stop!' })
   }
 }
 
