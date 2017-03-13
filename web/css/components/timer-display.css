@@ -35,8 +35,8 @@
     @apply --use-timer-display-large;
   }
 
-  @media (--vertical-layout) and (height > 800px) {
-    @apply --use-timer-display-large;
+  @media (--vertical-layout) and (height > 700px) {
+    @apply --use-timer-display-xl;
   }
 
   @media (--horizontal-layout) {
