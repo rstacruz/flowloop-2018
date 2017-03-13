@@ -2,7 +2,7 @@
   "scripts": {
     "build": "webpack --progress --colors -p",
     "deploy": "run-s build update-ghpages",
-    "update-ghpages": "git-update-ghpages rstacruz/palabok public --force",
+    "update-ghpages": "git-update-ghpages --force rstacruz/palabok public",
     "watch": "webpack --progress --colors --watch",
     "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
