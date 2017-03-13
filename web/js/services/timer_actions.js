@@ -34,12 +34,9 @@ function checkConclusion (action, dispatch, state) {
   const now = action.now
 
   if (+now > (+startedAt + +duration)) {
-    // dispatch({ type: 'timer:store' }) // TODO
+    dispatch({ type: 'log:addCurrent' })
     dispatch({ type: 'notifier:notifyDone!' })
     dispatch({ type: 'timer:stop!' })
-
-    // or:
-    // dispatch({ type: 'timer:lap' }) // TODO
   }
 }
 

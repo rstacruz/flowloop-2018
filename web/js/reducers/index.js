@@ -2,6 +2,7 @@ import put from '101/put'
 import get from '101/pluck'
 import reduceReducers from 'reduce-reducers'
 import buildReducer from 'build-reducer'
+import uuid from 'uuid'
 
 /*
  * Time
@@ -64,6 +65,7 @@ const timer = buildReducer({
       'timer.endsAt': new Date(+now + duration),
       'timer.type': timerType,
       'timer.duration': duration,
+      'timer.lastLap': null,
     })
   },
 
@@ -104,6 +106,38 @@ const settings = buildReducer({
 })
 
 /*
+ * Log
+ */
+
+const log = buildReducer({
+  'init': (state) => {
+    return put(state, {
+      'log': {}
+    })
+  },
+
+  'log:addCurrent': (state) => {
+    const id = uuid.v4()
+    const timer = get(state, 'timer')
+    const now = get(state, 'time.now')
+    const startedAt = timer.lastLap || timer.startedAt
+
+    return put(state, {
+      'timer.lastLap': now,
+      [`log.${id}`]: {
+        id,
+        startedAt,
+        endedAt: now,
+        duration: +now - +startedAt,
+        timerType: timer.type,
+        label: timer.label,
+        isComplete: true
+      }
+    })
+  }
+})
+
+/*
  * Export
  */
 
@@ -111,5 +145,6 @@ export default reduceReducers(
   timer,
   time,
   route,
-  settings
+  settings,
+  log
 )

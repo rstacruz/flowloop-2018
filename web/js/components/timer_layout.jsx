@@ -1,4 +1,5 @@
 import React from 'react'
+import TimelineSummary from './timeline_summary'
 
 class TimerLayout extends React.Component {
   render () {
@@ -7,9 +8,7 @@ class TimerLayout extends React.Component {
         {this.props.children}
       </div>
 
-      <div className="timeline-summary fixed">
-        Nothing logged today
-      </div>
+      <TimelineSummary />
     </div>
   }
 }

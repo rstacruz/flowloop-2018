@@ -20,17 +20,27 @@ export default function Persistence () {
  */
 
 function load (dispatch) {
-  let settings = window.localStorage.TimerSettings
-  if (!settings) return
-
-  settings = JSON.parse(settings)
-
-  console.log('Persistence: loading settings', settings)
-
-  dispatch({
-    type: 'settings:update',
-    payload: settings
+  loadData('TimerSettings', settings => {
+    dispatch({ type: 'settings:update', payload: settings })
   })
+
+  loadData('TimerLog', items => {
+    dispatch({ type: 'log:load', payload: items })
+  })
+}
+
+/*
+ * Loads data `key` from localStorage
+ */
+
+function loadData (key, fn) {
+  let data = window.localStorage[key]
+  if (!data) return
+
+  data = JSON.parse(data)
+
+  console.log(`Persistence: loading ${key}`, data)
+  return fn(data)
 }
 
 // localStorage.TimerSettings = JSON.stringify({ duration: { work: 7000, break: 50000, longBreak: 60000 } })
