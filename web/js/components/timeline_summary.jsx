@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import values from 'object-loops/values'
-import { recents } from '../log'
+import { recents } from '../selectors/log'
 import Moment from 'moment'
 import LogItems from './log_items'
 import get from '101/pluck'

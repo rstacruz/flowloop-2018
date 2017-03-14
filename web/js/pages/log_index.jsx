@@ -2,7 +2,7 @@ import React from 'react'
 import TimerLayout from '../components/timer_layout'
 import Title from 'react-document-title'
 import values from 'object-loops/values'
-import { byDate } from '../log'
+import { byDate } from '../selectors/log'
 import { connect } from 'react-redux'
 import LogDates from '../components/log_dates'
 

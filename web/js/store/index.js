@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import reducer from '../reducers'
+import reducer from './reducers'
 import Router from '../services/router'
 import Ticker from '../services/ticker'
 import Icon from '../services/icon'
