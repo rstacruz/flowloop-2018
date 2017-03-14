@@ -9,7 +9,7 @@ import LogDates from '../components/log_dates'
 class LogIndex extends React.Component {
   render () {
     return <div className="timer-layout -log">
-      <Title title='Timer log' />
+      <Title title='Your timeline' />
 
       <div className="rawbody">
         <div className="slim-container">
