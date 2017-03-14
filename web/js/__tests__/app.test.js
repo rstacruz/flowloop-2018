@@ -1,4 +1,4 @@
-import App from '../web/js/app'
+import App from '../app'
 
 let app
 
@@ -11,7 +11,7 @@ afterEach(() => {
   app.stop()
 })
 
-describe('Application', () => {
+describe('App', () => {
   test('starts and dies flawlessly', () => {
     expect(1).toEqual(1)
   })
