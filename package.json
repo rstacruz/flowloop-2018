@@ -6,7 +6,8 @@
     "watch": "webpack --progress --colors --watch",
     "start": "webpack-dev-server",
     "webpack:size": "source-map-explorer public/assets/js/app.js public/assets/js/app.js.map",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch -b"
   },
   "dependencies": {
     "101": "1.6.2",
