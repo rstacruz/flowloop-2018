@@ -2,21 +2,53 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import Chrome from './pages/chrome'
-import buildStore from './store'
+import { buildStore } from './store'
 
-const store = buildStore()
+/**
+ * The main application. Exposed like this for testing.
+ *
+ *     app = new App()
+ *     app.start()
+ *     app.stop()
+ */
 
-store.dispatch({ type: 'init' })
-store.dispatch({ type: 'persistence:load!' })
-store.dispatch({ type: 'icon:reset!' })
+export default class App {
+  /**
+   * Starts the application.
+   */
 
-const div = document.createElement('div')
-div.id = 'root'
-div.className = 'app-root'
-document.body.appendChild(div)
+  start () {
+    const store = this.store = buildStore()
 
-ReactDOM.render(
-  <Provider store={store}>
-    <Chrome />
-  </Provider>
-, div)
+    store.dispatch({ type: 'init' })
+    store.dispatch({ type: 'persistence:load!' })
+    store.dispatch({ type: 'icon:reset!' })
+
+    const div = this.div = document.createElement('div')
+    div.id = 'root'
+    div.className = 'app-root'
+    document.body.appendChild(div)
+
+    ReactDOM.render(
+      <Provider store={store}>
+        <Chrome />
+      </Provider>
+    , div)
+
+    return this
+  }
+
+  /**
+   * Stop everything; unmounts React nodes and stops the store.
+   */
+
+  stop () {
+    this.store.dispatch({ type: 'stop!' })
+    ReactDOM.render(<noscript />, this.div)
+    return this
+  }
+}
+
+if (!module.parent) {
+  window.__APP__ = (new App()).start()
+}

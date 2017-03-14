@@ -41,6 +41,8 @@ function load (dispatch) {
  */
 
 function save (state) {
+  if (!window.localStorage) return
+
   // TODO: implement reselect for settings
   // window.localStorage.TimerSettings = JSON.stringify(get(state, 'settings'))
 
@@ -57,6 +59,8 @@ function save (state) {
  */
 
 function loadData (key, fn) {
+  if (!window.localStorage) return
+
   let data = window.localStorage[key]
   if (!data) return
 

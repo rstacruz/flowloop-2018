@@ -20,6 +20,7 @@ import UrlTemplate from 'url-template'
 
 export default function buildRouter (options = {}, addRoutes) {
   const ACTION_NAME = options.action || 'router:nav!'
+  const ACTION_STOP = options.stopAction || 'stop!'
 
   /*
    * Redux middleware
@@ -31,6 +32,8 @@ export default function buildRouter (options = {}, addRoutes) {
 
     return function (dispatch) {
       return function (action) {
+        dispatch(action)
+
         if (action.type === ACTION_NAME) {
           const url = UrlTemplate.parse(action.to).expand(action)
 
@@ -45,8 +48,8 @@ export default function buildRouter (options = {}, addRoutes) {
           } else {
             route(url)
           }
-        } else {
-          return dispatch(action)
+        } else if (action.type === ACTION_STOP) {
+          route.stop()
         }
       }
     }

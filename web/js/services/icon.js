@@ -11,6 +11,7 @@ export default function Icon () {
     dispatch(action)
 
     switch (action.type) {
+      case 'stop!':
       case 'icon:reset!':
         Piecon.reset()
         break

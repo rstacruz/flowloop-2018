@@ -16,6 +16,7 @@ export default function ticker (options = {}) {
         start(store.dispatch)
         break
 
+      case 'stop!':
       case 'ticker:stop!':
         started = false
         stop()

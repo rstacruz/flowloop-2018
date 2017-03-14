@@ -7,14 +7,12 @@ import TimerActions from '../services/timer_actions'
 import Notifier from '../services/notifier'
 import Persistence from '../services/persistence'
 
-/*
- * Builds a redux store with all our middleware
+/**
+ * Returns a default set of middleware.
  */
 
-function buildStore (services) {
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-
-  const middleware = services || [
+export function middlewares () {
+  return [
     Icon(),
     TimerActions(),
     Ticker(),
@@ -22,10 +20,18 @@ function buildStore (services) {
     Router(),
     Persistence()
   ]
+}
+
+/*
+ * Builds a redux store with all our middleware
+ */
+
+export function buildStore (services) {
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+  const middleware = services || middlewares()
 
   const enhancer = composeEnhancers(applyMiddleware(...middleware))
 
   return createStore(reducer, {}, enhancer)
 }
-
-export default buildStore
