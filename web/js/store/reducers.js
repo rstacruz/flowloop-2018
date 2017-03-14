@@ -54,7 +54,7 @@ const timer = buildReducer({
   },
 
   'timer:start': (state, { timerType }) => {
-    const now = new Date()
+    const now = get(state, 'time.now')
     const durations = get(state, 'settings.duration')
     const duration = get(durations, timerType)
     const defaultLabel = get(state, 'settings.labels.default')

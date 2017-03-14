@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`without side effects route:change 1`] = `
+Object {
+  "page": "HomeIndex",
+}
+`;
+
+exports[`without side effects ticker:tick 1`] = `
+Object {
+  "now": 2010-09-02T00:00:00.000Z,
+}
+`;
+
+exports[`without side effects timer:start 1`] = `
+Object {
+  "active": true,
+  "duration": 1500000,
+  "endsAt": 2010-09-02T00:25:00.000Z,
+  "label": "Work",
+  "lastLap": null,
+  "startedAt": 2010-09-02T00:00:00.000Z,
+  "type": "work",
+}
+`;
+
+exports[`without side effects timer:start break 1`] = `
+Object {
+  "active": true,
+  "duration": 300000,
+  "endsAt": 2010-09-02T00:05:00.000Z,
+  "label": "Work",
+  "lastLap": null,
+  "startedAt": 2010-09-02T00:00:00.000Z,
+  "type": "break",
+}
+`;
