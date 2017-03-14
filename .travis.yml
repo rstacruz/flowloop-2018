@@ -16,4 +16,4 @@ env:
   - GIT_EMAIL: nobody@nobody.org
   - GITHUB_REPO: rstacruz/flowloop
   - GIT_SOURCE: public
-  - GIT_BRANCH: master
+  - GIT_BRANCH: gh-pages
