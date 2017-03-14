@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`byDate groups by date 1`] = `
+Object {
+  "1271721600000": Array [
+    Object {
+      "id": "a",
+      "startedAt": 2010-04-20T08:00:00.000Z,
+    },
+  ],
+  "1271808000000": Array [
+    Object {
+      "id": "b",
+      "startedAt": 2010-04-21T08:00:00.000Z,
+    },
+    Object {
+      "id": "c",
+      "startedAt": 2010-04-21T09:00:00.000Z,
+    },
+  ],
+}
+`;
+
+exports[`byDate works on empty logs 1`] = `Object {}`;
+
+exports[`byDate works on undefined logs 1`] = `Object {}`;
+
+exports[`recents returns just todays items 1`] = `
+Object {
+  "b": Object {
+    "id": "b",
+    "startedAt": 2010-04-21T08:00:00.000Z,
+    "timerType": "work",
+  },
+  "c": Object {
+    "id": "c",
+    "startedAt": 2010-04-21T09:00:00.000Z,
+    "timerType": "work",
+  },
+}
+`;
+
+exports[`recents works on empty logs 1`] = `Object {}`;

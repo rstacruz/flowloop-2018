@@ -32,7 +32,7 @@ export const recents = createSelector(
 export const byDate = createSelector(
   state => state.log || {},
   log => {
-    return groupBy(values(log), item => truncateDate(item.startedAt))
+    return groupBy(values(log), item => +truncateDate(item.startedAt))
   })
 
 /*
