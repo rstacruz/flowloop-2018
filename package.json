@@ -2,7 +2,7 @@
   "scripts": {
     "build": "env NODE_ENV=production webpack --progress --colors -p",
     "deploy": "run-s build update-ghpages",
-    "update-ghpages": "git-update-ghpages --force rstacruz/palabok public",
+    "update-ghpages": "git-update-ghpages --force rstacruz/flowloop public",
     "watch": "webpack --progress --colors --watch",
     "start": "webpack-dev-server",
     "webpack:size": "source-map-explorer public/assets/js/app.js public/assets/js/app.js.map",

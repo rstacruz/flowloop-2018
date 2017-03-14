@@ -1,10 +1,10 @@
-# $PROJECT_NAME
+# Flowloop
 
 > A polite web-based timer for hyper-productivity
 
-[![](docs/images/screenshot.png)](http://ricostacruz.com/palabok/)
+[![](docs/images/screenshot.png)](http://ricostacruz.com/flowloop/)
 
-[![Status](https://travis-ci.org/rstacruz/palabok.svg?branch=master)](https://travis-ci.org/rstacruz/palabok "See test builds")
+[![Status](https://travis-ci.org/rstacruz/flowloop.svg?branch=master)](https://travis-ci.org/rstacruz/flowloop "See test builds")
 
 <details>
 <summary>Set up instructions</summary>
