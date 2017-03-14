@@ -4,6 +4,8 @@
 
 [![](docs/images/screenshot.png)](http://ricostacruz.com/palabok/)
 
+[![Status](https://travis-ci.org/rstacruz/palabok.svg?branch=master)](https://travis-ci.org/rstacruz/palabok "See test builds")
+
 <details>
 <summary>Set up instructions</summary>
 
