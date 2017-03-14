@@ -3,8 +3,8 @@ node_js:
 - '6'
 
 script:
-- npm test
-- npm run build
+- yarn test
+- yarn run build
 
 # Deploy to gh-pages
 after_success:
