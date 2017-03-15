@@ -6,15 +6,19 @@ import { connect } from 'react-redux'
 
 class ModeSelector extends React.Component {
   render () {
-    const { mode } = this.props
+    const { mode, onSwitch } = this.props
 
-    return <button className={c('mode-selector', {
-      '-single': mode === 'SINGLE',
-      '-continuous': mode === 'CONTINUOUS',
-      '-alternate': mode === 'ALTERNATE',
-    })}>
+    return <button
+      onClick={() => onSwitch()}
+      aria-label={TIMER_MODE_LABELS[mode]}
+      className={c('mode-selector', {
+        'hint--bottom': true,
+        '-single': mode === 'SINGLE',
+        '-continuous': mode === 'CONTINUOUS',
+        '-alternate': mode === 'ALTERNATE',
+      })}>
       <span className="icon" />
-      <span className="label">{TIMER_MODE_LABELS[mode]}</span>
+      {/* <span className="label">{TIMER_MODE_LABELS[mode]}</span> */}
     </button>
   }
 }
@@ -23,7 +27,11 @@ ModeSelector = connect(
   state => ({
     mode: Settings.full(state)['timer:mode']
   }),
-  dispatch => ({})
+  dispatch => ({
+    onSwitch: () => {
+      dispatch({ type: 'settings:cycleTimerMode' })
+    }
+  })
 )(ModeSelector)
 
 export default ModeSelector
