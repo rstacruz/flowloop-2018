@@ -123,4 +123,25 @@ describe('without side effects', () => {
     expect(state.settings['duration:work']).toEqual(25)
     expect(state.settings['duration:break']).toEqual(5)
   })
+
+  test('settings:cycleTimerMode', () => {
+    let state
+
+    store.dispatch({ type: 'init' })
+    store.dispatch({ type: 'settings:update', payload: {
+      'settings.timer:mode': 'CONTINUOUS'
+    } })
+
+    store.dispatch({ type: 'settings:cycleTimerMode' })
+    state = store.getState()
+    expect(state.settings['timer:mode']).toEqual('SINGLE')
+
+    store.dispatch({ type: 'settings:cycleTimerMode' })
+    state = store.getState()
+    expect(state.settings['timer:mode']).toEqual('ALTERNATE')
+
+    store.dispatch({ type: 'settings:cycleTimerMode' })
+    state = store.getState()
+    expect(state.settings['timer:mode']).toEqual('CONTINUOUS')
+  })
 })
