@@ -8,7 +8,7 @@ import ms from '../helpers/timer_display'
 export default function TimerDisplay ({ timer }) {
   const { remaining } = timer
 
-  return <div className="timer-display">
-    <span className="label">{ms(remaining, true)}</span>
+  return <div className='timer-display'>
+    <span className='label'>{ms(remaining, true)}</span>
   </div>
 }

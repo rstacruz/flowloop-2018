@@ -29,14 +29,14 @@ export default buildReducer({
       'timer.endsAt': new Date(+now + duration),
       'timer.type': timerType,
       'timer.duration': duration,
-      'timer.lastLap': null,
+      'timer.lastLap': null
     })
   },
 
   'timer:halt': (state) => {
     return put(state, {
       'timer': {},
-      'timer.active': false,
+      'timer.active': false
     })
   }
 })

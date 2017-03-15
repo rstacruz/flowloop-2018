@@ -15,8 +15,6 @@ export default buildReducer({
   },
 
   'settings:update': (state, action) => {
-    const val = action.payload || {}
-
     return put(state, {
       'settings': put(state.settings,
         Object.assign({}, state.settings, action.payload || {}))

@@ -16,27 +16,26 @@ export class TimerShow extends React.Component {
       return <TimerBlank {...this.props} />
     }
 
-    const { now, timer } = this.props
-    const { timerType, remaining, trueLabel } = timer
+    const { timer } = this.props
+    const { remaining, trueLabel } = timer
 
-    return <TimerLayout page="timer">
+    return <TimerLayout page='timer'>
       <Title title={`${ms(remaining, true)} • ${trueLabel}`} />
       <TimerControls {...this.props} />
-      <div className="timer-spacer" />
+      <div className='timer-spacer' />
       <TimerDisplay timer={timer} />
-      <div className="timer-spacer" />
-      <div className="timer-actions">
+      <div className='timer-spacer' />
+      <div className='timer-actions'>
         <button
-          aria-label="Stop"
-          className="timer-button button -stop"
+          aria-label='Stop'
+          className='timer-button button -stop'
           onClick={() => this.props.onStop()}>
-          <span className="icon" />
+          <span className='icon' />
         </button>
       </div>
     </TimerLayout>
   }
 }
-
 
 export default connect(
   state => ({

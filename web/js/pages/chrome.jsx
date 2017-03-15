@@ -5,7 +5,7 @@ import TimerShow from './timer_show'
 import LogIndex from './log_index'
 import get from '101/pluck'
 
-class Chrome extends React.Component {
+export class Chrome extends React.Component {
   render () {
     switch (this.props.page) {
       case 'HomeIndex':
@@ -15,16 +15,15 @@ class Chrome extends React.Component {
       case 'LogIndex':
         return <LogIndex />
       default:
-        return <div></div>
+        return <div />
     }
   }
 }
 
-Chrome = connect(
+export default connect(
   state => ({
-    page: get(state, 'route.page'),
+    page: get(state, 'route.page')
   }),
   dispatch => ({
-  }))(Chrome)
-
-export default Chrome
+  })
+)(Chrome)

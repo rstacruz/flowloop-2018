@@ -22,7 +22,7 @@ export default buildReducer({
     log = mapObject(log, item => {
       return Object.assign({}, item, {
         startedAt: new Date(item.startedAt),
-        endedAt: new Date(item.endedAt),
+        endedAt: new Date(item.endedAt)
       })
     })
 
@@ -49,4 +49,3 @@ export default buildReducer({
     })
   }
 })
-

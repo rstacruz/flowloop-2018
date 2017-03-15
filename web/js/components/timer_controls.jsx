@@ -11,18 +11,18 @@ import ms from '../helpers/timer_display'
 export default function TimerControls ({ now, timer }) {
   const { timerType, duration, label, elapsed } = timer
 
-  return <div className="timer-controls">
+  return <div className='timer-controls'>
     <h1>
       {timerType === 'work'
         ? <LabelSelector label={label} />
         : <em>Break</em>}
     </h1>
-    <p className="subtitle">
+    <p className='subtitle'>
       {ms(elapsed)}
       <span> of </span>
       {ms(duration)}
     </p>
-    <p className="section">
+    <p className='section'>
       <ModeSelector />
     </p>
   </div>

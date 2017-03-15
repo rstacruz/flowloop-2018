@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import timerDisplay from '../timer_display'
 
 describe('timerDisplay', () => {

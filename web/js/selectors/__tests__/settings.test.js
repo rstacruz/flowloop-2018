@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import Settings from '../settings'
 
 test('sets defaults', () => {

@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import App from '../app'
 
 let app

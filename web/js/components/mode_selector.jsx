@@ -1,7 +1,6 @@
 import React from 'react'
 import c from 'classnames'
-import { TIMER_MODE_LABELS } from '../selectors/settings'
-import Settings from '../selectors/settings'
+import Settings, { TIMER_MODE_LABELS } from '../selectors/settings'
 import { connect } from 'react-redux'
 
 export class ModeSelector extends React.Component {
@@ -15,9 +14,9 @@ export class ModeSelector extends React.Component {
         'hint--bottom': true,
         '-single': mode === 'SINGLE',
         '-continuous': mode === 'CONTINUOUS',
-        '-alternate': mode === 'ALTERNATE',
+        '-alternate': mode === 'ALTERNATE'
       })}>
-      <span className="icon" />
+      <span className='icon' />
       {/* <span className="label">{TIMER_MODE_LABELS[mode]}</span> */}
     </button>
   }

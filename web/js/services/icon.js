@@ -35,7 +35,7 @@ function setWorkStyle () {
   Piecon.setOptions({
     color: COLORS.accent,
     background: COLORS.bg,
-    shadow: COLORS.bg,
+    shadow: COLORS.bg
   })
 }
 
@@ -43,6 +43,6 @@ function setBreakStyle () {
   Piecon.setOptions({
     color: COLORS.secondary,
     background: COLORS.bg,
-    shadow: COLORS.bg,
+    shadow: COLORS.bg
   })
 }

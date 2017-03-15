@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import Ticker from '../ticker'
 import capture from '../../../../test/support/capture'
 
@@ -18,13 +19,13 @@ describe('Ticker', () => {
       store.dispatch({ type: 'init' })
       store.dispatch({ type: 'ticker:start!' })
 
-      setTimeout((() => {
+      setTimeout(() => {
         store.dispatch({ type: 'ticker:stop!' })
         expect(actions[3].type).toEqual('ticker:start!')
         expect(actions[4].type).toEqual('ticker:tick')
         expect(actions[4].now.constructor).toEqual(Date)
         resolve()
-      }), 5)
+      }, 5)
     })
   })
 })

@@ -11,15 +11,15 @@ export default function TimerBlank ({ onHome }) {
   return <TimerLayout>
     <Title title='No timer' />
 
-    <div className="timer-heading">
+    <div className='timer-heading'>
       No timer active.
     </div>
 
-    <div className="timer-spacer" />
+    <div className='timer-spacer' />
 
-    <div className="timer-actions">
+    <div className='timer-actions'>
       <button
-        className="timer-button button -back"
+        className='timer-button button -back'
         onClick={() => onHome()}>
         Back
       </button>

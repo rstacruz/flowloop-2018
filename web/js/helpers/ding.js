@@ -5,7 +5,8 @@ import { Howl } from 'howler'
  */
 
 export default function ding (count = 1) {
-  const audio = new Howl({
+  /* eslint-disable no-new */
+  new Howl({
     src: [
       'sounds/echoed-ding.ogg',
       'sounds/echoed-ding.mp3'

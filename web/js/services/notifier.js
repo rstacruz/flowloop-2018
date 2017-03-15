@@ -14,8 +14,9 @@ export default function Notifier () {
       case 'notifier:notifyDone!':
         ding()
         try {
-          const notif = new window.Notification('Timer done', {
-            body: 'That was quick.',
+          /* eslint-disable no-new */
+          new window.Notification('Timer done', {
+            body: 'That was quick.'
             // icon: ''
           })
           // notif.onclick = () => {...}

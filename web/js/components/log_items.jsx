@@ -32,9 +32,9 @@ function LogItem ({ item }) {
       'hint--top': true,
       'hint--no-animate': true,
       '-break': item.timerType === 'break',
-      '-work': item.timerType === 'work',
+      '-work': item.timerType === 'work'
     })}>
-    <span className="peg" />
+    <span className='peg' />
   </span>
 }
 

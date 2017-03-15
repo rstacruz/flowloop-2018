@@ -11,14 +11,14 @@ export class TimelineSummary extends React.Component {
     const isEmpty = values(this.props.items).length === 0
     const now = this.props.now
 
-    return <a className="timeline-summary fixed" href="#log">
-      <span className="-left text">{Moment(now).format('dddd')}</span>
+    return <a className='timeline-summary fixed' href='#log'>
+      <span className='-left text'>{Moment(now).format('dddd')}</span>
 
       {isEmpty
         ? <Empty />
         : <LogItems items={this.props.items} />}
 
-      <span className="-right text">{Moment(now).format('MMM D')}</span>
+      <span className='-right text'>{Moment(now).format('MMM D')}</span>
     </a>
   }
 }
