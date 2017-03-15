@@ -1,0 +1,46 @@
+@import '../variables.css';
+
+.mode-selector {
+  & {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    white-space: nowrap;
+  }
+
+  & > .icon {
+    margin-right: 8px;
+  }
+
+  & > .icon::before {
+    @apply --ion-icon;
+
+    font-size: 24px;
+  }
+
+  &.-single > .icon::before {
+    @apply --ion-icon-md-git-commit;
+  }
+
+  &.-continuous > .icon::before {
+    @apply --ion-icon-md-repeat;
+  }
+
+  &.-alternate > .icon::before {
+    @apply --ion-icon-md-shuffle;
+  }
+
+  & > .label {
+    font-weight: bold;
+    color: var(--gray-text);
+  }
+
+  &:hover > .label {
+    color: var(--accent);
+  }
+
+  &:hover > .icon {
+    color: var(--accent);
+  }
+}

@@ -20,4 +20,8 @@
   & > p {
     color: var(--gray-text);
   }
+
+  & > .section {
+    margin-top: 16px;
+  }
 }

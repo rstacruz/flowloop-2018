@@ -5,6 +5,7 @@ import Title from 'react-document-title'
 import ms from '../helpers/timer_display'
 import TimerLayout from '../components/timer_layout'
 import LabelSelector from '../components/label_selector'
+import ModeSelector from '../components/mode_selector'
 
 class TimerShow extends React.Component {
   render () {
@@ -27,10 +28,13 @@ class TimerShow extends React.Component {
             ? <LabelSelector label={label} />
             : <em>Break</em>}
         </h1>
-        <p>
+        <p className="subtitle">
           {ms(elapsed)}
           <span> of </span>
           {ms(duration)}
+        </p>
+        <p className="section">
+          <ModeSelector />
         </p>
       </div>
 
