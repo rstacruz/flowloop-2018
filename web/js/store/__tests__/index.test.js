@@ -49,11 +49,15 @@ describe('without side effects', () => {
   test('timer:start', () => {
     store.dispatch({ type: 'init' })
     store.dispatch({ type: 'ticker:tick', now: DATE })
+    store.dispatch({ type: 'settings:update', payload: {
+      'duration:work': 25
+    } })
     store.dispatch({ type: 'timer:start', timerType: 'work' })
 
     let state = store.getState()
     expect(state.timer).toMatchSnapshot()
     expect(state.timer.startedAt).toEqual(DATE)
+    expect(state.timer.duration).toEqual(25)
   })
 
   test('timer:start break', () => {
@@ -109,14 +113,14 @@ describe('without side effects', () => {
   test('settings:update', () => {
     store.dispatch({ type: 'init' })
     store.dispatch({ type: 'settings:update', payload: {
-      duration: { work: 25 }
+      'duration:work': 25
     } })
     store.dispatch({ type: 'settings:update', payload: {
-      duration: { break: 5 }
+      'duration:break': 5
     } })
 
     let state = store.getState()
-    expect(state.settings.duration.work).toEqual(25)
-    expect(state.settings.duration.break).toEqual(5)
+    expect(state.settings['duration:work']).toEqual(25)
+    expect(state.settings['duration:break']).toEqual(5)
   })
 })

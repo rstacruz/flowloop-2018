@@ -70,4 +70,4 @@ function loadData (key, fn) {
   return fn(data)
 }
 
-// localStorage.TimerSettings = JSON.stringify({ duration: { work: 7000, break: 50000, longBreak: 60000 } })
+// localStorage.TimerSettings = JSON.stringify({ "duration:work": 4000, "duration:break": 8000 })

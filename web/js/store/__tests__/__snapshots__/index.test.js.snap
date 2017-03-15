@@ -15,8 +15,8 @@ Object {
 exports[`without side effects timer:start 1`] = `
 Object {
   "active": true,
-  "duration": 1500000,
-  "endsAt": 2010-09-02T00:25:00.000Z,
+  "duration": 25,
+  "endsAt": 2010-09-02T00:00:00.025Z,
   "label": "Work",
   "lastLap": null,
   "startedAt": 2010-09-02T00:00:00.000Z,

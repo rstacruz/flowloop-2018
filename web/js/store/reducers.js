@@ -55,9 +55,8 @@ const timer = buildReducer({
 
   'timer:start': (state, { timerType }) => {
     const now = get(state, 'time.now')
-    const durations = get(state, 'settings.duration')
-    const duration = get(durations, timerType)
-    const defaultLabel = get(state, 'settings.labels.default')
+    const duration = get(state, `settings.duration:${timerType}`)
+    const defaultLabel = get(state, 'settings.labels:default')
 
     return put(state, {
       'timer.active': true,
@@ -85,12 +84,13 @@ const timer = buildReducer({
 const settings = buildReducer({
   'init': (state) => {
     return put(state, {
-      'settings': {},
-      'settings.duration.work': 25 * 60 * 1000,
-      'settings.duration.break': 5 * 60 * 1000,
-      'settings.duration.longBreak': 10 * 60 * 1000,
-      'settings.labels.labels': ['Work', 'Chore', 'Side work'],
-      'settings.labels.default': 'Work',
+      'settings': {
+        'duration:work': 25 * 60 * 1000,
+        'duration:break': 5 * 60 * 1000,
+        'duration:longBreak': 10 * 60 * 1000,
+        'labels:labels': ['Work', 'Chore', 'Side work'],
+        'labels:default': 'Work',
+      }
     })
   },
 
@@ -98,10 +98,8 @@ const settings = buildReducer({
     const val = action.payload || {}
 
     return put(state, {
-      'settings': put(state.settings, {
-        'duration': put(state.settings.duration, val.duration || {}),
-        'labels': put(state.settings.labels, val.labels || {}),
-      })
+      'settings': put(state.settings,
+        Object.assign({}, state.settings, action.payload || {}))
     })
   }
 })
