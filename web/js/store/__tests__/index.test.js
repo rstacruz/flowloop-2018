@@ -113,6 +113,9 @@ describe('without side effects', () => {
     let keys = Object.keys(state.log)
     expect(keys.length).toEqual(1)
     expect(state.log[keys[0]].id).toEqual(keys[0])
+
+    let id = state.log[keys[0]].id
+    expect(state.timer.lastLogId).toEqual(id)
   })
 
   test('settings:update', () => {

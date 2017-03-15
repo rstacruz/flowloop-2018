@@ -30,7 +30,8 @@ export default buildReducer({
       'timer.type': timerType,
       'timer.duration': duration,
       'timer.laps': 0,
-      'timer.lastLap': now
+      'timer.lastLap': now,
+      'timer.lastLogId': null
     })
   },
 

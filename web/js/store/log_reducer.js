@@ -37,6 +37,7 @@ export default buildReducer({
 
     return put(state, {
       'timer.lastLap': now,
+      'timer.lastLogId': id,
       [`log.${id}`]: {
         id,
         startedAt,
