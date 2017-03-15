@@ -2578,6 +2578,10 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+git-revision-webpack-plugin@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/git-revision-webpack-plugin/-/git-revision-webpack-plugin-2.4.1.tgz#c34f1adfb0b6b9ca7920ca72d6d0c69f527865b1"
+
 git-update-ghpages@1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/git-update-ghpages/-/git-update-ghpages-1.3.0.tgz#4cff254e21f64d5a3a29865a01f36fd164d8ca25"
@@ -3434,14 +3438,14 @@ js-tokens@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.1.tgz#08e9f132484a2c45a30907e9dc4d5567b7f114d7"
 
-js-yaml@^3.4.3, js-yaml@~3.6.1:
+js-yaml@^3.4.3, js-yaml@^3.5.1, js-yaml@~3.6.1:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.6.1.tgz#6e5fe67d8b205ce4d22fad05b7781e8dadcc4b30"
   dependencies:
     argparse "^1.0.7"
     esprima "^2.6.0"
 
-js-yaml@^3.5.1, js-yaml@^3.7.0:
+js-yaml@^3.7.0:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.8.2.tgz#02d3e2c0f6beab20248d412c352203827d786721"
   dependencies:

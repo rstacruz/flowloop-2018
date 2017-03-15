@@ -49,6 +49,10 @@ export default class App {
   }
 }
 
+if (typeof process.env.VERSION !== 'undefined') {
+  console.log(`Flowloop ${process.env.VERSION}`)
+}
+
 /*
  * Auto-start
  */
