@@ -7,7 +7,7 @@ import TimerLayout from '../components/timer_layout'
 import LabelSelector from '../components/label_selector'
 import ModeSelector from '../components/mode_selector'
 
-class TimerShow extends React.Component {
+export class TimerShow extends React.Component {
   render () {
     if (!this.props.active) {
       return <NoTimerActive {...this.props} />
@@ -78,7 +78,7 @@ function NoTimerActive ({ onHome }) {
   </TimerLayout>
 }
 
-TimerShow = connect(
+export default connect(
   state => ({
     now: get(state, 'time.now'),
     label: get(state, 'timer.label'),
@@ -95,6 +95,5 @@ TimerShow = connect(
     onHome: () => {
       dispatch({ type: 'router:nav!', to: '/', replace: true })
     }
-  }))(TimerShow)
-
-export default TimerShow
+  })
+)(TimerShow)
