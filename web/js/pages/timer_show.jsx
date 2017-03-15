@@ -8,7 +8,6 @@ import TimerControls from '../components/timer_controls'
 import TimerDisplay from '../components/timer_display'
 import TimerTitle from '../components/timer_title'
 import Timer from '../selectors/timer'
-import ms from '../helpers/timer_display'
 
 export class TimerShow extends React.Component {
   render () {
