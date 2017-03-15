@@ -4,7 +4,7 @@ import { TIMER_MODE_LABELS } from '../selectors/settings'
 import Settings from '../selectors/settings'
 import { connect } from 'react-redux'
 
-class ModeSelector extends React.Component {
+export class ModeSelector extends React.Component {
   render () {
     const { mode, onSwitch } = this.props
 
@@ -23,7 +23,7 @@ class ModeSelector extends React.Component {
   }
 }
 
-ModeSelector = connect(
+export default connect(
   state => ({
     mode: Settings.full(state)['timer:mode']
   }),
@@ -33,5 +33,3 @@ ModeSelector = connect(
     }
   })
 )(ModeSelector)
-
-export default ModeSelector

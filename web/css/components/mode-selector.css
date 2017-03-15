@@ -12,21 +12,21 @@
   & > .icon::before {
     @apply --ion-icon;
 
-    font-size: 24px;
+    font-size: 32px;
     position: relative;
     top: -2px;
   }
 
   &.-single > .icon::before {
-    @apply --ion-icon-md-git-commit;
+    @apply --ion-icon-ios-git-commit;
   }
 
   &.-continuous > .icon::before {
-    @apply --ion-icon-md-repeat;
+    @apply --ion-icon-ios-repeat;
   }
 
   &.-alternate > .icon::before {
-    @apply --ion-icon-md-shuffle;
+    @apply --ion-icon-ios-shuffle;
   }
 
   & > .label {
