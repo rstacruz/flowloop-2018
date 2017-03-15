@@ -4,15 +4,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const LiveReloadPlugin = require('webpack-livereload-plugin')
-const GitRevisionPlugin = require('git-revision-webpack-plugin')
 
 const DEBUG = process.env.NODE_ENV !== 'production'
 const SRC = './web'
 const DEST = './public'
-
-const gitRevisionPlugin = new GitRevisionPlugin({
-  versionCommand: 'describe --always --tags --dirty'
-})
 
 module.exports = {
   cache: true,
@@ -103,7 +98,7 @@ module.exports = {
     // Compress React (and others)
     new webpack.EnvironmentPlugin({
       NODE_ENV: process.env.NODE_ENV || 'development',
-      VERSION: gitRevisionPlugin.version()
+      VERSION: getVersion()
     }),
 
     // Copying files directly
@@ -143,4 +138,11 @@ function stats () {
     chunks: false,
     assetsSort: 'name'
   }
+}
+
+function getVersion () {
+  return require('child_process')
+    .execSync('git describe --always --tags --dirty')
+    .toString()
+    .trim()
 }
