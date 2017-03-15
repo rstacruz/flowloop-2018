@@ -20,6 +20,7 @@ export const recents = createSelector(
   state => state.log,
   state => midnight(state),
   (log, time) => {
+    console.log('since', time)
     log = filter(log, i => i.timerType === 'work')
     log = filter(log, i => i.startedAt > time)
     return log
@@ -40,7 +41,11 @@ export const byDate = createSelector(
  */
 
 export function truncateDate (date) {
-  return new Date(Math.floor(+date / 86400000) * 86400000)
+  date = new Date(date)
+  date.setSeconds(0)
+  date.setMinutes(0)
+  date.setHours(0)
+  return date
 }
 
 /*
