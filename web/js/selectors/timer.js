@@ -15,7 +15,7 @@ export const full = createSelector(
     const duration = timer.duration
     const elapsed = +now - timer.startedAt
     const remaining = +timer.endsAt - +now
-    const trueLabel = timer.timerType === 'work' ? timer.label : 'Break'
+    const trueLabel = timer.type === 'work' ? timer.label : 'Break'
     const isOvertime = timer.laps && timer.laps > 0
     const progress = (now - +lastLap) / duration
 

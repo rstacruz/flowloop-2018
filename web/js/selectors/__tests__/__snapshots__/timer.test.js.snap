@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`inactive 1`] = `
+Object {
+  "active": false,
+}
+`;
+
+exports[`work in laps 1`] = `
+Object {
+  "active": true,
+  "duration": 1800000,
+  "elapsed": 3600000,
+  "endsAt": 2010-04-23T08:30:00.000Z,
+  "isOvertime": true,
+  "label": "Work",
+  "laps": 2,
+  "lastLap": 2010-04-23T08:30:00.000Z,
+  "progress": 1,
+  "remaining": -1800000,
+  "startedAt": 2010-04-23T08:00:00.000Z,
+  "trueLabel": "Work",
+  "type": "work",
+}
+`;
+
+exports[`work in progress 1`] = `
+Object {
+  "active": true,
+  "duration": 1800000,
+  "elapsed": 0,
+  "endsAt": 2010-04-23T08:30:00.000Z,
+  "isOvertime": 0,
+  "label": "Work",
+  "laps": 0,
+  "lastLap": 2010-04-23T08:00:00.000Z,
+  "progress": 0,
+  "remaining": 1800000,
+  "startedAt": 2010-04-23T08:00:00.000Z,
+  "trueLabel": "Work",
+  "type": "work",
+}
+`;
