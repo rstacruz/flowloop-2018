@@ -1,5 +1,4 @@
 import React from 'react'
-import Title from 'react-document-title'
 import get from '101/pluck'
 import { connect } from 'react-redux'
 
@@ -7,6 +6,7 @@ import TimerBlank from '../components/timer_blank'
 import TimerLayout from '../components/timer_layout'
 import TimerControls from '../components/timer_controls'
 import TimerDisplay from '../components/timer_display'
+import TimerTitle from '../components/timer_title'
 import Timer from '../selectors/timer'
 import ms from '../helpers/timer_display'
 
@@ -17,7 +17,6 @@ export class TimerShow extends React.Component {
     }
 
     const { timer } = this.props
-    const { remaining, trueLabel } = timer
 
     return <TimerLayout page='timer'>
       <TimerTitle timer={timer} />
@@ -34,16 +33,6 @@ export class TimerShow extends React.Component {
         </button>
       </div>
     </TimerLayout>
-  }
-}
-
-function TimerTitle ({ timer }) {
-  const { remaining, isOvertime, elapsed, trueLabel } = timer
-
-  if (isOvertime) {
-    return <Title title={`[${timer.laps}] ${ms(elapsed)} • ${trueLabel}`} />
-  } else {
-    return <Title title={`${ms(remaining, true)} • ${trueLabel}`} />
   }
 }
 
