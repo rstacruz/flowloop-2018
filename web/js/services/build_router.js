@@ -38,7 +38,7 @@ export default function buildRouter (options = {}, addRoutes) {
           const url = UrlTemplate.parse(action.to).expand(action)
 
           if (action.back) {
-            if (window.history.length) {
+            if (window.history.length > 1) {
               window.history.go(-1)
             } else {
               route(url)
