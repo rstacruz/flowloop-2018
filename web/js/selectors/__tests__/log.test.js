@@ -16,7 +16,7 @@ describe('byDate', () => {
   })
 
   test('groups by date', () => {
-    const result = byDate({
+    const src = {
       log: {
         a: {
           id: 'a',
@@ -31,9 +31,13 @@ describe('byDate', () => {
           startedAt: new Date('2010-04-21T09:00:00Z')
         }
       }
-    })
+    }
 
-    expect(result).toMatchSnapshot()
+    const result = byDate(src)
+    const keys = Object.keys(result)
+    expect(keys.length).toEqual(2)
+    expect(result[keys[0]].length).toEqual(1)
+    expect(result[keys[1]].length).toEqual(2)
   })
 })
 

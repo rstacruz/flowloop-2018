@@ -1,26 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`byDate groups by date 1`] = `
-Object {
-  "2010-04-19T16:00:00.000Z": Array [
-    Object {
-      "id": "a",
-      "startedAt": 2010-04-20T08:00:00.000Z,
-    },
-  ],
-  "2010-04-20T16:00:00.000Z": Array [
-    Object {
-      "id": "b",
-      "startedAt": 2010-04-21T08:00:00.000Z,
-    },
-    Object {
-      "id": "c",
-      "startedAt": 2010-04-21T09:00:00.000Z,
-    },
-  ],
-}
-`;
-
 exports[`byDate works on empty logs 1`] = `Object {}`;
 
 exports[`byDate works on undefined logs 1`] = `Object {}`;
