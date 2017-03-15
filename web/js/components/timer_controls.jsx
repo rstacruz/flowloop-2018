@@ -9,7 +9,8 @@ import ms from '../helpers/timer_display'
  */
 
 export default function TimerControls ({ now, timer }) {
-  const { timerType, duration, label, elapsed } = timer
+  const { type, duration, label, elapsed } = timer
+  const timerType = type
 
   return <div className='timer-controls'>
     <h1>
