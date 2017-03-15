@@ -1,6 +1,7 @@
 import get from '101/pluck'
 
 import Settings from '../selectors/settings'
+import Timer from '../selectors/timer'
 
 export default function TimerActions () {
   return store => dispatch => action => {
@@ -52,11 +53,7 @@ function checkConclusion (action, dispatch, state) {
 }
 
 function updateIcon (action, dispatch, state) {
-  const now = action.now
-  const startedAt = get(state, 'timer.startedAt')
-  const duration = get(state, 'timer.duration')
-  const remaining = (+startedAt + duration) - now
-  const progress = Math.max(remaining / duration, 0)
+  const timer = Timer.full(state)
 
-  dispatch({ type: 'icon:update!', progress })
+  dispatch({ type: 'icon:update!', progress: timer.progress })
 }

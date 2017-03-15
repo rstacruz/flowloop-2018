@@ -12,7 +12,7 @@ export default function TimerDisplay ({ timer }) {
     { !isOvertime
       ? <span className='label'>{ms(remaining, true)}</span>
       : <span className='label -two-line'>
-          <strong>+{laps}</strong>
+          <strong>×{laps}</strong>
           <small>{ms(elapsed)}</small>
         </span> }
   </div>

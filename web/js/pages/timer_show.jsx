@@ -20,7 +20,7 @@ export class TimerShow extends React.Component {
     const { remaining, trueLabel } = timer
 
     return <TimerLayout page='timer'>
-      <Title title={`${ms(remaining, true)} • ${trueLabel}`} />
+      <TimerTitle timer={timer} />
       <TimerControls {...this.props} />
       <div className='timer-spacer' />
       <TimerDisplay timer={timer} />
@@ -34,6 +34,16 @@ export class TimerShow extends React.Component {
         </button>
       </div>
     </TimerLayout>
+  }
+}
+
+function TimerTitle ({ timer }) {
+  const { remaining, isOvertime, elapsed, trueLabel } = timer
+
+  if (isOvertime) {
+    return <Title title={`[${timer.laps}] ${ms(elapsed)} • ${trueLabel}`} />
+  } else {
+    return <Title title={`${ms(remaining, true)} • ${trueLabel}`} />
   }
 }
 
