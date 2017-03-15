@@ -18,10 +18,10 @@ export default function TimerActions () {
         break
 
       case 'timer:start!':
+        store.dispatch({ type: 'ticker:start!' })
         store.dispatch({ type: 'icon:start!', timerType: action.timerType })
         store.dispatch({ type: 'notifier:request!' })
         store.dispatch({ type: 'timer:start', timerType: action.timerType })
-        store.dispatch({ type: 'ticker:start!' })
         store.dispatch({ type: 'router:nav!', to: '/timer', replace: true })
         break
     }
