@@ -18,7 +18,8 @@ Object {
   "duration": 25,
   "endsAt": 2010-09-02T00:00:00.025Z,
   "label": "Work",
-  "lastLap": null,
+  "laps": 0,
+  "lastLap": 2010-09-02T00:00:00.000Z,
   "startedAt": 2010-09-02T00:00:00.000Z,
   "type": "work",
 }
@@ -30,7 +31,8 @@ Object {
   "duration": 300000,
   "endsAt": 2010-09-02T00:05:00.000Z,
   "label": "Work",
-  "lastLap": null,
+  "laps": 0,
+  "lastLap": 2010-09-02T00:00:00.000Z,
   "startedAt": 2010-09-02T00:00:00.000Z,
   "type": "break",
 }

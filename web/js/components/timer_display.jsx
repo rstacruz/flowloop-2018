@@ -6,9 +6,14 @@ import ms from '../helpers/timer_display'
  */
 
 export default function TimerDisplay ({ timer }) {
-  const { remaining } = timer
+  const { remaining, elapsed, isOvertime, laps } = timer
 
   return <div className='timer-display'>
-    <span className='label'>{ms(remaining, true)}</span>
+    { !isOvertime
+      ? <span className='label'>{ms(remaining, true)}</span>
+      : <span className='label -two-line'>
+          <strong>+{laps}</strong>
+          <small>{ms(elapsed)}</small>
+        </span> }
   </div>
 }

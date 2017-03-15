@@ -1,3 +1,5 @@
+import get from '101/pluck'
+
 import ding from '../helpers/ding'
 
 export default function Notifier () {
@@ -9,6 +11,11 @@ export default function Notifier () {
         try {
           window.Notification.requestPermission(p => {})
         } catch (e) { }
+        break
+
+      case 'notifier:notifyLap!':
+        const laps = get(store.getState(), 'timer.laps')
+        ding(laps)
         break
 
       case 'notifier:notifyDone!':
