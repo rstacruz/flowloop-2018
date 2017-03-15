@@ -20,7 +20,6 @@ export const recents = createSelector(
   state => state.log,
   state => midnight(state),
   (log, time) => {
-    console.log('since', time)
     log = filter(log, i => i.timerType === 'work')
     log = filter(log, i => i.startedAt > time)
     return log
