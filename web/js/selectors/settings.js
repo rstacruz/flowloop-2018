@@ -8,7 +8,7 @@ import get from '101/pluck'
 export const DEFAULTS = {
   'duration:work': 25 * 60 * 1000,
   'duration:break': 5 * 60 * 1000,
-  'duration:longBreak': 10 * 60 * 1000,
+  'duration:longBreak': 15 * 60 * 1000,
   'labels:labels': ['Work', 'Chore', 'Side work'],
   'labels:default': 'Work',
   'timer:mode': 'CONTINUOUS'

@@ -1,6 +1,6 @@
 @import '../variables.css';
 
-.timer-heading {
+.timer-controls {
   text-align: center;
   animation: fade-in 600ms ease-out;
 
