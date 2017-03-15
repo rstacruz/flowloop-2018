@@ -49,5 +49,5 @@ export function truncateDate (date) {
 
 export default {
   recents,
-  byDate,
+  byDate
 }

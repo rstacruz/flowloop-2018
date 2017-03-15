@@ -49,6 +49,12 @@ export default class App {
   }
 }
 
+/*
+ * Auto-start
+ */
+
 if (!module.parent) {
-  window.__APP__ = (new App()).start()
+  window.__APP__ = (new App({
+    env: process.env.NODE_ENV || 'development'
+  })).start()
 }

@@ -4,9 +4,9 @@ module.exports = {
   plugins: [
     require('stylelint')(),
     require('postcss-import')(),
-    require('postcss-cssnext')(),
+    require('postcss-cssnext')()
   ].concat(DEBUG ? [
     require('postcss-reporter')(),
-    require('postcss-browser-reporter')(),
-  ] : []),
+    require('postcss-browser-reporter')()
+  ] : [])
 }

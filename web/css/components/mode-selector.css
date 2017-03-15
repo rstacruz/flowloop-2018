@@ -1,0 +1,50 @@
+@import '../variables.css';
+
+.mode-selector {
+  & {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    white-space: nowrap;
+  }
+
+  & > .icon::before {
+    @apply --ion-icon;
+
+    font-size: 32px;
+    position: relative;
+    top: -2px;
+  }
+
+  &.-single > .icon::before {
+    @apply --ion-icon-ios-git-commit;
+  }
+
+  &.-continuous > .icon::before {
+    @apply --ion-icon-ios-repeat;
+  }
+
+  &.-alternate > .icon::before {
+    @apply --ion-icon-ios-shuffle;
+  }
+
+  & > .label {
+    color: var(--gray-text);
+    margin-left: 8px;
+  }
+
+  &:hover > .label,
+  &:hover > .icon {
+    color: var(--accent);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &[disabled] > .label,
+  &[disabled] > .icon {
+    color: var(--gray-text);
+  }
+}

@@ -3,20 +3,20 @@ import { connect } from 'react-redux'
 import Title from 'react-document-title'
 import TimerLayout from '../components/timer_layout'
 
-class HomeIndex extends React.Component {
+export class HomeIndex extends React.Component {
   render () {
-    return <TimerLayout page="home">
+    return <TimerLayout page='home'>
       <Title title='Flowloop' />
 
-      <div className="timer-actions">
+      <div className='timer-actions'>
         <button
-          className="button timer-button -work -large"
+          className='button timer-button -work -large'
           onClick={() => this.props.onStartClick('work')}>
           Work
         </button>
 
         <button
-          className="button timer-button -break -large"
+          className='button timer-button -break -large'
           onClick={() => this.props.onStartClick('break')}>
           Break
         </button>
@@ -25,7 +25,7 @@ class HomeIndex extends React.Component {
   }
 }
 
-HomeIndex = connect(
+export default connect(
   state => ({}),
   dispatch => ({
     onStartClick (timer) {
@@ -33,5 +33,3 @@ HomeIndex = connect(
     }
   })
 )(HomeIndex)
-
-export default HomeIndex

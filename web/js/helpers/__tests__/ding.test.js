@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import ding from '../ding'
 
 test('works', () => {

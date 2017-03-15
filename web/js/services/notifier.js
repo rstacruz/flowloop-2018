@@ -1,3 +1,5 @@
+import get from '101/pluck'
+
 import ding from '../helpers/ding'
 
 export default function Notifier () {
@@ -6,17 +8,22 @@ export default function Notifier () {
 
     switch (action.type) {
       case 'notifier:request!':
-        console.log('Notifier: requesting permissions')
         try {
           window.Notification.requestPermission(p => {})
         } catch (e) { }
         break
 
+      case 'notifier:notifyLap!':
+        const laps = get(store.getState(), 'timer.laps')
+        ding(laps)
+        break
+
       case 'notifier:notifyDone!':
         ding()
         try {
-          const notif = new window.Notification('Timer done', {
-            body: 'That was quick.',
+          /* eslint-disable no-new */
+          new window.Notification('Timer done', {
+            body: 'That was quick.'
             // icon: ''
           })
           // notif.onclick = () => {...}

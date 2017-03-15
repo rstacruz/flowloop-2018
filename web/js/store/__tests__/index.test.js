@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import { buildStore } from '../index'
 
 let DATE = new Date('2010-09-02T00:00:00Z')
@@ -49,9 +50,10 @@ describe('without side effects', () => {
   test('timer:start', () => {
     store.dispatch({ type: 'init' })
     store.dispatch({ type: 'ticker:tick', now: DATE })
-    store.dispatch({ type: 'settings:update', payload: {
-      'duration:work': 25
-    } })
+    store.dispatch({
+      type: 'settings:update',
+      payload: { 'duration:work': 25 }
+    })
     store.dispatch({ type: 'timer:start', timerType: 'work' })
 
     let state = store.getState()
@@ -82,13 +84,16 @@ describe('without side effects', () => {
 
   test('log:addCurrent', () => {
     store.dispatch({ type: 'init' })
-    store.dispatch({ type: 'log:load', payload: {
-      a: {
-        id: 'a',
-        startedAt: '2010-02-04T10:00:00Z',
-        endedAt: '2010-02-04T10:30:00Z'
+    store.dispatch({
+      type: 'log:load',
+      payload: {
+        a: {
+          id: 'a',
+          startedAt: '2010-02-04T10:00:00Z',
+          endedAt: '2010-02-04T10:30:00Z'
+        }
       }
-    } })
+    })
 
     let state = store.getState()
     expect(typeof state.log.a).toEqual('object')
@@ -112,15 +117,41 @@ describe('without side effects', () => {
 
   test('settings:update', () => {
     store.dispatch({ type: 'init' })
-    store.dispatch({ type: 'settings:update', payload: {
-      'duration:work': 25
-    } })
-    store.dispatch({ type: 'settings:update', payload: {
-      'duration:break': 5
-    } })
+    store.dispatch({
+      type: 'settings:update',
+      payload: { 'duration:work': 25 }
+    })
+    store.dispatch({
+      type: 'settings:update',
+      payload: { 'duration:break': 5 }
+    })
 
     let state = store.getState()
     expect(state.settings['duration:work']).toEqual(25)
     expect(state.settings['duration:break']).toEqual(5)
+  })
+
+  test('settings:cycleTimerMode', () => {
+    let state
+
+    store.dispatch({ type: 'init' })
+    store.dispatch({
+      type: 'settings:update',
+      payload: {
+        'settings.timer:mode': 'CONTINUOUS'
+      }
+    })
+
+    store.dispatch({ type: 'settings:cycleTimerMode' })
+    state = store.getState()
+    expect(state.settings['timer:mode']).toEqual('SINGLE')
+
+    store.dispatch({ type: 'settings:cycleTimerMode' })
+    state = store.getState()
+    expect(state.settings['timer:mode']).toEqual('ALTERNATE')
+
+    store.dispatch({ type: 'settings:cycleTimerMode' })
+    state = store.getState()
+    expect(state.settings['timer:mode']).toEqual('CONTINUOUS')
   })
 })

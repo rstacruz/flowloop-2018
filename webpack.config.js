@@ -25,7 +25,7 @@ module.exports = {
   output: {
     path: resolve(__dirname, DEST),
     filename: '[name].js',
-    pathinfo: DEBUG ? true : false,
+    pathinfo: Boolean(DEBUG),
     devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'
   },
 
@@ -42,15 +42,15 @@ module.exports = {
                 ? {
                   sourceMap: true,
                   importLoaders: 1
-                } :
-                { }
+                }
+                : { }
             },
             {
               loader: 'postcss-loader',
               options: DEBUG
                 ? { sourceMap: 'inline' }
                 : {}
-            },
+            }
           ]
         })
       },
@@ -77,12 +77,12 @@ module.exports = {
             }
           }
         ]
-      },
-    ],
+      }
+    ]
   },
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx']
   },
 
   plugins: [
@@ -103,11 +103,11 @@ module.exports = {
     // Copying files directly
     new CopyWebpackPlugin([
       // { from: `${SRC}/assets`, to: './assets' },
-      { from: `${SRC}/html`, to: '.' },
+      { from: `${SRC}/html`, to: '.' }
     ]),
 
     // Ignore locales because it's around 400kb
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ].concat(DEBUG ? [
     // LiveReload in development
     new LiveReloadPlugin({
@@ -128,13 +128,13 @@ module.exports = {
 
   devServer: {
     stats: stats()
-  },
+  }
 }
 
 function stats () {
   return {
     children: false,
     chunks: false,
-    assetsSort: 'name',
+    assetsSort: 'name'
   }
 }

@@ -15,6 +15,7 @@ export default function Persistence () {
 
       case 'log:addCurrent':
       case 'settings:update':
+      case 'settings:cycleTimerMode':
         setTimeout(() => { save(store.getState()) })
         break
     }

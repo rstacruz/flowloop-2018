@@ -1,5 +1,7 @@
 import get from '101/pluck'
 
+import Settings from '../selectors/settings'
+
 export default function TimerActions () {
   return store => dispatch => action => {
     dispatch(action)
@@ -29,14 +31,23 @@ export default function TimerActions () {
 }
 
 function checkConclusion (action, dispatch, state) {
-  const startedAt = get(state, 'timer.startedAt')
+  const lastLap = get(state, 'timer.lastLap')
   const duration = get(state, 'timer.duration')
   const now = action.now
 
-  if (+now > (+startedAt + +duration)) {
-    dispatch({ type: 'log:addCurrent' })
-    dispatch({ type: 'notifier:notifyDone!' })
-    dispatch({ type: 'timer:stop!' })
+  const settings = Settings.full(state)
+  const timerMode = settings['timer:mode']
+
+  if (+now > (+lastLap + +duration)) {
+    if (timerMode === 'CONTINUOUS') {
+      dispatch({ type: 'log:addCurrent' })
+      dispatch({ type: 'timer:lap' })
+      dispatch({ type: 'notifier:notifyLap!' })
+    } else {
+      dispatch({ type: 'log:addCurrent' })
+      dispatch({ type: 'notifier:notifyDone!' })
+      dispatch({ type: 'timer:stop!' })
+    }
   }
 }
 
