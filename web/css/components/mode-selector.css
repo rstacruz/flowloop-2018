@@ -34,11 +34,17 @@
     margin-left: 8px;
   }
 
-  &:hover > .label {
+  &:hover > .label,
+  &:hover > .icon {
     color: var(--accent);
   }
 
-  &:hover > .icon {
-    color: var(--accent);
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &[disabled] > .label,
+  &[disabled] > .icon {
+    color: var(--gray-text);
   }
 }

@@ -1,14 +1,16 @@
 import React from 'react'
 import c from 'classnames'
 import Settings, { TIMER_MODE_LABELS } from '../selectors/settings'
+import Timer from '../selectors/timer'
 import { connect } from 'react-redux'
 
 export class ModeSelector extends React.Component {
   render () {
-    const { mode, onSwitch } = this.props
+    const { mode, onSwitch, disabled } = this.props
 
     return <button
-      onClick={() => onSwitch()}
+      onClick={() => !disabled && onSwitch()}
+      disabled={disabled}
       aria-label={TIMER_MODE_LABELS[mode]}
       className={c('mode-selector', {
         'hint--bottom': true,
@@ -24,7 +26,8 @@ export class ModeSelector extends React.Component {
 
 export default connect(
   state => ({
-    mode: Settings.full(state)['timer:mode']
+    mode: Settings.full(state)['timer:mode'],
+    disabled: Timer.full(state).isOvertime
   }),
   dispatch => ({
     onSwitch: () => {
