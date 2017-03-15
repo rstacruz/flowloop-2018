@@ -20,7 +20,7 @@ export class LogIndex extends React.Component {
             </div>
           </div>
 
-          <LogDates items={this.props.itemsByDate} />
+          <LogDates itemsByDate={this.props.itemsByDate} />
         </div>
       </div>
     </div>

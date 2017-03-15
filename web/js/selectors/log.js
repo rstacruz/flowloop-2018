@@ -20,7 +20,7 @@ export const recents = createSelector(
   state => state.log,
   state => midnight(state),
   (log, time) => {
-    log = filter(log, i => i.timerType === 'work')
+    log = onlyWork(log)
     log = filter(log, i => i.startedAt > time)
     return log
   })
@@ -33,6 +33,16 @@ export const byDate = createSelector(
   state => state.log || {},
   log => {
     return groupBy(values(log), item => truncateDate(item.startedAt).toISOString())
+  })
+
+/*
+ * Only work
+ */
+
+export const onlyWork = createSelector(
+  log => log || {},
+  log => {
+    return filter(log, item => item.timerType === 'work')
   })
 
 /*
@@ -54,5 +64,6 @@ export function truncateDate (date) {
 
 export default {
   recents,
-  byDate
+  byDate,
+  onlyWork
 }
