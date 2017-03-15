@@ -4,6 +4,7 @@ import reduceReducers from 'reduce-reducers'
 import buildReducer from 'build-reducer'
 import uuid from 'uuid'
 import mapObject from 'object-loops/map'
+import Settings from '../selectors/settings'
 
 /*
  * Time
@@ -55,8 +56,9 @@ const timer = buildReducer({
 
   'timer:start': (state, { timerType }) => {
     const now = get(state, 'time.now')
-    const duration = get(state, `settings.duration:${timerType}`)
-    const defaultLabel = get(state, 'settings.labels:default')
+    const settings = Settings.full(state)
+    const duration = settings[`duration:${timerType}`]
+    const defaultLabel = settings['labels:default']
 
     return put(state, {
       'timer.active': true,

@@ -10,7 +10,7 @@ import c from 'classnames'
 function LogItems ({ items }) {
   return <span className='timeline-small-items'>
     {values(items).map(item =>
-      <LogItem item={item} />)}
+      <LogItem item={item} key={item.id} />)}
   </span>
 }
 

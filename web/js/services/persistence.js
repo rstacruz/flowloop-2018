@@ -14,6 +14,7 @@ export default function Persistence () {
         break
 
       case 'log:addCurrent':
+      case 'settings:update':
         setTimeout(() => { save(store.getState()) })
         break
     }
@@ -43,8 +44,8 @@ function load (dispatch) {
 function save (state) {
   if (!window.localStorage) return
 
-  // TODO: implement reselect for settings
-  // window.localStorage.TimerSettings = JSON.stringify(get(state, 'settings'))
+  console.log('Persistence: saving TimerSettings')
+  window.localStorage.TimerSettings = JSON.stringify(get(state, 'settings'))
 
   console.log('Persistence: saving TimerLog')
   const newLog = get(state, 'log')

@@ -39,7 +39,15 @@ export const byDate = createSelector(
  * Truncates a date to midnight
  */
 
-function truncateDate (date) {
+export function truncateDate (date) {
   return new Date(Math.floor(+date / 86400000) * 86400000)
 }
 
+/*
+ * Export
+ */
+
+export default {
+  recents,
+  byDate,
+}
