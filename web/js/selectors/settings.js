@@ -1,3 +1,20 @@
+/* @flow */
+
+/*::
+  import type { State } from './state'
+
+  export type TimerMode = 'CONTINUOUS' | 'SINGLE' | 'ALTERNATE'
+
+  export type Settings = {
+    'duration:work': number,
+    'duration:break': number,
+    'duration:longBreak': number,
+    'labels:labels': Array<string>,
+    'labels:default': string,
+    'timer:mode': TimerMode
+  }
+*/
+
 import { createSelector } from 'reselect'
 import get from '101/pluck'
 
@@ -5,7 +22,7 @@ import get from '101/pluck'
  * Default settings
  */
 
-export const DEFAULTS = {
+export const DEFAULTS /*: Settings */ = {
   'duration:work': 25 * 60 * 1000,
   'duration:break': 5 * 60 * 1000,
   'duration:longBreak': 15 * 60 * 1000,
@@ -18,7 +35,7 @@ export const DEFAULTS = {
  * Available timer modes
  */
 
-export const TIMER_MODES = [
+export const TIMER_MODES /*: Array<TimerMode> */ = [
   'CONTINUOUS', 'SINGLE', 'ALTERNATE'
 ]
 
@@ -26,7 +43,7 @@ export const TIMER_MODES = [
  * Labels
  */
 
-export const TIMER_MODE_LABELS = {
+export const TIMER_MODE_LABELS /*: { [key: TimerMode]: string } */ = {
   CONTINUOUS: 'Continuous',
   SINGLE: 'Single',
   ALTERNATE: 'Alternate'
@@ -36,7 +53,7 @@ export const TIMER_MODE_LABELS = {
  * Returns full settings, including defaults
  */
 
-export const full = createSelector(
+export const full /*: (state: State) => Settings */ = createSelector(
   state => get(state, 'settings'),
   settings => {
     return Object.assign({}, DEFAULTS, settings || {})

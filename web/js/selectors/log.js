@@ -1,12 +1,7 @@
 /* @flow */
 
-import filter from 'object-loops/filter'
-import get from '101/pluck'
-import groupBy from '101/group-by'
-import values from 'object-loops/values'
-import { createSelector } from 'reselect'
-
 /*::
+  import type { State } from './state'
   import type { TimerType } from './timer'
 
   export type Logs = {
@@ -22,13 +17,23 @@ import { createSelector } from 'reselect'
     label: string,
     isComplete: boolean
   }
+
+  export type LogsByDate = {
+    [key: string]: Array<Log>
+  }
 */
+
+import filter from 'object-loops/filter'
+import get from '101/pluck'
+import groupBy from '101/group-by'
+import values from 'object-loops/values'
+import { createSelector } from 'reselect'
 
 /*
  * Returns midnight
  */
 
-export const midnight = createSelector(
+export const midnight /*: (state: State) => Date */ = createSelector(
   state => get(state, 'time.now'),
   now => truncateDate(now))
 
@@ -36,7 +41,7 @@ export const midnight = createSelector(
  * Recent work logs
  */
 
-export const recents = createSelector(
+export const recents /*: (state: State) => Logs */ = createSelector(
   state => state.log,
   state => midnight(state),
   (log, time) => {
@@ -49,17 +54,17 @@ export const recents = createSelector(
  * By date
  */
 
-export const byDate = createSelector(
+export const byDate /*: (state: State) => LogsByDate */ = createSelector(
   state => state.log || {},
   log => {
     return groupBy(values(log), item => truncateDate(item.startedAt).toISOString())
   })
 
 /*
- * Only work
+ * Only work logs
  */
 
-export const onlyWork = createSelector(
+export const onlyWork /*: (logs: Logs) => Logs */ = createSelector(
   (log /*: Log */) => log || {},
   (log /*: Log */) => {
     return filter(log, item => item.timerType === 'work')

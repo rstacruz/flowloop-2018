@@ -1,9 +1,7 @@
 /* @flow */
 
-import { createSelector } from 'reselect'
-import get from '101/pluck'
-
 /*::
+  import type { State } from './state'
   export type TimerType = 'work' | 'break'
 
   export type Timer = {
@@ -36,11 +34,14 @@ import get from '101/pluck'
   }
 */
 
+import { createSelector } from 'reselect'
+import get from '101/pluck'
+
 /**
  * Full timer details
  */
 
-export const full = createSelector(
+export const full /*: (state: State) => FullTimer */ = createSelector(
   state => get(state, 'timer'),
   state => get(state, 'time.now'),
   (timer, now) => {
