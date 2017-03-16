@@ -25,7 +25,7 @@ export default function Icon () {
         break
 
       case 'icon:update!':
-        Piecon.setProgress(action.progress * 100)
+        Piecon.setProgress((1 - action.progress) * 100)
         break
     }
   }
