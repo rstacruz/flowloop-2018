@@ -2,7 +2,7 @@
 
 .timer-controls {
   text-align: center;
-  animation: fade-in 600ms ease-out;
+  animation: fade-in-late 600ms ease-out;
 
   @media (--horizontal-layout) {
     width: 144px;

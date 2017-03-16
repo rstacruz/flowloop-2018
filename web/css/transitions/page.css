@@ -1,0 +1,72 @@
+:root {
+  --transition-duration: 300ms;
+  --transition-zip: cubic-bezier(0.1, 0.8, 0.2, 0.9);
+}
+
+/*
+ * Coming from bottom
+ */
+
+._page-bottom {
+  &._page-enter,
+  &._page-leave {
+    transition:
+      opacity var(--transition-duration) var(--transition-zip),
+      transform var(--transition-duration) var(--transition-zip);
+    z-index: 2;
+  }
+
+  &._page-enter {
+    opacity: 0.01;
+    transform: translate3d(0, 60%, 0);
+  }
+
+  &._page-enter-active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  &._page-leave {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  &._page-leave-active {
+    opacity: 0.01;
+    transform: translate3d(0, 60%, 0);
+  }
+}
+
+/*
+ * Fading in
+ */
+
+._page-fade {
+  &._page-enter,
+  &._page-leave {
+    transition:
+      opacity var(--transition-duration) var(--transition-zip),
+      transform var(--transition-duration) var(--transition-zip);
+    z-index: 1;
+  }
+
+  &._page-enter {
+    opacity: 0.01;
+    transform: scale(0.95);
+  }
+
+  &._page-enter-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &._page-leave {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &._page-leave-active {
+    opacity: 0.01;
+    transform: scale(0.95);
+  }
+}

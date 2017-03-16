@@ -17,7 +17,7 @@ export class TimerShow extends React.Component {
 
     const { timer } = this.props
 
-    return <TimerLayout page='timer'>
+    return <TimerLayout page='timer' className='_page-fade'>
       <TimerTitle timer={timer} />
       <TimerControls {...this.props} />
       <div className='timer-spacer' />

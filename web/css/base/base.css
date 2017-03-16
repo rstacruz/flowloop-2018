@@ -92,7 +92,7 @@ a:focus {
   }
 }
 
-@keyframes fade-in {
+@keyframes fade-in-late {
   0% {
     opacity: 0;
   }
@@ -100,4 +100,9 @@ a:focus {
   50% {
     opacity: 0;
   }
+}
+
+html,
+body {
+  overflow: hidden;
 }

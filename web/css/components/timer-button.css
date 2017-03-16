@@ -58,7 +58,7 @@
   }
 
   &.-stop {
-    animation: fade-in 600ms ease-out;
+    animation: fade-in-late 600ms ease-out;
   }
 }
 
