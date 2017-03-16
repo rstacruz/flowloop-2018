@@ -28,4 +28,15 @@
   &:hover > .peg {
     transform: translate3d(0, -6px, 0);
   }
+
+  @media (width <= 480px) {
+    padding: 0 4px;
+  }
+
+  /* Shorter pegs */
+  @media (height <= 500px) {
+    & > .peg {
+      height: 12px;
+    }
+  }
 }

@@ -16,13 +16,14 @@ export default function TimerControls ({ now, timer }) {
     <h1>
       {timerType === 'work'
         ? <LabelSelector label={label} />
-        : <em>Break</em>}
+        : <span>Break</span>}
     </h1>
     <p className='subtitle'>
       {ms(elapsed)}
       <span> of </span>
       {ms(duration)}
     </p>
+    <div className='timer-spacer' />
     <p className='section'>
       <ModeSelector />
     </p>

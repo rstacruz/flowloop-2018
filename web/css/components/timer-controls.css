@@ -9,6 +9,7 @@
     margin-left: -80px;
   }
 
+  /* Reset */
   & > h1,
   & > p {
     margin: 0;
@@ -17,11 +18,15 @@
     font-weight: normal;
   }
 
-  & > p {
-    color: var(--gray-text);
+  /* "Work" or "Break */
+  & > h1 {
+    @apply --font-size-1;
+
+    font-weight: bold;
   }
 
-  & > .section {
-    margin-top: 16px;
+  /* 2:00 of 5:00 */
+  & > p {
+    color: var(--gray-text);
   }
 }

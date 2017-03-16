@@ -3,8 +3,8 @@
 .timeline-summary {
   @apply --font-size--1;
 
-  height: 48px;
-  line-height: 48px;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
   color: var(--gray-text);
   position: relative;
@@ -13,11 +13,13 @@
   cursor: pointer;
   white-space: nowrap;
 
+  /* Bigger if screen allows */
   @media (height > 500px) {
     height: 64px;
     line-height: 64px;
   }
 
+  /* Horizontal line */
   &::before {
     content: '';
     display: block;
@@ -28,6 +30,15 @@
     right: 32px;
   }
 
+  /* "Shorten" on mobile */
+  @media (width <= 480px) {
+    &::before {
+      left: 16px;
+      right: 16px;
+    }
+  }
+
+  /* White on hover */
   &:hover {
     background: white;
     transition: background-color 50ms linear;
@@ -51,6 +62,13 @@
 
   & > .text.-right {
     text-align: left;
+  }
+
+  /* Hide text on mobile */
+  @media (width <= 480px) {
+    & > .text {
+      display: none;
+    }
   }
 }
 
