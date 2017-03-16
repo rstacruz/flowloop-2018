@@ -15,6 +15,8 @@ export class HomeIndex extends React.Component {
           Work
         </button>
 
+        <div className='logo app-logo' />
+
         <button
           className='button timer-button -break -large'
           onClick={() => this.props.onStartClick('break')}>

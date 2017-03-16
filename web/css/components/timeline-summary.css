@@ -15,8 +15,8 @@
 
   /* Bigger if screen allows */
   @media (height > 500px) {
-    height: 64px;
-    line-height: 64px;
+    height: 56px;
+    line-height: 56px;
   }
 
   /* Horizontal line */
