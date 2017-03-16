@@ -52,3 +52,35 @@ yarn run build  # Build for production (builds into /public)
 
 - https://notificationsounds.com/standard-ringtones/echoed-ding-459
 </details>
+
+<details>
+<summary>Electron mode</summary>
+
+## Electron mode
+
+Experimental - run it in Electron via:
+
+```sh
+# In separate terminals
+yarn run electron:watch
+yarn run electron:start
+```
+
+And package it via:
+
+```sh
+yarn run electron:dist
+```
+</details>
+
+## Thanks
+
+**flowloop** © 2017, Rico Sta. Cruz. Released under the [MIT] License.<br>
+Authored and maintained by Rico Sta. Cruz with help from contributors ([list][contributors]).
+
+> [ricostacruz.com](http://ricostacruz.com) &nbsp;&middot;&nbsp;
+> GitHub [@rstacruz](https://github.com/rstacruz) &nbsp;&middot;&nbsp;
+> Twitter [@rstacruz](https://twitter.com/rstacruz)
+
+[MIT]: http://mit-license.org/
+[contributors]: http://github.com/rstacruz/flowloop/contributors
