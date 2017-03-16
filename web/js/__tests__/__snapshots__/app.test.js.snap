@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App drops the right HTML 1`] = `"<div id=\\"root\\" class=\\"app-root\\"><noscript data-reactroot=\\"\\"></noscript></div><div id=\\"root\\" class=\\"app-root\\"><div data-reactroot=\\"\\"></div></div>"`;
+exports[`App drops the right HTML 1`] = `"<div id=\\"root\\" class=\\"app-root\\"><noscript data-reactroot=\\"\\"></noscript></div><div id=\\"root\\" class=\\"app-root\\"><span data-reactroot=\\"\\"><div></div></span></div>"`;
