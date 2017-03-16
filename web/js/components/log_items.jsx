@@ -1,16 +1,19 @@
 /* @flow */
 
+/*::
+  import type { Logs, Log } from '../selectors/log'
+*/
+
 import React from 'react'
 import Moment from 'moment'
 import values from 'object-loops/values'
 import c from 'classnames'
-/*:: import type { Logs, Log } from '../selectors/log' */
 
 /*
  * List of items
  */
 
-function LogItems ({ items } /*: { items: Logs } */) /*: React$Element<any> */ {
+function LogItems ({ items } /*: { items: Logs } */) {
   return <span className='timeline-small-items'>
     {values(items).map(item =>
       <LogItem item={item} key={item.id} />)}
@@ -21,7 +24,7 @@ function LogItems ({ items } /*: { items: Logs } */) /*: React$Element<any> */ {
  * A single item
  */
 
-function LogItem ({ item } /*: { item: Log } */) /*: React$Element<any> */ {
+function LogItem ({ item } /*: { item: Log } */) {
   const label = item.timerType === 'work'
     ? item.label
     : 'Break'

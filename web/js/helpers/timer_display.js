@@ -1,6 +1,17 @@
+/* @flow  */
+
 import leftPad from 'left-pad'
 
-export default function timerDisplay (ms, isRemaining) {
+/**
+ * Renders a duration in milliseconds into a string
+ * @example
+ *
+ *     ms(2000) => '0:02'
+ */
+
+export default function timerDisplay (
+  ms /*: number */,
+  isRemaining /*: ?boolean */) {
   let mins, secs
   let positive = ms >= 0
 
@@ -10,7 +21,7 @@ export default function timerDisplay (ms, isRemaining) {
   mins = (secs / 60) | 0
   secs -= mins * 60
 
-  let secsPadded = leftPad(secs, 2, '0')
+  let secsPadded = leftPad(secs.toString(), 2, '0')
   let sign = positive ? '' : '-'
 
   return `${sign}${mins}:${secsPadded}`

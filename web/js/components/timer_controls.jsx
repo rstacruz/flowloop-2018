@@ -1,3 +1,14 @@
+/* @flow */
+
+/*::
+  import type { FullTimer } from '../selectors/timer'
+
+  type Props = {
+  now: Date,
+  timer: FullTimer
+  }
+*/
+
 import React from 'react'
 
 import ModeSelector from '../components/mode_selector'
@@ -8,7 +19,7 @@ import ms from '../helpers/timer_display'
  * Timer controls
  */
 
-export default function TimerControls ({ now, timer }) {
+export default function TimerControls ({ now, timer } /*: Props */) {
   const { type, duration, label, elapsed } = timer
   const timerType = type
 
