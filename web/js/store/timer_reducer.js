@@ -1,12 +1,14 @@
 /* @flow */
 
+/*::
+  import type { Timer } from '../selectors/timer'
+*/
+
 import buildReducer from 'build-reducer'
 import get from '101/pluck'
 import put from '101/put'
 
 import Settings from '../selectors/settings'
-
-/*:: import type { Timer } from '../selectors/timer' */
 
 /*
  * Timer
