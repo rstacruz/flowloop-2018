@@ -2,6 +2,7 @@
 
 /*::
   import type { FullTimer } from '../selectors/timer'
+
   type Props = {
     timer: FullTimer
   }
