@@ -28,9 +28,9 @@
     lastLogId?: string,
     elapsed: number,
     remaining: number,
-    trueLabel: string,
-    isOvertime: boolean,
-    progress: number
+    labelText: string, // 'Work' | 'Chore' | 'Break'
+    isOvertime: boolean, // If laps is 1 or more
+    progress: number // 0..1 of the current lap
   }
 */
 
@@ -51,12 +51,12 @@ export const full /*: (state: State) => FullTimer */ = createSelector(
     const duration = timer.duration
     const elapsed = +now - timer.startedAt
     const remaining = +timer.endsAt - +now
-    const trueLabel = timer.type === 'work' ? timer.label : 'Break'
+    const labelText = timer.type === 'work' ? timer.label : 'Break'
     const isOvertime = timer.laps && timer.laps > 0
     const progress = (now - +lastLap) / duration
 
     return {
-      ...timer, elapsed, remaining, trueLabel, isOvertime, progress
+      ...timer, elapsed, remaining, labelText, isOvertime, progress
     }
   }
 )

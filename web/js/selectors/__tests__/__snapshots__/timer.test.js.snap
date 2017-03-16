@@ -19,7 +19,7 @@ Object {
   "progress": 1,
   "remaining": -1800000,
   "startedAt": 2010-04-23T08:00:00.000Z,
-  "trueLabel": "Work",
+  "labelText": "Work",
   "type": "work",
 }
 `;
@@ -37,7 +37,7 @@ Object {
   "progress": 0,
   "remaining": 1800000,
   "startedAt": 2010-04-23T08:00:00.000Z,
-  "trueLabel": "Work",
+  "labelText": "Work",
   "type": "work",
 }
 `;

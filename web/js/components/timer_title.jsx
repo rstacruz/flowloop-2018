@@ -8,11 +8,11 @@ import ms from '../helpers/timer_display'
  */
 
 export default function TimerTitle ({ timer }) {
-  const { remaining, isOvertime, elapsed, trueLabel } = timer
+  const { remaining, isOvertime, elapsed, labelText } = timer
 
   if (isOvertime) {
-    return <Title title={`[${timer.laps}] ${ms(elapsed)} • ${trueLabel}`} />
+    return <Title title={`[${timer.laps}] ${ms(elapsed)} • ${labelText}`} />
   } else {
-    return <Title title={`${ms(remaining, true)} • ${trueLabel}`} />
+    return <Title title={`${ms(remaining, true)} • ${labelText}`} />
   }
 }
