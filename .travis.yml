@@ -5,6 +5,7 @@ node_js:
 script:
 - yarn test
 - yarn run lint
+- yarn run flow
 - yarn run build
 
 # Deploy to gh-pages

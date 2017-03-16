@@ -1,5 +1,40 @@
+/* @flow */
+
 import { createSelector } from 'reselect'
 import get from '101/pluck'
+
+/*::
+  export type TimerType = 'work' | 'break'
+
+  export type Timer = {
+    active: boolean,
+    startedAt?: Date,
+    label?: string,
+    endsAt?: Date,
+    type?: TimerType,
+    duration?: number,
+    laps?: number,
+    lastLap?: Date,
+    lastLogId?: null | string
+  }
+
+  export type FullTimer = {
+    active: boolean,
+    startedAt?: Date,
+    label?: string,
+    endsAt?: Date,
+    type?: TimerType,
+    duration?: number,
+    laps?: number,
+    lastLap?: Date,
+    lastLogId?: string,
+    elapsed: number,
+    remaining: number,
+    trueLabel: string,
+    isOvertime: boolean,
+    progress: number
+  }
+*/
 
 /**
  * Full timer details

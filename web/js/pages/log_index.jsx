@@ -4,6 +4,10 @@ import { byDate } from '../selectors/log'
 import { connect } from 'react-redux'
 import LogDates from '../components/log_dates'
 
+/**
+ * Timeline page
+ */
+
 export class LogIndex extends React.Component {
   render () {
     return <div className='timer-layout -log'>

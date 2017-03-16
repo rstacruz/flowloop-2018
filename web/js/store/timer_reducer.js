@@ -1,8 +1,12 @@
+/* @flow */
+
 import buildReducer from 'build-reducer'
 import get from '101/pluck'
 import put from '101/put'
 
 import Settings from '../selectors/settings'
+
+/*:: import type { Timer } from '../selectors/timer' */
 
 /*
  * Timer
@@ -10,10 +14,8 @@ import Settings from '../selectors/settings'
 
 export default buildReducer({
   'init': (state) => {
-    return put(state, {
-      'timer': {},
-      'timer.active': false
-    })
+    const timer /*: Timer */ = { active: false }
+    return put(state, 'timer', timer)
   },
 
   'timer:start': (state, { timerType }) => {
@@ -22,24 +24,24 @@ export default buildReducer({
     const duration = settings[`duration:${timerType}`]
     const defaultLabel = settings['labels:default']
 
-    return put(state, {
-      'timer.active': true,
-      'timer.startedAt': now,
-      'timer.label': defaultLabel,
-      'timer.endsAt': new Date(+now + duration),
-      'timer.type': timerType,
-      'timer.duration': duration,
-      'timer.laps': 0,
-      'timer.lastLap': now,
-      'timer.lastLogId': null
-    })
+    const timer /*: Timer */ = {
+      'active': true,
+      'startedAt': now,
+      'label': defaultLabel,
+      'endsAt': new Date(+now + duration),
+      'type': timerType,
+      'duration': duration,
+      'laps': 0,
+      'lastLap': now,
+      'lastLogId': null
+    }
+
+    return put(state, 'timer', { ...state.timer, timer })
   },
 
   'timer:halt': (state) => {
-    return put(state, {
-      'timer': {},
-      'timer.active': false
-    })
+    const timer /*: Timer */ = { active: false }
+    return put(state, 'timer', timer)
   },
 
   'timer:lap': state => {

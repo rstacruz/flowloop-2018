@@ -1,8 +1,28 @@
+/* @flow */
+
 import filter from 'object-loops/filter'
 import get from '101/pluck'
 import groupBy from '101/group-by'
 import values from 'object-loops/values'
 import { createSelector } from 'reselect'
+
+/*::
+  import type { TimerType } from './timer'
+
+  export type Logs = {
+    [key: string]: Log
+  }
+
+  export type Log = {
+    id: string,
+    timerType: TimerType,
+    startedAt: Date,
+    endedAt: Date,
+    duration: number,
+    label: string,
+    isComplete: boolean
+  }
+*/
 
 /*
  * Returns midnight
@@ -40,8 +60,8 @@ export const byDate = createSelector(
  */
 
 export const onlyWork = createSelector(
-  log => log || {},
-  log => {
+  (log /*: Log */) => log || {},
+  (log /*: Log */) => {
     return filter(log, item => item.timerType === 'work')
   })
 
@@ -49,7 +69,7 @@ export const onlyWork = createSelector(
  * Truncates a date to midnight
  */
 
-export function truncateDate (date) {
+export function truncateDate (date /*: Date */) {
   date = new Date(date)
   date.setMilliseconds(0)
   date.setSeconds(0)
