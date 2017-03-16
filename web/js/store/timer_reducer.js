@@ -1,6 +1,7 @@
 /* @flow */
 
 /*::
+  import type { State } from '../selectors/state'
   import type { Timer } from '../selectors/timer'
 */
 
@@ -15,18 +16,20 @@ import Settings from '../selectors/settings'
  */
 
 export default buildReducer({
-  'init': (state) => {
+  'init': (state /*: State */) /*: State */ => {
     const timer /*: Timer */ = { active: false }
-    return put(state, 'timer', timer)
+
+    return { ...state, timer }
   },
 
-  'timer:start': (state, { timerType }) => {
+  'timer:start': (state /*: State */, { timerType }) /*: State */ => {
     const now = get(state, 'time.now')
     const settings = Settings.full(state)
     const duration = settings[`duration:${timerType}`]
     const defaultLabel = settings['labels:default']
 
     const timer /*: Timer */ = {
+      ...(state.timer || {}),
       'active': true,
       'startedAt': now,
       'label': defaultLabel,
@@ -38,21 +41,25 @@ export default buildReducer({
       'lastLogId': null
     }
 
-    return put(state, 'timer', { ...state.timer, ...timer })
+    return { ...state, timer }
   },
 
-  'timer:halt': (state) => {
+  'timer:halt': (state /*: State */) /*: State */ => {
     const timer /*: Timer */ = { active: false }
-    return put(state, 'timer', timer)
+
+    return { ...state, timer }
   },
 
-  'timer:lap': state => {
-    const timer = get(state, 'timer')
+  'timer:lap': (state /*: State */) /*: State */ => {
+    let timer /*: Timer */ = state.timer
     const now = get(state, 'time.now')
 
-    return put(state, {
-      'timer.laps': (timer.laps || 0) + 1,
-      'timer.lastLap': now
-    })
+    timer = {
+      ...state.timer,
+      'laps': (timer.laps || 0) + 1,
+      'lastLap': now
+    }
+
+    return { ...state, timer }
   }
 })
