@@ -61,7 +61,7 @@ export const byDate /*: (state: State) => LogsByDate */ = createSelector(
   })
 
 /*
- * Only work logs
+ * Only work
  */
 
 export const onlyWork /*: (logs: Logs) => Logs */ = createSelector(

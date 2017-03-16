@@ -71,5 +71,10 @@
     "source-map-explorer": "1.3.3",
     "standard": "9.0.1",
     "webpack-bundle-size-analyzer": "2.5.0"
+  },
+  "standard": {
+    "ignore": [
+      "flow-typed"
+    ]
   }
 }
