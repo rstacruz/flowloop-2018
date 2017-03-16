@@ -1,6 +1,8 @@
 /* @flow */
 
 /*::
+  import type { Dispatch } from 'redux'
+  import type { State } from '../selectors/state'
   import type { TimerMode } from '../selectors/settings'
 
   type Props = {
@@ -43,11 +45,11 @@ export class ModeSelector extends React.Component {
  */
 
 export default connect(
-  state => ({
+  (state /*: State */) => ({
     mode: Settings.full(state)['timer:mode'],
     disabled: Timer.full(state).isOvertime
   }),
-  dispatch => ({
+  (dispatch /*: Dispatch<*> */) => ({
     onSwitch: () => {
       dispatch({ type: 'settings:cycleTimerMode' })
     }

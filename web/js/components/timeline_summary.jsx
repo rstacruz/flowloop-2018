@@ -1,6 +1,8 @@
 /* @flow */
 
 /*::
+  import type { Dispatch } from 'redux'
+  import type { State } from '../selectors/state'
   import type { Logs } from '../selectors/log'
 
   type Props = {
@@ -49,9 +51,9 @@ function Empty () {
  */
 
 export default connect(
-  state => ({
+  (state /*: State */) => ({
     items: recents(state),
     now: get(state, 'time.now')
   }),
-  dispatch => ({})
+  (dispatch /*: Dispatch<*> */) => ({})
 )(TimelineSummary)
