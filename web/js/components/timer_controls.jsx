@@ -23,7 +23,7 @@ export default function TimerControls ({ now, timer }) {
       <span> of </span>
       {ms(duration)}
     </p>
-    <div className='timer-spacer' />
+    <div className='timer-spacer -small' />
     <p className='section'>
       <ModeSelector />
     </p>
