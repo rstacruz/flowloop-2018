@@ -4,8 +4,8 @@
   import type { FullTimer } from '../selectors/timer'
 
   type Props = {
-  now: Date,
-  timer: FullTimer
+    now: Date,
+    timer: FullTimer
   }
 */
 

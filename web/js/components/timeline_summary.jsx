@@ -1,3 +1,14 @@
+/* @flow */
+
+/*::
+  import type { Logs } from '../selectors/log'
+
+  type Props = {
+    now: Date,
+    items: Logs
+  }
+*/
+
 import React from 'react'
 import { connect } from 'react-redux'
 import values from 'object-loops/values'
@@ -7,6 +18,8 @@ import LogItems from './log_items'
 import get from '101/pluck'
 
 export class TimelineSummary extends React.Component {
+  /*:: props: Props */
+
   render () {
     const isEmpty = values(this.props.items).length === 0
     const now = this.props.now

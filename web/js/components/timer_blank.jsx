@@ -1,3 +1,11 @@
+/* @flow */
+
+/*::
+  type Props = {
+    onHome: () => void
+  }
+*/
+
 import React from 'react'
 import Title from 'react-document-title'
 
@@ -7,7 +15,7 @@ import TimerLayout from '../components/timer_layout'
  * When no timer is active, but you visit /#timer
  */
 
-export default function TimerBlank ({ onHome }) {
+export default function TimerBlank ({ onHome } /*: Props */) {
   return <TimerLayout>
     <Title title='No timer' />
 
