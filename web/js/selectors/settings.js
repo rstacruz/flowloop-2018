@@ -56,7 +56,7 @@ export const TIMER_MODE_LABELS /*: { [key: TimerMode]: string } */ = {
 export const full /*: (state: State) => Settings */ = createSelector(
   state => get(state, 'settings'),
   settings => {
-    return Object.assign({}, DEFAULTS, settings || {})
+    return { ...DEFAULTS, ...(settings || {}) }
   })
 
 /*

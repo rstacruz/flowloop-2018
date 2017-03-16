@@ -36,7 +36,7 @@ export default buildReducer({
       'lastLogId': null
     }
 
-    return put(state, 'timer', { ...state.timer, timer })
+    return put(state, 'timer', { ...state.timer, ...timer })
   },
 
   'timer:halt': (state) => {
