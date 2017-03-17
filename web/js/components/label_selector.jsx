@@ -15,6 +15,7 @@
     editing: boolean,
     open: boolean,
     onToggleOpen: () => void,
+    onDismiss: () => void,
     onEdit: () => void
   }
 */
@@ -50,7 +51,7 @@ export function LabelSelector (props /*: Props */) {
             key={label.id}
             editing={editing}
             selected={selectedId === label.id}
-            onSelect={() => { onSelect(label.id) }} />
+            onSelect={() => { props.onDismiss(); onSelect(label.id) }} />
           )}
 
         {/* Add and edit buttons */}
@@ -64,20 +65,21 @@ export function LabelSelector (props /*: Props */) {
  * State
  */
 
-export const LabelSelectorStateful = connectState(
-  (state) => ({
-    open: state.open || false,
-    editing: state.editing || false,
-  }),
-  (setState, props) => ({
-    onToggleOpen: () => {
-      setState({ open: !props.open })
-    },
-    onEdit: () => {
-      setState({ editing: !props.editing })
-    },
-  })
-)(LabelSelector)
+export class LabelSelectorStateful extends React.Component {
+  constructor () {
+    super()
+    this.state = { open: false, editing: false }
+  }
+
+  render () {
+    const { open, editing } = this.state
+    return <LabelSelector
+      onDismiss={() => { this.setState({ open: false, editing: false }) }}
+      onEdit={() => { this.setState({ editing: !editing }) }}
+      onToggleOpen={() => { this.setState({ open: !open }) }}
+      {...this.props} {...this.state} />
+  }
+}
 
 /*
  * Redux

@@ -8,19 +8,50 @@
     onSelect: () => void,
     selected: boolean,
     editing: boolean,
+
+    // State
+    focused: boolean,
+    onFocus: () => void,
+    onBlur: () => void
   }
 */
 
 import React from 'react'
 import c from 'classnames'
 
-export default function LabelSelectorItem (props /*: Props */) {
+/*
+ * Stateless component
+ */
+
+export function LabelSelectorItem (props /*: Props */) {
   if (props.editing) {
     return <Edit {...props} />
   } else {
     return <View {...props} />
   }
 }
+
+/*
+ * State
+ */
+
+export default class LabelSelectItemStateful extends React.Component {
+  constructor () {
+    super()
+    this.state = { focused: false }
+  }
+
+  render () {
+    return <LabelSelectorItem
+      onFocus={() => { this.setState({ focused: true }) }}
+      onBlur={() => { this.setState({ focused: false }) }}
+      {...this.props} {...this.state} />
+  }
+}
+
+/*
+ * View mode
+ */
 
 function View (props /*: Props */) {
   const { label, onSelect, selected } = props
@@ -33,12 +64,21 @@ function View (props /*: Props */) {
   </button>
 }
 
+/*
+ * Edit mode
+ */
+
 function Edit (props /*: Props */) {
-  const { label, onSelect, selected } = props
+  const { label, onSelect, selected, focused, onFocus, onBlur } = props
 
   return <span
-    className='label-selector-item item -editing'>
+    className={c('label-selector-item item -editing', { '-focus': focused })}>
     <span className='icon' style={{backgroundColor: label.color}} />
-    <input className='name -input' type='text' value={label.name} />
+    <input
+      className='name -input'
+      type='text'
+      defaultValue={label.name}
+      onFocus={onFocus}
+      onBlur={onBlur} />
   </span>
 }

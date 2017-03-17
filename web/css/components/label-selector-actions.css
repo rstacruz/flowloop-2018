@@ -68,15 +68,12 @@
   }
 
   /* Finish button */
-  & > .action.-finish {
+  & > .action.-finish,
+  & > .action.-finish:hover {
     color: var(--success-color);
   }
 
   & > .action.-finish::before {
-    @apply --ion-icon;
-    @apply --ion-icon-md-checkmark;
-
-    font-size: 20px;
-    margin-right: 16px;
+    display: none;
   }
 }

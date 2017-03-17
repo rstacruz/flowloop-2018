@@ -21,8 +21,13 @@
     border-top: solid 1px var(--line-color);
   }
 
+  &:focus,
   &:hover {
     background-color: var(--hover-color);
+  }
+
+  &:active {
+    background-color: var(--focus-color);
   }
 
   & > .icon {
@@ -63,26 +68,21 @@
 
 .label-selector-item.-editing {
   & {
-    padding: 0;
+    padding: 0 0 0 16px;
   }
 
   &.-focus {
-    background-color: var(--hover-color);
+    background-color: var(--focus-color);
   }
 
   & > .icon {
-    display: none;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--focus-color);
   }
 
   & > .name {
     border: 0;
-    padding: 12px 16px;
+    padding: 12px 0;
     margin: 0;
     background: transparent;
-    width: 100%;
-  }
-
-  & > .name:focus {
-    background-color: var(--hover-color);
   }
 }
