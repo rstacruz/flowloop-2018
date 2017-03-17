@@ -157,4 +157,30 @@ describe('without side effects', () => {
     state = store.getState()
     expect(state.settings['timer:mode']).toEqual('CONTINUOUS')
   })
+
+  test('labels init', () => {
+    let state
+
+    store.dispatch({ type: 'init' })
+    state = store.getState()
+    expect(state.labels).toMatchSnapshot()
+  })
+
+  test('labels upadte', () => {
+    let state
+
+    store.dispatch({ type: 'init' })
+    store.dispatch({
+      type: 'label:update',
+      id: '_foo',
+      payload: {
+        id: '_foo',
+        name: 'Foo',
+        color: 'red'
+      }
+    })
+
+    state = store.getState()
+    expect(state.labels._foo).toMatchSnapshot()
+  })
 })

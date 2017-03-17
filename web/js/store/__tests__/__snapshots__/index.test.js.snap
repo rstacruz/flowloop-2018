@@ -1,5 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`without side effects labels init 1`] = `
+Object {
+  "_chore": Object {
+    "color": "#808090",
+    "id": "_chore",
+    "name": "Chore",
+  },
+  "_default": Object {
+    "color": "dodgerblue",
+    "id": "_default",
+    "name": "Work",
+  },
+}
+`;
+
+exports[`without side effects labels upadte 1`] = `
+Object {
+  "color": "red",
+  "id": "_foo",
+  "name": "Foo",
+}
+`;
+
 exports[`without side effects route:change 1`] = `
 Object {
   "page": "HomeIndex",

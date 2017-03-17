@@ -12,6 +12,23 @@
 
 import buildReducer from 'build-reducer'
 
+/*
+ * Default labels
+ */
+
+// TODO: This should be a selector!!!
+const DEFAULT_LABELS = {
+  '_default': {
+    id: '_default',
+    name: 'Work',
+    color: 'dodgerblue'
+  },
+  '_chore': {
+    id: '_chore',
+    name: 'Chore',
+    color: '#808090'
+  }
+}
 
 /*
  * Label reducer
@@ -19,7 +36,7 @@ import buildReducer from 'build-reducer'
 
 export default buildReducer({
   'init': initLabels,
-  'labels:update': updateLabel
+  'label:update': updateLabel
 })
 
 /*
@@ -29,18 +46,7 @@ export default buildReducer({
 function initLabels (state /*: State */) /*: State */ {
   return {
     ...state,
-    labels: {
-      '_default': {
-        id: '_default',
-        name: 'Work',
-        color: 'dodgerblue'
-      },
-      '_chore': {
-        id: '_chore',
-        name: 'Chore',
-        color: '#808090'
-      }
-    }
+    labels: DEFAULT_LABELS
   }
 }
 
