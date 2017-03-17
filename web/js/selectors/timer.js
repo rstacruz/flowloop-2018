@@ -37,7 +37,6 @@
 */
 
 import { createSelector } from 'reselect'
-import get from '101/pluck'
 import { full as fullLabel } from '../selectors/label'
 
 /**

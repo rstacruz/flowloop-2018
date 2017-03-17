@@ -25,7 +25,6 @@ import { connect } from 'react-redux'
 import values from 'object-loops/values'
 import LabelSelectorItem from './label_selector_item'
 import LabelSelectorActions from './label_selector_actions'
-import connectState from '../helpers/connect_state'
 import { full as fullLabel } from '../selectors/label'
 
 /*

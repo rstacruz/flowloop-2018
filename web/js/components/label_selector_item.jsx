@@ -69,7 +69,7 @@ function View (props /*: Props */) {
  */
 
 function Edit (props /*: Props */) {
-  const { label, onSelect, selected, focused, onFocus, onBlur } = props
+  const { label, focused, onFocus, onBlur } = props
 
   return <span
     className={c('label-selector-item item -editing', { '-focus': focused })}>

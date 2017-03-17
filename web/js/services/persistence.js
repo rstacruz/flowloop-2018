@@ -14,8 +14,6 @@
   }
 */
 
-import get from '101/pluck'
-
 /**
  * Simple localStorage-based persistence
  */
@@ -24,23 +22,23 @@ export default function Persistence () /*: Middleware<*, Action> */ {
   return (store /*: MiddlewareAPI<*, Action> */) =>
     (dispatch /*: Dispatch<Action> */) =>
     (action /*: Action */) => {
-    let result = dispatch(action)
+      let result = dispatch(action)
 
-    switch (action.type) {
-      case 'persistence:load!':
-        load(store.dispatch)
-        break
+      switch (action.type) {
+        case 'persistence:load!':
+          load(store.dispatch)
+          break
 
-      case 'log:addCurrent':
-      case 'timer:setLabelId':
-      case 'settings:update':
-      case 'settings:cycleTimerMode':
-        setTimeout(() => { save(store.getState()) })
-        break
+        case 'log:addCurrent':
+        case 'timer:setLabelId':
+        case 'settings:update':
+        case 'settings:cycleTimerMode':
+          setTimeout(() => { save(store.getState()) })
+          break
+      }
+
+      return result
     }
-
-    return result
-  }
 }
 
 /**
