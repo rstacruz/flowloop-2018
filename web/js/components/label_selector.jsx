@@ -21,6 +21,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import values from 'object-loops/values'
 import LabelSelectorItem from './label_selector_item'
+import LabelSelectorActions from './label_selector_actions'
 import connectState from '../helpers/connect_state'
 import { full as fullLabel } from '../selectors/label'
 
@@ -29,12 +30,12 @@ import { full as fullLabel } from '../selectors/label'
  */
 
 export function LabelSelector (props /*: Props */) {
-  const { labels, onSelect, selectedId, onToggleOpen, open } = props
+  const { labels, onSelect, selectedId, onToggleOpen, open, editing, onEdit } = props
   const label = fullLabel(labels[selectedId])
 
   return <div className='label-selector'>
     <button
-      onClick={(e) => { e.preventDefault(); onToggleOpen() }}
+      onClick={() => { onToggleOpen() }}
       className='label-selector-dropdown dropdown'>
       <span className='label'>{label.name}</span>
     </button>
@@ -48,10 +49,9 @@ export function LabelSelector (props /*: Props */) {
             selected={selectedId === label.id}
             onSelect={() => { onSelect(label.id) }} />
           )}
-        <div className='label-selector-actions actions' key='_actions'>
-          <button className='action -add'>Add</button>
-          <button className='action -edit'>Edit</button>
-        </div>
+
+        {/* Add and edit buttons */}
+        <LabelSelectorActions editing={editing} onEdit={onEdit} />
       </div>
       : null }
   </div>
@@ -63,12 +63,16 @@ export function LabelSelector (props /*: Props */) {
 
 export const LabelSelectorStateful = connectState(
   (state) => ({
-    open: state.open || false
+    open: state.open || false,
+    editing: state.editing || false,
   }),
   (setState, props) => ({
     onToggleOpen: () => {
       setState({ open: !props.open })
-    }
+    },
+    onEdit: () => {
+      setState({ editing: !props.editing })
+    },
   })
 )(LabelSelector)
 
