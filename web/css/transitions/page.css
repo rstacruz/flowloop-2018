@@ -1,7 +1,4 @@
-:root {
-  --transition-duration: 300ms;
-  --transition-zip: cubic-bezier(0.1, 0.8, 0.2, 0.9);
-}
+@import '../variables.css';
 
 /*
  * Coming from bottom

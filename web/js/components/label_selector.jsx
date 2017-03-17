@@ -43,7 +43,7 @@ export function LabelSelector (props /*: Props */) {
     </button>
 
     { open
-      ? <div className='label-selector-menu menu'>
+      ? <div className='label-selector-menu menu _pop-in'>
         {values(labels).map(label =>
           <LabelSelectorItem
             label={label}

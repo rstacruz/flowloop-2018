@@ -14,6 +14,8 @@
   --gray-text: #8090a0;
   --light-gray-text: color(var(--gray-text) tint(40%));
   --hover-color: color(var(--gray) alpha(10%));
+  --transition-duration: 300ms;
+  --transition-zip: cubic-bezier(0.1, 0.8, 0.2, 0.9);
 
   --clearfix: {
     &::after {

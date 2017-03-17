@@ -1,0 +1,17 @@
+@import '../variables.css';
+
+/*
+ * Animation
+ */
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translate3d(0, 0, 0);
+  }
+}
+
+._pop-in {
+  animation: pop-in 150ms var(--transition-zip);
+  transform: translate3d(0, 0, 0);
+}
