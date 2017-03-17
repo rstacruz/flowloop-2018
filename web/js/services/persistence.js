@@ -88,7 +88,6 @@ function loadData (key, fn) {
 
   data = JSON.parse(data)
 
-  console.log(`Persistence: loading ${key}`, data)
   return fn(data)
 }
 
