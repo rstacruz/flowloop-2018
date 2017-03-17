@@ -48,6 +48,10 @@ export function LabelSelector (props /*: Props */) {
             selected={selectedId === label.id}
             onSelect={() => { onSelect(label.id) }} />
           )}
+        <div className='label-selector-actions actions' key='_actions'>
+          <button className='action -add'>Add</button>
+          <button className='action -edit'>Edit</button>
+        </div>
       </div>
       : null }
   </div>

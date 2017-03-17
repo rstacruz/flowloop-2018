@@ -16,3 +16,53 @@
     width: 100%;
   }
 }
+
+.label-selector-actions {
+  & {
+    @apply --clearfix;
+
+    border-top: solid 1px var(--line-color);
+    padding: 0;
+    padding-top: 4px;
+  }
+
+  /* Add and edit buttons */
+  & > .action {
+    display: inline-block;
+    border: 0;
+    padding: 8px 16px;
+    background: transparent;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* Add button */
+  & > .action.-add {
+    float: left;
+  }
+
+  /* Add icon */
+  & > .action.-add::before {
+    @apply --ion-icon;
+    @apply --ion-icon-md-add;
+
+    font-size: 20px;
+    margin-right: 16px;
+    position: relative;
+    top: -1px;
+  }
+
+  /* Edit button */
+  & > .action.-edit {
+    float: right;
+  }
+
+  & > .action.-edit::before {
+    @apply --ion-icon;
+    @apply --ion-icon-md-create;
+
+    font-size: 20px;
+    margin-right: 16px;
+    opacity: 0; /* Heh */
+  }
+}
