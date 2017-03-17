@@ -1,10 +1,22 @@
+/* @flow */
+
+/*::
+  import type { Labels } from '../selectors/label'
+  import type { LogsByDate } from '../selectors/log'
+
+  type Props = {
+    itemsByDate: LogsByDate,
+    labels: Labels
+  }
+*/
+
 import React from 'react'
 import Moment from 'moment'
 import LogItems from './log_items'
 import values from 'object-loops/values'
 import { onlyWork } from '../selectors/log'
 
-function LogDates ({ itemsByDate, labels }) {
+function LogDates ({ itemsByDate, labels } /*: Props */) {
   return <div className='log-dates'>
     {values(itemsByDate).map(logItems =>
       <div className='log-date' key={logItems[0].startedAt}>

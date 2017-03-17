@@ -9,7 +9,6 @@
     'duration:work': number,
     'duration:break': number,
     'duration:longBreak': number,
-    'labels:labels': Array<string>,
     'labels:default': string,
     'timer:mode': TimerMode
   }
@@ -26,8 +25,7 @@ export const DEFAULTS /*: Settings */ = {
   'duration:work': 25 * 60 * 1000,
   'duration:break': 5 * 60 * 1000,
   'duration:longBreak': 15 * 60 * 1000,
-  'labels:labels': ['Work', 'Chore', 'Side work'],
-  'labels:default': 'Work',
+  'labels:default': '_default',
   'timer:mode': 'CONTINUOUS'
 }
 

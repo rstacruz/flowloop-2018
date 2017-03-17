@@ -6,7 +6,7 @@ test('sets defaults', () => {
     settings: {}
   })
 
-  expect(settings['labels:default']).toEqual('Work')
+  expect(settings['labels:default']).toEqual('_default')
 })
 
 test('allows overriding', () => {

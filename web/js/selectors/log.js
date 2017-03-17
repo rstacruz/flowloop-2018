@@ -40,6 +40,7 @@ import get from '101/pluck'
 import groupBy from '101/group-by'
 import values from 'object-loops/values'
 import { createSelector } from 'reselect'
+import { full as fullLabel } from './label'
 
 /*
  * Returns midnight
@@ -68,10 +69,10 @@ export const recents /*: (state: State) => Logs */ = createSelector(
 
 export const full /*: ([Log, Labels]) => FullLog */ = createSelector(
   ([log, _]) => log,
-  ([_, labels]) => labels,
-  (log, labels) => {
-    const label = log.labelId && labels[log.labelId] || { name: 'Unknown' }
-
+  ([log, labels]) => {
+    return fullLabel(log.labelId && labels[log.labelId])
+  },
+  (log, label) => {
     return {
       ...log,
       labelText: log.timerType === 'work' ? label.name : 'Break'

@@ -22,6 +22,7 @@ import { connect } from 'react-redux'
 import values from 'object-loops/values'
 import LabelSelectorItem from './label_selector_item'
 import connectState from '../helpers/connect_state'
+import { full as fullLabel } from '../selectors/label'
 
 /*
  * Selects labels
@@ -29,7 +30,7 @@ import connectState from '../helpers/connect_state'
 
 export function LabelSelector (props /*: Props */) {
   const { labels, onSelect, selectedId, onToggleOpen, open } = props
-  const label = labels[selectedId] || { name: 'Unknown' }
+  const label = fullLabel(labels[selectedId])
 
   return <div className='label-selector'>
     <button

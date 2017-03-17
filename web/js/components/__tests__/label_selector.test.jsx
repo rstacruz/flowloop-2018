@@ -2,12 +2,20 @@
 import React from 'react'
 import {mount} from 'enzyme'
 
-import LabelSelector from '../label_selector'
+import { LabelSelector } from '../label_selector'
 
 test('works', () => {
-  const result = mount(
-    <LabelSelector label='Work' />
-  )
+  const labels = {
+    '_work': { id: 'work', name: 'Trabajo' }
+  }
 
-  expect(result.text()).toEqual('Work')
+  const result = mount(
+    <LabelSelector
+      labels={labels}
+      selectedId={'_work'}
+      onSelect={() => {}}
+      open={false}
+      onToggleOpen={() => {}} />)
+
+  expect(result.text()).toEqual('Trabajo')
 })

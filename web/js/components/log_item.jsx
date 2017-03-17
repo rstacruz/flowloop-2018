@@ -15,18 +15,20 @@ import Moment from 'moment'
 import values from 'object-loops/values'
 import c from 'classnames'
 import { full } from '../selectors/log'
+import { full as fullLabel } from '../selectors/label'
 
 /*
  * A single item
  */
 
 function LogItem ({ item, labels } /*: Props */) {
-  const label = full([ item, labels ]).labelText
+  const log = full([ item, labels ])
+  const label = fullLabel(labels[item.labelId])
 
   const time = Moment(item.endedAt).format('h:mm a')
 
   return <span
-    aria-label={`${label} - ${time}`}
+    aria-label={`${log.labelText} - ${time}`}
     key={item.id}
     className={c('timeline-small-item', {
       'hint--top': true,
@@ -34,7 +36,9 @@ function LogItem ({ item, labels } /*: Props */) {
       '-break': item.timerType === 'break',
       '-work': item.timerType === 'work'
     })}>
-    <span className='peg' />
+    <span
+      className='peg'
+      style={{ backgroundColor: label && label.color }} />
   </span>
 }
 
