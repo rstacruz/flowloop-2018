@@ -2,6 +2,7 @@
 
 /*::
   import type { State } from './state'
+  import type { Labels } from './label'
   import type { TimerType } from './timer'
 
   export type Logs = {
@@ -14,8 +15,19 @@
     startedAt: Date,
     endedAt: Date,
     duration: number,
-    label: string,
+    labelId: string,
     isComplete: boolean
+  }
+
+  export type FullLog = {
+    id: string,
+    timerType: TimerType,
+    startedAt: Date,
+    endedAt: Date,
+    duration: number,
+    labelId: string,
+    isComplete: boolean,
+    labelText: string
   }
 
   export type LogsByDate = {
@@ -48,6 +60,22 @@ export const recents /*: (state: State) => Logs */ = createSelector(
     log = onlyWork(log)
     log = filter(log, i => i.startedAt > time)
     return log
+  })
+
+/*
+ * Full
+ */
+
+export const full /*: ([Log, Labels]) => FullLog */ = createSelector(
+  ([log, _]) => log,
+  ([_, labels]) => labels,
+  (log, labels) => {
+    const label = log.labelId && labels[log.labelId] || { name: 'Unknown' }
+
+    return {
+      ...log,
+      labelText: log.timerType === 'work' ? label.name : 'Break'
+    }
   })
 
 /*

@@ -44,7 +44,7 @@ export default buildReducer({
         endedAt: now,
         duration: +now - +startedAt,
         timerType: timer.type,
-        label: timer.label,
+        labelId: timer.labelId,
         isComplete: true
       }
     })

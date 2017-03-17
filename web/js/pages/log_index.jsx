@@ -8,32 +8,37 @@ import LogDates from '../components/log_dates'
  * Timeline page
  */
 
-export class LogIndex extends React.Component {
-  render () {
-    return <div className='timer-layout -log _page-bottom'>
-      <Title title='Your timeline' />
+export function LogIndex (props) {
+  const {itemsByDate, onBack, labels} = props
 
-      <div className='rawbody'>
-        <div className='slim-container'>
+  return <div className='timer-layout -log _page-bottom'>
+    <Title title='Your timeline' />
 
-          <div className='actions-list'>
-            <div className='right'>
-              <button
-                className='icon-button -close'
-                onClick={() => this.props.onBack()} />
-            </div>
+    <div className='rawbody'>
+      <div className='slim-container'>
+
+        <div className='actions-list'>
+          <div className='right'>
+            <button
+              className='icon-button -close'
+              onClick={() => onBack()} />
           </div>
-
-          <LogDates itemsByDate={this.props.itemsByDate} />
         </div>
+
+        <LogDates itemsByDate={itemsByDate} labels={labels} />
       </div>
     </div>
-  }
+  </div>
 }
+
+/*
+ * Redux
+ */
 
 export default connect(
   state => ({
-    itemsByDate: byDate(state)
+    itemsByDate: byDate(state),
+    labels: state.labels
   }),
 
   dispatch => ({

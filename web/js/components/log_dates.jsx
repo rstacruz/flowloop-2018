@@ -4,7 +4,7 @@ import LogItems from './log_items'
 import values from 'object-loops/values'
 import { onlyWork } from '../selectors/log'
 
-function LogDates ({ itemsByDate }) {
+function LogDates ({ itemsByDate, labels }) {
   return <div className='log-dates'>
     {values(itemsByDate).map(logItems =>
       <div className='log-date' key={logItems[0].startedAt}>
@@ -13,7 +13,7 @@ function LogDates ({ itemsByDate }) {
         </h2>
 
         <span className='dates'>
-          <LogItems items={onlyWork(logItems)} />
+          <LogItems items={onlyWork(logItems)} labels={labels} />
         </span>
       </div>
     )}
