@@ -8,6 +8,10 @@
     id: string,
     payload: Label
   }
+
+  type LoadProps = {
+    payload: Labels
+  }
 */
 
 import buildReducer from 'build-reducer'
@@ -36,7 +40,8 @@ const DEFAULT_LABELS /*: Labels */ = {
 
 export default buildReducer({
   'init': initLabels,
-  'label:update': updateLabel
+  'label:update': updateLabel,
+  'labels:load': loadLabels
 })
 
 /*
@@ -67,4 +72,12 @@ function updateLabel (state /*: State */, { id, payload } /*: UpdateProps */) /*
   }
 
   return { ...state, labels }
+}
+
+/*
+ * Loads labels
+ */
+
+function loadLabels (state /*: State */, { payload } /*: LoadProps */) /*: State */ {
+  return { ...state, labels: payload }
 }

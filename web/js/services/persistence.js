@@ -1,12 +1,30 @@
+/* @flow */
+
+/*::
+  import type { MiddlewareAPI, Dispatch, Middleware } from 'redux'
+  import type { State } from '../selectors/state'
+
+  type Action = { type: string }
+
+  type StoragePayload = {
+    version: number,
+    settings: Object,
+    log: Object,
+    labels: Object
+  }
+*/
+
 import get from '101/pluck'
 
 /**
  * Simple localStorage-based persistence
  */
 
-export default function Persistence () {
-  return store => dispatch => action => {
-    dispatch(action)
+export default function Persistence () /*: Middleware<*, Action> */ {
+  return (store /*: MiddlewareAPI<*, Action> */) =>
+    (dispatch /*: Dispatch<Action> */) =>
+    (action /*: Action */) => {
+    let result = dispatch(action)
 
     switch (action.type) {
       case 'persistence:load!':
@@ -14,11 +32,14 @@ export default function Persistence () {
         break
 
       case 'log:addCurrent':
+      case 'timer:setLabelId':
       case 'settings:update':
       case 'settings:cycleTimerMode':
         setTimeout(() => { save(store.getState()) })
         break
     }
+
+    return result
   }
 }
 
@@ -27,13 +48,11 @@ export default function Persistence () {
  * @private
  */
 
-function load (dispatch) {
-  loadData('TimerSettings', settings => {
-    dispatch({ type: 'settings:update', payload: settings })
-  })
-
-  loadData('TimerLog', items => {
-    dispatch({ type: 'log:load', payload: items })
+function load (dispatch /*: Dispatch<Action> */) {
+  loadData('TimerData', (data /*: StoragePayload */) => {
+    dispatch({ type: 'settings:update', payload: data.settings })
+    dispatch({ type: 'log:load', payload: data.log })
+    dispatch({ type: 'labels:load', payload: data.labels })
   })
 }
 
@@ -42,18 +61,19 @@ function load (dispatch) {
  * @private
  */
 
-function save (state) {
+function save (state /*: State */) {
   if (!window.localStorage) return
 
-  console.log('Persistence: saving TimerSettings')
-  window.localStorage.TimerSettings = JSON.stringify(get(state, 'settings'))
+  const previous = JSON.parse(window.localStorage.TimerData || '{}')
 
-  console.log('Persistence: saving TimerLog')
-  const newLog = get(state, 'log')
-  const oldLog = JSON.parse(window.localStorage.TimerLog || '{}') || {}
-  const combinedLog = Object.assign({}, oldLog, newLog)
+  const payload = {
+    version: 0,
+    log: { ...(previous.log || {}), ...state.log },
+    labels: { ...(previous.labels || {}), ...state.labels },
+    settings: { ...(previous.settings || {}), ...state.settings }
+  }
 
-  window.localStorage.TimerLog = JSON.stringify(combinedLog)
+  window.localStorage.TimerData = JSON.stringify(payload)
 }
 
 /*
@@ -72,4 +92,4 @@ function loadData (key, fn) {
   return fn(data)
 }
 
-// localStorage.TimerSettings = JSON.stringify({ "duration:work": 4000, "duration:break": 8000 })
+// data = JSON.parse(window.localStorage.TimerData || '{}'); data.settings['duration:work'] = 5000; window.localStorage.TimerData = JSON.stringify(data)
