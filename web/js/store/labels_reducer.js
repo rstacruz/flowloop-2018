@@ -45,7 +45,7 @@ function initLabels (state /*: State */) /*: State */ {
 }
 
 /*
- * Updates a lebl
+ * Updates a label
  */
 
 function updateLabel (state /*: State */, { id, payload } /*: UpdateProps */) /*: State */ {

@@ -44,6 +44,8 @@ export default buildReducer({
     return { ...state, timer }
   },
 
+  'timer:setLabelId': setLabelId,
+
   'timer:halt': (state /*: State */) /*: State */ => {
     const timer /*: Timer */ = { active: false }
 
@@ -63,3 +65,13 @@ export default buildReducer({
     return { ...state, timer }
   }
 })
+
+/*
+ * Updates the label ID
+ */
+
+function setLabelId (state /*: State */, { id } /*: { id: string } */) /*: State */ {
+  let timer /*: Timer */ = state.timer || {}
+  timer = { ...timer, 'labelId': id }
+  return { ...state, timer }
+}
