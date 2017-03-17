@@ -82,6 +82,17 @@ describe('without side effects', () => {
     expect(state.timer.active).toEqual(false)
   })
 
+  test('timer:setLabelId', () => {
+    store.dispatch({ type: 'init' })
+    store.dispatch({ type: 'ticker:tick', now: DATE })
+    store.dispatch({ type: 'timer:start', timerType: 'work' })
+    store.dispatch({ type: 'timer:setLabelId', id: '_hello' })
+
+    let state = store.getState()
+    expect(state.timer.labelId).toEqual('_hello')
+    expect(state.settings['labels:default']).toEqual('_hello')
+  })
+
   test('log:addCurrent', () => {
     store.dispatch({ type: 'init' })
     store.dispatch({
@@ -166,7 +177,7 @@ describe('without side effects', () => {
     expect(state.labels).toMatchSnapshot()
   })
 
-  test('labels upadte', () => {
+  test('labels update', () => {
     let state
 
     store.dispatch({ type: 'init' })

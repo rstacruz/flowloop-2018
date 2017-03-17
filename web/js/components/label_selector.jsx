@@ -12,8 +12,10 @@
     onSelect: () => void,
 
     // State
+    editing: boolean,
     open: boolean,
     onToggleOpen: () => void,
+    onEdit: () => void
   }
 */
 

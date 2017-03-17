@@ -15,7 +15,7 @@ Object {
 }
 `;
 
-exports[`without side effects labels upadte 1`] = `
+exports[`without side effects labels update 1`] = `
 Object {
   "color": "red",
   "id": "_foo",

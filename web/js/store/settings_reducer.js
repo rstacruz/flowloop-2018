@@ -21,6 +21,8 @@ export default buildReducer({
     })
   },
 
+  'timer:setLabelId': setLabelId,
+
   'settings:cycleTimerMode': (state, action) => {
     const mode = Settings.full(state)['timer:mode']
     const idx = Settings.TIMER_MODES.indexOf(mode)
@@ -32,3 +34,14 @@ export default buildReducer({
     })
   }
 })
+
+/*
+ * Setting the label for a timer;
+ * persist it as the default label
+ */
+
+function setLabelId (state /*: State */, { id } /*: { id: string } */) /*: State */ {
+  let settings /*: Settings */ = state.settings || {}
+  settings = { ...settings, 'labels:default': id }
+  return { ...state, settings }
+}
