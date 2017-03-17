@@ -1,0 +1,18 @@
+@import '../variables.css';
+
+/*
+ * The menu
+ */
+
+.label-selector-menu {
+  background: white;
+  width: 256px;
+  padding: 8px 0;
+  border-radius: 3px;
+  box-shadow: var(--button-shadow-active);
+  text-align: left;
+
+  & > .item {
+    width: 100%;
+  }
+}

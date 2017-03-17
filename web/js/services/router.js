@@ -17,5 +17,11 @@ export default function Router () {
     route('/log', () => {
       dispatch({ type: 'route:change', page: 'LogIndex' })
     })
+
+    route('/timer/work', () => {
+      setTimeout(() => {
+        dispatch({ type: 'timer:start!', timerType: 'work' })
+      })
+    })
   })
 }

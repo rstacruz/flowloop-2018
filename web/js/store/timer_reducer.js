@@ -31,7 +31,8 @@ export default buildReducer({
       ...(state.timer || {}),
       'active': true,
       'startedAt': now,
-      'label': defaultLabel,
+      'label': defaultLabel, // to be deprecated
+      'labelId': '_default',
       'endsAt': new Date(+now + duration),
       'type': timerType,
       'duration': duration,

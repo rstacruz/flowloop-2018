@@ -18,13 +18,6 @@
     font-weight: normal;
   }
 
-  /* "Work" or "Break */
-  & > h1 {
-    @apply --font-size-1;
-
-    font-weight: bold;
-  }
-
   /* 2:00 of 5:00 */
   & > p {
     color: var(--gray-text);

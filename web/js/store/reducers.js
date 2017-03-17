@@ -5,6 +5,7 @@ import settings from './settings_reducer'
 import timer from './timer_reducer'
 import time from './time_reducer'
 import route from './route_reducer'
+import labels from './labels_reducer'
 
 /*
  * Export
@@ -15,5 +16,6 @@ export default reduceReducers(
   time,
   route,
   settings,
-  log
+  log,
+  labels
 )
