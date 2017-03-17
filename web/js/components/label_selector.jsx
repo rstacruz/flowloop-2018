@@ -41,14 +41,14 @@ export function LabelSelector (props /*: Props */) {
 
     { open
       ? <div className='label-selector-menu menu'>
-          {values(labels).map(label =>
-            <LabelSelectorItem
-              label={label}
-              key={label.id}
-              selected={selectedId === label.id}
-              onSelect={() => { onSelect(label.id) }} />
-            )}
-        </div>
+        {values(labels).map(label =>
+          <LabelSelectorItem
+            label={label}
+            key={label.id}
+            selected={selectedId === label.id}
+            onSelect={() => { onSelect(label.id) }} />
+          )}
+      </div>
       : null }
   </div>
 }
@@ -67,7 +67,6 @@ export const LabelSelectorStateful = connectState(
     }
   })
 )(LabelSelector)
-
 
 /*
  * Redux

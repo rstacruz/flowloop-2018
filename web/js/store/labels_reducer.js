@@ -17,7 +17,7 @@ import buildReducer from 'build-reducer'
  */
 
 // TODO: This should be a selector!!!
-const DEFAULT_LABELS = {
+const DEFAULT_LABELS /*: Labels */ = {
   '_default': {
     id: '_default',
     name: 'Work',

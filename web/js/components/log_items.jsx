@@ -11,11 +11,8 @@
 */
 
 import React from 'react'
-import Moment from 'moment'
-import values from 'object-loops/values'
-import c from 'classnames'
-import { full } from '../selectors/log'
 import LogItem from './log_item'
+import values from 'object-loops/values'
 
 /*
  * List of items
@@ -27,7 +24,5 @@ function LogItems ({ items, labels } /*: Props */) {
       <LogItem item={item} labels={labels} key={item.id} />)}
   </span>
 }
-
-//log_item.jsx
 
 export default LogItems

@@ -12,7 +12,6 @@
 
 import React from 'react'
 import Moment from 'moment'
-import values from 'object-loops/values'
 import c from 'classnames'
 import { full } from '../selectors/log'
 import { full as fullLabel } from '../selectors/label'

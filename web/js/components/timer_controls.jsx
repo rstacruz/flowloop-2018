@@ -14,14 +14,13 @@ import React from 'react'
 import ModeSelector from '../components/mode_selector'
 import LabelSelector from '../components/label_selector'
 import ms from '../helpers/timer_display'
-import { connect } from 'react-redux'
 
 /**
  * Timer controls
  */
 
 export default function TimerControls ({ now, timer } /*: Props */) {
-  const { type, duration, label, elapsed } = timer
+  const { type, duration, elapsed } = timer
   const timerType = type
 
   return <div className='timer-controls'>
