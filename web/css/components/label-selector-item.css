@@ -40,6 +40,10 @@
   }
 }
 
+/*
+ * Selected
+ */
+
 .label-selector-item.-active {
   &::after {
     @apply --ion-icon;
@@ -50,5 +54,35 @@
     position: absolute;
     right: 16px;
     top: 10px;
+  }
+}
+
+/*
+ * Edit
+ */
+
+.label-selector-item.-editing {
+  & {
+    padding: 0;
+  }
+
+  &.-focus {
+    background-color: var(--hover-color);
+  }
+
+  & > .icon {
+    display: none;
+  }
+
+  & > .name {
+    border: 0;
+    padding: 12px 16px;
+    margin: 0;
+    background: transparent;
+    width: 100%;
+  }
+
+  & > .name:focus {
+    background-color: var(--hover-color);
   }
 }

@@ -48,6 +48,7 @@ export function LabelSelector (props /*: Props */) {
           <LabelSelectorItem
             label={label}
             key={label.id}
+            editing={editing}
             selected={selectedId === label.id}
             onSelect={() => { onSelect(label.id) }} />
           )}

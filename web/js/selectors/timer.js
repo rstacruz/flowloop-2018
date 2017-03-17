@@ -2,12 +2,13 @@
 
 /*::
   import type { State } from './state'
+  import type { Labels } from './label'
+
   export type TimerType = 'work' | 'break'
 
   export type Timer = {
     active: boolean,
     startedAt?: Date,
-    label?: string,
     labelId?: string,
     endsAt?: Date,
     type?: TimerType,
@@ -20,7 +21,6 @@
   export type FullTimer = {
     active: boolean,
     startedAt: Date,
-    label: string,
     labelId: string,
     endsAt: Date,
     type: TimerType,
@@ -38,22 +38,25 @@
 
 import { createSelector } from 'reselect'
 import get from '101/pluck'
+import { full as fullLabel } from '../selectors/label'
 
 /**
  * Full timer details
  */
 
 export const full /*: (state: State) => FullTimer */ = createSelector(
-  state => get(state, 'timer'),
-  state => get(state, 'time.now'),
-  (timer, now) => {
+  state => state.timer,
+  state => state.time && state.time.now,
+  state => state.labels,
+  (timer /*: Timer */, now /*: Date */, labels /*: Labels */) => {
     if (!timer.active) return timer
 
     const lastLap = timer.lastLap
     const duration = timer.duration
     const elapsed = +now - timer.startedAt
     const remaining = +timer.endsAt - +now
-    const labelText = timer.type === 'work' ? timer.label : 'Break'
+    const label = fullLabel(labels[timer.labelId])
+    const labelText = timer.type === 'work' ? label.name : 'Break'
     const isOvertime = timer.laps && timer.laps > 0
     const progress = (now - +lastLap) / duration
 
