@@ -6,6 +6,7 @@
   type SProps = {
     label: Label,
     onSelect: () => void,
+    onLabelEdit: (payload: { id: string }) => void,
     selected: boolean,
     editing: boolean
   }
@@ -13,6 +14,7 @@
   type Props = {
     label: Label,
     onSelect: () => void,
+    onLabelEdit: (payload: { id: string }) => void,
     selected: boolean,
     editing: boolean,
 
@@ -60,6 +62,7 @@ export default class LabelSelectItemStateful extends React.Component {
       onBlur={() => { this.setState({ focused: false }) }}
       label={props.label}
       onSelect={props.onSelect}
+      onLabelEdit={props.onLabelEdit}
       selected={props.selected}
       editing={props.editing}
       {...props} {...state} />
@@ -86,7 +89,7 @@ function View (props /*: Props */) {
  */
 
 function Edit (props /*: Props */) {
-  const { label, focused, onFocus, onBlur } = props
+  const { label, focused, onFocus, onBlur, onLabelEdit } = props
 
   return <span
     className={c('label-selector-item item -editing', { '-focus': focused })}>
@@ -96,6 +99,12 @@ function Edit (props /*: Props */) {
       type='text'
       defaultValue={label.name}
       onFocus={onFocus}
+      onChange={e => {
+        onLabelEdit({
+          id: label.id,
+          name: e.target.value
+        })
+      }}
       onBlur={onBlur} />
   </span>
 }
