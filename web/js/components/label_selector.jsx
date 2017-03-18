@@ -36,6 +36,7 @@ import values from 'object-loops/values'
 import LabelSelectorItem from './label_selector_item'
 import LabelSelectorActions from './label_selector_actions'
 import { full as fullLabel } from '../selectors/label'
+import c from 'classnames'
 
 /*
  * Selects labels
@@ -48,12 +49,14 @@ export function LabelSelector (props /*: Props */) {
   } = props
   const label = fullLabel(labels[selectedId])
 
-  return <div className='label-selector'>
+  return <div className={c('label-selector', { '-open': open })}>
     <button
       onClick={() => { onToggleOpen() }}
-      className='label-selector-dropdown dropdown'>
+      className={c('label-selector-dropdown dropdown', { '-open': open })}>
       <span className='label'>{label.name}</span>
     </button>
+
+    <div className='screen' onClick={onDismiss} />
 
     { open
       ? <div className='label-selector-menu menu _pop-in'>

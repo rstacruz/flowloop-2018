@@ -31,6 +31,7 @@
     top: -4px;
   }
 
+  &.-open,
   &:hover,
   &:focus {
     color: var(--accent);

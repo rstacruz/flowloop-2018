@@ -4,10 +4,34 @@
   position: relative;
   z-index: 5;
 
+  & > .dropdown {
+    position: relative;
+    z-index: 1;
+  }
+
   & > .menu {
     position: absolute;
+    z-index: 1;
     top: 64px;
     left: 50%;
     margin-left: -128px;
+  }
+
+  & > .screen {
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: color(var(--background) alpha(70%));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 150ms linear;
+  }
+
+  &.-open > .screen {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
