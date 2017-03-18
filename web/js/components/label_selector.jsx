@@ -10,20 +10,21 @@
     labels: Labels,
     selectedId: string,
     onSelect: () => void,
+    onLabelEdit: (payload: { id: string }) => void,
 
     // State
     editing: boolean,
     open: boolean,
     onToggleOpen: () => void,
     onDismiss: () => void,
-    onLabelEdit: (payload: { id: string }) => void,
     onEdit: () => void
   }
 
   type SProps = {
     labels: Labels,
     selectedId: string,
-    onSelect: () => void
+    onSelect: () => void,
+    onLabelEdit: (payload: { id: string }) => void
   }
 */
 
@@ -41,7 +42,7 @@ import { full as fullLabel } from '../selectors/label'
 export function LabelSelector (props /*: Props */) {
   const {
     labels, onSelect, selectedId, onToggleOpen, open, editing, onEdit,
-    onLabelEdit
+    onLabelEdit, onDismiss
   } = props
   const label = fullLabel(labels[selectedId])
 
@@ -61,7 +62,7 @@ export function LabelSelector (props /*: Props */) {
             editing={editing}
             selected={selectedId === label.id}
             onLabelEdit={onLabelEdit}
-            onSelect={() => { props.onDismiss(); onSelect(label.id) }} />
+            onSelect={() => { onDismiss(); onSelect(label.id) }} />
           )}
 
         {/* Add and edit buttons */}
@@ -78,7 +79,7 @@ export function LabelSelector (props /*: Props */) {
 export class LabelSelectorStateful extends React.Component {
   /*::
     state: { open: boolean, editing: boolean }
-    props: Props
+    props: SProps
   */
 
   constructor () {
@@ -88,11 +89,17 @@ export class LabelSelectorStateful extends React.Component {
 
   render () {
     const { open, editing } = this.state
+    const { props, state } = this
+
     return <LabelSelector
       onDismiss={() => { this.setState({ open: false, editing: false }) }}
       onEdit={() => { this.setState({ editing: !editing }) }}
       onToggleOpen={() => { this.setState({ open: !open }) }}
-      {...this.props} {...this.state} />
+      labels={props.labels}
+      onLabelEdit={props.onLabelEdit}
+      onSelect={props.onSelect}
+      selectedId={props.selectedId}
+      {...props} {...state} />
   }
 }
 

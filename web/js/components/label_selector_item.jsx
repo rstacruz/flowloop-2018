@@ -54,10 +54,15 @@ export default class LabelSelectItemStateful extends React.Component {
   }
 
   render () {
+    const { props, state } = this
     return <LabelSelectorItem
       onFocus={() => { this.setState({ focused: true }) }}
       onBlur={() => { this.setState({ focused: false }) }}
-      {...this.props} {...this.state} />
+      label={props.label}
+      onSelect={props.onSelect}
+      selected={props.selected}
+      editing={props.editing}
+      {...props} {...state} />
   }
 }
 
