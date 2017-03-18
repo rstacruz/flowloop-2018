@@ -16,7 +16,14 @@
     open: boolean,
     onToggleOpen: () => void,
     onDismiss: () => void,
+    onLabelEdit: (payload: { id: string }) => void,
     onEdit: () => void
+  }
+
+  type SProps = {
+    labels: Labels,
+    selectedId: string,
+    onSelect: () => void
   }
 */
 
@@ -32,7 +39,10 @@ import { full as fullLabel } from '../selectors/label'
  */
 
 export function LabelSelector (props /*: Props */) {
-  const { labels, onSelect, selectedId, onToggleOpen, open, editing, onEdit } = props
+  const {
+    labels, onSelect, selectedId, onToggleOpen, open, editing, onEdit,
+    onLabelEdit
+  } = props
   const label = fullLabel(labels[selectedId])
 
   return <div className='label-selector'>
@@ -50,6 +60,7 @@ export function LabelSelector (props /*: Props */) {
             key={label.id}
             editing={editing}
             selected={selectedId === label.id}
+            onLabelEdit={onLabelEdit}
             onSelect={() => { props.onDismiss(); onSelect(label.id) }} />
           )}
 
@@ -65,6 +76,11 @@ export function LabelSelector (props /*: Props */) {
  */
 
 export class LabelSelectorStateful extends React.Component {
+  /*::
+    state: { open: boolean, editing: boolean }
+    props: Props
+  */
+
   constructor () {
     super()
     this.state = { open: false, editing: false }
@@ -90,8 +106,11 @@ export default connect(
     selectedId: state.timer && state.timer.labelId
   }),
   (dispatch /*: Dispatch<*> */) => ({
-    onSelect: (id /*: String */) => {
+    onSelect: (id /*: string */) => {
       dispatch({ type: 'timer:setLabelId', id })
+    },
+    onLabelEdit: (payload /*: { id: string } */) => {
+      dispatch({ type: 'label:update', payload })
     }
   })
 )(LabelSelectorStateful)

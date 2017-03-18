@@ -28,7 +28,7 @@ export default buildReducer({
     const defaultLabel = settings['labels:default']
 
     const timer /*: Timer */ = {
-      ...(state.timer || {}),
+      ...(state.timer || { active: false }),
       'active': true,
       'startedAt': now,
       'labelId': defaultLabel,
@@ -53,7 +53,7 @@ export default buildReducer({
 
   'timer:lap': (state /*: State */) /*: State */ => {
     let timer /*: Timer */ = state.timer
-    const now = get(state, 'time.now')
+    const now = state.time && state.time.now
 
     timer = {
       ...state.timer,
@@ -70,7 +70,7 @@ export default buildReducer({
  */
 
 function setLabelId (state /*: State */, { id } /*: { id: string } */) /*: State */ {
-  let timer /*: Timer */ = state.timer || {}
+  let timer /*: Timer */ = state.timer || { active: false }
   timer = { ...timer, 'labelId': id }
   return { ...state, timer }
 }

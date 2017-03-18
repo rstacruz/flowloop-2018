@@ -18,6 +18,18 @@
     lastLogId?: null | string
   }
 
+  export type ActiveTimer = {
+    active: true,
+    startedAt: Date,
+    labelId: string,
+    endsAt: Date,
+    type: TimerType,
+    duration: number,
+    laps: number,
+    lastLap: Date,
+    lastLogId: null | string
+  }
+
   export type FullTimer = {
     active: boolean,
     startedAt: Date,
@@ -52,12 +64,12 @@ export const full /*: (state: State) => FullTimer */ = createSelector(
 
     const lastLap = timer.lastLap
     const duration = timer.duration
-    const elapsed = +now - timer.startedAt
+    const elapsed = +now - (timer.startedAt || 0)
     const remaining = +timer.endsAt - +now
-    const label = fullLabel(labels[timer.labelId])
+    const label = fullLabel(labels[timer.labelId || '_default'])
     const labelText = timer.type === 'work' ? label.name : 'Break'
     const isOvertime = timer.laps && timer.laps > 0
-    const progress = (now - +lastLap) / duration
+    const progress = (now - +lastLap) / (duration || 30000)
 
     return {
       ...timer, elapsed, remaining, labelText, isOvertime, progress

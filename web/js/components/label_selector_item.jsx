@@ -3,6 +3,13 @@
 /*::
   import type { Label } from '../selectors/label'
 
+  type SProps = {
+    label: Label,
+    onSelect: () => void,
+    selected: boolean,
+    editing: boolean
+  }
+
   type Props = {
     label: Label,
     onSelect: () => void,
@@ -36,6 +43,11 @@ export function LabelSelectorItem (props /*: Props */) {
  */
 
 export default class LabelSelectItemStateful extends React.Component {
+  /*::
+    state: { focused: boolean }
+    props: SProps
+  */
+
   constructor () {
     super()
     this.state = { focused: false }

@@ -59,15 +59,17 @@ function initLabels (state /*: State */) /*: State */ {
  * Updates a label
  */
 
-function updateLabel (state /*: State */, { id, payload } /*: UpdateProps */) /*: State */ {
+function updateLabel (state /*: State */, { payload } /*: UpdateProps */) /*: State */ {
+  const id = payload.id
+  if (!id) return state
+
   let labels /*: Labels */ = state.labels
 
   labels = {
     ...labels,
     [id]: {
       ...(labels[id] || {}),
-      ...payload,
-      id: id
+      ...payload
     }
   }
 
