@@ -1,8 +1,14 @@
+/* @flow */
 /* eslint-env jest */
+
+/*::
+  import type { State } from '../../selectors/state'
+*/
+
 import Timer from '../timer'
 
 test('work in progress', () => {
-  const timer = Timer.full({
+  const state /*: State */ = {
     time: { now: new Date('2010-04-23T08:00:00Z') },
     timer: {
       active: true,
@@ -11,16 +17,25 @@ test('work in progress', () => {
       lastLap: new Date('2010-04-23T08:00:00Z'),
       duration: 30 * 60000,
       laps: 0,
-      label: 'Work',
+      labelId: '_default',
       type: 'work'
+    },
+    labels: {
+      '_default': {
+        id: '_default',
+        name: 'Work',
+        color: 'dodgerblue'
+      }
     }
-  })
+  }
+
+  const timer = Timer.full(state)
 
   expect(timer).toMatchSnapshot()
 })
 
 test('work in laps', () => {
-  const timer = Timer.full({
+  const state /*: State */ = {
     time: { now: new Date('2010-04-23T09:00:00Z') },
     timer: {
       active: true,
@@ -29,10 +44,19 @@ test('work in laps', () => {
       lastLap: new Date('2010-04-23T08:30:00Z'),
       duration: 30 * 60000,
       laps: 2,
-      label: 'Work',
+      labelId: '_default',
       type: 'work'
+    },
+    labels: {
+      '_default': {
+        id: '_default',
+        name: 'Work',
+        color: 'dodgerblue'
+      }
     }
-  })
+  }
+
+  const timer = Timer.full(state)
 
   expect(timer).toMatchSnapshot()
 })
