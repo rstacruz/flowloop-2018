@@ -11,6 +11,7 @@
     selectedId: string,
     onSelect: () => void,
     onLabelEdit: (payload: { id: string }) => void,
+    onLabelAdd: () => void,
 
     // State
     editing: boolean,
@@ -24,7 +25,8 @@
     labels: Labels,
     selectedId: string,
     onSelect: () => void,
-    onLabelEdit: (payload: { id: string }) => void
+    onLabelEdit: (payload: { id: string }) => void,
+    onLabelAdd: () => void
   }
 */
 
@@ -42,7 +44,7 @@ import { full as fullLabel } from '../selectors/label'
 export function LabelSelector (props /*: Props */) {
   const {
     labels, onSelect, selectedId, onToggleOpen, open, editing, onEdit,
-    onLabelEdit, onDismiss
+    onLabelEdit, onDismiss, onLabelAdd
   } = props
   const label = fullLabel(labels[selectedId])
 
@@ -66,7 +68,10 @@ export function LabelSelector (props /*: Props */) {
           )}
 
         {/* Add and edit buttons */}
-        <LabelSelectorActions editing={editing} onEdit={onEdit} />
+        <LabelSelectorActions
+          editing={editing}
+          onEdit={onEdit}
+          onLabelAdd={onLabelAdd} />
       </div>
       : null }
   </div>
@@ -97,6 +102,7 @@ export class LabelSelectorStateful extends React.Component {
       onToggleOpen={() => { this.setState({ open: !open }) }}
       labels={props.labels}
       onLabelEdit={props.onLabelEdit}
+      onLabelAdd={props.onLabelAdd}
       onSelect={props.onSelect}
       selectedId={props.selectedId}
       {...props} {...state} />
@@ -118,6 +124,9 @@ export default connect(
     },
     onLabelEdit: (payload /*: { id: string } */) => {
       dispatch({ type: 'label:update', payload })
+    },
+    onLabelAdd: () => {
+      dispatch({ type: 'label:create' })
     }
   })
 )(LabelSelectorStateful)

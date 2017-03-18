@@ -15,6 +15,7 @@
 */
 
 import buildReducer from 'build-reducer'
+import uuid from 'uuid'
 
 /*
  * Default labels
@@ -40,8 +41,9 @@ const DEFAULT_LABELS /*: Labels */ = {
 
 export default buildReducer({
   'init': initLabels,
+  'labels:load': loadLabels,
   'label:update': updateLabel,
-  'labels:load': loadLabels
+  'label:create': createLabel
 })
 
 /*
@@ -82,4 +84,28 @@ function updateLabel (state /*: State */, { payload } /*: UpdateProps */) /*: St
 
 function loadLabels (state /*: State */, { payload } /*: LoadProps */) /*: State */ {
   return { ...state, labels: payload }
+}
+
+/*
+ * Creates labels
+ */
+
+function createLabel (state /*: State */) /*: State */ {
+  alert('creating label')
+
+  let labels /*: Labels */ = state.labels || {}
+  let id = uuid.v4()
+
+  let label /*: Label */ = {
+    id,
+    name: '',
+    color: 'dodgerblue'
+  }
+
+  labels = {
+    ...labels,
+    [id]: label
+  }
+
+  return { ...state, labels }
 }

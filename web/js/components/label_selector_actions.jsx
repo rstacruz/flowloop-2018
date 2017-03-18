@@ -3,16 +3,19 @@
 /*::
   type Props = {
     editing: boolean,
-    onEdit: () => void
+    onEdit: () => void,
+    onLabelAdd: () => void
   }
 */
 
 import React from 'react'
 
-export default function LabelSelectorActions ({ editing, onEdit } /*: Props */) {
+export default function LabelSelectorActions (props /*: Props */) {
+  const { editing, onEdit, onLabelAdd } = props
+
   return <div className='label-selector-actions actions'>
     <button className='action -add'
-      onClick={() => { onEdit() }}><span>New label</span></button>
+      onClick={() => { onLabelAdd(); onEdit() }}><span>New label</span></button>
     { editing
       ? <button className='action -finish'
         onClick={() => { onEdit() }}><span>Finish</span></button>
