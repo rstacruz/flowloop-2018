@@ -177,7 +177,7 @@ describe('without side effects', () => {
     expect(state.labels).toMatchSnapshot()
   })
 
-  test('labels update', () => {
+  test('label:update', () => {
     let state
 
     store.dispatch({ type: 'init' })
@@ -193,5 +193,20 @@ describe('without side effects', () => {
 
     state = store.getState()
     expect(state.labels._foo).toMatchSnapshot()
+  })
+
+  test('label:create', () => {
+    let state
+
+    store.dispatch({ type: 'init' })
+    store.dispatch({ type: 'label:create' })
+
+    state = store.getState()
+    const keys = Object.keys(state.labels)
+    const label = state.labels[keys[keys.length - 1]]
+
+    expect(keys.length).toMatchSnapshot()
+    expect(label.name).toMatchSnapshot()
+    expect(label.color).toMatchSnapshot()
   })
 })

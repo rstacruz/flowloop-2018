@@ -91,8 +91,6 @@ function loadLabels (state /*: State */, { payload } /*: LoadProps */) /*: State
  */
 
 function createLabel (state /*: State */) /*: State */ {
-  alert('creating label')
-
   let labels /*: Labels */ = state.labels || {}
   let id = uuid.v4()
 
