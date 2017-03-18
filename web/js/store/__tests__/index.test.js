@@ -72,6 +72,27 @@ describe('without side effects', () => {
     expect(state.timer.startedAt).toEqual(DATE)
   })
 
+  test('timer:lap', () => {
+    store.dispatch({ type: 'init' })
+    store.dispatch({ type: 'ticker:tick', now: DATE })
+    store.dispatch({ type: 'timer:start', timerType: 'work' })
+    store.dispatch({ type: 'timer:lap' })
+
+    let state = store.getState()
+    expect(state.timer).toMatchSnapshot()
+  })
+
+  test('timer:lap 2x', () => {
+    store.dispatch({ type: 'init' })
+    store.dispatch({ type: 'ticker:tick', now: DATE })
+    store.dispatch({ type: 'timer:start', timerType: 'work' })
+    store.dispatch({ type: 'timer:lap' })
+    store.dispatch({ type: 'timer:lap' })
+
+    let state = store.getState()
+    expect(state.timer).toMatchSnapshot()
+  })
+
   test('timer:halt', () => {
     store.dispatch({ type: 'init' })
     store.dispatch({ type: 'ticker:tick', now: DATE })
@@ -93,7 +114,7 @@ describe('without side effects', () => {
     expect(state.settings['labels:default']).toEqual('_hello')
   })
 
-  test('log:addCurrent', () => {
+  test('log:load', () => {
     store.dispatch({ type: 'init' })
     store.dispatch({
       type: 'log:load',
@@ -173,6 +194,20 @@ describe('without side effects', () => {
     let state
 
     store.dispatch({ type: 'init' })
+    state = store.getState()
+    expect(state.labels).toMatchSnapshot()
+  })
+
+  test('labels:load', () => {
+    let state
+
+    store.dispatch({ type: 'labels:load', payload: {
+      '_foo': {
+        id: '_foo',
+        name: 'Foo',
+        color: 'red'
+      }
+    } })
     state = store.getState()
     expect(state.labels).toMatchSnapshot()
   })
