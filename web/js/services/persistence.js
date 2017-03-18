@@ -30,6 +30,7 @@ export default function Persistence () /*: Middleware<*, Action> */ {
           break
 
         case 'log:addCurrent':
+        case 'label:update':
         case 'timer:setLabelId':
         case 'settings:update':
         case 'settings:cycleTimerMode':
