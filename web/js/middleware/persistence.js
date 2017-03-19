@@ -3,19 +3,17 @@
 /*::
   import type { MiddlewareAPI, Dispatch, Middleware } from 'redux'
   import type { State } from '../selectors/state'
+  import type { DataStore } from '../selectors/data_store'
 
   type Action = { type: string }
-
-  type StoragePayload = {
-    version: number,
-    settings: Object,
-    log: Object,
-    labels: Object
-  }
 */
 
+import { migrate, LATEST_VERSION } from '../services/migrator'
+
 /**
- * Simple localStorage-based persistence
+ * Simple localStorage-based persistence middleware-generator.
+ * Listens for events that mutate interesting things, and saves them when
+ * something interesting happens.
  */
 
 export default function Persistence () /*: Middleware<*, Action> */ {
@@ -48,7 +46,8 @@ export default function Persistence () /*: Middleware<*, Action> */ {
  */
 
 function load (dispatch /*: Dispatch<Action> */) {
-  loadData('TimerData', (data /*: StoragePayload */) => {
+  loadData('TimerData', (data /*: DataStore */) => {
+    data = migrate(data)
     dispatch({ type: 'settings:update', payload: data.settings })
     dispatch({ type: 'log:load', payload: data.log })
     dispatch({ type: 'labels:load', payload: data.labels })
@@ -63,10 +62,11 @@ function load (dispatch /*: Dispatch<Action> */) {
 function save (state /*: State */) {
   if (!window.localStorage) return
 
-  const previous = JSON.parse(window.localStorage.TimerData || '{}')
+  let previous = JSON.parse(window.localStorage.TimerData || '{}')
+  previous = migrate(previous)
 
-  const payload = {
-    version: 0,
+  const payload /*: DataStore */ = {
+    version: LATEST_VERSION,
     log: { ...(previous.log || {}), ...state.log },
     labels: { ...(previous.labels || {}), ...state.labels },
     settings: { ...(previous.settings || {}), ...state.settings }
@@ -75,8 +75,9 @@ function save (state /*: State */) {
   window.localStorage.TimerData = JSON.stringify(payload)
 }
 
-/*
+/**
  * Loads data `key` from localStorage
+ * @private
  */
 
 function loadData (key, fn) {
