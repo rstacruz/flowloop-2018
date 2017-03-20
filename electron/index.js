@@ -1,4 +1,5 @@
 const electron = require('electron')
+const Menubar = require('menubar')
 
 const app = electron.app
 
@@ -10,11 +11,19 @@ const ROOT = require('path').resolve(__dirname, '../')
 // prevent window being garbage collected
 let mainWindow
 
-function onClosed () {
-  // dereference the window
-  // for multiple windows store them in an array
-  mainWindow = null
-}
+// Menubar app
+const mb = Menubar({
+  index: `file://${ROOT}/public/index.html`,
+  preloadWindow: true,
+  width: 320,
+  height: 480
+})
+
+// function onClosed () {
+//   // dereference the window
+//   // for multiple windows store them in an array
+//   mainWindow = null
+// }
 
 function createMainWindow () {
   const win = new electron.BrowserWindow({
@@ -28,18 +37,18 @@ function createMainWindow () {
   return win
 }
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
-})
+// app.on('window-all-closed', () => {
+//   if (process.platform !== 'darwin') {
+//     app.quit()
+//   }
+// })
 
-app.on('activate', () => {
-  if (!mainWindow) {
-    mainWindow = createMainWindow()
-  }
-})
+// app.on('activate', () => {
+//   if (!mainWindow) {
+//     mainWindow = createMainWindow()
+//   }
+// })
 
-app.on('ready', () => {
-  mainWindow = createMainWindow()
-})
+// app.on('ready', () => {
+//   mainWindow = createMainWindow()
+// })
