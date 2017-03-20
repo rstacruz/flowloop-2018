@@ -6,6 +6,24 @@
 
 [![Status](https://travis-ci.org/rstacruz/flowloop.svg?branch=master)](https://travis-ci.org/rstacruz/flowloop "See test builds")
 
+## About
+
+Flowloop is a productivity timer that helps you maintain a [state of flow](https://en.wikipedia.org/wiki/Flow_(psychology)). It's based on the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique). Unlike Pomodoro however, Flowloop keeps you aware of time without having to interrupt you.
+
+- Every 25 minutes of uninterrupted work time is **1 lap**. A bell sound will be played when you finish a lap.
+
+- The next lap will sound 1 more bell than the last, as long as your work is not interrupted. That is: 1 bell for the first lap, 2 bells for the second, and so on. This keeps you aware of how long you've been working.
+
+- You can take a break any time you wish for as long as you want. Increasing number of bells will also play every 5 minutes to remind you to get back to work.
+
+- Flowloop will keep a list of all your completed laps every day. This lets you see how productive you've been throughout the day and week.
+
+## Rationale
+
+Flowloop was born out of the frustration of Pomodoro timers all imposing 5-minute distraction breaks just as you're starting to get focused. I prefer a timer that gently reminds me of time spent, rather than one that requires my input 4 times in an hour.
+
+---
+
 <details>
 <summary>Set up instructions</summary>
 
