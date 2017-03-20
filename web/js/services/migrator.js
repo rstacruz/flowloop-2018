@@ -5,6 +5,14 @@
 */
 
 /**
+ * Migrations to perform.
+ */
+
+export const MIGRATIONS = {
+  1: addDefaultsToLabels
+}
+
+/**
  * The version to be baked.
  */
 
@@ -15,8 +23,18 @@ export const LATEST_VERSION = 0
  */
 
 export function migrate (data /*: DataStore */) /*: DataStore */ {
-  if (data.version < 1) data = addDefaultsToLabels(data)
-  data.version = LATEST_VERSION
+  data = Object.keys(MIGRATIONS).reduce((data, version) => {
+    const fn = MIGRATIONS[version]
+
+    if (data.version < +version) {
+      data = fn(data)
+      data.version = +version
+    }
+
+    return data
+  }, data)
+
+  data.version = LATEST_VERSION // TODO: remove this
   return data
 }
 
