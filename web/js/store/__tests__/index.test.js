@@ -1,6 +1,7 @@
 /* eslint-env jest */
 import { buildStore } from '../index'
 import Settings from '../../selectors/settings'
+import values from 'object-loops/values'
 
 let DATE = new Date('2010-09-02T00:00:00Z')
 let store
@@ -247,7 +248,7 @@ describe('without side effects', () => {
   })
 
   test('label:delete', () => {
-    let state, keys, id
+    let state, keys, id, items
 
     store.dispatch({ type: 'init' })
     store.dispatch({ type: 'label:create' })
@@ -259,13 +260,14 @@ describe('without side effects', () => {
     store.dispatch({ type: 'label:delete', id })
 
     state = store.getState()
-    keys = Object.keys(state.labels)
+    items = values(state.labels).filter(Boolean)
 
-    expect(keys.length).toMatchSnapshot()
+    expect(items.length).toMatchSnapshot()
+    expect(state.labels[id]).toEqual(null)
   })
 
   test('label:delete all', () => {
-    let state, keys
+    let state, keys, items
 
     store.dispatch({ type: 'init' })
     store.dispatch({ type: 'label:create' })
@@ -277,9 +279,9 @@ describe('without side effects', () => {
     })
 
     state = store.getState()
-    keys = Object.keys(state.labels)
+    items = values(state.labels).filter(Boolean)
 
-    expect(keys.length).toEqual(0)
+    expect(items.length).toEqual(0)
   })
 
   test('label:delete current timer label', () => {
@@ -298,7 +300,7 @@ describe('without side effects', () => {
     store.dispatch({ type: 'label:create' })
 
     state = store.getState()
-    keys = Object.keys(state.labels)
+    keys = Object.keys(state.labels).filter(Boolean)
     id = keys[keys.length - 1]
 
     // Use it

@@ -63,7 +63,7 @@ export function LabelSelector (props /*: Props */) {
     { open
       ? <div className='label-selector-menu menu _pop-in'>
         <div className='items'>
-          {values(labels).map(label =>
+          {values(labels).filter(Boolean).map(label =>
             <LabelSelectorItem
               label={label}
               key={label.id}

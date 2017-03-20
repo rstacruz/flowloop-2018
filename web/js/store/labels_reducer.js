@@ -116,6 +116,9 @@ function createLabel (state /*: State */) /*: State */ {
 
 function deleteLabel (state /*: State */, { id } /*: { id: string } */) /*: State */ {
   let labels /*: Labels */ = state.labels || {}
-  labels = del(labels, id)
+
+  // We have to nullify them to mark them as deleted.
+  // When they're persisted, they'll write over the old one.
+  labels = { ...labels, [id]: null }
   return { ...state, labels }
 }

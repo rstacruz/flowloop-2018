@@ -73,6 +73,7 @@ function save (state /*: State */) {
     settings: { ...(previous.settings || {}), ...state.settings }
   }
 
+  console.log('Persistence: saving data', payload)
   window.localStorage.TimerData = JSON.stringify(payload)
 }
 
