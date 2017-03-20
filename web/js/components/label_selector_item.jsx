@@ -97,18 +97,20 @@ function Edit (props /*: Props */) {
   return <span
     className={c('label-selector-item item -editing', { '-focus': focused })}>
     <span className='icon' style={{backgroundColor: label.color}} />
-    <input
-      className='name -input'
-      type='text'
-      defaultValue={label.name}
-      onFocus={onFocus}
-      onChange={e => {
-        onLabelEdit({
-          id: label.id,
-          name: e.target.value
-        })
-      }}
-      onBlur={onBlur} />
+    <span className='name'>
+      <input
+        className='input'
+        type='text'
+        defaultValue={label.name}
+        onFocus={onFocus}
+        onChange={e => {
+          onLabelEdit({
+            id: label.id,
+            name: e.target.value
+          })
+        }}
+        onBlur={onBlur} />
+    </span>
     <span className='actions'>
       <button
         className='button -delete'

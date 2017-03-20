@@ -12,7 +12,13 @@
   box-shadow: var(--button-shadow-active);
   text-align: left;
 
-  & > .item {
+  & > .items {
+    max-height: 256px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  & > .items > .item {
     width: 100%;
   }
 }

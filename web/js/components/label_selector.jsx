@@ -62,16 +62,18 @@ export function LabelSelector (props /*: Props */) {
 
     { open
       ? <div className='label-selector-menu menu _pop-in'>
-        {values(labels).map(label =>
-          <LabelSelectorItem
-            label={label}
-            key={label.id}
-            editing={editing}
-            selected={selectedId === label.id}
-            onLabelDelete={onLabelDelete}
-            onLabelEdit={onLabelEdit}
-            onSelect={() => { onDismiss(); onSelect(label.id) }} />
-          )}
+        <div className='items'>
+          {values(labels).map(label =>
+            <LabelSelectorItem
+              label={label}
+              key={label.id}
+              editing={editing}
+              selected={selectedId === label.id}
+              onLabelDelete={onLabelDelete}
+              onLabelEdit={onLabelEdit}
+              onSelect={() => { onDismiss(); onSelect(label.id) }} />
+            )}
+        </div>
 
         {/* Add and edit buttons */}
         <LabelSelectorActions
