@@ -1,4 +1,4 @@
-# Flowloop
+<h1 align='center'><br><br><img src='https://cdn.rawgit.com/rstacruz/flowloop/v0.3.0/web/assets/flowloop-logo.svg' alt='Flowloop'><br><br><br></h1>
 
 > A polite web-based timer for hyper-productivity
 
