@@ -9,7 +9,7 @@
  */
 
 export const MIGRATIONS = {
-  '1': addDefaultsToLabels
+  // '1': addDefaultsToLabels
 }
 
 /**
@@ -34,14 +34,5 @@ export function migrate (data /*: DataStore */) /*: DataStore */ {
     return data
   }, data)
 
-  data.version = LATEST_VERSION // TODO: remove this
-  return data
-}
-
-/*
- * Add isDefault and isDeletable flag to labels.
- */
-
-export function addDefaultsToLabels (data /*: DataStore */) {
   return data
 }
