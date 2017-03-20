@@ -29,6 +29,7 @@ export default function Persistence () /*: Middleware<*, Action> */ {
 
         case 'log:addCurrent':
         case 'label:update':
+        case 'label:delete':
         case 'timer:setLabelId':
         case 'settings:update':
         case 'settings:cycleTimerMode':
