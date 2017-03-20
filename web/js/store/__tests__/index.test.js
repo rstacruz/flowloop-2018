@@ -1,5 +1,6 @@
 /* eslint-env jest */
 import { buildStore } from '../index'
+import Settings from '../../selectors/settings'
 
 let DATE = new Date('2010-09-02T00:00:00Z')
 let store
@@ -279,5 +280,43 @@ describe('without side effects', () => {
     keys = Object.keys(state.labels)
 
     expect(keys.length).toEqual(0)
+  })
+
+  test('label:delete current timer label', () => {
+    let state, keys, id, settings
+
+    // Start a timer
+    store.dispatch({ type: 'init' })
+    store.dispatch({ type: 'ticker:tick', now: DATE })
+    store.dispatch({
+      type: 'settings:update',
+      payload: { 'duration:work': 25 }
+    })
+    store.dispatch({ type: 'timer:start', timerType: 'work' })
+
+    // Create a label
+    store.dispatch({ type: 'label:create' })
+
+    state = store.getState()
+    keys = Object.keys(state.labels)
+    id = keys[keys.length - 1]
+
+    // Use it
+    store.dispatch({ type: 'timer:setLabelId', id })
+
+    state = store.getState()
+    expect(state.timer.labelId).toEqual(id)
+
+    // Delete it
+    store.dispatch({ type: 'label:delete', id })
+
+    // Expect the following to revert to default:
+    // - current timer label
+    // - default label settings
+    state = store.getState()
+    settings = Settings.full(state)
+    expect(state.timer.labelId).toMatchSnapshot()
+    expect(state.settings['labels:default']).toMatchSnapshot()
+    expect(settings['labels:default']).toMatchSnapshot()
   })
 })

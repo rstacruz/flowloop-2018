@@ -117,6 +117,5 @@ function createLabel (state /*: State */) /*: State */ {
 function deleteLabel (state /*: State */, { id } /*: { id: string } */) /*: State */ {
   let labels /*: Labels */ = state.labels || {}
   labels = del(labels, id)
-
   return { ...state, labels }
 }

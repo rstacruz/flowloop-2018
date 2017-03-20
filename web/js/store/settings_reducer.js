@@ -1,5 +1,6 @@
 import buildReducer from 'build-reducer'
 import put from '101/put'
+import del from '101/del'
 
 import Settings from '../selectors/settings'
 
@@ -22,6 +23,7 @@ export default buildReducer({
   },
 
   'timer:setLabelId': setLabelId,
+  'label:delete': deleteLabel,
 
   'settings:cycleTimerMode': (state, action) => {
     const mode = Settings.full(state)['timer:mode']
@@ -43,5 +45,20 @@ export default buildReducer({
 function setLabelId (state /*: State */, { id } /*: { id: string } */) /*: State */ {
   let settings /*: Settings */ = state.settings || {}
   settings = { ...settings, 'labels:default': id }
+  return { ...state, settings }
+}
+
+/*
+ * WHen deleting al abel that's the current labels:default,
+ * reset it to the old default
+ */
+
+function deleteLabel (state /*: State */, { id } /*: { id: string } */) /*: State */ {
+  let settings /*: Settings */ = state.settings || {}
+
+  if (settings['labels:default'] === id) {
+    settings = del(settings, 'labels:default')
+  }
+
   return { ...state, settings }
 }

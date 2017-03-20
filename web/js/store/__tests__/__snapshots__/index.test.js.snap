@@ -8,6 +8,12 @@ exports[`without side effects label:create 3`] = `"dodgerblue"`;
 
 exports[`without side effects label:delete 1`] = `2`;
 
+exports[`without side effects label:delete current timer label 1`] = `"_default"`;
+
+exports[`without side effects label:delete current timer label 2`] = `undefined`;
+
+exports[`without side effects label:delete current timer label 3`] = `"_default"`;
+
 exports[`without side effects label:update 1`] = `
 Object {
   "color": "red",

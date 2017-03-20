@@ -18,6 +18,12 @@ import { createSelector } from 'reselect'
 import get from '101/pluck'
 
 /**
+ * Default label ID, by absolute default
+ */
+
+export const DEFAULT_LABEL_ID = '_default'
+
+/**
  * Default settings
  */
 
@@ -25,7 +31,7 @@ export const DEFAULTS /*: Settings */ = {
   'duration:work': 25 * 60 * 1000,
   'duration:break': 5 * 60 * 1000,
   'duration:longBreak': 15 * 60 * 1000,
-  'labels:default': '_default',
+  'labels:default': DEFAULT_LABEL_ID,
   'timer:mode': 'CONTINUOUS'
 }
 
@@ -61,6 +67,7 @@ export const full /*: (state: State) => Settings */ = createSelector(
  * Export
  */
 export default {
+  DEFAULT_LABEL_ID,
   DEFAULTS,
   TIMER_MODES,
   TIMER_MODE_LABELS,

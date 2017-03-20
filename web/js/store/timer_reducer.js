@@ -62,7 +62,9 @@ export default buildReducer({
     }
 
     return { ...state, timer }
-  }
+  },
+
+  'label:delete': deleteLabel
 })
 
 /*
@@ -72,5 +74,23 @@ export default buildReducer({
 function setLabelId (state /*: State */, { id } /*: { id: string } */) /*: State */ {
   let timer /*: Timer */ = state.timer || { active: false }
   timer = { ...timer, 'labelId': id }
+  return { ...state, timer }
+}
+
+/*
+ * Reset to default label if our label was deleted
+ */
+
+function deleteLabel (state /*: State */, { id } /*: { id: string } */) /*: State */ {
+  let timer /*: Timer */ = state.timer || { active: false }
+
+  if (timer.labelId === id) {
+    // const settings = Settings.full(state)
+    // const defaultLabel = settings['labels:default']
+    const defaultLabel = Settings.DEFAULT_LABEL_ID
+
+    timer = { ...timer, 'labelId': defaultLabel }
+  }
+
   return { ...state, timer }
 }
