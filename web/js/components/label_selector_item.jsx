@@ -7,6 +7,7 @@
     label: Label,
     onSelect: () => void,
     onLabelEdit: (payload: { id: string }) => void,
+    onLabelDelete: (id: string) => void,
     selected: boolean,
     editing: boolean
   }
@@ -15,6 +16,7 @@
     label: Label,
     onSelect: () => void,
     onLabelEdit: (payload: { id: string }) => void,
+    onLabelDelete: (id: string) => void,
     selected: boolean,
     editing: boolean,
 
@@ -63,6 +65,7 @@ export default class LabelSelectItemStateful extends React.Component {
       label={props.label}
       onSelect={props.onSelect}
       onLabelEdit={props.onLabelEdit}
+      onLabelDelete={props.onLabelDelete}
       selected={props.selected}
       editing={props.editing}
       {...props} {...state} />
@@ -89,7 +92,7 @@ function View (props /*: Props */) {
  */
 
 function Edit (props /*: Props */) {
-  const { label, focused, onFocus, onBlur, onLabelEdit } = props
+  const { label, focused, onFocus, onBlur, onLabelEdit, onLabelDelete } = props
 
   return <span
     className={c('label-selector-item item -editing', { '-focus': focused })}>
@@ -106,5 +109,10 @@ function Edit (props /*: Props */) {
         })
       }}
       onBlur={onBlur} />
+    <span className='actions'>
+      <button
+        className='button -delete'
+        onClick={e => { e.preventDefault(); onLabelDelete(label.id) }} />
+    </span>
   </span>
 }

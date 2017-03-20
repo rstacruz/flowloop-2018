@@ -6,6 +6,8 @@ exports[`without side effects label:create 2`] = `""`;
 
 exports[`without side effects label:create 3`] = `"dodgerblue"`;
 
+exports[`without side effects label:delete 1`] = `2`;
+
 exports[`without side effects label:update 1`] = `
 Object {
   "color": "red",

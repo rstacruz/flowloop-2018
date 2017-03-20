@@ -10,8 +10,9 @@
     labels: Labels,
     selectedId: string,
     onSelect: () => void,
-    onLabelEdit: (payload: { id: string }) => void,
     onLabelAdd: () => void,
+    onLabelDelete: (id: string) => void,
+    onLabelEdit: (payload: { id: string }) => void,
 
     // State
     editing: boolean,
@@ -25,8 +26,9 @@
     labels: Labels,
     selectedId: string,
     onSelect: () => void,
+    onLabelAdd: () => void,
+    onLabelDelete: (id: string) => void,
     onLabelEdit: (payload: { id: string }) => void,
-    onLabelAdd: () => void
   }
 */
 
@@ -45,7 +47,7 @@ import c from 'classnames'
 export function LabelSelector (props /*: Props */) {
   const {
     labels, onSelect, selectedId, onToggleOpen, open, editing, onEdit,
-    onLabelEdit, onDismiss, onLabelAdd
+    onLabelEdit, onLabelDelete, onDismiss, onLabelAdd
   } = props
   const label = fullLabel(labels[selectedId])
 
@@ -66,6 +68,7 @@ export function LabelSelector (props /*: Props */) {
             key={label.id}
             editing={editing}
             selected={selectedId === label.id}
+            onLabelDelete={onLabelDelete}
             onLabelEdit={onLabelEdit}
             onSelect={() => { onDismiss(); onSelect(label.id) }} />
           )}
@@ -104,6 +107,7 @@ export class LabelSelectorStateful extends React.Component {
       onEdit={() => { this.setState({ editing: !editing }) }}
       onToggleOpen={() => { this.setState({ open: !open }) }}
       labels={props.labels}
+      onLabelDelete={props.onLabelDelete}
       onLabelEdit={props.onLabelEdit}
       onLabelAdd={props.onLabelAdd}
       onSelect={props.onSelect}
@@ -127,6 +131,9 @@ export default connect(
     },
     onLabelEdit: (payload /*: { id: string } */) => {
       dispatch({ type: 'label:update', payload })
+    },
+    onLabelDelete: (id /*: string */) => {
+      dispatch({ type: 'label:delete', id })
     },
     onLabelAdd: () => {
       dispatch({ type: 'label:create' })

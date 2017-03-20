@@ -9,7 +9,7 @@
  */
 
 export const MIGRATIONS = {
-  1: addDefaultsToLabels
+  '1': addDefaultsToLabels
 }
 
 /**

@@ -244,4 +244,40 @@ describe('without side effects', () => {
     expect(label.name).toMatchSnapshot()
     expect(label.color).toMatchSnapshot()
   })
+
+  test('label:delete', () => {
+    let state, keys, id
+
+    store.dispatch({ type: 'init' })
+    store.dispatch({ type: 'label:create' })
+
+    state = store.getState()
+    keys = Object.keys(state.labels)
+    id = keys[keys.length - 1]
+
+    store.dispatch({ type: 'label:delete', id })
+
+    state = store.getState()
+    keys = Object.keys(state.labels)
+
+    expect(keys.length).toMatchSnapshot()
+  })
+
+  test('label:delete all', () => {
+    let state, keys
+
+    store.dispatch({ type: 'init' })
+    store.dispatch({ type: 'label:create' })
+
+    state = store.getState()
+    keys = Object.keys(state.labels)
+    keys.forEach(id => {
+      store.dispatch({ type: 'label:delete', id })
+    })
+
+    state = store.getState()
+    keys = Object.keys(state.labels)
+
+    expect(keys.length).toEqual(0)
+  })
 })

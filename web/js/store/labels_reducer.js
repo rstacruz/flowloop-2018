@@ -16,6 +16,7 @@
 
 import buildReducer from 'build-reducer'
 import uuid from 'uuid'
+import del from '101/del'
 
 /*
  * Default labels
@@ -43,7 +44,8 @@ export default buildReducer({
   'init': initLabels,
   'labels:load': loadLabels,
   'label:update': updateLabel,
-  'label:create': createLabel
+  'label:create': createLabel,
+  'label:delete': deleteLabel
 })
 
 /*
@@ -104,6 +106,17 @@ function createLabel (state /*: State */) /*: State */ {
     ...labels,
     [id]: label
   }
+
+  return { ...state, labels }
+}
+
+/*
+ * Deletes a label
+ */
+
+function deleteLabel (state /*: State */, { id } /*: { id: string } */) /*: State */ {
+  let labels /*: Labels */ = state.labels || {}
+  labels = del(labels, id)
 
   return { ...state, labels }
 }
