@@ -22,6 +22,14 @@ Flowloop is a productivity timer that helps you maintain a [state of flow](https
 
 Flowloop was born out of the frustration of Pomodoro timers all imposing 5-minute distraction breaks just as you're starting to get focused. I prefer a timer that gently reminds me of time spent, rather than one that requires my input 4 times in an hour.
 
+Use Flowloop for:
+
+- __Motivate yourself.__ By keeping a list of laps over the last week, you'll be giving yourself a subtle push of encouragement to perform as much as yesterday, if not better.
+
+- __Manage distractions.__ By clearly designating time periods as for work and break, it helps you be more productive in your work and enjoy your breaks better.
+
+- __Schedule work better.__ You'll be able to do around 10 laps in one typical work day. Awareness of laps will help you schedule your time wisely.
+
 ---
 
 <details>
