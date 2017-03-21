@@ -8,6 +8,7 @@
     onSelect: () => void,
     onLabelEdit: (payload: { id: string }) => void,
     onLabelDelete: (id: string) => void,
+    onLabelSetColor: (color: string) => void,
     selected: boolean,
     editing: boolean
   }
@@ -17,6 +18,7 @@
     onSelect: () => void,
     onLabelEdit: (payload: { id: string }) => void,
     onLabelDelete: (id: string) => void,
+    onLabelSetColor: (color: string) => void,
     selected: boolean,
     editing: boolean,
 
@@ -30,6 +32,8 @@
 import React from 'react'
 import c from 'classnames'
 import { full as fullLabel } from '../selectors/label'
+import { COLOR_NAMES } from '../selectors/color'
+import ColorPicker from './color_picker'
 
 /*
  * Stateless component
@@ -67,6 +71,7 @@ export default class LabelSelectItemStateful extends React.Component {
       onSelect={props.onSelect}
       onLabelEdit={props.onLabelEdit}
       onLabelDelete={props.onLabelDelete}
+      onLabelSetColor={props.onLabelSetColor}
       selected={props.selected}
       editing={props.editing}
       {...props} {...state} />
@@ -94,7 +99,11 @@ function View (props /*: Props */) {
  */
 
 function Edit (props /*: Props */) {
-  const { label, focused, onFocus, onBlur, onLabelEdit, onLabelDelete } = props
+  const {
+    label, focused, onFocus, onBlur, onLabelEdit, onLabelDelete,
+    onLabelSetColor
+  } = props
+
   const label_ = fullLabel(label)
 
   return <span
@@ -120,6 +129,12 @@ function Edit (props /*: Props */) {
           className='button -delete'
           onClick={e => { e.preventDefault(); onLabelDelete(label.id) }} />
         : null }
+    </span>
+    <span className='colors'>
+      <ColorPicker
+        options={COLOR_NAMES}
+        selected={label.color}
+        onChange={(color) => onLabelSetColor(color)} />
     </span>
   </span>
 }

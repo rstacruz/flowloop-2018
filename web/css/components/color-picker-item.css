@@ -1,0 +1,27 @@
+@import '../variables.css';
+
+/*
+ * Each individual color picker peg
+ */
+
+.color-picker-item {
+  & {
+    display: inline-block;
+    margin: 0;
+    padding: 4px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  & > .peg {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  &.-active > .peg {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--line-color);
+  }
+}

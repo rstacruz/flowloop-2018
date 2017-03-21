@@ -81,6 +81,7 @@
   & {
     padding-right: 0;
     background-color: var(--hover-color);
+    flex-wrap: wrap;
   }
 
   &:first-child {
@@ -139,5 +140,10 @@
 
   & > .actions > .button:hover {
     color: var(--accent);
+  }
+
+  /* Colors */
+  & > .colors {
+    flex: 0 0 100%;
   }
 }

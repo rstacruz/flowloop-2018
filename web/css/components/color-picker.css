@@ -1,0 +1,5 @@
+@import '../variables.css';
+
+.color-picker {
+  display: inline-block;
+}

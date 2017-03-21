@@ -13,6 +13,7 @@
     onLabelAdd: () => void,
     onLabelDelete: (id: string) => void,
     onLabelEdit: (payload: { id: string }) => void,
+    onLabelSetColor: (id: string, color: string) => void,
 
     // State
     editing: boolean,
@@ -30,6 +31,7 @@
     onLabelAdd: () => void,
     onLabelDelete: (id: string) => void,
     onLabelEdit: (payload: { id: string }) => void,
+    onLabelSetColor: (id: string, color: string) => void,
   }
 */
 
@@ -48,8 +50,10 @@ import c from 'classnames'
 export function LabelSelector (props /*: Props */) {
   const {
     labels, onSelect, selectedId, onToggleOpen, open, editing, onEdit,
-    onLabelEdit, onLabelDelete, onDismiss, onLabelAdd, onFinish
+    onLabelEdit, onLabelDelete, onDismiss, onLabelAdd, onFinish,
+    onLabelSetColor
   } = props
+
   const label = fullLabel(labels[selectedId])
 
   return <div className={c('label-selector', { '-open': open })}>
@@ -72,6 +76,7 @@ export function LabelSelector (props /*: Props */) {
               selected={selectedId === label.id}
               onLabelDelete={onLabelDelete}
               onLabelEdit={onLabelEdit}
+              onLabelSetColor={(color) => { onLabelSetColor(label.id, color) }}
               onSelect={() => { onDismiss(); onSelect(label.id) }} />
             )}
         </div>
@@ -139,6 +144,9 @@ export default connect(
     },
     onLabelDelete: (id /*: string */) => {
       dispatch({ type: 'label:delete', id })
+    },
+    onLabelSetColor: (id /*: string */, color /*: string */) => {
+      dispatch({ type: 'label:update', payload: { id, color } })
     },
     onLabelAdd: () => {
       dispatch({ type: 'label:create' })
