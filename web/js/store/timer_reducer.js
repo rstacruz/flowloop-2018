@@ -105,8 +105,8 @@ function deleteLabel (state /*: State */, { id } /*: { id: string } */) /*: Stat
   let timer /*: Timer */ = state.timer || { active: false }
 
   if (timer.labelId === id) {
-    // const settings = Settings.full(state)
-    // const defaultLabel = settings['labels:default']
+    // Don't get the default from the settings! It could've
+    // been the label that was deleted.
     const defaultLabel = Settings.DEFAULT_LABEL_ID
 
     timer = { ...timer, 'labelId': defaultLabel }
