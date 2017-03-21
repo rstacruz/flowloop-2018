@@ -1,0 +1,79 @@
+@import '../variables.css';
+
+.label-selector-actions {
+  & {
+    @apply --clearfix;
+
+    border-top: solid 1px var(--line-color);
+    padding: 0;
+    padding-top: 6px;
+  }
+
+  /* Add and edit buttons */
+  & > .action {
+    display: inline-block;
+    border: 0;
+    padding: 8px 16px;
+    background: transparent;
+    color: var(--light-gray-text);
+    white-space: nowrap;
+  }
+
+  & > .action:hover,
+  & > .action:hover::before {
+    color: var(--accent);
+  }
+
+  /* Add button */
+  & > .action.-add {
+    float: left;
+  }
+
+  /* Add icon */
+  & > .action.-add::before {
+    @apply --ion-icon;
+    @apply --ion-icon-md-add;
+
+    font-size: 20px;
+    margin-right: 16px;
+    position: relative;
+    top: -1px;
+  }
+
+  /* Edit button */
+  & > .action.-edit,
+  & > .action.-finish {
+    float: right;
+  }
+
+  & > .action.-edit::after {
+    @apply --ion-icon;
+    @apply --ion-icon-md-create;
+
+    font-size: 20px;
+    margin-left: 16px;
+    position: relative;
+    top: -2px;
+  }
+
+  /* Hover heh */
+  & > .action.-edit > span {
+    opacity: 0;
+    transition: opacity 150ms linear;
+  }
+
+  & > .action.-edit:hover > span {
+    opacity: 1;
+    transition: opacity 50ms linear;
+  }
+
+  /* Finish button */
+  & > .action.-finish,
+  & > .action.-finish:hover {
+    color: var(--success-color);
+  }
+
+  & > .action.-finish::before {
+    display: none;
+  }
+}

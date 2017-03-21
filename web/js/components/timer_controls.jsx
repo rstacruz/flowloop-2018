@@ -1,6 +1,7 @@
 /* @flow */
 
 /*::
+  import type { State } from '../selectors/state'
   import type { FullTimer } from '../selectors/timer'
 
   type Props = {
@@ -10,7 +11,6 @@
 */
 
 import React from 'react'
-
 import ModeSelector from '../components/mode_selector'
 import LabelSelector from '../components/label_selector'
 import ms from '../helpers/timer_display'
@@ -20,13 +20,13 @@ import ms from '../helpers/timer_display'
  */
 
 export default function TimerControls ({ now, timer } /*: Props */) {
-  const { type, duration, label, elapsed } = timer
+  const { type, duration, elapsed } = timer
   const timerType = type
 
   return <div className='timer-controls'>
     <h1>
       {timerType === 'work'
-        ? <LabelSelector label={label} />
+        ? <LabelSelector />
         : <span>Break</span>}
     </h1>
     <p className='subtitle'>

@@ -1,0 +1,44 @@
+@import '../variables.css';
+
+/*
+ * The dropdown box (not the popup)
+ */
+
+.label-selector-dropdown {
+  @apply --font-size-1;
+
+  & {
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    cursor: pointer;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: solid 2px color(var(--gray-text) alpha(100%));
+    border-bottom: solid 2px color(var(--gray-text) alpha(100%));
+    transform: rotate(45deg);
+    margin-left: 12px;
+    position: relative;
+    top: -4px;
+  }
+
+  &.-open,
+  &:hover,
+  &:focus {
+    color: var(--accent);
+
+    &::after {
+      border-right-color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+  }
+}

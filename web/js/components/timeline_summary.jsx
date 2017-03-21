@@ -4,10 +4,12 @@
   import type { Dispatch } from 'redux'
   import type { State } from '../selectors/state'
   import type { Logs } from '../selectors/log'
+  import type { Labels } from '../selectors/label'
 
   type Props = {
     now: Date,
-    items: Logs
+    items: Logs,
+    labels: Labels
   }
 */
 
@@ -23,15 +25,15 @@ export class TimelineSummary extends React.Component {
   /*:: props: Props */
 
   render () {
-    const isEmpty = values(this.props.items).length === 0
-    const now = this.props.now
+    const { items, now, labels } = this.props
+    const isEmpty = values(items).length === 0
 
     return <a className='timeline-summary fixed' href='#log'>
       <span className='-left text'>{Moment(now).format('dddd')}</span>
 
       {isEmpty
         ? <Empty />
-        : <LogItems items={this.props.items} />}
+        : <LogItems items={items} labels={labels} />}
 
       <span className='-right text'>{Moment(now).format('MMM D')}</span>
     </a>
@@ -53,6 +55,7 @@ function Empty () {
 export default connect(
   (state /*: State */) => ({
     items: recents(state),
+    labels: state.labels,
     now: get(state, 'time.now')
   }),
   (dispatch /*: Dispatch<*> */) => ({})

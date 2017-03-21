@@ -1,32 +1,37 @@
 @import '../variables.css';
 
 .label-selector {
-  @apply --font-size-1;
+  position: relative;
+  z-index: 5;
 
-  display: inline-block;
-  cursor: pointer;
-  white-space: nowrap;
-
-  &::after {
-    content: '';
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-right: solid 2px color(var(--gray-text) alpha(100%));
-    border-bottom: solid 2px color(var(--gray-text) alpha(100%));
-    transform: rotate(45deg);
-    margin-left: 12px;
+  & > .dropdown {
     position: relative;
-    top: -4px;
+    z-index: 1;
   }
 
-  &:hover,
-  &:focus {
-    color: var(--accent);
+  & > .menu {
+    position: absolute;
+    z-index: 1;
+    top: 64px;
+    left: 50%;
+    margin-left: -128px;
+  }
 
-    &::after {
-      border-right-color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
+  & > .screen {
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: color(var(--background) alpha(70%));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 150ms linear;
+  }
+
+  &.-open > .screen {
+    opacity: 1;
+    pointer-events: auto;
   }
 }

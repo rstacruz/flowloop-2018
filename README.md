@@ -1,4 +1,4 @@
-# Flowloop
+<h1 align='center'><br><br><img src='https://cdn.rawgit.com/rstacruz/flowloop/v0.3.0/web/assets/flowloop-logo.svg' alt='Flowloop'><br><br><br></h1>
 
 > A polite web-based timer for hyper-productivity
 
@@ -8,7 +8,7 @@
 
 ## About
 
-Flowloop is a productivity timer that helps you maintain a [state of flow](https://en.wikipedia.org/wiki/Flow_(psychology)). It's based on the [Pomodoro Technique](https://en.wikipedia.org/wiki/Pomodoro_Technique). Unlike Pomodoro however, Flowloop keeps you aware of time without having to interrupt you.
+Flowloop is a productivity timer that helps you maintain a [state of flow](https://en.wikipedia.org/wiki/Flow_(psychology)). It keeps you aware of time without having to interrupt you.
 
 - Every 25 minutes of uninterrupted work time is **1 lap**. A bell sound will be played when you finish a lap.
 
@@ -18,9 +18,21 @@ Flowloop is a productivity timer that helps you maintain a [state of flow](https
 
 - Flowloop will keep a list of all your completed laps every day. This lets you see how productive you've been throughout the day and week.
 
-## Rationale
+## Why use Flowloop?
+
+Use Flowloop to:
+
+- __Motivate yourself.__ By keeping a list of laps over the last week, you'll be giving yourself a subtle push of encouragement to perform as much as yesterday, if not better.
+
+- __Manage distractions.__ By clearly designating time periods as for work and break, it helps you be more productive in your work and enjoy your breaks better.
+
+- __Schedule work better.__ You'll be able to do around 10 laps in one typical work day. Awareness of laps will help you schedule your time wisely.
+
+## Comparison with Pomodoro
 
 Flowloop was born out of the frustration of Pomodoro timers all imposing 5-minute distraction breaks just as you're starting to get focused. I prefer a timer that gently reminds me of time spent, rather than one that requires my input 4 times in an hour.
+
+Flowloop is Pomodoro with no limits on work hours or break lengths. You'll be subtly reminded of how long you've been working (or on break), instead of being forced to stop or to start.
 
 ---
 
@@ -88,6 +100,29 @@ And package it via:
 
 ```sh
 yarn run electron:dist
+```
+</details>
+
+<details>
+<summary>Developer tools</summary>
+
+## Developer tools
+
+```js
+// Shorten work duration to 4 seconds
+__APP__.store.dispatch({ type: 'settings:update', payload: { 'duration:work': 4000 } })
+
+// Reset to defaults
+__APP__.store.dispatch({ type: 'settings:reset' })
+
+// Clear log items
+__APP__.store.dispatch({ type: 'log:clear' })
+
+// Obliterate local data
+delete localStorage.TimerData
+
+// Copy local data for exporting to clipboard
+prompt('', localStorage.TimerData)
 ```
 </details>
 

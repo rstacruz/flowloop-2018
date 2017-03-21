@@ -1,14 +1,103 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`without side effects label:create 1`] = `3`;
+
+exports[`without side effects label:create 2`] = `""`;
+
+exports[`without side effects label:create 3`] = `"RED"`;
+
+exports[`without side effects label:create 4`] = `4`;
+
+exports[`without side effects label:create 5`] = `""`;
+
+exports[`without side effects label:create 6`] = `"INDIGO"`;
+
+exports[`without side effects label:delete 1`] = `2`;
+
+exports[`without side effects label:delete current timer label 1`] = `"_default"`;
+
+exports[`without side effects label:delete current timer label 2`] = `undefined`;
+
+exports[`without side effects label:delete current timer label 3`] = `"_default"`;
+
+exports[`without side effects label:update 1`] = `
+Object {
+  "color": "red",
+  "id": "_foo",
+  "name": "Foo",
+}
+`;
+
+exports[`without side effects labels init 1`] = `
+Object {
+  "_chore": Object {
+    "color": "SLATE",
+    "id": "_chore",
+    "name": "Chore",
+  },
+  "_default": Object {
+    "color": "BLUE",
+    "id": "_default",
+    "name": "Work",
+  },
+}
+`;
+
+exports[`without side effects labels:load 1`] = `
+Object {
+  "_foo": Object {
+    "color": "red",
+    "id": "_foo",
+    "name": "Foo",
+  },
+}
+`;
+
+exports[`without side effects log:clear 1`] = `
+Object {
+  "a": null,
+}
+`;
+
 exports[`without side effects route:change 1`] = `
 Object {
   "page": "HomeIndex",
 }
 `;
 
+exports[`without side effects settings:reset 1`] = `Object {}`;
+
 exports[`without side effects ticker:tick 1`] = `
 Object {
   "now": 2010-09-02T00:00:00.000Z,
+}
+`;
+
+exports[`without side effects timer:lap 1`] = `
+Object {
+  "active": true,
+  "duration": 1500000,
+  "endsAt": 2010-09-02T00:25:00.000Z,
+  "labelId": "_default",
+  "laps": 1,
+  "lastLap": 2010-09-02T00:00:00.000Z,
+  "lastLogId": null,
+  "startedAt": 2010-09-02T00:00:00.000Z,
+  "type": "work",
+}
+`;
+
+exports[`without side effects timer:lap 2x 1`] = `
+Object {
+  "active": true,
+  "duration": 1500000,
+  "endsAt": 2010-09-02T00:25:00.000Z,
+  "labelId": "_default",
+  "laps": 2,
+  "lastLap": 2010-09-02T00:00:00.000Z,
+  "lastLogId": null,
+  "startedAt": 2010-09-02T00:00:00.000Z,
+  "type": "work",
 }
 `;
 
@@ -17,7 +106,7 @@ Object {
   "active": true,
   "duration": 25,
   "endsAt": 2010-09-02T00:00:00.025Z,
-  "label": "Work",
+  "labelId": "_default",
   "laps": 0,
   "lastLap": 2010-09-02T00:00:00.000Z,
   "lastLogId": null,
@@ -31,7 +120,7 @@ Object {
   "active": true,
   "duration": 300000,
   "endsAt": 2010-09-02T00:05:00.000Z,
-  "label": "Work",
+  "labelId": "_default",
   "laps": 0,
   "lastLap": 2010-09-02T00:00:00.000Z,
   "lastLogId": null,

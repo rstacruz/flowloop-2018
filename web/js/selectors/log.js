@@ -2,10 +2,11 @@
 
 /*::
   import type { State } from './state'
+  import type { Labels } from './label'
   import type { TimerType } from './timer'
 
   export type Logs = {
-    [key: string]: Log
+    [key: string]: Log | null
   }
 
   export type Log = {
@@ -14,8 +15,19 @@
     startedAt: Date,
     endedAt: Date,
     duration: number,
-    label: string,
+    labelId: string,
     isComplete: boolean
+  }
+
+  export type FullLog = {
+    id: string,
+    timerType: TimerType,
+    startedAt: Date,
+    endedAt: Date,
+    duration: number,
+    labelId: string,
+    isComplete: boolean,
+    labelText: string
   }
 
   export type LogsByDate = {
@@ -28,6 +40,7 @@ import get from '101/pluck'
 import groupBy from '101/group-by'
 import values from 'object-loops/values'
 import { createSelector } from 'reselect'
+import { full as fullLabel } from './label'
 
 /*
  * Returns midnight
@@ -51,13 +64,30 @@ export const recents /*: (state: State) => Logs */ = createSelector(
   })
 
 /*
+ * Full
+ */
+
+export const full /*: ([Log, Labels]) => FullLog */ = createSelector(
+  ([log, _]) => log,
+  ([log, labels]) => {
+    return fullLabel(log.labelId && labels[log.labelId])
+  },
+  (log, label) => {
+    return {
+      ...log,
+      labelText: log.timerType === 'work' ? label.name : 'Break'
+    }
+  })
+
+/*
  * By date
  */
 
 export const byDate /*: (state: State) => LogsByDate */ = createSelector(
   state => state.log || {},
   log => {
-    return groupBy(values(log), item => truncateDate(item.startedAt).toISOString())
+    return groupBy(values(log).filter(Boolean), item =>
+      truncateDate(item.startedAt).toISOString())
   })
 
 /*
@@ -67,11 +97,11 @@ export const byDate /*: (state: State) => LogsByDate */ = createSelector(
 export const onlyWork /*: (logs: Logs) => Logs */ = createSelector(
   (log /*: Log */) => log || {},
   (log /*: Log */) => {
-    return filter(log, item => item.timerType === 'work')
+    return filter(log, item => item && item.timerType === 'work')
   })
 
-/*
- * Truncates a date to midnight
+/**
+ * Truncates a date to midnight.
  */
 
 export function truncateDate (date /*: Date */) {

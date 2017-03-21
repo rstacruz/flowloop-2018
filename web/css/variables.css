@@ -7,10 +7,16 @@
   --background: #eeeef1;
   --text-color: #404050;
   --accent: #42a5f5;
+  --success-color: green;
   --line-color: color(var(--text-color) alpha(15%));
   --button-shadow: 0 4px 8px color(#567 alpha(10%));
   --button-shadow-active: 0 6px 12px color(#567 alpha(20%));
   --gray-text: #8090a0;
+  --light-gray-text: color(var(--gray-text) tint(40%));
+  --hover-color: color(var(--gray) alpha(5%));
+  --focus-color: color(var(--gray) alpha(10%));
+  --transition-duration: 300ms;
+  --transition-zip: cubic-bezier(0.1, 0.8, 0.2, 0.9);
 
   --clearfix: {
     &::after {

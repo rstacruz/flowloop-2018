@@ -28,10 +28,10 @@ export default buildReducer({
     const defaultLabel = settings['labels:default']
 
     const timer /*: Timer */ = {
-      ...(state.timer || {}),
+      ...(state.timer || { active: false }),
       'active': true,
       'startedAt': now,
-      'label': defaultLabel,
+      'labelId': defaultLabel,
       'endsAt': new Date(+now + duration),
       'type': timerType,
       'duration': duration,
@@ -43,6 +43,8 @@ export default buildReducer({
     return { ...state, timer }
   },
 
+  'timer:setLabelId': setLabelId,
+
   'timer:halt': (state /*: State */) /*: State */ => {
     const timer /*: Timer */ = { active: false }
 
@@ -51,7 +53,7 @@ export default buildReducer({
 
   'timer:lap': (state /*: State */) /*: State */ => {
     let timer /*: Timer */ = state.timer
-    const now = get(state, 'time.now')
+    const now = state.time && state.time.now
 
     timer = {
       ...state.timer,
@@ -60,5 +62,35 @@ export default buildReducer({
     }
 
     return { ...state, timer }
-  }
+  },
+
+  'label:delete': deleteLabel
 })
+
+/*
+ * Updates the label ID
+ */
+
+function setLabelId (state /*: State */, { id } /*: { id: string } */) /*: State */ {
+  let timer /*: Timer */ = state.timer || { active: false }
+  timer = { ...timer, 'labelId': id }
+  return { ...state, timer }
+}
+
+/*
+ * Reset to default label if our label was deleted
+ */
+
+function deleteLabel (state /*: State */, { id } /*: { id: string } */) /*: State */ {
+  let timer /*: Timer */ = state.timer || { active: false }
+
+  if (timer.labelId === id) {
+    // const settings = Settings.full(state)
+    // const defaultLabel = settings['labels:default']
+    const defaultLabel = Settings.DEFAULT_LABEL_ID
+
+    timer = { ...timer, 'labelId': defaultLabel }
+  }
+
+  return { ...state, timer }
+}

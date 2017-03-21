@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from './reducers'
-import Router from '../services/router'
-import Ticker from '../services/ticker'
-import Icon from '../services/icon'
-import TimerActions from '../services/timer_actions'
-import Notifier from '../services/notifier'
-import Persistence from '../services/persistence'
+import Router from '../middleware/router'
+import Ticker from '../middleware/ticker'
+import Icon from '../middleware/icon'
+import TimerActions from '../middleware/timer_actions'
+import Notifier from '../middleware/notifier'
+import Persistence from '../middleware/persistence'
 
 /**
  * Returns a default set of middleware.
