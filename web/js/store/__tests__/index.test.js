@@ -233,13 +233,17 @@ describe('without side effects', () => {
   test('labels:load', () => {
     let state
 
-    store.dispatch({ type: 'labels:load', payload: {
-      '_foo': {
-        id: '_foo',
-        name: 'Foo',
-        color: 'red'
+    store.dispatch({
+      type: 'labels:load',
+      payload: {
+        '_foo': {
+          id: '_foo',
+          name: 'Foo',
+          color: 'red'
+        }
       }
-    } })
+    })
+
     state = store.getState()
     expect(state.labels).toMatchSnapshot()
   })

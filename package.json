@@ -8,7 +8,7 @@
     "electron:package": "electron-packager electron Flowloop --out dist --overwrite --all",
     "electron:start": "electron electron",
     "flow": "flow",
-    "lint": "standard",
+    "lint": "standard --verbose",
     "start": "webpack-dev-server",
     "test": "jest",
     "test:watch": "jest --watch -b",

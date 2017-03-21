@@ -16,7 +16,6 @@
 
 import buildReducer from 'build-reducer'
 import uuid from 'uuid'
-import del from '101/del'
 import { nextColor } from '../selectors/label'
 
 /*

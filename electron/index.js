@@ -1,4 +1,4 @@
-const {app, Menu, Tray} = require('electron')
+const {app, Tray} = require('electron')
 const Menubar = require('menubar')
 
 const ROOT = require('path').resolve(__dirname, '../')
@@ -12,7 +12,7 @@ app.on('ready', () => {
   tray.setTitle('0:37')
 
   // Menubar app
-  const mb = Menubar({
+  Menubar({
     index: `file://${ROOT}/public/index.html`,
     preloadWindow: true,
     tray,
