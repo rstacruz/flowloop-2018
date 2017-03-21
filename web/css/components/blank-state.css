@@ -1,0 +1,21 @@
+@import '../variables.css';
+
+.blank-state {
+  & {
+    color: var(--gray-text);
+    text-align: center;
+  }
+
+  & > h2,
+  & > p {
+    margin: 0;
+    padding: 0;
+  }
+
+  & > h2 {
+    @apply --font-size-1;
+
+    font-weight: 400;
+    color: var(--text-color);
+  }
+}

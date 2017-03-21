@@ -10,6 +10,7 @@ import LogDates from '../components/log_dates'
 
 export function LogIndex (props) {
   const {itemsByDate, onBack, labels} = props
+  const isEmpty = Object.keys(itemsByDate).length === 0
 
   return <div className='timer-layout -log _page-bottom'>
     <Title title='Your timeline' />
@@ -25,9 +26,18 @@ export function LogIndex (props) {
           </div>
         </div>
 
-        <LogDates itemsByDate={itemsByDate} labels={labels} />
+        { isEmpty
+          ? <LogBlankState />
+          : <LogDates itemsByDate={itemsByDate} labels={labels} /> }
       </div>
     </div>
+  </div>
+}
+
+function LogBlankState () {
+  return <div className='blank-state -log'>
+    <h2>Timeline</h2>
+    <p>When you finish a work period, it will appear here.</p>
   </div>
 }
 
