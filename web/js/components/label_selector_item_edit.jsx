@@ -5,10 +5,17 @@
 
   import type { Props as ParentProps } from './label_selector_item'
 
-  type Props = ParentProps & {
-    onColorClose: () => void,
-    onColorOpen: () => void,
+  type State = {
     colorOpen: boolean
+  }
+
+  type Props = ParentProps & State & {
+    // From State
+    focused: boolean,
+    onFocus: () => void,
+    onBlur: () => void,
+    onColorClose: () => void,
+    onColorOpen: () => void
   }
 */
 
@@ -72,6 +79,8 @@ export function LabelSelectorItemEdit (props /*: Props */) {
 }
 
 export default class LabelSelectorItemEditStateful extends React.Component {
+  /*:: state: State */
+
   constructor () {
     super()
 
@@ -85,6 +94,16 @@ export default class LabelSelectorItemEditStateful extends React.Component {
     return <LabelSelectorItemEdit
       onColorOpen={() => { this.setState({ colorOpen: true }) }}
       onColorClose={() => { this.setState({ colorOpen: false }) }}
+      onSelect={props.onSelect}
+      onFocus={props.onFocus}
+      onBlur={props.onBlur}
+      label={props.label}
+      focused={props.focused}
+      editing={props.editing}
+      onLabelDelete={props.onLabelDelete}
+      onLabelEdit={props.onLabelEdit}
+      onLabelSetColor={props.onLabelSetColor}
+      selected={props.selected}
       {...props} {...state} />
   }
 }
