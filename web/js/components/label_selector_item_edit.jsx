@@ -80,6 +80,7 @@ export function LabelSelectorItemEdit (props /*: Props */) {
 
 export default class LabelSelectorItemEditStateful extends React.Component {
   /*:: state: State */
+  /*:: props: ParentProps */
 
   constructor () {
     super()
@@ -94,15 +95,15 @@ export default class LabelSelectorItemEditStateful extends React.Component {
     return <LabelSelectorItemEdit
       onColorOpen={() => { this.setState({ colorOpen: true }) }}
       onColorClose={() => { this.setState({ colorOpen: false }) }}
-      onSelect={props.onSelect}
-      onFocus={props.onFocus}
-      onBlur={props.onBlur}
-      label={props.label}
-      focused={props.focused}
       editing={props.editing}
+      focused={props.focused}
+      label={props.label}
+      onBlur={props.onBlur}
+      onFocus={props.onFocus}
       onLabelDelete={props.onLabelDelete}
       onLabelEdit={props.onLabelEdit}
       onLabelSetColor={props.onLabelSetColor}
+      onSelect={props.onSelect}
       selected={props.selected}
       {...props} {...state} />
   }
