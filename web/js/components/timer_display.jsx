@@ -25,7 +25,7 @@ export default function TimerDisplay ({ timer, color } /*: Props */) {
       progress={1 - progress}
       steps={duration / 1000}
       color={color}
-      className='pie' />
+      className='pie _fade-in-slow' />
     { !isOvertime
       ? <span className='label'>{ms(remaining, true)}</span>
       : <span className='label -two-line'>

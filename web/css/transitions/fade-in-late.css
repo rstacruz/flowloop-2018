@@ -7,3 +7,11 @@
     opacity: 0;
   }
 }
+
+._fade-in-late {
+  animation: fade-in-late 600ms ease-out;
+}
+
+._fade-in-slow {
+  animation: fade-in-late 1200ms ease-out;
+}
