@@ -135,6 +135,24 @@ describe('without side effects', () => {
     expect(state.log.a.endedAt.constructor).toEqual(Date)
   })
 
+  test('log:clear', () => {
+    store.dispatch({ type: 'init' })
+    store.dispatch({
+      type: 'log:load',
+      payload: {
+        a: {
+          id: 'a',
+          startedAt: '2010-02-04T10:00:00Z',
+          endedAt: '2010-02-04T10:30:00Z'
+        }
+      }
+    })
+    store.dispatch({ type: 'log:clear' })
+
+    let state = store.getState()
+    expect(state.log).toMatchSnapshot()
+  })
+
   test('log:addCurrent', () => {
     store.dispatch({ type: 'init' })
     store.dispatch({ type: 'ticker:tick', now: DATE })

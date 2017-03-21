@@ -28,6 +28,7 @@ export default function Persistence () /*: Middleware<*, Action> */ {
           break
 
         case 'log:addCurrent':
+        case 'log:clear':
         case 'label:update':
         case 'label:delete':
         case 'timer:setLabelId':
@@ -92,5 +93,3 @@ function loadData (key, fn) {
 
   return fn(data)
 }
-
-// data = JSON.parse(window.localStorage.TimerData || '{}'); data.settings['duration:work'] = 5000; window.localStorage.TimerData = JSON.stringify(data)

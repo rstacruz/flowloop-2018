@@ -114,6 +114,9 @@ __APP__.store.dispatch({ type: 'settings:update', payload: { 'duration:work': 40
 
 // Reset to defaults
 __APP__.store.dispatch({ type: 'settings:reset' })
+
+// Clear log items
+__APP__.store.dispatch({ type: 'log:clear' })
 ```
 
 </details>
