@@ -19,7 +19,7 @@
   }
 
   export type ActiveTimer = {
-    active: true,
+    active: boolean,
     startedAt: Date,
     labelId: string,
     endsAt: Date,

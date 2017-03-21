@@ -1,8 +1,15 @@
+/* @flow */
+
+/*::
+  import type { Log, Logs } from '../selectors/log'
+  import type { State } from '../selectors/state'
+  import type { Timer, ActiveTimer } from '../selectors/timer'
+*/
+
 import buildReducer from 'build-reducer'
-import get from '101/pluck'
 import mapObject from 'object-loops/map'
-import put from '101/put'
 import uuid from 'uuid'
+import { DEFAULT_LABEL_ID } from '../selectors/settings'
 
 /**
  * Log reducer
@@ -19,7 +26,7 @@ export default buildReducer({
  * Builds initial state
  */
 
-function init (state) {
+function init (state /*: State */) /*: State */ {
   return { ...state, 'log': {} }
 }
 
@@ -27,8 +34,8 @@ function init (state) {
  * Load logs from a payload
  */
 
-function loadLogs (state, { payload }) {
-  let log = Object.assign({}, get(state, 'log') || {}, payload)
+function loadLogs (state /*: State */, { payload } /*: { payload: Logs } */) /*: State */ {
+  let log /*: Logs */ = { ...(state.log || {}), ...payload }
 
   // Unpack dates
   log = mapObject(log, item => {
@@ -59,23 +66,31 @@ function clearLogs (state /*: State */) /*: State */ {
  * Adds current active timer to log as a lap.
  */
 
-function addCurrent (state) {
-  const id = uuid.v4()
-  const timer = get(state, 'timer')
-  const now = get(state, 'time.now')
-  const startedAt = timer.lastLap || timer.startedAt
+function addCurrent (state /*: State */) /*: State */ {
+  let timer /*: Timer */ = state.timer
+  if (!timer.active) return state
 
-  return put(state, {
-    'timer.lastLap': now,
-    'timer.lastLogId': id,
-    [`log.${id}`]: {
-      id,
-      startedAt,
-      endedAt: now,
-      duration: +now - +startedAt,
-      timerType: timer.type,
-      labelId: timer.labelId,
-      isComplete: true
-    }
-  })
+  const id /*: string */ = uuid.v4()
+  const now /*: Date */ = state.time && state.time.now
+  const startedAt /*: Date */ = timer.lastLap || timer.startedAt || now
+
+  timer = {
+    ...timer,
+    'lastLap': now,
+    'lastLogId': id
+  }
+
+  let log /*: Log */ = {
+    id,
+    startedAt,
+    'endedAt': now,
+    'duration': +now - +startedAt,
+    'timerType': timer.type || 'work',
+    'labelId': timer.labelId || DEFAULT_LABEL_ID,
+    'isComplete': true
+  }
+
+  let logs /*: Logs */ = { ...(state.log || {}), [id]: log }
+
+  return { ...state, timer, log: logs }
 }

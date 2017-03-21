@@ -4,7 +4,7 @@ declare module 'object-loops/filter' {
 }
 
 declare module 'object-loops/map' {
-  declare type Callback = (item: any) => boolean
+  declare type Callback = (item: any) => any
   declare module.exports: <T>(input: T, callback: Callback) => T
 }
 
