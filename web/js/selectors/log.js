@@ -6,7 +6,7 @@
   import type { TimerType } from './timer'
 
   export type Logs = {
-    [key: string]: Log
+    [key: string]: Log | null
   }
 
   export type Log = {
@@ -86,7 +86,8 @@ export const full /*: ([Log, Labels]) => FullLog */ = createSelector(
 export const byDate /*: (state: State) => LogsByDate */ = createSelector(
   state => state.log || {},
   log => {
-    return groupBy(values(log), item => truncateDate(item.startedAt).toISOString())
+    return groupBy(values(log).filter(Boolean), item =>
+      truncateDate(item.startedAt).toISOString())
   })
 
 /*
@@ -96,11 +97,11 @@ export const byDate /*: (state: State) => LogsByDate */ = createSelector(
 export const onlyWork /*: (logs: Logs) => Logs */ = createSelector(
   (log /*: Log */) => log || {},
   (log /*: Log */) => {
-    return filter(log, item => item.timerType === 'work')
+    return filter(log, item => item && item.timerType === 'work')
   })
 
-/*
- * Truncates a date to midnight
+/**
+ * Truncates a date to midnight.
  */
 
 export function truncateDate (date /*: Date */) {

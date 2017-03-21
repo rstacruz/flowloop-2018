@@ -47,7 +47,11 @@ Object {
 }
 `;
 
-exports[`without side effects log:clear 1`] = `Object {}`;
+exports[`without side effects log:clear 1`] = `
+Object {
+  "a": null,
+}
+`;
 
 exports[`without side effects route:change 1`] = `
 Object {

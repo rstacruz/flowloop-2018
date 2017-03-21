@@ -32,10 +32,13 @@ function loadLogs (state, { payload }) {
 
   // Unpack dates
   log = mapObject(log, item => {
-    return Object.assign({}, item, {
-      startedAt: new Date(item.startedAt),
-      endedAt: new Date(item.endedAt)
-    })
+    if (!item) return
+
+    return {
+      ...item,
+      'startedAt': new Date(item.startedAt),
+      'endedAt': new Date(item.endedAt)
+    }
   })
 
   return { ...state, log }
@@ -46,7 +49,10 @@ function loadLogs (state, { payload }) {
  */
 
 function clearLogs (state /*: State */) /*: State */ {
-  return { ...state, 'log': {} }
+  let log /*: Logs */ = state.log || {}
+  log = mapObject(log, (value, key) => null)
+
+  return { ...state, log }
 }
 
 /**
