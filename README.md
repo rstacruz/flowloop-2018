@@ -103,6 +103,21 @@ yarn run electron:dist
 ```
 </details>
 
+<details>
+<summary>Developer tools</summary>
+
+## Developer tools
+
+```js
+// Shorten work duration to 4
+__APP__.store.dispatch({ type: 'settings:update', payload: { 'duration:work': 4000 } })
+
+// Reset to defaults
+__APP__.store.dispatch({ type: 'settings:reset' })
+```
+
+</details>
+
 ## Thanks
 
 **flowloop** © 2017, Rico Sta. Cruz. Released under the [MIT] License.<br>

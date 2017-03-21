@@ -53,6 +53,8 @@ Object {
 }
 `;
 
+exports[`without side effects settings:reset 1`] = `Object {}`;
+
 exports[`without side effects ticker:tick 1`] = `
 Object {
   "now": 2010-09-02T00:00:00.000Z,

@@ -168,6 +168,18 @@ describe('without side effects', () => {
     expect(state.settings['duration:break']).toEqual(5)
   })
 
+  test('settings:reset', () => {
+    store.dispatch({ type: 'init' })
+    store.dispatch({
+      type: 'settings:update',
+      payload: { 'duration:work': 25 }
+    })
+    store.dispatch({ type: 'settings:reset' })
+
+    let state = store.getState()
+    expect(state.settings).toMatchSnapshot()
+  })
+
   test('settings:cycleTimerMode', () => {
     let state
 

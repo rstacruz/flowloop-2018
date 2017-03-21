@@ -15,13 +15,8 @@ export default buildReducer({
     })
   },
 
-  'settings:update': (state, action) => {
-    return put(state, {
-      'settings': put(state.settings,
-        Object.assign({}, state.settings, action.payload || {}))
-    })
-  },
-
+  'settings:update': updateSettings,
+  'settings:reset': resetSettings,
   'timer:setLabelId': setLabelId,
   'label:delete': deleteLabel,
 
@@ -48,9 +43,9 @@ function setLabelId (state /*: State */, { id } /*: { id: string } */) /*: State
   return { ...state, settings }
 }
 
-/*
- * WHen deleting al abel that's the current labels:default,
- * reset it to the old default
+/**
+ * When deleting al abel that's the current labels:default,
+ * reset it to the old default.
  */
 
 function deleteLabel (state /*: State */, { id } /*: { id: string } */) /*: State */ {
@@ -61,4 +56,22 @@ function deleteLabel (state /*: State */, { id } /*: { id: string } */) /*: Stat
   }
 
   return { ...state, settings }
+}
+
+/**
+ * Update settings
+ */
+
+function updateSettings (state /*: State */, { payload } /*: { payload: Settings } */) /*: State */ {
+  let settings /*: Settings */ = state.settings
+  settings = { ...settings, ...(payload || {}) }
+  return { ...state, settings }
+}
+
+/**
+ * Resets settings to default.
+ */
+
+function resetSettings (state /*: State */) {
+  return { ...state, settings: {} }
 }
