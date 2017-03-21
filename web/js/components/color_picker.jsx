@@ -1,10 +1,12 @@
 /* @flow */
 
 /*::
+  import type { ColorName } from '../selectors/color'
+
   type Props = {
     options: Array<string>,
-    selected: string,
-    onChange: (color: string) => void
+    selected: ColorName,
+    onChange: (color: ColorName) => void
   }
 */
 

@@ -1,8 +1,10 @@
 /* @flow */
 
 /*::
+  import type { ColorName } from '../selectors/color'
+
   type Props = {
-    color: string,
+    color: ColorName,
     selected: boolean,
     onSelect: () => void
   }

@@ -1,5 +1,9 @@
 /* @flow */
 
+/*::
+  export type ColorName = $Keys<typeof COLORS>
+*/
+
 import { createSelector } from 'reselect'
 
 /**
@@ -7,7 +11,7 @@ import { createSelector } from 'reselect'
  * These are #500 on the material design palette.
  */
 
-export const COLORS /*: { [key: string]: string } */ = {
+export const COLORS /*: { [key: ColorName]: string } */ = {
   'RED': '#f44336',
   'INDIGO': '#3f51b5',
   'GREEN': '#4caf50',
@@ -21,14 +25,14 @@ export const COLORS /*: { [key: string]: string } */ = {
 /**
  * Names of colors.
  */
-export const COLOR_NAMES /*: Array<string> */ = Object.keys(COLORS)
+export const COLOR_NAMES /*: Array<ColorName> */ = Object.keys(COLORS)
 
 /**
  * Converts a color name to a CSS color.
  *
  *     toCSS('brown') => '#795548'
  */
-export const toCSS /*: (name: string) => string */ = createSelector(
+export const toCSS /*: (name: ColorName) => string */ = createSelector(
   name => name,
   name => COLORS[name] || name)
 

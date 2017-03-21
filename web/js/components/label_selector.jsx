@@ -4,6 +4,7 @@
   import type { Dispatch } from 'redux'
   import type { State } from '../selectors/state'
   import type { Labels } from '../selectors/label'
+  import type { ColorName } from '../selectors/color'
 
   type SProps = {
     // Redux
@@ -13,7 +14,7 @@
     onLabelAdd: () => void,
     onLabelDelete: (id: string) => void,
     onLabelEdit: (payload: { id: string }) => void,
-    onLabelSetColor: (id: string, color: string) => void,
+    onLabelSetColor: (id: string, color: ColorName) => void,
   }
 
   type Props = SProps & {
