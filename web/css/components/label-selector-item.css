@@ -41,7 +41,15 @@
   /* Color circle pegs */
   & > .icon {
     flex: 0 0 12px;
+    position: relative;
+  }
+
+  & > .icon > .peg {
+    display: inline-block;
     vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    border: 0;
     width: 12px;
     height: 12px;
     line-height: 0;
@@ -81,7 +89,6 @@
   & {
     padding-right: 0;
     background-color: var(--hover-color);
-    flex-wrap: wrap;
   }
 
   &:first-child {
@@ -92,8 +99,24 @@
     background-color: var(--focus-color);
   }
 
-  & > .icon {
+  /* Circle peg */
+  & > .icon > .peg {
     box-shadow: 0 0 0 2px white, 0 0 0 4px var(--focus-color);
+    cursor: pointer;
+  }
+
+  /* Picker */
+  & > .icon > .picker {
+    position: absolute;
+    z-index: 10;
+    left: -10px;
+    top: 7px;
+    background: white;
+    padding: 0 8px;
+    border-radius: 2px;
+    box-shadow: var(--button-shadow);
+    height: auto;
+    line-height: 1em;
   }
 
   /* Label name, which becomes an <input> */
@@ -140,10 +163,5 @@
 
   & > .actions > .button:hover {
     color: var(--accent);
-  }
-
-  /* Colors */
-  & > .colors {
-    flex: 0 0 100%;
   }
 }

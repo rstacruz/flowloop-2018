@@ -3,7 +3,7 @@
 /*::
   import type { Label } from '../selectors/label'
 
-  type SProps = {
+  export type SProps = {
     label: Label,
     onSelect: () => void,
     onLabelEdit: (payload: { id: string }) => void,
@@ -13,7 +13,7 @@
     editing: boolean
   }
 
-  type Props = {
+  export type Props = {
     label: Label,
     onSelect: () => void,
     onLabelEdit: (payload: { id: string }) => void,
@@ -32,8 +32,7 @@
 import React from 'react'
 import c from 'classnames'
 import { full as fullLabel } from '../selectors/label'
-import { COLOR_NAMES } from '../selectors/color'
-import ColorPicker from './color_picker'
+import Edit from './label_selector_item_edit'
 
 /*
  * Stateless component
@@ -89,52 +88,9 @@ function View (props /*: Props */) {
   return <button
     className={c('label-selector-item', 'item', { '-active': selected })}
     onClick={(e) => { e.preventDefault(); onSelect() }}>
-    <span className='icon' style={{ backgroundColor: label_.cssColor }} />
+    <span className='icon'>
+      <span className='peg' style={{ backgroundColor: label_.cssColor }} />
+    </span>
     <span className='name'>{label_.name}</span>
   </button>
-}
-
-/**
- * Edit mode
- */
-
-function Edit (props /*: Props */) {
-  const {
-    label, focused, onFocus, onBlur, onLabelEdit, onLabelDelete,
-    onLabelSetColor
-  } = props
-
-  const label_ = fullLabel(label)
-
-  return <span
-    className={c('label-selector-item item -editing', { '-focus': focused })}>
-    <span className='icon' style={{ backgroundColor: label_.cssColor }} />
-    <span className='name'>
-      <input
-        className='input'
-        type='text'
-        defaultValue={label.name}
-        onFocus={onFocus}
-        onChange={e => {
-          onLabelEdit({
-            id: label.id,
-            name: e.target.value
-          })
-        }}
-        onBlur={onBlur} />
-    </span>
-    <span className='actions'>
-      { label_.isDeletable
-        ? <button
-          className='button -delete'
-          onClick={e => { e.preventDefault(); onLabelDelete(label.id) }} />
-        : null }
-    </span>
-    <span className='colors'>
-      <ColorPicker
-        options={COLOR_NAMES}
-        selected={label.color}
-        onChange={(color) => onLabelSetColor(color)} />
-    </span>
-  </span>
 }

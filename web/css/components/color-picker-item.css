@@ -8,10 +8,14 @@
   & {
     display: inline-block;
     margin: 0;
-    padding: 4px;
+    padding: 8px 4px;
     border: 0;
     background: transparent;
     cursor: pointer;
+  }
+
+  &:hover {
+    background: var(--hover-color);
   }
 
   & > .peg {
@@ -21,7 +25,11 @@
     border-radius: 50%;
   }
 
+  &.-active {
+    background: var(--focus-color);
+  }
+
   &.-active > .peg {
-    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--line-color);
+    box-shadow: 0 0 0 2px white;
   }
 }
