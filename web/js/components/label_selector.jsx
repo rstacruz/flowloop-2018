@@ -19,7 +19,8 @@
     open: boolean,
     onToggleOpen: () => void,
     onDismiss: () => void,
-    onEdit: () => void
+    onEdit: () => void,
+    onFinish: () => void
   }
 
   type SProps = {
@@ -47,7 +48,7 @@ import c from 'classnames'
 export function LabelSelector (props /*: Props */) {
   const {
     labels, onSelect, selectedId, onToggleOpen, open, editing, onEdit,
-    onLabelEdit, onLabelDelete, onDismiss, onLabelAdd
+    onLabelEdit, onLabelDelete, onDismiss, onLabelAdd, onFinish
   } = props
   const label = fullLabel(labels[selectedId])
 
@@ -79,6 +80,7 @@ export function LabelSelector (props /*: Props */) {
         <LabelSelectorActions
           editing={editing}
           onEdit={onEdit}
+          onFinish={onFinish}
           onLabelAdd={onLabelAdd} />
       </div>
       : null }
@@ -106,7 +108,8 @@ export class LabelSelectorStateful extends React.Component {
 
     return <LabelSelector
       onDismiss={() => { this.setState({ open: false, editing: false }) }}
-      onEdit={() => { this.setState({ editing: !editing }) }}
+      onEdit={() => { this.setState({ open: true, editing: true }) }}
+      onFinish={() => { this.setState({ open: true, editing: false }) }}
       onToggleOpen={() => { this.setState({ open: !open }) }}
       labels={props.labels}
       onLabelDelete={props.onLabelDelete}
