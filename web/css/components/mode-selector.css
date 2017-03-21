@@ -42,15 +42,19 @@
     margin-left: 8px;
   }
 
-  &:hover > .icon,
-  &:focus > .icon {
-    background-color: var(--focus-color);
+  /* Hover and active states */
+  &:not([disabled]) {
+    &:hover > .icon,
+    &:focus > .icon {
+      background-color: var(--focus-color);
+    }
+
+    &:active > .icon {
+      background-color: var(--active-color);
+    }
   }
 
-  &:active > .icon {
-    background-color: var(--active-color);
-  }
-
+  /* Disabled state */
   &[disabled] {
     cursor: not-allowed;
   }
