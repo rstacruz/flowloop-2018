@@ -11,7 +11,8 @@
     background: transparent;
     border: 0;
     margin: 0;
-    padding: 0;
+    padding: 4px 16px 2px;
+    border-radius: 32px;
     display: inline-block;
     cursor: pointer;
     white-space: nowrap;
@@ -19,26 +20,21 @@
   }
 
   &::after {
-    content: '';
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-right: solid 2px color(var(--gray-text) alpha(100%));
-    border-bottom: solid 2px color(var(--gray-text) alpha(100%));
-    transform: rotate(45deg);
-    margin-left: 12px;
-    position: relative;
-    top: -4px;
+    @apply --ion-icon;
+    @apply --ion-icon-ios-arrow-down;
+
+    color: var(--gray-text);
+    margin-left: 8px;
+    font-size: 16px;
   }
 
   &.-open,
   &:hover,
   &:focus {
-    color: var(--accent);
+    background: var(--focus-color);
+  }
 
-    &::after {
-      border-right-color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
+  &:active {
+    background: var(--active-color);
   }
 }

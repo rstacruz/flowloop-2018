@@ -9,6 +9,14 @@
     white-space: nowrap;
   }
 
+  & > .icon {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 50%;
+  }
+
   & > .icon::before {
     @apply --ion-icon;
 
@@ -34,9 +42,13 @@
     margin-left: 8px;
   }
 
-  &:hover > .label,
-  &:hover > .icon {
-    color: var(--accent);
+  &:hover > .icon,
+  &:focus > .icon {
+    background-color: var(--focus-color);
+  }
+
+  &:active > .icon {
+    background-color: var(--active-color);
   }
 
   &[disabled] {
