@@ -101,7 +101,7 @@ export class LabelSelectorStateful extends React.Component {
   }
 
   render () {
-    const { open, editing } = this.state
+    const { open } = this.state
     const { props, state } = this
 
     return <LabelSelector
