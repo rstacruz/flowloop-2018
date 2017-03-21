@@ -25,7 +25,14 @@ export const COLORS /*: { [key: ColorName]: string } */ = {
 /**
  * Names of colors.
  */
+
 export const COLOR_NAMES /*: Array<ColorName> */ = Object.keys(COLORS)
+
+/**
+ * Color for breaks.
+ */
+
+export const BREAK_COLOR /*: string */ = '#c6cad0'
 
 /**
  * Converts a color name to a CSS color.

@@ -1,3 +1,14 @@
+/*::
+  import type { FullTimer } from '../selectors/timer'
+  import type { FullLabel } from '../selectors/label'
+
+  type Props = {
+    now: Date,
+    timer: FullTimer,
+    color: string
+  }
+*/
+
 import React from 'react'
 import get from '101/pluck'
 import { connect } from 'react-redux'
@@ -8,20 +19,24 @@ import TimerControls from '../components/timer_controls'
 import TimerDisplay from '../components/timer_display'
 import TimerTitle from '../components/timer_title'
 import Timer from '../selectors/timer'
+import { full as fullLabel } from '../selectors/label'
+import { BREAK_COLOR } from '../selectors/color'
 
 export class TimerShow extends React.Component {
+  /*:: props: Props */
+
   render () {
     if (!this.props.timer.active) {
       return <TimerBlank {...this.props} />
     }
 
-    const { timer } = this.props
+    const { timer, color } = this.props
 
     return <TimerLayout page='timer' className='_page-fade'>
       <TimerTitle timer={timer} />
       <TimerControls {...this.props} />
       <div className='timer-spacer' />
-      <TimerDisplay timer={timer} />
+      <TimerDisplay timer={timer} color={color} />
       <div className='timer-spacer' />
       <div className='timer-actions'>
         <button
@@ -36,10 +51,16 @@ export class TimerShow extends React.Component {
 }
 
 export default connect(
-  state => ({
-    now: get(state, 'time.now'),
-    timer: Timer.full(state)
-  }),
+  state => {
+    const timer = Timer.full(state)
+    const label = fullLabel(state.labels[timer.labelId])
+
+    return {
+      now: get(state, 'time.now'),
+      timer,
+      color: timer.type === 'work' ? label.cssColor : BREAK_COLOR
+    }
+  },
   dispatch => ({
     onStop: () => {
       dispatch({ type: 'timer:stop!' })

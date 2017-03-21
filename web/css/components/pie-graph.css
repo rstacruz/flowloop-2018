@@ -1,0 +1,53 @@
+@import '../variables.css';
+
+.pie-graph {
+  display: inline-block;
+  border-radius: 50%;
+  background: var(--background);
+  overflow: hidden;
+  position: relative;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Fill on the right side */
+.pie-graph > .fill {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: var(--accent);
+  z-index: 1;
+}
+
+.pie-graph > .piece {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 100%;
+  background: var(--background);
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  z-index: 2;
+  transform-origin: 0 50%;
+  transform: rotate(0deg);
+  transition: transform 150ms var(--transition-zip);
+}
+
+/* Donut center */
+.pie-graph > .center {
+  position: absolute;
+  z-index: 3;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  border-radius: 50%;
+  background: var(--background);
+}
+
+.pie-graph > .piece.-fill {
+  background: var(--accent);
+}

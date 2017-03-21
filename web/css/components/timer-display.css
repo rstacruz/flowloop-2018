@@ -34,6 +34,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   & {
     @apply --use-timer-display-small;
@@ -42,6 +43,17 @@
   & > .label {
     display: block;
     margin: auto;
+    position: relative;
+    z-index: 5;
+  }
+
+  & > .pie {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    bottom: 1px;
+    right: 1px;
+    z-index: 1;
   }
 
   @media (--vertical-layout) and (height > 580px) {
