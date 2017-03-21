@@ -29,6 +29,7 @@
 
 import React from 'react'
 import c from 'classnames'
+import Label from '../selectors/label'
 
 /*
  * Stateless component
@@ -78,12 +79,13 @@ export default class LabelSelectItemStateful extends React.Component {
 
 function View (props /*: Props */) {
   const { label, onSelect, selected } = props
+  const fullLabel = Label.full(label)
 
   return <button
     className={c('label-selector-item', 'item', { '-active': selected })}
     onClick={(e) => { e.preventDefault(); onSelect() }}>
-    <span className='icon' style={{backgroundColor: label.color}} />
-    <span className='name'>{label.name}</span>
+    <span className='icon' style={{ backgroundColor: fullLabel.cssColor }} />
+    <span className='name'>{fullLabel.name}</span>
   </button>
 }
 
@@ -93,10 +95,11 @@ function View (props /*: Props */) {
 
 function Edit (props /*: Props */) {
   const { label, focused, onFocus, onBlur, onLabelEdit, onLabelDelete } = props
+  const fullLabel = Label.full(label)
 
   return <span
     className={c('label-selector-item item -editing', { '-focus': focused })}>
-    <span className='icon' style={{backgroundColor: label.color}} />
+    <span className='icon' style={{ backgroundColor: fullLabel.cssColor }} />
     <span className='name'>
       <input
         className='input'
@@ -112,9 +115,11 @@ function Edit (props /*: Props */) {
         onBlur={onBlur} />
     </span>
     <span className='actions'>
-      <button
-        className='button -delete'
-        onClick={e => { e.preventDefault(); onLabelDelete(label.id) }} />
+      { fullLabel.isDeletable
+        ? <button
+          className='button -delete'
+          onClick={e => { e.preventDefault(); onLabelDelete(label.id) }} />
+        : null }
     </span>
   </span>
 }

@@ -37,7 +37,7 @@ function LogItem ({ item, labels } /*: Props */) {
     })}>
     <span
       className='peg'
-      style={{ backgroundColor: label && label.color }} />
+      style={{ backgroundColor: label.cssColor }} />
   </span>
 }
 
