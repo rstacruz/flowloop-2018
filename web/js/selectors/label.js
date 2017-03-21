@@ -24,6 +24,7 @@
 
 import { createSelector } from 'reselect'
 import { DEFAULT_LABEL_ID } from './settings'
+import { COLORS, toCSS } from './color'
 
 /**
  * Default label
@@ -32,9 +33,9 @@ import { DEFAULT_LABEL_ID } from './settings'
 const DEFAULT_LABEL /*: FullLabel */ = {
   id: '',
   name: '(Unknown)',
-  color: '#404050',
+  color: 'BLACK',
   isDeletable: false,
-  cssColor: '#404050'
+  cssColor: COLORS.BLACK
 }
 
 /**
@@ -49,7 +50,7 @@ export const full /*: (label: ?Label) => FullLabel */ = createSelector(
     return {
       ...label,
       isDeletable: label.id !== DEFAULT_LABEL_ID,
-      cssColor: label.color
+      cssColor: toCSS(label.color)
     }
   }
 )

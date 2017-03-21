@@ -22,17 +22,16 @@ import del from '101/del'
  * Default labels
  */
 
-// TODO: This should be a selector!!!
 const DEFAULT_LABELS /*: Labels */ = {
   '_default': {
     id: '_default',
     name: 'Work',
-    color: 'dodgerblue'
+    color: 'BLUE'
   },
   '_chore': {
     id: '_chore',
     name: 'Chore',
-    color: '#808090'
+    color: 'SLATE'
   }
 }
 
