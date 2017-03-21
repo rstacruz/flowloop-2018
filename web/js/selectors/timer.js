@@ -52,6 +52,12 @@ import { createSelector } from 'reselect'
 import { full as fullLabel } from '../selectors/label'
 
 /**
+ * Inactive timer default
+ */
+
+export const INACTIVE /*: Timer */ = { active: false }
+
+/**
  * Full timer details
  */
 
@@ -82,5 +88,6 @@ export const full /*: (state: State) => FullTimer */ = createSelector(
  */
 
 export default {
+  INACTIVE,
   full
 }
