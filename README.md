@@ -109,7 +109,7 @@ yarn run electron:dist
 ## Developer tools
 
 ```js
-// Shorten work duration to 4
+// Shorten work duration to 4 seconds
 __APP__.store.dispatch({ type: 'settings:update', payload: { 'duration:work': 4000 } })
 
 // Reset to defaults

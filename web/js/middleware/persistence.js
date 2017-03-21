@@ -34,6 +34,7 @@ export default function Persistence () /*: Middleware<*, Action> */ {
         case 'timer:setLabelId':
         case 'settings:update':
         case 'settings:cycleTimerMode':
+        case 'settings:reset':
           setTimeout(() => { save(store.getState()) })
           break
       }
