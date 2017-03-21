@@ -3,7 +3,13 @@
 /*::
   import type { Label } from '../selectors/label'
 
-  import type { Props } from './label_selector_item'
+  import type { Props as ParentProps } from './label_selector_item'
+
+  type Props = ParentProps & {
+    onColorClose: () => void,
+    onColorOpen: () => void,
+    colorOpen: boolean
+  }
 */
 
 import React from 'react'

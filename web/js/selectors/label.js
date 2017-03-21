@@ -13,10 +13,7 @@
     color: string
   }
 
-  export type FullLabel = {
-    id: string,
-    name: string,
-    color: string,
+  export type FullLabel = Label & {
     isDeletable: boolean,
     cssColor: string
   }

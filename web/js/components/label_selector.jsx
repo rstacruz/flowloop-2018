@@ -5,7 +5,7 @@
   import type { State } from '../selectors/state'
   import type { Labels } from '../selectors/label'
 
-  type Props = {
+  type SProps = {
     // Redux
     labels: Labels,
     selectedId: string,
@@ -14,7 +14,9 @@
     onLabelDelete: (id: string) => void,
     onLabelEdit: (payload: { id: string }) => void,
     onLabelSetColor: (id: string, color: string) => void,
+  }
 
+  type Props = SProps & {
     // State
     editing: boolean,
     open: boolean,
@@ -22,16 +24,6 @@
     onDismiss: () => void,
     onEdit: () => void,
     onFinish: () => void
-  }
-
-  type SProps = {
-    labels: Labels,
-    selectedId: string,
-    onSelect: () => void,
-    onLabelAdd: () => void,
-    onLabelDelete: (id: string) => void,
-    onLabelEdit: (payload: { id: string }) => void,
-    onLabelSetColor: (id: string, color: string) => void,
   }
 */
 
@@ -120,6 +112,7 @@ export class LabelSelectorStateful extends React.Component {
       onLabelDelete={props.onLabelDelete}
       onLabelEdit={props.onLabelEdit}
       onLabelAdd={props.onLabelAdd}
+      onLabelSetColor={props.onLabelSetColor}
       onSelect={props.onSelect}
       selectedId={props.selectedId}
       {...props} {...state} />
