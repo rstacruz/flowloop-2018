@@ -263,14 +263,24 @@ describe('without side effects', () => {
   })
 
   test('label:create', () => {
-    let state
+    let state, keys, label
 
     store.dispatch({ type: 'init' })
     store.dispatch({ type: 'label:create' })
 
     state = store.getState()
-    const keys = Object.keys(state.labels)
-    const label = state.labels[keys[keys.length - 1]]
+    keys = Object.keys(state.labels)
+    label = state.labels[keys[keys.length - 1]]
+
+    expect(keys.length).toMatchSnapshot()
+    expect(label.name).toMatchSnapshot()
+    expect(label.color).toMatchSnapshot()
+
+    store.dispatch({ type: 'label:create' })
+
+    state = store.getState()
+    keys = Object.keys(state.labels)
+    label = state.labels[keys[keys.length - 1]]
 
     expect(keys.length).toMatchSnapshot()
     expect(label.name).toMatchSnapshot()

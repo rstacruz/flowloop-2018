@@ -24,7 +24,8 @@
 
 import { createSelector } from 'reselect'
 import { DEFAULT_LABEL_ID } from './settings'
-import { COLORS, toCSS } from './color'
+import { COLORS, COLOR_NAMES, toCSS } from './color'
+import values from 'object-loops/values'
 
 /**
  * Default label
@@ -56,10 +57,23 @@ export const full /*: (label: ?Label) => FullLabel */ = createSelector(
 )
 
 /**
+ * Returns the next viable color.
+ */
+
+export const nextColor /*: (labels: Labels) => string */ = createSelector(
+  (labels /*: Labels */) => labels,
+  (labels /*: Labels */) /*: string */ => {
+    const colors = values(labels).filter(Boolean).map(l => l.color)
+    const next = COLOR_NAMES.find(name => !colors.includes(name))
+    return next || 'BLUE'
+  })
+
+/**
  * Full export
  */
 
 export default {
   full,
+  nextColor,
   DEFAULT_LABEL
 }

@@ -4,7 +4,13 @@ exports[`without side effects label:create 1`] = `3`;
 
 exports[`without side effects label:create 2`] = `""`;
 
-exports[`without side effects label:create 3`] = `"dodgerblue"`;
+exports[`without side effects label:create 3`] = `"RED"`;
+
+exports[`without side effects label:create 4`] = `4`;
+
+exports[`without side effects label:create 5`] = `""`;
+
+exports[`without side effects label:create 6`] = `"INDIGO"`;
 
 exports[`without side effects label:delete 1`] = `2`;
 
@@ -25,12 +31,12 @@ Object {
 exports[`without side effects labels init 1`] = `
 Object {
   "_chore": Object {
-    "color": "#808090",
+    "color": "SLATE",
     "id": "_chore",
     "name": "Chore",
   },
   "_default": Object {
-    "color": "dodgerblue",
+    "color": "BLUE",
     "id": "_default",
     "name": "Work",
   },

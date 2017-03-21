@@ -17,6 +17,7 @@
 import buildReducer from 'build-reducer'
 import uuid from 'uuid'
 import del from '101/del'
+import { nextColor } from '../selectors/label'
 
 /*
  * Default labels
@@ -98,7 +99,7 @@ function createLabel (state /*: State */) /*: State */ {
   let label /*: Label */ = {
     id,
     name: '',
-    color: 'dodgerblue'
+    color: nextColor(labels)
   }
 
   labels = {
