@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import HomeIndex from './home_index'
 import TimerShow from './timer_show'
 import LogIndex from './log_index'
+import SettingsIndex from './settings_index'
 import get from '101/pluck'
 
 export class Chrome extends React.Component {
@@ -21,6 +22,8 @@ export class Chrome extends React.Component {
         ? <TimerShow key='timer' />
         : page === 'LogIndex'
         ? <LogIndex key='log' />
+        : page === 'SettingsIndex'
+        ? <SettingsIndex key='settings' />
         : <div key='other' /> }
     </TransitionGroup>
   }

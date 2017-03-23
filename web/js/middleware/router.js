@@ -18,6 +18,10 @@ export default function Router () {
       dispatch({ type: 'route:change', page: 'LogIndex' })
     })
 
+    route('/settings', () => {
+      dispatch({ type: 'route:change', page: 'SettingsIndex' })
+    })
+
     route('/timer/work', () => {
       setTimeout(() => {
         dispatch({ type: 'timer:start!', timerType: 'work' })

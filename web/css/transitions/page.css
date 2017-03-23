@@ -35,6 +35,40 @@
 }
 
 /*
+ * Coming from left
+ */
+
+._page-bottom {
+  &._page-enter,
+  &._page-leave {
+    transition:
+      opacity var(--transition-duration) var(--transition-zip),
+      transform var(--transition-duration) var(--transition-zip);
+    z-index: 2;
+  }
+
+  &._page-enter {
+    opacity: 0.01;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  &._page-enter-active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  &._page-leave {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  &._page-leave-active {
+    opacity: 0.01;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+/*
  * Fading in
  */
 

@@ -1,0 +1,14 @@
+@import '../variables.css';
+
+.settings-layout {
+  background: white;
+  height: 100vh;
+  overflow: auto;
+  padding: 16px;
+  box-shadow: var(--button-shadow-active);
+  width: 320px;
+
+  @media (width <= 480px) {
+    width: 100%;
+  }
+}

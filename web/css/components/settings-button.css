@@ -1,0 +1,17 @@
+@import '../variables.css';
+@import '../mixins/icon-button.css';
+
+/*
+ * Settings button in the main chrome
+ */
+
+.settings-button {
+  & {
+    @apply --icon-button;
+  }
+
+  & > .icon::before {
+    @apply --ion-icon;
+    @apply --ion-icon-md-menu;
+  }
+}

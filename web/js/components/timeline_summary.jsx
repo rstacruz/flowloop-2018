@@ -9,7 +9,8 @@
   type Props = {
     now: Date,
     items: Logs,
-    labels: Labels
+    labels: Labels,
+    className?: string
   }
 */
 
@@ -25,10 +26,10 @@ export class TimelineSummary extends React.Component {
   /*:: props: Props */
 
   render () {
-    const { items, now, labels } = this.props
+    const { items, now, labels, className } = this.props
     const isEmpty = values(items).length === 0
 
-    return <a className='timeline-summary fixed' href='#log'>
+    return <a className={`timeline-summary ${className || ''}`} href='#log'>
       <span className='-left text'>{Moment(now).format('dddd')}</span>
 
       {isEmpty

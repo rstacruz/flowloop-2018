@@ -1,0 +1,52 @@
+@import '../variables.css';
+
+/*
+ * A typical icon button
+ */
+
+:root {
+  --icon-button: {
+    & > .icon {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      border-radius: 50%;
+      color: var(--text-color);
+      text-align: center;
+    }
+
+    & > .icon::before {
+      font-size: 24px;
+      position: relative;
+      top: -2px;
+    }
+
+    & > .label {
+      color: var(--gray-text);
+      margin-left: 8px;
+    }
+
+    /* Hover and active states */
+    &:not([disabled]) {
+      &:hover > .icon,
+      &:focus > .icon {
+        background-color: var(--focus-color);
+      }
+
+      &:active > .icon {
+        background-color: var(--active-color);
+      }
+    }
+
+    /* Disabled state */
+    &[disabled] {
+      cursor: not-allowed;
+    }
+
+    &[disabled] > .label,
+    &[disabled] > .icon {
+      color: var(--gray-text);
+    }
+  }
+}

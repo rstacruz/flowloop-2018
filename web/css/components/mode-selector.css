@@ -1,4 +1,5 @@
 @import '../variables.css';
+@import '../mixins/icon-button.css';
 
 .mode-selector {
   & {
@@ -9,20 +10,12 @@
     white-space: nowrap;
   }
 
-  & > .icon {
-    display: inline-block;
-    width: 48px;
-    height: 48px;
-    line-height: 48px;
-    border-radius: 50%;
+  & {
+    @apply --icon-button;
   }
 
   & > .icon::before {
     @apply --ion-icon;
-
-    font-size: 24px;
-    position: relative;
-    top: -2px;
   }
 
   &.-single > .icon::before {
@@ -35,32 +28,5 @@
 
   &.-alternate > .icon::before {
     @apply --ion-icon-md-shuffle;
-  }
-
-  & > .label {
-    color: var(--gray-text);
-    margin-left: 8px;
-  }
-
-  /* Hover and active states */
-  &:not([disabled]) {
-    &:hover > .icon,
-    &:focus > .icon {
-      background-color: var(--focus-color);
-    }
-
-    &:active > .icon {
-      background-color: var(--active-color);
-    }
-  }
-
-  /* Disabled state */
-  &[disabled] {
-    cursor: not-allowed;
-  }
-
-  &[disabled] > .label,
-  &[disabled] > .icon {
-    color: var(--gray-text);
   }
 }

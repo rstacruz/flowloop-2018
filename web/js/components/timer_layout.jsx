@@ -14,12 +14,18 @@ class TimerLayout extends React.Component {
   /*:: props: Props */
 
   render () {
-    return <div className={`timer-layout ${this.props.className || ''}`}>
-      <div className='body'>
-        {this.props.children}
+    const { className, children } = this.props
+
+    return <div className={`timer-layout ${className || ''}`}>
+      <div className='topleft'>
+        <a className='settings-button' href='#settings'>
+          <span className='icon' />
+        </a>
       </div>
 
-      <TimelineSummary />
+      <div className='body'>{children}</div>
+
+      <TimelineSummary className='fixed' />
     </div>
   }
 }
