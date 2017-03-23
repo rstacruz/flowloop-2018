@@ -18,7 +18,7 @@ export class SettingsIndex extends React.Component {
   render () {
     const { onBack } = this.props
 
-    return <div className='_page-bottom settings-layout'>
+    return <div className='_page-left settings-layout'>
       <div className='blank-state'>
         <h2>Settings</h2>
         <p>Thanks for trying out Flowloop!</p>
