@@ -49,7 +49,7 @@ class ModeSelector extends React.Component {
         ? <span className='dialog _pop-in' onClick={onClose}>
           <ModeSelectorDialog
             selected={props.mode}
-            onSelect={(mode /*: TimerMode */) => { onClose(); onSwitch() }} />
+            onSelect={(mode /*: TimerMode */) => { onClose(); onSwitch(mode) }} />
         </span>
         : null }
       <span className='trigger'>
@@ -76,8 +76,8 @@ export default connect(
     disabled: Timer.full(state).isOvertime
   }),
   (dispatch /*: Dispatch<*> */, ownProps) => ({
-    onSwitch: () => {
-      dispatch({ type: 'settings:cycleTimerMode' })
+    onSwitch: (mode /*: TimerMode */) => {
+      dispatch({ type: 'settings:update', payload: { 'timer:mode': mode } })
     }
   })
 )(ModeSelector)

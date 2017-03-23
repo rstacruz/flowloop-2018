@@ -17,12 +17,14 @@
     border-bottom: solid 1px var(--line-color);
   }
 
-  & > .options {
-    display: flex;
-  }
+  @media (width > 480px) {
+    & > .options {
+      display: flex;
+    }
 
-  & > .options > .option {
-    flex: 1 1 33%;
-    vertical-align: top;
+    & > .options > .option {
+      flex: 1 1 33%;
+      vertical-align: top;
+    }
   }
 }

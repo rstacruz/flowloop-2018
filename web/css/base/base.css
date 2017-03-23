@@ -22,10 +22,18 @@
 
 html {
   background: var(--background);
-  font-family: var(--sans);
   color: var(--text-color);
   line-height: 1.6;
   user-select: none;
+}
+
+html,
+input,
+textarea,
+button,
+td,
+th {
+  font-family: var(--sans);
 }
 
 /*

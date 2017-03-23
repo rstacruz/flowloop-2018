@@ -25,9 +25,11 @@
     background: var(--hover-color);
   }
 
+  /* Active */
   &.-active > .icon {
     background: var(--accent);
     color: white;
+    box-shadow: none;
   }
 
   & + & {
@@ -79,10 +81,14 @@
     box-shadow: inset 0 0 0 1px var(--line-color);
     border-radius: 50%;
     margin: 0 auto 8px;
+    color: var(--gray-text);
   }
 
   & > .icon::before {
     @apply --ion-icon;
+
+    position: relative;
+    top: -2px;
   }
 
   /* Icons */
