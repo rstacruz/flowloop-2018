@@ -1,0 +1,57 @@
+@import '../variables.css';
+
+.mode-selector-dialog {
+  background: white;
+  border-radius: 3px;
+  box-shadow: var(--button-shadow-active);
+  display: flex;
+  width: 800px;
+
+  & > .option {
+    flex: 1 1 33%;
+  }
+}
+
+.mode-selector-option {
+  & {
+    padding: 16px;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  @media (width > 768px) {
+    padding: 32px;
+  }
+
+  &:focus,
+  &:hover {
+    background: var(--hover-color);
+  }
+
+  &:active {
+    background: var(--active-color);
+  }
+
+  & + & {
+    border-left: solid 1px var(--line-color);
+  }
+
+  & > h2,
+  & > p {
+    margin: 0;
+    padding: 0;
+  }
+
+  & > h2 {
+    @apply --font-size-1;
+
+    font-weight: normal;
+  }
+
+  & > p {
+    color: var(--gray-text);
+  }
+}

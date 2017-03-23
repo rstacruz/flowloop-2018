@@ -1,0 +1,33 @@
+@import '../variables.css';
+
+.popup-set {
+  & > .screen {
+    display: block;
+    z-index: 10;
+    background: var(--background);
+    opacity: 0.75;
+    animation: pop-in 150ms var(--transition-zip);
+  }
+
+  & > .screen,
+  & > .dialog {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  & > .dialog {
+    animation: pop-in 150ms var(--transition-zip);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 15;
+    pointer-events: none;
+  }
+
+  & > .dialog > * {
+    pointer-events: auto;
+  }
+}
