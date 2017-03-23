@@ -28,7 +28,7 @@ export default class ModeSelectorButton extends React.Component {
       onClick={() => !disabled && onToggle()}
       disabled={disabled}
       aria-label={TIMER_MODE_LABELS[mode]}
-      className={c('mode-selector', {
+      className={c('mode-selector-button', {
         'hint--bottom': true,
         '-single': mode === 'SINGLE',
         '-continuous': mode === 'CONTINUOUS',

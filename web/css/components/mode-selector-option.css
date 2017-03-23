@@ -101,6 +101,6 @@
   }
 
   & > .icon.-single::before {
-    @apply --ion-icon-md-git-commit;
+    @apply --ion-icon-md-return-left;
   }
 }
