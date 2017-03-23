@@ -10,6 +10,16 @@
 
 Flowloop is a productivity timer that helps you maintain a [state of flow](https://en.wikipedia.org/wiki/Flow_(psychology)). It keeps you aware of time without having to interrupt you.
 
+When using Flowloop, your day will be divided into **laps**. Each lap represents 25 minutes of productive work. This lets you:
+
+- __Schedule work better.__ You'll be able to do around 10 laps in one typical work day. Awareness of laps will help you schedule your time wisely.
+
+- __Motivate yourself.__ By keeping a list of laps over the last week, you'll be giving yourself a subtle push of encouragement to perform as much as yesterday, if not better.
+
+- __Manage distractions.__ By clearly designating time periods as for work and break, it helps you be more productive in your work and enjoy your breaks better.
+
+## How it works
+
 - Every 25 minutes of uninterrupted work time is **1 lap**. A bell sound will be played when you finish a lap.
 
 - The next lap will sound 1 more bell than the last, as long as your work is not interrupted. That is: 1 bell for the first lap, 2 bells for the second, and so on. This keeps you aware of how long you've been working.
@@ -17,16 +27,6 @@ Flowloop is a productivity timer that helps you maintain a [state of flow](https
 - You can take a break any time you wish for as long as you want. Increasing number of bells will also play every 5 minutes to remind you to get back to work.
 
 - Flowloop will keep a list of all your completed laps every day. This lets you see how productive you've been throughout the day and week.
-
-## Why use Flowloop?
-
-Use Flowloop to:
-
-- __Motivate yourself.__ By keeping a list of laps over the last week, you'll be giving yourself a subtle push of encouragement to perform as much as yesterday, if not better.
-
-- __Manage distractions.__ By clearly designating time periods as for work and break, it helps you be more productive in your work and enjoy your breaks better.
-
-- __Schedule work better.__ You'll be able to do around 10 laps in one typical work day. Awareness of laps will help you schedule your time wisely.
 
 ## Comparison with Pomodoro
 
