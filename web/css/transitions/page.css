@@ -4,7 +4,7 @@
  * Coming from bottom
  */
 
-._page-left {
+._page-bottom {
   &._page-enter,
   &._page-leave {
     transition:
@@ -38,7 +38,7 @@
  * Coming from left
  */
 
-._page-bottom {
+._page-left {
   &._page-enter,
   &._page-leave {
     transition:
