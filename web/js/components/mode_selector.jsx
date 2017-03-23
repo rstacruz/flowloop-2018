@@ -34,7 +34,7 @@ class ModeSelector extends React.Component {
 
   render () {
     const { props, state } = this
-    const { open } = state
+    const open = state.open && !props.disabled
     const { onSwitch } = props
 
     const onOpen = () => { this.setState({ open: true }) }

@@ -10,31 +10,43 @@
 */
 
 import React from 'react'
+import c from 'classnames'
 
 export default function ModeSelectorDialog (props /*: Props */) {
-  const { onSelect } = props
+  const { onSelect, selected } = props
 
   return <div className='mode-selector-dialog'>
-    <button
-      className='option mode-selector-option'
-      onClick={() => { onSelect('CONTINUOUS') }}>
-      <span className='icon' />
-      <h2>Continuous mode</h2>
-      <p>Continues indefinitely. Starts a new loop when one ends.</p>
-    </button>
-    <button
-      className='option mode-selector-option'
-      onClick={() => { onSelect('SINGLE') }}>
-      <span className='icon' />
-      <h2>Single mode</h2>
-      <p>Continues indefinitely. Starts a new loop when one ends.</p>
-    </button>
-    <button
-      className='option mode-selector-option'
-      onClick={() => { onSelect('ALTERNATE') }}>
-      <span className='icon' />
-      <h2>Alternate mode</h2>
-      <p>Continues indefinitely. Starts a new loop when one ends.</p>
-    </button>
+    <h1 className='heading'>
+      Select a timer mode
+    </h1>
+    <div className='options'>
+      <button
+        className={c('option mode-selector-option', {
+          '-active': selected === 'CONTINUOUS' })}
+        onClick={() => { onSelect('CONTINUOUS') }}>
+        <span className='icon -continuous' />
+        <h2>Continuous</h2>
+        <h5>Flowloop mode</h5>
+        <p>Timers never end. Laps are recorded every time a timer completes.</p>
+      </button>
+      <button
+        className={c('option mode-selector-option', {
+          '-active': selected === 'SINGLE' })}
+        onClick={() => { onSelect('SINGLE') }}>
+        <span className='icon -single' />
+        <h2>Single</h2>
+        <h5>Pomodoro mode</h5>
+        <p>Stops the timer after it completes. Works like classic Pomodoro.</p>
+      </button>
+      <button
+        className={c('option mode-selector-option', {
+          '-active': selected === 'ALTERNATE' })}
+        onClick={() => { onSelect('ALTERNATE') }}>
+        <span className='icon -alternate' />
+        <h2>Alternate</h2>
+        <h5>Pomodoro mode</h5>
+        <p>Switches to a break after a work timer completes, and vice versa.</p>
+      </button>
+    </div>
   </div>
 }
