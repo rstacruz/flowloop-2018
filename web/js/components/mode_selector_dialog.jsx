@@ -40,7 +40,7 @@ export default function ModeSelectorDialog (props /*: Props */) {
       </button>
       <button
         aria-label='Coming soon. Stay tuned!'
-        disabled={true}
+        disabled
         className={c('option mode-selector-option hint--bottom', {
           '-active': selected === 'ALTERNATE' })}
         onClick={() => { onSelect('ALTERNATE') }}>
