@@ -1,7 +1,7 @@
 @import '../variables.css';
 @import '../mixins/icon-button.css';
 
-.mode-selector {
+.mode-selector-button {
   & {
     margin: 0;
     padding: 0;
@@ -19,7 +19,7 @@
   }
 
   &.-single > .icon::before {
-    @apply --ion-icon-md-git-commit;
+    @apply --ion-icon-md-return-left;
   }
 
   &.-continuous > .icon::before {

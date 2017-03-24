@@ -1,0 +1,41 @@
+@import '../variables.css';
+
+.mode-selector-dialog {
+  background: white;
+  border-radius: 3px;
+  box-shadow: var(--button-shadow-active);
+  width: 800px;
+
+  & > .heading {
+    @apply --font-size-0;
+
+    display: block;
+    margin: 0;
+    padding: 16px;
+    text-align: center;
+    font-weight: normal;
+    border-bottom: solid 1px var(--line-color);
+  }
+
+  @media (width > 480px) {
+    & > .options {
+      display: flex;
+    }
+
+    & > .options > .option {
+      flex: 1 1 33%;
+      vertical-align: top;
+    }
+  }
+
+  @media (width <= 480px) {
+    & {
+      max-width: 90vw;
+    }
+
+    & > .options {
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+  }
+}

@@ -1,0 +1,141 @@
+@import '../variables.css';
+
+.mode-selector-option {
+  & {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  @media (width > 768px) {
+    padding: 24px;
+  }
+
+  &:focus > .icon,
+  &:hover > .icon {
+    background: var(--hover-color);
+  }
+
+  &:active {
+    background: var(--hover-color);
+  }
+
+  /* Active */
+  &.-active > .icon {
+    background: var(--accent);
+    color: white;
+    box-shadow: none;
+  }
+
+  & + & {
+    border-left: solid 1px var(--line-color);
+  }
+
+  & > h2,
+  & > p {
+    margin: 0;
+    padding: 0;
+  }
+
+  & > h2 {
+    @apply --font-size-1;
+
+    font-weight: normal;
+  }
+
+  & > h5 {
+    font-size: 0.7em;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 0.12em;
+    color: var(--gray-text);
+  }
+
+  /* Description */
+  & > p {
+    color: var(--gray-text);
+  }
+
+  & > .icon {
+    display: block;
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    box-shadow: inset 0 0 0 1px var(--line-color);
+    border-radius: 50%;
+    margin: 0 auto 8px;
+    color: var(--gray-text);
+    text-align: center;
+  }
+
+  & > .icon::before {
+    @apply --ion-icon;
+
+    position: relative;
+    top: -2px;
+  }
+
+  /* Icons */
+  & > .icon.-continuous::before {
+    @apply --ion-icon-md-repeat;
+  }
+
+  & > .icon.-alternate::before {
+    @apply --ion-icon-md-shuffle;
+  }
+
+  & > .icon.-single::before {
+    @apply --ion-icon-md-return-left;
+  }
+}
+
+/*
+ * Desktop
+ */
+
+@media (width > 480px) {
+  .mode-selector-option {
+    /* Horizontal line */
+    & > p::before {
+      content: '';
+      display: block;
+      margin: 12px auto;
+      width: 32px;
+      height: 1px;
+      background: var(--line-color);
+    }
+  }
+}
+
+/*
+ * Mobile
+ */
+
+@media (width <= 480px) {
+  .mode-selector-option {
+    @apply --clearfix;
+
+    & {
+      text-align: left;
+      display: block;
+      padding-left: calc(64px + 16px);
+    }
+
+    & + & {
+      border-top: solid 1px var(--line-color);
+      border-left: 0;
+    }
+
+    & > .icon {
+      float: left;
+      margin: 8px 16px 16px -64px;
+    }
+  }
+}

@@ -13,30 +13,56 @@
 */
 
 import React from 'react'
-import c from 'classnames'
-import Settings, { TIMER_MODE_LABELS } from '../selectors/settings'
 import Timer from '../selectors/timer'
 import { connect } from 'react-redux'
+import Settings from '../selectors/settings'
+import ModeSelectorButton from './mode_selector_button'
+import ModeSelectorDialog from './mode_selector_dialog'
 
-export class ModeSelector extends React.Component {
+/*
+ * State manager
+ */
+
+class ModeSelector extends React.Component {
+  /*:: state: { open: boolean } */
   /*:: props: Props */
 
-  render () {
-    const { mode, onSwitch, disabled } = this.props
+  constructor () {
+    super()
+    this.state = { open: false }
+  }
 
-    return <button
-      onClick={() => !disabled && onSwitch()}
-      disabled={disabled}
-      aria-label={TIMER_MODE_LABELS[mode]}
-      className={c('mode-selector', {
-        'hint--bottom': true,
-        '-single': mode === 'SINGLE',
-        '-continuous': mode === 'CONTINUOUS',
-        '-alternate': mode === 'ALTERNATE'
-      })}>
-      <span className='icon' />
-      {/* <span className="label">{TIMER_MODE_LABELS[mode]}</span> */}
-    </button>
+  render () {
+    const { props, state } = this
+    const open = state.open && !props.disabled
+    const { onSwitch } = props
+
+    const onOpen = () => { this.setState({ open: true }) }
+    const onClose = () => { this.setState({ open: false }) }
+    const onToggle = () => { this.setState({ open: !open }) }
+
+    return <span className='popup-set'>
+      { open
+        ? <span className='screen' onClick={onClose} />
+        : null }
+      { open
+        ? <span className='dialog _pop-in' onClick={onClose}>
+          <ModeSelectorDialog
+            selected={props.mode}
+            onSelect={(mode /*: TimerMode */) => { onClose(); onSwitch(mode) }} />
+        </span>
+        : null }
+      <span className='trigger'>
+        <ModeSelectorButton
+          onOpen={onOpen}
+          onClose={onClose}
+          onToggle={onToggle}
+          onSwitch={props.onSwitch}
+          disabled={props.disabled}
+          mode={props.mode}
+          {...props} {...state} />
+      </span>
+    </span>
   }
 }
 
@@ -49,9 +75,9 @@ export default connect(
     mode: Settings.full(state)['timer:mode'],
     disabled: Timer.full(state).isOvertime
   }),
-  (dispatch /*: Dispatch<*> */) => ({
-    onSwitch: () => {
-      dispatch({ type: 'settings:cycleTimerMode' })
+  (dispatch /*: Dispatch<*> */, ownProps) => ({
+    onSwitch: (mode /*: TimerMode */) => {
+      dispatch({ type: 'settings:update', payload: { 'timer:mode': mode } })
     }
   })
 )(ModeSelector)

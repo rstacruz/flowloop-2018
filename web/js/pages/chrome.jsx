@@ -14,8 +14,8 @@ export class Chrome extends React.Component {
 
     return <TransitionGroup
       transitionName='_page'
-      transitionEnterTimeout={300}
-      transitionLeaveTimeout={300}>
+      transitionEnterTimeout={400}
+      transitionLeaveTimeout={400}>
       { page === 'HomeIndex'
         ? <HomeIndex key='timer' />
         : page === 'TimerShow'

@@ -6,7 +6,7 @@ import TimerLayout from '../components/timer_layout'
 export class HomeIndex extends React.Component {
   render () {
     return <TimerLayout page='home' className='_page-fade'>
-      <Title title='Flowloop' />
+      <Title title='Flowloop · productivity timer' />
 
       <div className='timer-actions'>
         <button
