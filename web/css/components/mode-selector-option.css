@@ -62,16 +62,6 @@
     color: var(--gray-text);
   }
 
-  /* Horizontal line */
-  & > p::before {
-    content: '';
-    display: block;
-    margin: 12px auto;
-    width: 32px;
-    height: 1px;
-    background: var(--line-color);
-  }
-
   & > .icon {
     display: block;
     font-size: 24px;
@@ -82,6 +72,7 @@
     border-radius: 50%;
     margin: 0 auto 8px;
     color: var(--gray-text);
+    text-align: center;
   }
 
   & > .icon::before {
@@ -102,5 +93,49 @@
 
   & > .icon.-single::before {
     @apply --ion-icon-md-return-left;
+  }
+}
+
+/*
+ * Desktop
+ */
+
+@media (width > 480px) {
+  .mode-selector-option {
+    /* Horizontal line */
+    & > p::before {
+      content: '';
+      display: block;
+      margin: 12px auto;
+      width: 32px;
+      height: 1px;
+      background: var(--line-color);
+    }
+  }
+}
+
+/*
+ * Mobile
+ */
+
+@media (width <= 480px) {
+  .mode-selector-option {
+    @apply --clearfix;
+
+    & {
+      text-align: left;
+      display: block;
+      padding-left: calc(64px + 16px);
+    }
+
+    & + & {
+      border-top: solid 1px var(--line-color);
+      border-left: 0;
+    }
+
+    & > .icon {
+      float: left;
+      margin: 8px 16px 16px -64px;
+    }
   }
 }

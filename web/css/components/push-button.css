@@ -1,0 +1,24 @@
+@import '../variables.css';
+
+.push-button {
+  display: inline-block;
+  color: white;
+  border: solid 1px color(white alpha(20%));
+  border-radius: 4px;
+  padding: 0 12px;
+  height: 32px;
+  line-height: 32px;
+  text-transform: none;
+  text-decoration: none;
+
+  & {
+    @apply --font-size--1;
+  }
+
+  &:hover,
+  &:focus {
+    background: var(--accent);
+    border: solid 1px transparent;
+    color: white;
+  }
+}

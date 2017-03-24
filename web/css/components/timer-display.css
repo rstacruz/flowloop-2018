@@ -1,7 +1,7 @@
 @import '../variables.css';
 
 :root {
-  --timer-display-small: 128px;
+  --timer-display-small: 160px;
   --timer-display-large: 196px;
   --timer-display-xl: 240px;
 

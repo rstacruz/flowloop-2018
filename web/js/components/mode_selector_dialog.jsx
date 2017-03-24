@@ -26,7 +26,7 @@ export default function ModeSelectorDialog (props /*: Props */) {
         onClick={() => { onSelect('CONTINUOUS') }}>
         <span className='icon -continuous' />
         <h2>Continuous</h2>
-        <h5>Flowloop mode</h5>
+        <h5>Flow mode</h5>
         <p>Timers never end. Laps are recorded every time a timer completes.</p>
       </button>
       <button
@@ -43,7 +43,7 @@ export default function ModeSelectorDialog (props /*: Props */) {
           '-active': selected === 'ALTERNATE' })}
         onClick={() => { onSelect('ALTERNATE') }}>
         <span className='icon -alternate' />
-        <h2>Alternate</h2>
+        <h2>Alternating</h2>
         <h5>Pomodoro mode</h5>
         <p>Switches to a break after a work timer completes, and vice versa.</p>
       </button>

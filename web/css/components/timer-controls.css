@@ -3,15 +3,12 @@
 .timer-controls {
   text-align: center;
   animation: fade-in-late 600ms ease-out;
-
-  @media (--horizontal-layout) {
-    width: 144px;
-    margin-left: -80px;
-  }
+  display: flex;
+  flex-direction: column;
 
   /* Reset */
-  & > h1,
-  & > p {
+  & > .title > h1,
+  & > .title > p {
     margin: 0;
     padding: 0;
     font-size: 1em;
@@ -19,7 +16,42 @@
   }
 
   /* 2:00 of 5:00 */
-  & > p {
+  & > .title > p {
     color: var(--gray-text);
+  }
+
+  @media (--horizontal-layout) {
+    width: 144px;
+    margin-left: -80px;
+
+    & > .actions {
+      margin-top: 16px;
+    }
+  }
+
+  @media (--vertical-layout) {
+    & {
+      flex-direction: row;
+    }
+
+    & > .actions {
+      margin-top: 0;
+      order: 2;
+      flex: 0 0 auto;
+      margin-left: 32px;
+      padding-left: 16px;
+      border-left: solid 1px var(--line-color);
+    }
+
+    & > .title {
+      flex: 1 0 auto;
+      text-align: left;
+      order: 1;
+      margin-left: 8px;
+    }
+
+    & > .title > h1.-work {
+      margin-left: -12px;
+    }
   }
 }

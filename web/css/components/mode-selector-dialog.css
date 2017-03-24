@@ -27,4 +27,15 @@
       vertical-align: top;
     }
   }
+
+  @media (width <= 480px) {
+    & {
+      max-width: 90vw;
+    }
+
+    & > .options {
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+  }
 }

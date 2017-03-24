@@ -4,11 +4,18 @@
   background: white;
   height: 100vh;
   overflow: auto;
-  padding: 16px;
   box-shadow: var(--button-shadow-active);
   width: 320px;
 
   @media (width <= 480px) {
     width: 100%;
+  }
+
+  & > .title {
+    padding: 0;
+  }
+
+  & > .body {
+    padding: 16px;
   }
 }
