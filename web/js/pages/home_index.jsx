@@ -7,7 +7,7 @@ import WelcomeToast from '../components/welcome_toast'
 export class HomeIndex extends React.Component {
   render () {
     return <TimerLayout page='home' className='_page-fade'>
-      <Title title='Flowloop · productivity timer' />
+      <Title title='Flowloop · Productivity Timer' />
 
       <div className='timer-actions'>
         <button
