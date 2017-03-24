@@ -5,7 +5,9 @@
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --gray: #8090a0;
   --background: #eeeef1;
+  --toast-background: color(var(--background) tint(50%));
   --text-color: #404050;
+  --dark-text-color: #222;
   --accent: #42a5f5;
   --success-color: green;
   --line-color: color(var(--text-color) alpha(15%));

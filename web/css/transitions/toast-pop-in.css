@@ -1,0 +1,17 @@
+@import '../variables.css';
+
+@keyframes toast-pop-in {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+    transform: translate3d(0, 80px, 0) scale(0.9);
+  }
+}
+
+._toast-pop-in {
+  animation: toast-pop-in 600ms var(--transition-zip);
+  transform: translate3d(0, 0, 0) scale(1);
+}

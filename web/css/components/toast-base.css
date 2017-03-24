@@ -1,0 +1,24 @@
+@import '../variables.css';
+
+.toast-base {
+  position: relative;
+
+  & > .item {
+    position: fixed;
+    width: 300px;
+    bottom: 80px;
+    left: 50%;
+    margin-left: calc(-1 * 300px / 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (width > 480px) {
+    & > .item {
+      width: 480px;
+      bottom: 80px;
+      margin-left: calc(-1 * 480px / 2);
+    }
+  }
+}

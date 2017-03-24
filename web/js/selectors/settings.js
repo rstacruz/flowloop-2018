@@ -32,7 +32,8 @@ export const DEFAULTS /*: Settings */ = {
   'duration:break': 5 * 60 * 1000,
   'duration:longBreak': 15 * 60 * 1000,
   'labels:default': DEFAULT_LABEL_ID,
-  'timer:mode': 'CONTINUOUS'
+  'timer:mode': 'CONTINUOUS',
+  'toast:welcome': false
 }
 
 /**

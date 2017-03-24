@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Title from 'react-document-title'
 import TimerLayout from '../components/timer_layout'
+import WelcomeToast from '../components/welcome_toast'
 
 export class HomeIndex extends React.Component {
   render () {
@@ -23,6 +24,8 @@ export class HomeIndex extends React.Component {
           Break
         </button>
       </div>
+
+      <WelcomeToast />
     </TimerLayout>
   }
 }

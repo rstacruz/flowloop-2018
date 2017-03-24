@@ -1,0 +1,91 @@
+@import '../variables.css';
+
+.toast-item {
+  & {
+    @apply --font-size--1;
+
+    flex: 0 0 auto;
+    background: var(--background);
+    box-shadow: 0 8px 16px 16px var(--background);
+    color: var(--text-color);
+    text-align: center;
+    padding: 16px;
+    border-radius: 4px;
+    transition: background 150ms linear, box-shadow 150ms linear;
+  }
+
+  &:hover {
+    background: var(--toast-background);
+    box-shadow: var(--button-shadow);
+  }
+
+  /* Reset */
+  & > h1,
+  & > h2,
+  & > p {
+    margin: 0;
+    padding: 0;
+    color: var(--gray-text);
+  }
+
+  & > h1,
+  & > h2 {
+    @apply --font-size-0;
+
+    margin: 0;
+    padding: 0;
+    color: var(--dark-text-color);
+    font-weight: normal;
+  }
+
+  & > .actions {
+    padding-top: 8px;
+  }
+
+  @media (width > 480px) {
+    & > .actions {
+      padding-top: 16px;
+    }
+  }
+
+  & > .actions > .action {
+    display: inline-block;
+    margin: 0;
+    padding: 4px 16px;
+    border: 0;
+    color: var(--accent);
+    background: transparent;
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 0.02em;
+
+    &:hover,
+    &:focus {
+      color: color(var(--accent) shade(10%));
+    }
+
+    &:active {
+      color: color(var(--accent) shade(20%));
+    }
+  }
+
+  & > .actions > .action + .action {
+    border-left: solid 1px var(--line-color);
+  }
+
+  /* Dismiss */
+
+  & > .actions > .action.-mute {
+    color: var(--gray-text);
+    font-weight: normal;
+
+    &:hover,
+    &:focus {
+      color: color(var(--accent) shade(10%));
+    }
+
+    &:active {
+      color: color(var(--accent) shade(20%));
+    }
+  }
+}
