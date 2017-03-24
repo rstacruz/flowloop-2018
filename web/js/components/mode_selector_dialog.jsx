@@ -39,7 +39,9 @@ export default function ModeSelectorDialog (props /*: Props */) {
         <p>Stops the timer after it completes. Works like classic Pomodoro.</p>
       </button>
       <button
-        className={c('option mode-selector-option', {
+        aria-label='Coming soon. Stay tuned!'
+        disabled={true}
+        className={c('option mode-selector-option hint--bottom', {
           '-active': selected === 'ALTERNATE' })}
         onClick={() => { onSelect('ALTERNATE') }}>
         <span className='icon -alternate' />

@@ -16,17 +16,33 @@
     padding: 24px;
   }
 
-  &:focus > .icon,
-  &:hover > .icon {
-    background: var(--hover-color);
+  &:not([disabled]) {
+    &:focus > .icon,
+    &:hover > .icon {
+      background: var(--hover-color);
+    }
+
+    &:active {
+      background: var(--hover-color);
+    }
   }
 
-  &:active {
-    background: var(--hover-color);
+  /* Disabled */
+  &[disabled] {
+    cursor: not-allowed;
+
+    & > .icon,
+    & > h2,
+    & > h5,
+    & > p {
+      opacity: 0.5;
+    }
   }
 
   /* Active */
-  &.-active > .icon {
+  &.-active > .icon,
+  &.-active:hover > .icon,
+  &.-active:focus > .icon {
     background: var(--accent);
     color: white;
     box-shadow: none;
