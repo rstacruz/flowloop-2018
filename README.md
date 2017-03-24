@@ -64,18 +64,6 @@ yarn run build  # Build for production (builds into /public)
 </details>
 
 <details>
-<summary>To do list</summary>
-
-## To do
-
-- [x] Timer
-- [x] Saving logs
-- [x] Push notifications
-- [x] Ding sound
-- [ ] Rolling over
-</details>
-
-<details>
 <summary>Sources</summary>
 
 ## Sources
