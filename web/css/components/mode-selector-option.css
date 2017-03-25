@@ -10,6 +10,7 @@
     background: transparent;
     text-align: center;
     line-height: 1.6;
+    align-items: center;
   }
 
   @media (width > 768px) {
