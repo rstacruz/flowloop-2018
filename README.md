@@ -129,5 +129,9 @@ Authored and maintained by Rico Sta. Cruz with help from contributors ([list][co
 > GitHub [@rstacruz](https://github.com/rstacruz) &nbsp;&middot;&nbsp;
 > Twitter [@rstacruz](https://twitter.com/rstacruz)
 
+[![](https://img.shields.io/github/followers/rstacruz.svg?style=social&label=Follow)](https://github.com/rstacruz)
+&nbsp;
+[![](https://img.shields.io/twitter/follow/rstacruz.svg?style=social&label=Follow)](https://twitter.com/rstacruz)
+
 [MIT]: http://mit-license.org/
 [contributors]: http://github.com/rstacruz/flowloop/contributors
