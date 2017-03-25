@@ -14,7 +14,7 @@ import Title from 'react-document-title'
  * The settings page
  */
 
-export class SettingsIndex extends React.Component {
+export class SettingsIndex extends React.PureComponent {
   /*:: props: Props */
   render () {
     const { onBack } = this.props

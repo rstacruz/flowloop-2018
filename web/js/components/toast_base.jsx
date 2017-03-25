@@ -30,7 +30,7 @@ import Settings from '../selectors/settings'
  * Basis for all toast notifications
  */
 
-export class ToastBase extends React.Component {
+export class ToastBase extends React.PureComponent {
   /*:: props: Props */
   /*:: state: { isDismissed: boolean } */
 

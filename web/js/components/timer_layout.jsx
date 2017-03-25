@@ -10,7 +10,7 @@
 import React from 'react'
 import TimelineSummary from './timeline_summary'
 
-class TimerLayout extends React.Component {
+class TimerLayout extends React.PureComponent {
   /*:: props: Props */
 
   render () {

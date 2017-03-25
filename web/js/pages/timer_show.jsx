@@ -22,7 +22,7 @@ import Timer from '../selectors/timer'
 import { full as fullLabel } from '../selectors/label'
 import { BREAK_COLOR } from '../selectors/color'
 
-export class TimerShow extends React.Component {
+export class TimerShow extends React.PureComponent {
   /*:: props: Props */
 
   render () {

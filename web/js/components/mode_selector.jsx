@@ -23,7 +23,7 @@ import ModeSelectorDialog from './mode_selector_dialog'
  * State manager
  */
 
-class ModeSelector extends React.Component {
+class ModeSelector extends React.PureComponent {
   /*:: state: { open: boolean } */
   /*:: props: Props */
 

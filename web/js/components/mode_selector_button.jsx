@@ -18,7 +18,7 @@ import React from 'react'
 import c from 'classnames'
 import { TIMER_MODE_LABELS } from '../selectors/settings'
 
-export default class ModeSelectorButton extends React.Component {
+export default class ModeSelectorButton extends React.PureComponent {
   /*:: props: Props */
 
   render () {

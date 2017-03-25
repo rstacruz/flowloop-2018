@@ -22,7 +22,7 @@ import Moment from 'moment'
 import LogItems from './log_items'
 import get from '101/pluck'
 
-export class TimelineSummary extends React.Component {
+export class TimelineSummary extends React.PureComponent {
   /*:: props: Props */
 
   render () {

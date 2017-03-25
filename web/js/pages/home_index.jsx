@@ -4,7 +4,7 @@ import Title from 'react-document-title'
 import TimerLayout from '../components/timer_layout'
 import WelcomeToast from '../components/welcome_toast'
 
-export class HomeIndex extends React.Component {
+export class HomeIndex extends React.PureComponent {
   render () {
     return <TimerLayout page='home' className='_page-fade'>
       <Title title='Flowloop · Productivity Timer' />

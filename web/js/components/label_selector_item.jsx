@@ -50,7 +50,7 @@ export function LabelSelectorItem (props /*: Props */) {
  * State
  */
 
-export default class LabelSelectItemStateful extends React.Component {
+export default class LabelSelectItemStateful extends React.PureComponent {
   /*::
     state: { focused: boolean }
     props: SProps

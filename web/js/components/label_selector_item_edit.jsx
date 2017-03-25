@@ -78,7 +78,7 @@ export function LabelSelectorItemEdit (props /*: Props */) {
   </span>
 }
 
-export default class LabelSelectorItemEditStateful extends React.Component {
+export default class LabelSelectorItemEditStateful extends React.PureComponent {
   /*:: state: State */
   /*:: props: ParentProps */
 

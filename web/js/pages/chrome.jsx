@@ -8,7 +8,7 @@ import LogIndex from './log_index'
 import SettingsIndex from './settings_index'
 import get from '101/pluck'
 
-export class Chrome extends React.Component {
+export class Chrome extends React.PureComponent {
   render () {
     const { page } = this.props
 

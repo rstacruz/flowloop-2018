@@ -89,7 +89,7 @@ export function LabelSelector (props /*: Props */) {
  * State
  */
 
-export class LabelSelectorStateful extends React.Component {
+export class LabelSelectorStateful extends React.PureComponent {
   /*::
     state: { open: boolean, editing: boolean }
     props: SProps
