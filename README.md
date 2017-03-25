@@ -2,9 +2,11 @@
 
 > A polite web-based timer for hyper-productivity
 
-[![](docs/images/screenshot.png)](http://ricostacruz.com/flowloop/)
-
 [![Status](https://travis-ci.org/rstacruz/flowloop.svg?branch=master)](https://travis-ci.org/rstacruz/flowloop "See test builds")
+
+
+<p align='center'><a href='http://ricostacruz.com/flowloop/'><img src='docs/images/screenshot.png' width='400'></a></p>
+
 
 ## About
 
@@ -34,7 +36,7 @@ Flowloop was born out of the frustration of Pomodoro timers all imposing 5-minut
 
 Flowloop is Pomodoro with no limits on work hours or break lengths. You'll be subtly reminded of how long you've been working (or on break), instead of being forced to stop or to start.
 
----
+<br>
 
 <details>
 <summary>Set up instructions</summary>
@@ -68,7 +70,7 @@ yarn run build  # Build for production (builds into /public)
 
 ## Sources
 
-- https://notificationsounds.com/standard-ringtones/echoed-ding-459
+- <https://notificationsounds.com/standard-ringtones/echoed-ding-459>
 </details>
 
 <details>
@@ -96,6 +98,8 @@ yarn run electron:dist
 
 ## Developer tools
 
+The app is exposed via `window.__APP__` for debugging.
+
 ```js
 // Shorten work duration to 4 seconds
 __APP__.store.dispatch({ type: 'settings:update', payload: { 'duration:work': 4000 } })
@@ -113,6 +117,8 @@ delete localStorage.TimerData
 prompt('', localStorage.TimerData)
 ```
 </details>
+
+<br>
 
 ## Thanks
 

@@ -26,7 +26,7 @@ export class SettingsIndex extends React.Component {
           <h1>Flowloop</h1>
 
           <a className='push-button -white'
-            href='https://github.com/rstacruz/flowloop'
+            href='https://github.com/rstacruz/flowloop#about'
             target='_blank'>
             Learn more
           </a>
