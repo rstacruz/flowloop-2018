@@ -57,7 +57,7 @@ if (typeof process.env.VERSION !== 'undefined') {
  * Performance
  */
 
-if (typeof process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   window.Perf = require('react-addons-perf')
 }
 
