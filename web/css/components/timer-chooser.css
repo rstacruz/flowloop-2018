@@ -1,0 +1,17 @@
+@import '../variables.css';
+
+.timer-chooser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  & > .button {
+    margin: 16px 0;
+    flex: 0 0 auto;
+  }
+
+  & > .logo {
+    margin: 8px auto;
+  }
+}

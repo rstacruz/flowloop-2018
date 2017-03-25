@@ -18,27 +18,4 @@
       margin: 16px 0;
     }
   }
-
-  & > .logo {
-    margin: 8px auto;
-  }
-
-  @media (width <= 768px) {
-    & > .logo {
-      display: none;
-    }
-  }
-}
-
-.app-logo {
-  display: inline-block;
-
-  &::before {
-    content: '';
-    display: inline-block;
-    font-weight: bold;
-    width: 128px;
-    height: calc(128px / (221 / 23));
-    background: url('../../assets/flowloop-logo.svg') 0 0 / 100% 100%;
-  }
 }

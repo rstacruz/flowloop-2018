@@ -9,7 +9,7 @@ export class HomeIndex extends React.PureComponent {
     return <TimerLayout page='home' className='_page-fade'>
       <Title title='Flowloop · Productivity Timer' />
 
-      <div className='timer-actions'>
+      <div className='timer-chooser'>
         <button
           className='button timer-button -work -large'
           onClick={() => this.props.onStartClick('work')}>
