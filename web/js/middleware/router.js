@@ -5,13 +5,18 @@ import buildRouter from './build_router'
  */
 
 export default function Router () {
-  return buildRouter({}, ({ route, dispatch }) => {
+  return buildRouter({}, ({ route, dispatch, store }) => {
     route('/', () => {
       dispatch({ type: 'route:change', page: 'HomeIndex' })
     })
 
     route('/timer', () => {
-      dispatch({ type: 'route:change', page: 'TimerShow' })
+      const timer = store.getState().timer
+      if (timer && timer.active) {
+        dispatch({ type: 'route:change', page: 'TimerShow' })
+      } else {
+        setTimeout(() => { route('/', null, true) })
+      }
     })
 
     route('/log', () => {
