@@ -14,7 +14,9 @@
     "test:watch": "jest --watch -b",
     "update-ghpages": "git-update-ghpages --force rstacruz/flowloop public",
     "watch": "webpack --progress --colors --watch",
-    "webpack:size": "source-map-explorer public/assets/js/app.js public/assets/js/app.js.map"
+    "webpack:size": "source-map-explorer public/assets/js/app.js public/assets/js/app.js.map",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "101": "1.6.2",
@@ -81,7 +83,8 @@
     "react-test-renderer": "15.4.2",
     "source-map-explorer": "1.3.3",
     "standard": "9.0.1",
-    "webpack-bundle-size-analyzer": "2.5.0"
+    "webpack-bundle-size-analyzer": "2.5.0",
+    "@kadira/storybook": "^2.21.0"
   },
   "standard": {
     "ignore": [
