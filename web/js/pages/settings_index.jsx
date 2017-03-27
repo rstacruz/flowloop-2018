@@ -18,6 +18,7 @@ export class SettingsIndex extends React.PureComponent {
   /*:: props: Props */
   render () {
     const { onBack } = this.props
+    const version = process.env.VERSION
 
     return <div className='_page-left settings-layout'>
       <Title title='Settings' />
@@ -34,14 +35,29 @@ export class SettingsIndex extends React.PureComponent {
       </div>
 
       <div className='body'>
-        <div className='blank-state'>
-          <h2>Settings</h2>
-          <p>Thanks for trying out Flowloop!</p>
+        <div className='settings-items'>
+          <div className='settings-item'>
+            <h2>About</h2>
+          </div>
+
+          <div className='settings-item'>
+            <h3>Flowloop</h3>
+            { version ? <p>{version}</p> : null }
+          </div>
+
+          <div className='settings-item'>
+            <h3>Flowloop on GitHub</h3>
+            <p>
+              <a href='https://github.com/rstacruz/flowloop' target='_blank'>
+                <img src='https://img.shields.io/github/stars/rstacruz/flowloop.svg?style=social&label=Star' />
+              </a>
+            </p>
+          </div>
+
+          <div className='settings-item'>
+            <button onClick={(e) => { e.preventDefault(); onBack() }}>Go back</button>
+          </div>
         </div>
-
-        <br />
-
-        <button onClick={(e) => { e.preventDefault(); onBack() }}>Go back</button>
       </div>
     </div>
   }

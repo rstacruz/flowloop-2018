@@ -1,0 +1,45 @@
+@import '../variables.css';
+
+.settings-items {
+  margin: -8px -16px;
+}
+
+.settings-item {
+  & {
+    padding: 8px 16px;
+  }
+
+  & + & {
+    border-top: solid 1px var(--line-color);
+  }
+
+  & > h2,
+  & > h3,
+  & > p {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+  }
+
+  & > h2 {
+    @apply --font-size--1;
+
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  & > h3 {
+    font-weight: normal;
+  }
+
+  & > p {
+    @apply --font-size--1;
+
+    color: var(--gray-text);
+  }
+
+  & > p > img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

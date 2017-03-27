@@ -51,13 +51,13 @@
 
   @media (width <= 480px) {
     & > .topleft {
-      left: 0;
-      top: 0;
+      left: 8px;
+      top: 8px;
     }
 
     & > .topright {
-      right: 0;
-      top: 0;
+      right: 8px;
+      top: 8px;
     }
   }
 }
