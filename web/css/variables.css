@@ -11,6 +11,7 @@
   --accent: #42a5f5;
   --success-color: green;
   --line-color: color(var(--text-color) alpha(15%));
+  --light-line-color: color(var(--text-color) alpha(7%));
   --button-shadow: 0 4px 8px color(#567 alpha(10%));
   --button-shadow-active: 0 6px 12px color(#567 alpha(20%));
   --gray-text: #8090a0;

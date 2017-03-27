@@ -1,7 +1,7 @@
 @import '../variables.css';
 
 .settings-items {
-  margin: -8px -16px;
+  margin: -16px;
 }
 
 .settings-item {
@@ -10,7 +10,7 @@
   }
 
   & + & {
-    border-top: solid 1px var(--line-color);
+    border-top: solid 1px var(--light-line-color);
   }
 
   & > h2,
@@ -24,6 +24,7 @@
   & > h2 {
     @apply --font-size--1;
 
+    padding-top: 16px;
     color: var(--accent);
     font-weight: bold;
   }

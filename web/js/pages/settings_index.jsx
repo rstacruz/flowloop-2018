@@ -46,6 +46,20 @@ export class SettingsIndex extends React.PureComponent {
       <div className='body'>
         <div className='settings-items'>
           <div className='settings-item'>
+            <h2>Timer duration</h2>
+          </div>
+
+          <div className='settings-item'>
+            <h3>Work timer</h3>
+            <p>25 minutes</p>
+          </div>
+
+          <div className='settings-item'>
+            <h3>Break timer</h3>
+            <p>5 minutes</p>
+          </div>
+
+          <div className='settings-item'>
             <h2>About</h2>
           </div>
 
@@ -55,7 +69,6 @@ export class SettingsIndex extends React.PureComponent {
           </div>
 
           <div className='settings-item'>
-            <h3>Flowloop on GitHub</h3>
             <p>
               <a href='https://github.com/rstacruz/flowloop' target='_blank'>
                 <img src='https://img.shields.io/github/stars/rstacruz/flowloop.svg?style=social&label=Star' />
