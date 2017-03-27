@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import Chrome from './pages/chrome'
 import { buildStore } from './store'
+import OfflinePlugin from 'offline-plugin/runtime'
+
+// Offline plugin
+OfflinePlugin.install()
 
 /**
  * The main application. Exposed like this for testing.

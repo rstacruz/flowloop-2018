@@ -3,7 +3,7 @@ const resolve = require('path').resolve
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-// const LiveReloadPlugin = require('webpack-livereload-plugin')
+const OfflinePlugin = require('offline-plugin')
 
 const DEBUG = process.env.NODE_ENV !== 'production'
 const SRC = './web'
@@ -108,7 +108,10 @@ module.exports = {
     ]),
 
     // Ignore locales because it's around 400kb
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+
+    // Offline (AppCache and Service Workers)
+    new OfflinePlugin()
   ].concat(DEBUG ? [
     // LiveReload in development
     // new LiveReloadPlugin({
@@ -119,7 +122,8 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       debug: true
     })
-  ] : []),
+  ] : [
+  ]),
 
   // Hide source maps in production (no sourceMappingURL)
   devtool: DEBUG ? 'source-map' : 'hidden-source-map',
