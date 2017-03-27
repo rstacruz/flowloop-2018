@@ -6,6 +6,7 @@
   overflow: auto;
   box-shadow: var(--button-shadow-active);
   width: 320px;
+  position: relative;
 
   @media (width <= 480px) {
     width: 100%;
@@ -17,5 +18,11 @@
 
   & > .body {
     padding: 16px;
+  }
+
+  & > .topleft {
+    position: absolute;
+    left: 8px;
+    top: 8px;
   }
 }

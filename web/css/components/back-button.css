@@ -1,0 +1,17 @@
+@import '../variables.css';
+@import '../mixins/icon-button.css';
+
+/*
+ * Back button in the main chrome
+ */
+
+.back-button {
+  & {
+    @apply --icon-button;
+  }
+
+  & > .icon::before {
+    @apply --ion-icon;
+    @apply --ion-icon-md-arrow-back;
+  }
+}

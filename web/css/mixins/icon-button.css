@@ -27,6 +27,12 @@
       margin-left: 8px;
     }
 
+    /* White variant */
+    &.-white > .icon,
+    &.-white > .label {
+      color: white;
+    }
+
     /* Hover and active states */
     &:not([disabled]) {
       &:hover > .icon,

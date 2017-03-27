@@ -22,6 +22,15 @@ export class SettingsIndex extends React.PureComponent {
 
     return <div className='_page-left settings-layout'>
       <Title title='Settings' />
+
+      <div className='topleft'>
+        <a
+          className='back-button -white' href='#'
+          onClick={(e) => { e.preventDefault(); onBack() }}>
+          <span className='icon' />
+        </a>
+      </div>
+
       <div className='title'>
         <div className='settings-heading'>
           <h1>Flowloop</h1>
@@ -52,10 +61,6 @@ export class SettingsIndex extends React.PureComponent {
                 <img src='https://img.shields.io/github/stars/rstacruz/flowloop.svg?style=social&label=Star' />
               </a>
             </p>
-          </div>
-
-          <div className='settings-item'>
-            <button onClick={(e) => { e.preventDefault(); onBack() }}>Go back</button>
           </div>
         </div>
       </div>
