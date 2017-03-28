@@ -1,7 +1,12 @@
 import { createStore, applyMiddleware } from 'redux'
 
 /*
- * Helper: captures actions
+ * Helper: captures actions in Redux middleware.
+ *
+ *     const { actions, store } = capture([middlewares])
+ *
+ *     actions == [ ... ]
+ *     store == // redux store
  */
 
 function capture (...middleware) {

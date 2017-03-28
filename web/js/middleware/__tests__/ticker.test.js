@@ -1,6 +1,9 @@
 /* eslint-env jest */
+
 import Ticker from '../ticker'
 import capture from '../../../../test/support/capture'
+
+jest.useFakeTimers()
 
 describe('Ticker', () => {
   test('runs ticker:tick on init', () => {
@@ -13,19 +16,15 @@ describe('Ticker', () => {
   })
 
   test('runs ticker:tick when starting', () => {
-    return new Promise((resolve, reject) => {
-      const { actions, store } = capture(Ticker({ interval: 1 }))
+    const { actions, store } = capture(Ticker())
 
-      store.dispatch({ type: 'init' })
-      store.dispatch({ type: 'ticker:start!' })
+    store.dispatch({ type: 'init' })
+    store.dispatch({ type: 'ticker:start!' })
+    jest.runOnlyPendingTimers()
 
-      setTimeout(() => {
-        store.dispatch({ type: 'ticker:stop!' })
-        expect(actions[3].type).toEqual('ticker:start!')
-        expect(actions[4].type).toEqual('ticker:tick')
-        expect(actions[4].now.constructor).toEqual(Date)
-        resolve()
-      }, 5)
-    })
+    store.dispatch({ type: 'ticker:stop!' })
+    expect(actions[3].type).toEqual('ticker:start!')
+    expect(actions[4].type).toEqual('ticker:tick')
+    expect(actions[4].now.constructor).toEqual(Date)
   })
 })
