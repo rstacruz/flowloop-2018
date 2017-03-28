@@ -8,8 +8,8 @@ export default function ding (count = 1) {
   /* eslint-disable no-new */
   new Howl({
     src: [
-      'sounds/echoed-ding.ogg',
-      'sounds/echoed-ding.mp3'
+      'assets/sounds/echoed-ding.ogg',
+      'assets/sounds/echoed-ding.mp3'
     ],
     volume: 0.5,
     autoplay: true

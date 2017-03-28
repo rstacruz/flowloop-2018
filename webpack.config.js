@@ -55,7 +55,7 @@ module.exports = {
         })
       },
       {
-        test: /\.(png|jpg|jpeg|gif|ico|woff|woff2|eot|otf|svg)$/,
+        test: /\.(png|jpg|jpeg|gif|ico|woff|woff2|eot|otf|svg|ttf)$/,
         use: [
           {
             loader: 'file-loader',
@@ -103,8 +103,7 @@ module.exports = {
 
     // Copying files directly
     new CopyWebpackPlugin([
-      // { from: `${SRC}/assets`, to: './assets' },
-      { from: `${SRC}/html`, to: '.' }
+      { from: `${SRC}/public`, to: '.' }
     ]),
 
     // Ignore locales because it's around 400kb
@@ -113,11 +112,6 @@ module.exports = {
     // Offline (AppCache and Service Workers)
     new OfflinePlugin()
   ].concat(DEBUG ? [
-    // LiveReload in development
-    // new LiveReloadPlugin({
-    //   appendScriptTag: true
-    // }),
-
     // Debug mode for old webpack plugins
     new webpack.LoaderOptionsPlugin({
       debug: true
