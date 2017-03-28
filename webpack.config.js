@@ -16,7 +16,10 @@ module.exports = {
 
   entry: {
     // JavaScript
-    'assets/js/app': `${SRC}/js/app.js`,
+    'assets/js/app': [
+      DEBUG ? null : `${SRC}/js/support/offline.js`,
+      `${SRC}/js/app.js`
+    ].filter(Boolean),
 
     // CSS
     'assets/css/app': `${SRC}/css/app.js`
@@ -107,16 +110,16 @@ module.exports = {
     ]),
 
     // Ignore locales because it's around 400kb
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+
+    // Offline (AppCache and Service Workers)
+    new OfflinePlugin()
   ].concat(DEBUG ? [
     // Debug mode for old webpack plugins
     new webpack.LoaderOptionsPlugin({
       debug: true
     })
-  ] : [
-    // Offline (AppCache and Service Workers)
-    new OfflinePlugin()
-  ]),
+  ] : []),
 
   // Hide source maps in production (no sourceMappingURL)
   devtool: DEBUG ? 'source-map' : 'hidden-source-map',

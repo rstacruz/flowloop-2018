@@ -8,11 +8,6 @@ import Debug from 'debug'
 
 const debug = Debug('app:app')
 
-// Offline plugin
-if (process.env.NODE_ENV === 'production') {
-  require('offline-plugin/runtime').install()
-}
-
 /**
  * The main application. Exposed like this for testing.
  *
