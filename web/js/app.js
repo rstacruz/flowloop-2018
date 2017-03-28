@@ -41,6 +41,8 @@ export default class App {
     div.className = 'app-root'
     document.body.appendChild(div)
 
+    this.removeLoadingScreen()
+
     ReactDOM.render(
       <Provider store={store}>
         <Chrome />
@@ -48,6 +50,15 @@ export default class App {
     , div)
 
     return this
+  }
+
+  /*
+   * Removes the loading screen that's shown before JavaScript.
+   */
+
+  removeLoadingScreen () {
+    const $screen = document.getElementById('loading-screen')
+    if ($screen) $screen.parentNode.removeChild($screen)
   }
 
   /**
