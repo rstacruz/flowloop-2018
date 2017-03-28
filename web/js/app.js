@@ -27,19 +27,14 @@ export default class App {
 
     const store = this.store = buildStore()
 
-    debug('Triggering init')
     store.dispatch({ type: 'init' })
-    debug('Triggering pesistence:load!')
     store.dispatch({ type: 'persistence:load!' })
-    debug('Triggering icon:reset!')
     store.dispatch({ type: 'icon:reset!' })
 
     // Start with the home page even if we're not loading the home page.
     // Kind of a hax if riot-route takes too long to spin up
-    debug('Triggering route:change')
     store.dispatch({ type: 'route:change', page: 'HomeIndex' })
 
-    debug('Creating div')
     const div = this.div = document.createElement('div')
     div.id = 'root'
     div.className = 'app-root'

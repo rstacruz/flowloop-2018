@@ -1,0 +1,32 @@
+@import '../variables.css';
+
+.loading-screen {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > .body {
+    flex: 0 0 auto;
+    padding: 32px;
+    text-align: center;
+    color: var(--gray-text);
+  }
+
+  & > .body > .icon {
+    display: inline-block;
+    border: solid 2px transparent;
+    border-top-color: var(--line-color);
+    border-left-color: var(--line-color);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    animation: spin-icon 900ms linear infinite;
+  }
+}
+
+@keyframes spin-icon {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
