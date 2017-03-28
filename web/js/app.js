@@ -4,14 +4,13 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import Chrome from './pages/chrome'
 import { buildStore } from './store'
-import * as OfflinePlugin from 'offline-plugin/runtime'
 import Debug from 'debug'
 
 const debug = Debug('app:app')
 
 // Offline plugin
 if (process.env.NODE_ENV === 'production') {
-  OfflinePlugin.install()
+  require('offline-plugin/runtime').install()
 }
 
 /**
@@ -38,7 +37,6 @@ export default class App {
 
     // Start with the home page even if we're not loading the home page.
     // Kind of a hax if riot-route takes too long to spin up
-     console.log('dispatching')
     store.dispatch({ type: 'route:change', page: 'HomeIndex' })
 
     const div = this.div = document.createElement('div')
@@ -73,6 +71,7 @@ export default class App {
   stop () {
     this.store.dispatch({ type: 'stop!' })
     ReactDOM.render(<noscript />, this.div)
+    this.div.parentNode.removeChild(this.div)
     return this
   }
 }
