@@ -5,9 +5,14 @@ import { Provider } from 'react-redux'
 import Chrome from './pages/chrome'
 import { buildStore } from './store'
 import * as OfflinePlugin from 'offline-plugin/runtime'
+import Debug from 'debug'
+
+const debug = Debug('app:app')
 
 // Offline plugin
-OfflinePlugin.install()
+if (process.env.NODE_ENV === 'production') {
+  OfflinePlugin.install()
+}
 
 /**
  * The main application. Exposed like this for testing.
@@ -23,6 +28,8 @@ export default class App {
    */
 
   start () {
+    debug(`Starting Flowloop ${process.env.VERSION}`)
+
     const store = this.store = buildStore()
 
     store.dispatch({ type: 'init' })
@@ -52,10 +59,6 @@ export default class App {
     ReactDOM.render(<noscript />, this.div)
     return this
   }
-}
-
-if (typeof process.env.VERSION !== 'undefined') {
-  console.log(`Flowloop ${process.env.VERSION}`)
 }
 
 /*

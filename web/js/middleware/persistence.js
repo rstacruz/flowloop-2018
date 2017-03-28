@@ -9,6 +9,9 @@
 */
 
 import { migrate, LATEST_VERSION } from '../services/migrator'
+import Debug from 'debug'
+
+const debug = Debug('app:persistence')
 
 /**
  * Simple localStorage-based persistence middleware-generator.
@@ -50,6 +53,7 @@ export default function Persistence () /*: Middleware<*, Action> */ {
 
 function load (dispatch /*: Dispatch<Action> */) {
   loadData('TimerData', (data /*: DataStore */) => {
+    debug('Loading data')
     data = migrate(data)
     dispatch({ type: 'settings:update', payload: data.settings })
     dispatch({ type: 'log:load', payload: data.log })
@@ -75,7 +79,7 @@ function save (state /*: State */) {
     settings: { ...(previous.settings || {}), ...state.settings }
   }
 
-  console.log('Persistence: saving data', payload)
+  debug('Saving data', payload)
   window.localStorage.TimerData = JSON.stringify(payload)
 }
 

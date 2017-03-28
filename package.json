@@ -29,6 +29,7 @@
     "clean-webpack-plugin": "0.1.15",
     "copy-webpack-plugin": "4.0.1",
     "css-loader": "0.26.2",
+    "debug": "2.6.3",
     "extract-text-webpack-plugin": "2.0.0",
     "file-loader": "0.10.1",
     "hint.css": "2.4.1",

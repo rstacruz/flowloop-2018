@@ -4,6 +4,10 @@
   import type { DataStore } from '../selectors/data_store'
 */
 
+import Debug from 'debug'
+
+const debug = Debug('app:migrator')
+
 /**
  * Migrations to perform.
  */
@@ -27,6 +31,7 @@ export function migrate (data /*: DataStore */) /*: DataStore */ {
     const fn = MIGRATIONS[version]
 
     if (data.version < +version) {
+      debug(`Running migration to v${version}`)
       data = fn(data)
       data.version = +version
     }
