@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import Chrome from './pages/chrome'
 import { buildStore } from './store'
 import Debug from 'debug'
+import './support/offline'
 
 const debug = Debug('app:app')
 
@@ -26,14 +27,19 @@ export default class App {
 
     const store = this.store = buildStore()
 
+    debug('Triggering init')
     store.dispatch({ type: 'init' })
+    debug('Triggering pesistence:load!')
     store.dispatch({ type: 'persistence:load!' })
+    debug('Triggering icon:reset!')
     store.dispatch({ type: 'icon:reset!' })
 
     // Start with the home page even if we're not loading the home page.
     // Kind of a hax if riot-route takes too long to spin up
+    debug('Triggering route:change')
     store.dispatch({ type: 'route:change', page: 'HomeIndex' })
 
+    debug('Creating div')
     const div = this.div = document.createElement('div')
     div.id = 'root'
     div.className = 'app-root'
@@ -41,6 +47,7 @@ export default class App {
 
     this.removeLoadingScreen()
 
+    debug('ReactDOM.render()')
     ReactDOM.render(
       <Provider store={store}>
         <Chrome />

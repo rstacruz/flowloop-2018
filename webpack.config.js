@@ -16,10 +16,7 @@ module.exports = {
 
   entry: {
     // JavaScript
-    'assets/js/app': [
-      DEBUG ? null : `${SRC}/js/support/offline.js`,
-      `${SRC}/js/app.js`
-    ].filter(Boolean),
+    'assets/js/app': `${SRC}/js/app.js`,
 
     // CSS
     'assets/css/app': `${SRC}/css/app.js`

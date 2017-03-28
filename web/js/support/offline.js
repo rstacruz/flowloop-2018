@@ -1,3 +1,4 @@
 // Offline plugin
-import * as OfflinePlugin from 'offline-plugin/runtime'
-OfflinePlugin.install()
+if (process.env.NODE_ENV === 'production') {
+  require('offline-plugin/runtime').install()
+}

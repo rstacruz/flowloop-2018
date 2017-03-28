@@ -1,4 +1,7 @@
+import Debug from 'debug'
 import buildRouter from './build_router'
+
+const debug = Debug('app:router')
 
 /*
  * Returns Redux middleware
@@ -7,6 +10,7 @@ import buildRouter from './build_router'
 export default function Router () {
   return buildRouter({}, ({ route, dispatch, store }) => {
     route('/', () => {
+      debug('Navigating to HomeIndex')
       dispatch({ type: 'route:change', page: 'HomeIndex' })
     })
 
