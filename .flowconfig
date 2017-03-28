@@ -1,6 +1,7 @@
 [ignore]
 .*/node_modules/stylelint/.*
 .*/node_modules/electron-packager/.*
+.*/node_modules/config-chain/.*
 .*/__tests__/.*
 
 [libs]
