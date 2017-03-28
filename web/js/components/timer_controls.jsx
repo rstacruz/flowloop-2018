@@ -28,7 +28,7 @@ export default function TimerControls ({ now, timer } /*: Props */) {
       <h1 className={timerType === 'work' ? '-work' : ''}>
         {timerType === 'work'
           ? <LabelSelector />
-          : <span>Break</span>}
+          : <span className='break-selector'>Break</span>}
       </h1>
       <p className='subtitle'>
         {ms(elapsed)}
@@ -36,8 +36,8 @@ export default function TimerControls ({ now, timer } /*: Props */) {
         {ms(duration)}
       </p>
     </div>
-    <p className='actions'>
+    <div className='actions'>
       <ModeSelector />
-    </p>
+    </div>
   </div>
 }

@@ -1,0 +1,7 @@
+@import '../variables.css';
+
+.break-selector {
+  @apply --font-size-1;
+
+  font-weight: bold;
+}
