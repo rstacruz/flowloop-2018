@@ -36,6 +36,11 @@ export default class App {
     store.dispatch({ type: 'persistence:load!' })
     store.dispatch({ type: 'icon:reset!' })
 
+    // Start with the home page even if we're not loading the home page.
+    // Kind of a hax if riot-route takes too long to spin up
+     console.log('dispatching')
+    store.dispatch({ type: 'route:change', page: 'HomeIndex' })
+
     const div = this.div = document.createElement('div')
     div.id = 'root'
     div.className = 'app-root'

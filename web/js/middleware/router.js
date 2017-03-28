@@ -27,10 +27,16 @@ export default function Router () {
       dispatch({ type: 'route:change', page: 'SettingsIndex' })
     })
 
+    // This is not linked anywhere; it's mostly for debugging
     route('/timer/work', () => {
       setTimeout(() => {
         dispatch({ type: 'timer:start!', timerType: 'work' })
       })
+    })
+
+    // Catch all
+    route('*', () => {
+      setTimeout(() => { route('/', null, true) })
     })
   })
 }
