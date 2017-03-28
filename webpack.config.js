@@ -107,16 +107,16 @@ module.exports = {
     ]),
 
     // Ignore locales because it's around 400kb
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-
-    // Offline (AppCache and Service Workers)
-    new OfflinePlugin()
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
   ].concat(DEBUG ? [
     // Debug mode for old webpack plugins
     new webpack.LoaderOptionsPlugin({
       debug: true
     })
-  ] : []),
+  ] : [
+    // Offline (AppCache and Service Workers)
+    new OfflinePlugin()
+  ]),
 
   // Hide source maps in production (no sourceMappingURL)
   devtool: DEBUG ? 'source-map' : 'hidden-source-map',
