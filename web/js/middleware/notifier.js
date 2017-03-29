@@ -1,6 +1,10 @@
-import get from '101/pluck'
+/* eslint-disable no-new */
 
 import ding from '../helpers/ding'
+import { full } from '../selectors/timer'
+import ms from '../helpers/timer_display'
+
+const Notification = window.Notification
 
 export default function Notifier () {
   return store => dispatch => action => {
@@ -9,24 +13,27 @@ export default function Notifier () {
     switch (action.type) {
       case 'notifier:request!':
         try {
-          window.Notification.requestPermission(p => {})
+          Notification.requestPermission(p => {})
         } catch (e) { }
         break
 
       case 'notifier:notifyLap!':
-        const laps = get(store.getState(), 'timer.laps')
+        const state = store.getState()
+        const timer = full(state)
+        const laps = timer.laps
+        new Notification(
+          `${laps} ${laps === 1 ? 'lap' : 'laps'} done!`,
+          { body: `${ms(timer.elapsed)} elapsed for ${timer.labelText}.` }
+        )
         ding(laps)
         break
 
       case 'notifier:notifyDone!':
         ding()
         try {
-          /* eslint-disable no-new */
-          new window.Notification('Timer done', {
+          new Notification('Timer done', {
             body: 'That was quick.'
-            // icon: ''
           })
-          // notif.onclick = () => {...}
         } catch (e) {}
         break
     }
