@@ -17,8 +17,10 @@ import values from 'object-loops/values'
 import { onlyWork } from '../selectors/log'
 
 function LogDates ({ itemsByDate, labels } /*: Props */) {
+  const dates = values(itemsByDate).reverse()
+
   return <div className='log-dates'>
-    {values(itemsByDate).map(logItems =>
+    {dates.map(logItems =>
       <div className='log-date' key={logItems[0].startedAt}>
         <h2 className='date'>
           {Moment(logItems[0].startedAt).format('ddd, MMM DD')}
