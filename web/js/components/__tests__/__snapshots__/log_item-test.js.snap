@@ -2,7 +2,7 @@
 
 exports[`LogItem renders 1`] = `
 <span
-  aria-label="Work - 12:00 am"
+  aria-label="Work - 6:30 pm"
   className="timeline-small-item hint--top hint--no-animate -work"
 >
   <span

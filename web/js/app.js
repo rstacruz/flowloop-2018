@@ -85,6 +85,7 @@ if (process.env.NODE_ENV !== 'production') {
  * Auto-start
  */
 
+/* istanbul ignore if */
 if (!module.parent) {
   window.__APP__ = (new App({
     env: process.env.NODE_ENV || 'development'

@@ -3,10 +3,12 @@ import App from '../app'
 import MockDate from 'mockdate'
 import pretty from 'pretty'
 
+jest.useFakeTimers()
+
 let app
 
 beforeEach(() => {
-  MockDate.set('4/20/2010')
+  MockDate.set('4/20/2010', 120)
   app = new App({ env: 'test' })
   app.start()
 })
@@ -27,34 +29,30 @@ describe('App', () => {
 
   test('Empty timer', () => {
     app.store.dispatch({ type: 'router:nav!', to: '/timer' })
-    return delay(next => {
-      expect(pretty(document.body.innerHTML)).toMatchSnapshot()
-      next()
-    })
+    jest.runOnlyPendingTimers()
+    jest.runOnlyPendingTimers()
+    expect(pretty(document.body.innerHTML)).toMatchSnapshot()
   })
 
   test('Started work timer', () => {
     app.store.dispatch({ type: 'timer:start!', timerType: 'work' })
-    return delay(next => {
-      expect(pretty(document.body.innerHTML)).toMatchSnapshot()
-      next()
-    })
+    jest.runOnlyPendingTimers()
+    jest.runOnlyPendingTimers()
+    expect(pretty(document.body.innerHTML)).toMatchSnapshot()
   })
 
   test('Started break timer', () => {
     app.store.dispatch({ type: 'timer:start!', timerType: 'break' })
-    return delay(next => {
-      expect(pretty(document.body.innerHTML)).toMatchSnapshot()
-      next()
-    })
+    jest.runOnlyPendingTimers()
+    jest.runOnlyPendingTimers()
+    expect(pretty(document.body.innerHTML)).toMatchSnapshot()
   })
 
   test('Empty log', () => {
     app.store.dispatch({ type: 'router:nav!', to: '/log' })
-    return delay(next => {
-      expect(pretty(document.body.innerHTML)).toMatchSnapshot()
-      next()
-    })
+    jest.runOnlyPendingTimers()
+    jest.runOnlyPendingTimers()
+    expect(pretty(document.body.innerHTML)).toMatchSnapshot()
   })
 })
 

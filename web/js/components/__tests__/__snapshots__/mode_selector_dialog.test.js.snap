@@ -1,0 +1,208 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModeSelectorDialog is clickable 1`] = `
+<div
+  className="mode-selector-dialog"
+>
+  <h1
+    className="heading"
+  >
+    Select a timer mode
+  </h1>
+  <div
+    className="options"
+  >
+    <button
+      className="option mode-selector-option -continuous -active"
+      onClick={[Function]}
+    >
+      <span
+        className="icon -continuous"
+      />
+      <h2>
+        Continuous
+      </h2>
+      <h5>
+        Flow mode
+      </h5>
+      <p>
+        Timers never end. Laps are recorded every time a timer completes.
+      </p>
+    </button>
+    <button
+      className="option mode-selector-option -single"
+      onClick={[Function]}
+    >
+      <span
+        className="icon -single"
+      />
+      <h2>
+        Single
+      </h2>
+      <h5>
+        Pomodoro mode
+      </h5>
+      <p>
+        Stops the timer after it completes. Works like classic Pomodoro.
+      </p>
+    </button>
+    <button
+      aria-label="Coming soon. Stay tuned!"
+      className="option mode-selector-option -alternate hint--bottom"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="icon -alternate"
+      />
+      <h2>
+        Alternating
+      </h2>
+      <h5>
+        Pomodoro mode
+      </h5>
+      <p>
+        Switches to a break after a work timer completes, and vice versa.
+      </p>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ModeSelectorDialog renders 1`] = `
+<div
+  className="mode-selector-dialog"
+>
+  <h1
+    className="heading"
+  >
+    Select a timer mode
+  </h1>
+  <div
+    className="options"
+  >
+    <button
+      className="option mode-selector-option -continuous"
+      onClick={[Function]}
+    >
+      <span
+        className="icon -continuous"
+      />
+      <h2>
+        Continuous
+      </h2>
+      <h5>
+        Flow mode
+      </h5>
+      <p>
+        Timers never end. Laps are recorded every time a timer completes.
+      </p>
+    </button>
+    <button
+      className="option mode-selector-option -single"
+      onClick={[Function]}
+    >
+      <span
+        className="icon -single"
+      />
+      <h2>
+        Single
+      </h2>
+      <h5>
+        Pomodoro mode
+      </h5>
+      <p>
+        Stops the timer after it completes. Works like classic Pomodoro.
+      </p>
+    </button>
+    <button
+      aria-label="Coming soon. Stay tuned!"
+      className="option mode-selector-option -alternate hint--bottom"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="icon -alternate"
+      />
+      <h2>
+        Alternating
+      </h2>
+      <h5>
+        Pomodoro mode
+      </h5>
+      <p>
+        Switches to a break after a work timer completes, and vice versa.
+      </p>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ModeSelectorDialog renders with CONTINUOUS 1`] = `
+<div
+  className="mode-selector-dialog"
+>
+  <h1
+    className="heading"
+  >
+    Select a timer mode
+  </h1>
+  <div
+    className="options"
+  >
+    <button
+      className="option mode-selector-option -continuous -active"
+      onClick={[Function]}
+    >
+      <span
+        className="icon -continuous"
+      />
+      <h2>
+        Continuous
+      </h2>
+      <h5>
+        Flow mode
+      </h5>
+      <p>
+        Timers never end. Laps are recorded every time a timer completes.
+      </p>
+    </button>
+    <button
+      className="option mode-selector-option -single"
+      onClick={[Function]}
+    >
+      <span
+        className="icon -single"
+      />
+      <h2>
+        Single
+      </h2>
+      <h5>
+        Pomodoro mode
+      </h5>
+      <p>
+        Stops the timer after it completes. Works like classic Pomodoro.
+      </p>
+    </button>
+    <button
+      aria-label="Coming soon. Stay tuned!"
+      className="option mode-selector-option -alternate hint--bottom"
+      disabled={true}
+      onClick={[Function]}
+    >
+      <span
+        className="icon -alternate"
+      />
+      <h2>
+        Alternating
+      </h2>
+      <h5>
+        Pomodoro mode
+      </h5>
+      <p>
+        Switches to a break after a work timer completes, and vice versa.
+      </p>
+    </button>
+  </div>
+</div>
+`;

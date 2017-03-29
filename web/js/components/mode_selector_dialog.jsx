@@ -21,7 +21,7 @@ export default function ModeSelectorDialog (props /*: Props */) {
     </h1>
     <div className='options'>
       <button
-        className={c('option mode-selector-option', {
+        className={c('option mode-selector-option -continuous', {
           '-active': selected === 'CONTINUOUS' })}
         onClick={() => { onSelect('CONTINUOUS') }}>
         <span className='icon -continuous' />
@@ -30,7 +30,7 @@ export default function ModeSelectorDialog (props /*: Props */) {
         <p>Timers never end. Laps are recorded every time a timer completes.</p>
       </button>
       <button
-        className={c('option mode-selector-option', {
+        className={c('option mode-selector-option -single', {
           '-active': selected === 'SINGLE' })}
         onClick={() => { onSelect('SINGLE') }}>
         <span className='icon -single' />
@@ -41,7 +41,7 @@ export default function ModeSelectorDialog (props /*: Props */) {
       <button
         aria-label='Coming soon. Stay tuned!'
         disabled
-        className={c('option mode-selector-option hint--bottom', {
+        className={c('option mode-selector-option -alternate hint--bottom', {
           '-active': selected === 'ALTERNATE' })}
         onClick={() => { onSelect('ALTERNATE') }}>
         <span className='icon -alternate' />

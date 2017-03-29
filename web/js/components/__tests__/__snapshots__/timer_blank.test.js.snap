@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimerBlank renders 1`] = `
+<TimerLayout>
+  <SideEffect(DocumentTitle)
+    title="No timer"
+  />
+  <div
+    className="timer-heading"
+  >
+    No timer active.
+  </div>
+  <div
+    className="timer-spacer"
+  />
+  <div
+    className="timer-actions"
+  >
+    <button
+      className="timer-button button -back"
+      onClick={[Function]}
+    >
+      Back
+    </button>
+  </div>
+</TimerLayout>
+`;

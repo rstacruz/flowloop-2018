@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogItems renders 1`] = `
+<span
+  className="timeline-small-items"
+>
+  <LogItem
+    item={
+      Object {
+        "duration": 1800000,
+        "endedAt": 2010-04-20T10:30:00.000Z,
+        "id": "_log0",
+        "isComplete": true,
+        "labelId": "_work",
+        "startedAt": 2010-04-20T10:00:00.000Z,
+        "timerType": "work",
+      }
+    }
+    labels={
+      Object {
+        "_chore": Object {
+          "color": "red",
+          "id": "_chore",
+          "name": "Chore",
+        },
+        "_work": Object {
+          "color": "blue",
+          "id": "_work",
+          "name": "Work",
+        },
+      }
+    }
+  />
+  <LogItem
+    item={
+      Object {
+        "duration": 1800000,
+        "endedAt": 2010-04-20T11:30:00.000Z,
+        "id": "_log1",
+        "isComplete": true,
+        "labelId": "_chore",
+        "startedAt": 2010-04-20T11:00:00.000Z,
+        "timerType": "work",
+      }
+    }
+    labels={
+      Object {
+        "_chore": Object {
+          "color": "red",
+          "id": "_chore",
+          "name": "Chore",
+        },
+        "_work": Object {
+          "color": "blue",
+          "id": "_work",
+          "name": "Work",
+        },
+      }
+    }
+  />
+</span>
+`;
