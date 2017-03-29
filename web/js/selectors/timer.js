@@ -68,7 +68,7 @@ export const full /*: (state: State) => FullTimer */ = createSelector(
   (timer /*: Timer */, now /*: Date */, labels /*: Labels */) => {
     if (!timer.active) return timer
 
-    const lastLap = timer.lastLap
+    const lastLap = timer.lastLap || timer.startedAt
     const duration = timer.duration
     const elapsed = +now - (timer.startedAt || 0)
     const lapEndsAt = +lastLap + timer.duration
