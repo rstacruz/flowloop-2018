@@ -55,13 +55,3 @@ describe('App', () => {
     expect(pretty(document.body.innerHTML)).toMatchSnapshot()
   })
 })
-
-/*
- * Wait for setTimeouts to kick in before running assertions
- */
-
-function delay (fn) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => { fn(resolve) })
-  })
-}
