@@ -20,7 +20,7 @@ import ms from '../helpers/timer_display'
  */
 
 export default function TimerControls ({ now, timer } /*: Props */) {
-  const { type, duration, elapsed } = timer
+  const { type, duration, elapsed, isOvertime, remaining } = timer
   const timerType = type
 
   return <div className='timer-controls'>
@@ -30,11 +30,13 @@ export default function TimerControls ({ now, timer } /*: Props */) {
           ? <LabelSelector />
           : <span className='break-selector'>Break</span>}
       </h1>
-      <p className='subtitle'>
-        {ms(elapsed)}
-        <span> of </span>
-        {ms(duration)}
-      </p>
+      { isOvertime
+        ? <p className='subtitle'>
+          {ms(remaining, true)} <span> remaining </span>
+        </p>
+        : <p className='subtitle'>
+          {ms(elapsed)} <span> of </span> {ms(duration)}
+        </p> }
     </div>
     <div className='actions'>
       <ModeSelector />

@@ -115,6 +115,9 @@ delete localStorage.TimerData
 
 // Copy local data for exporting to clipboard
 prompt('', localStorage.TimerData)
+
+// Turn on debugging
+window.localStorage.debug = 'app:*'
 ```
 </details>
 

@@ -71,7 +71,8 @@ export const full /*: (state: State) => FullTimer */ = createSelector(
     const lastLap = timer.lastLap
     const duration = timer.duration
     const elapsed = +now - (timer.startedAt || 0)
-    const remaining = +timer.endsAt - +now
+    const lapEndsAt = +lastLap + timer.duration
+    const remaining = lapEndsAt - +now
     const label = fullLabel(labels[timer.labelId || '_default'])
     const labelText = timer.type === 'work' ? label.name : 'Break'
     const isOvertime = timer.laps && timer.laps > 0
