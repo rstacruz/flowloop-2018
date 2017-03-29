@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App Empty log 1`] = `
-"<div id=\\"root\\" class=\\"app-root\\"><span data-reactroot=\\"\\"><div class=\\"timer-layout -log _page-bottom _page-enter\\">
-<!-- react-empty: 24 --><div class=\\"rawbody\\"><div class=\\"slim-container\\"><div class=\\"actions-list\\"><div class=\\"right\\"><button class=\\"icon-button -close\\"></button></div></div><div class=\\"blank-state -log\\"><h2>Timeline</h2><p>When you finish a work period, it will appear here.</p></div></div></div></div><div class=\\"timer-layout _page-fade _page-leave\\"><div class=\\"topleft\\"><a class=\\"settings-button\\" href=\\"#settings\\"> <span class=\\"icon\\"></span>  </a> 
+"<div id=\\"root\\" class=\\"app-root\\"><span data-reactroot=\\"\\"><div class=\\"timer-layout -log _page-bottom _page-enter _page-enter-active\\">
+<!-- react-empty: 24 --><div class=\\"rawbody\\"><div class=\\"slim-container\\"><div class=\\"actions-list\\"><div class=\\"right\\"><button class=\\"icon-button -close\\"></button></div></div><div class=\\"blank-state -log\\"><h2>Timeline</h2><p>When you finish a work period, it will appear here.</p></div></div></div></div><div class=\\"timer-layout _page-fade _page-leave _page-leave-active\\"><div class=\\"topleft\\"><a class=\\"settings-button\\" href=\\"#settings\\"> <span class=\\"icon\\"></span>  </a> 
 </div>
 <div class=\\"body\\">
 
@@ -72,9 +72,13 @@ exports[`App Started break timer 1`] = `
       </h1>
       <p class=\\"subtitle\\">
 
-        <!-- react-text: 34 -->0:00<!-- /react-text --><span> of </span> 
+        <!-- react-text: 34 -->0:00<!-- /react-text -->
 
-        <!-- react-text: 36 -->5:00<!-- /react-text -->
+        <!-- react-text: 35 --><!-- /react-text --><span> of </span> 
+
+        <!-- react-text: 37 --><!-- /react-text -->
+
+        <!-- react-text: 38 -->5:00<!-- /react-text -->
       </p>
     </div>
     <div class=\\"actions\\"><span class=\\"popup-set\\"><span class=\\"trigger\\"><button aria-label=\\"Continuous\\" class=\\"mode-selector-button hint--bottom -continuous\\">  <span class=\\"icon\\"></span> </button>
@@ -101,22 +105,37 @@ exports[`App Started work timer 1`] = `
 </div>
 <div class=\\"body\\">
 
-  <!-- react-empty: 65 -->
-  <div class=\\"timer-chooser\\">
-    <button class=\\"button timer-button -work -large\\">Work</button>
-    <div class=\\"logo app-logo\\"></div>
-    <button class=\\"button timer-button -break -large\\">Break</button>
-  </div>
-  <div class=\\"toast-base\\">
-    <div class=\\"item\\">
-      <div class=\\"toast-item _toast-pop-in\\">
-        <p>Flowloop is a productivity timer that helps you maintain a state of flow.</p>
-        <div class=\\"actions\\">
-          <button class=\\"action \\">Learn more</button>
-          <button class=\\"action -mute\\">Dismiss</button>
+  <!-- react-empty: 28 -->
+  <div class=\\"timer-controls\\">
+    <div class=\\"title\\">
+      <h1 class=\\"-work\\">
+        <div class=\\"label-selector\\">
+          <button class=\\"label-selector-dropdown dropdown\\">  <span class=\\"label\\">Work</span> </button>
+          <div class=\\"screen\\"></div>
         </div>
-      </div>
+      </h1>
+      <p class=\\"subtitle\\">
+
+        <!-- react-text: 37 -->0:00<!-- /react-text -->
+
+        <!-- react-text: 38 --><!-- /react-text --><span> of </span> 
+
+        <!-- react-text: 40 --><!-- /react-text -->
+
+        <!-- react-text: 41 -->25:00<!-- /react-text -->
+      </p>
     </div>
+    <div class=\\"actions\\"><span class=\\"popup-set\\"><span class=\\"trigger\\"><button aria-label=\\"Continuous\\" class=\\"mode-selector-button hint--bottom -continuous\\">  <span class=\\"icon\\"></span> </button>
+      </span> 
+      </span> 
+    </div>
+  </div>
+  <div class=\\"timer-spacer\\"></div>
+  <div class=\\"timer-display\\">
+    <div class=\\"pie-graph pie _fade-in-slow\\"><span class=\\"fill\\" style=\\"background: rgb(33, 150, 243);\\"></span> <span class=\\"piece -fill\\" style=\\"background: rgb(33, 150, 243);\\"></span> <span class=\\"center\\"></span> </div><span class=\\"label\\">25:00</span> </div>
+  <div class=\\"timer-spacer\\"></div>
+  <div class=\\"timer-actions\\">
+    <button aria-label=\\"Stop\\" class=\\"timer-button button -stop\\">  <span class=\\"icon\\"></span> </button>
   </div>
 </div>
 <a class=\\"timeline-summary fixed\\" href=\\"#log\\"><span class=\\"-left text\\">Tuesday</span> <span class=\\"triangle\\"></span>  <span class=\\"-right text\\">Apr 20</span>  </a> 
