@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PieGraph renders 1`] = `
+<div
+  className="pie-graph"
+>
+  <span
+    className="fill"
+    style={
+      Object {
+        "background": "red",
+      }
+    }
+  />
+  <span
+    className="piece -fill"
+    style={
+      Object {
+        "background": "red",
+        "transform": "rotate(30deg)",
+      }
+    }
+  />
+  <span
+    className="center"
+  />
+</div>
+`;

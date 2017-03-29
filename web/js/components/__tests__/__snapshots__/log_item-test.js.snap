@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogItem renders 1`] = `
+<span
+  aria-label="Work - 12:00 am"
+  className="timeline-small-item hint--top hint--no-animate -work"
+>
+  <span
+    className="peg"
+    style={
+      Object {
+        "backgroundColor": "blue",
+      }
+    }
+  />
+</span>
+`;
