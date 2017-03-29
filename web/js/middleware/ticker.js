@@ -54,6 +54,7 @@ export default function ticker (options /*: Options */ = {}) /*: Middleware<*, A
 
   function start (dispatch) {
     if (timer) return
+    tick(dispatch)
     timer = Visibility.every(1 * SECOND, 6 * SECOND, () => {
       tick(dispatch)
     })
