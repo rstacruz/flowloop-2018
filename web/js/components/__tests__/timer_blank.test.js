@@ -4,7 +4,7 @@ import TimerBlank from '../timer_blank'
 
 import React from 'react'
 import { shallow } from 'enzyme'
-import { shallowToJson } from 'enzyme-to-json'
+import toJson from 'enzyme-to-json'
 
 describe('TimerBlank', () => {
   it('exists', () => {
@@ -14,6 +14,6 @@ describe('TimerBlank', () => {
   it('renders', () => {
     const comp = <TimerBlank />
     const wrapper = shallow(comp)
-    expect(shallowToJson(wrapper)).toMatchSnapshot()
+    expect(toJson(wrapper)).toMatchSnapshot()
   })
 })

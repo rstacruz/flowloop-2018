@@ -1,17 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LogItem renders 1`] = `
-<span
-  aria-label="Work - 6:30 pm"
-  className="timeline-small-item hint--top hint--no-animate -work"
+<LogItem
+  item={
+    Object {
+      "duration": 1800000,
+      "endedAt": 2010-04-20T10:30:00.000Z,
+      "id": "_log0",
+      "isComplete": true,
+      "labelId": "_work",
+      "startedAt": 2010-04-20T10:00:00.000Z,
+      "timerType": "work",
+    }
+  }
+  labels={
+    Object {
+      "_chore": Object {
+        "color": "red",
+        "id": "_chore",
+        "name": "Chore",
+      },
+      "_work": Object {
+        "color": "blue",
+        "id": "_work",
+        "name": "Work",
+      },
+    }
+  }
+  utc={true}
 >
   <span
-    className="peg"
-    style={
-      Object {
-        "backgroundColor": "blue",
+    aria-label="Work - 10:30 am"
+    className="timeline-small-item hint--top hint--no-animate -work"
+  >
+    <span
+      className="peg"
+      style={
+        Object {
+          "backgroundColor": "blue",
+        }
       }
-    }
-  />
-</span>
+    />
+  </span>
+</LogItem>
 `;

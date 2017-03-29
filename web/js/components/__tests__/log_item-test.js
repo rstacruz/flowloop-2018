@@ -3,8 +3,8 @@
 import LogItem from '../log_item'
 
 import React from 'react'
-import { shallow } from 'enzyme'
-import { shallowToJson } from 'enzyme-to-json'
+import { mount } from 'enzyme'
+import toJson from 'enzyme-to-json'
 import MockDate from 'mockdate'
 
 import { labels, logs } from '../../../../test/support/fixtures'
@@ -25,8 +25,8 @@ describe('LogItem', () => {
   it('renders', () => {
     const log = logs['_log0']
 
-    const comp = <LogItem item={log} labels={labels} />
-    const wrapper = shallow(comp)
-    expect(shallowToJson(wrapper)).toMatchSnapshot()
+    const comp = <LogItem item={log} labels={labels} utc />
+    const wrapper = mount(comp)
+    expect(toJson(wrapper)).toMatchSnapshot()
   })
 })

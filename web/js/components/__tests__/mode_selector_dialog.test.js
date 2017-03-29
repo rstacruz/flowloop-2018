@@ -4,7 +4,7 @@ import ModeSelectorDialog from '../mode_selector_dialog'
 
 import React from 'react'
 import { shallow } from 'enzyme'
-import { shallowToJson } from 'enzyme-to-json'
+import toJson from 'enzyme-to-json'
 
 describe('ModeSelectorDialog', () => {
   it('exists', () => {
@@ -14,13 +14,13 @@ describe('ModeSelectorDialog', () => {
   it('renders', () => {
     const comp = <ModeSelectorDialog />
     const wrapper = shallow(comp)
-    expect(shallowToJson(wrapper)).toMatchSnapshot()
+    expect(toJson(wrapper)).toMatchSnapshot()
   })
 
   it('renders with CONTINUOUS', () => {
     const comp = <ModeSelectorDialog selected='CONTINUOUS' />
     const wrapper = shallow(comp)
-    expect(shallowToJson(wrapper)).toMatchSnapshot()
+    expect(toJson(wrapper)).toMatchSnapshot()
   })
 
   it('is clickable', () => {
@@ -30,7 +30,7 @@ describe('ModeSelectorDialog', () => {
       wrapper.find('.option.-single').simulate('click')
 
       function onSelect () {
-        expect(shallowToJson(wrapper)).toMatchSnapshot()
+        expect(toJson(wrapper)).toMatchSnapshot()
         resolve()
       }
     })

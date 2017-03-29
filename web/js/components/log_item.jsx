@@ -6,7 +6,8 @@
 
   type Props = {
     item: Log,
-    labels: Labels
+    labels: Labels,
+    utc?: boolean
   }
 */
 
@@ -20,11 +21,11 @@ import { full as fullLabel } from '../selectors/label'
  * A single item
  */
 
-function LogItem ({ item, labels } /*: Props */) {
+function LogItem ({ item, labels, utc } /*: Props */) {
   const log = full([ item, labels ])
   const label = fullLabel(labels[item.labelId])
 
-  const time = Moment(item.endedAt).format('h:mm a')
+  const time = (utc ? Moment.utc(item.endedAt) : Moment(item.endedAt)).format('h:mm a')
 
   return <span
     aria-label={`${log.labelText} - ${time}`}
