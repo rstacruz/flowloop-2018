@@ -20,6 +20,10 @@
   -webkit-tap-highlight-color: transparent; /* turn off link highlight */
 }
 
+button {
+  font-size: 100%;
+}
+
 html {
   background: var(--background);
   color: var(--text-color);
@@ -42,6 +46,8 @@ th {
 
 html,
 body {
+  margin: 0;
+  padding: 0;
   height: 100%;
 }
 

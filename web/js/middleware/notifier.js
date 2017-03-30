@@ -28,6 +28,11 @@ export default function Notifier () {
         ding(laps)
         break
 
+      // Just play the sound
+      case 'notifier:testSound!':
+        ding(action.count || 1)
+        break
+
       case 'notifier:notifyDone!':
         ding()
         try {

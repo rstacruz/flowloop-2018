@@ -110,6 +110,9 @@ __APP__.store.dispatch({ type: 'settings:reset' })
 // Clear log items
 __APP__.store.dispatch({ type: 'log:clear' })
 
+// Test sound
+__APP__.store.dispatch({ type: 'notifier:testSound!', count: 3 })
+
 // Obliterate local data
 delete localStorage.TimerData
 
