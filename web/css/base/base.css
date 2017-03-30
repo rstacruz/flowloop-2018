@@ -21,8 +21,16 @@
   -webkit-tap-highlight-color: transparent; /* turn off link highlight */
 }
 
-button {
+button,
+input,
+textarea {
   font-size: 100%;
+}
+
+input:focus,
+button:focus,
+textarea:focus {
+  outline: 0;
 }
 
 html {

@@ -1,4 +1,5 @@
 @import '../variables.css';
+@import '../mixins/expand-hit-area.css';
 
 :root {
   --timer-button-small: 56px;
@@ -19,6 +20,7 @@
     border-radius: 50%;
     color: var(--text-color);
     animation: pop-in 300ms ease-out;
+    position: relative;
     transform: translate3d(0, 0, 0);
     transition:
       transform 25ms ease-out,
@@ -27,6 +29,10 @@
       width 75ms ease-out,
       line-height 75ms ease-out,
       background-color 75ms linear;
+  }
+
+  &::before {
+    @apply --expand-hit-area;
   }
 
   @media (width > 992px) {
