@@ -60,6 +60,7 @@
     "redux-logger": "3.0.0",
     "redux-thunk": "2.2.0",
     "reselect": "3.0.0",
+    "reset.css": "2.0.2",
     "responsive-modular-scale.css": "0.1.0",
     "riot-route": "3.1.1",
     "style-loader": "0.16.1",

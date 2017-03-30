@@ -1,10 +1,11 @@
-@import 'normalize.css';
 @import '../variables.css';
-@import 'hint.css';
 
-/*
- * Fonts
- */
+/* Normalize/reset */
+@import 'normalize.css';
+@import 'reset.css';
+
+/* Vendor */
+@import 'hint.css';
 
 @apply --ion-font;
 
@@ -27,8 +28,11 @@ button {
 html {
   background: var(--background);
   color: var(--text-color);
-  line-height: 1.6;
   user-select: none;
+}
+
+body {
+  line-height: 1.6;
 }
 
 html,
