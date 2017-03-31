@@ -88,12 +88,12 @@
   }
 
   & > strong {
-    font-weight: 300;
+    font-weight: 200;
     display: block;
   }
 
   & > small {
-    font-weight: 300;
+    font-weight: 200;
     border-top: solid 1px var(--line-color);
     padding-top: 8px;
     margin-top: 8px;

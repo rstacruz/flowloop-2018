@@ -24,6 +24,10 @@
     border-radius: 50%;
     animation: spin-icon 900ms linear infinite;
   }
+
+  & > .body > .icon + p {
+    margin-top: 16px;
+  }
 }
 
 @keyframes spin-icon {
