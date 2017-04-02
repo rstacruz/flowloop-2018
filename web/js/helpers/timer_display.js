@@ -6,12 +6,58 @@ import leftPad from 'left-pad'
  * Renders a duration in milliseconds into a string
  * @example
  *
- *     ms(2000) => '0:02'
+ *     numeric(2000) => '0:02'
  */
 
-export default function timerDisplay (
+export function numeric (
   ms /*: number */,
   isRemaining /*: ?boolean */) {
+  let { sign, hours, mins, secs } = parse(ms, isRemaining)
+
+  if (hours > 0) {
+    return `${sign}${hours}:${pad(mins)}:${pad(secs)}`
+  } else {
+    return `${sign}${mins}:${pad(secs)}`
+  }
+}
+
+export default numeric
+
+/**
+ * Renders a duration in milliseconds into a string
+ * @example
+ *
+ *     letters(122000) => '2m'
+ */
+
+export function letters (
+  ms /*: number */,
+  isRemaining /*: ?boolean */) {
+  if (ms > 60000) ms = Math.round(ms / 60000) * 60000
+
+  let { sign, hours, mins, secs } = parse(ms, isRemaining)
+
+  let result = []
+
+  if (hours > 0) result = [...result, `${hours}h`]
+  if (mins > 0) result = [...result, `${mins}m`]
+  if (hours === 0 && mins === 0) result = [...result, `${secs}s`]
+
+  return `${sign}${result.join(' ')}`
+}
+
+/**
+ * Renders a duration in milliseconds into an object.
+ * Used internally by `numeric()`.
+ * @example
+ *
+ *     parse(62000) => { sign: '', hours: 0, mins: 1, secs: 2 }
+ */
+
+export function parse (
+  ms /*: number */,
+  isRemaining /*: ?boolean */
+) {
   let mins, secs, hours
   let positive = ms >= 0
 
@@ -26,12 +72,13 @@ export default function timerDisplay (
 
   let sign = positive ? '' : '-'
 
-  if (hours > 0) {
-    return `${sign}${hours}:${pad(mins)}:${pad(secs)}`
-  } else {
-    return `${sign}${mins}:${pad(secs)}`
-  }
+  return { sign, hours, mins, secs }
 }
+
+/**
+ * Helper for left-padding with zero
+ * @private
+ */
 
 function pad (num /*: number */) {
   return leftPad(num.toString(), 2, '0')

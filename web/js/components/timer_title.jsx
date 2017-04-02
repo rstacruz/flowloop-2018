@@ -11,7 +11,7 @@
 import React from 'react'
 import Title from 'react-document-title'
 
-import ms from '../helpers/timer_display'
+import { letters as ms } from '../helpers/timer_display'
 
 /**
  * Document title for timer page
@@ -21,8 +21,8 @@ export default function TimerTitle ({ timer } /*: Props */) {
   const { remaining, isOvertime, elapsed, labelText } = timer
 
   if (isOvertime) {
-    return <Title title={`[${timer.laps}] ${ms(elapsed)} • ${labelText}`} />
+    return <Title title={`[${timer.laps}] ${ms(elapsed)} - ${labelText}`} />
   } else {
-    return <Title title={`${ms(remaining, true)} • ${labelText}`} />
+    return <Title title={`${ms(remaining, true)} - ${labelText}`} />
   }
 }
