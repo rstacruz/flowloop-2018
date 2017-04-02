@@ -9,7 +9,10 @@
 import buildReducer from 'build-reducer'
 import mapObject from 'object-loops/map'
 import uuid from 'uuid'
-import { DEFAULT_LABEL_ID } from '../selectors/settings'
+import * as Settings from '../selectors/settings'
+import Debug from 'debug'
+
+const debug = Debug('app:log_reducer')
 
 /**
  * Log reducer
@@ -72,21 +75,29 @@ function addCurrent (state /*: State */) /*: State */ {
 
   const id /*: string */ = uuid.v4()
   const now /*: Date */ = state.time && state.time.now
+  const duration /*: number */ = timer.duration || Settings.DEFAULTS['duration:work']
   const startedAt /*: Date */ = timer.lastLap || timer.startedAt || now
+  const endedAt /*: Date */ = new Date(+startedAt + duration)
+
+  // If we're not scheduled ta addCurrent(), don't bother
+  if (endedAt > now) {
+    debug('Not supposed to happen!')
+    return state
+  }
 
   timer = {
     ...timer,
-    'lastLap': now,
+    'lastLap': endedAt,
     'lastLogId': id
   }
 
   let log /*: Log */ = {
     id,
     startedAt,
-    'endedAt': now,
-    'duration': +now - +startedAt,
+    'endedAt': endedAt,
+    'duration': duration,
     'timerType': timer.type || 'work',
-    'labelId': timer.labelId || DEFAULT_LABEL_ID,
+    'labelId': timer.labelId || Settings.DEFAULT_LABEL_ID,
     'isComplete': true
   }
 

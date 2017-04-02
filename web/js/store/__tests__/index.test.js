@@ -6,6 +6,13 @@ import values from 'object-loops/values'
 let DATE = new Date('2010-09-02T00:00:00Z')
 let store
 
+const SETTINGS_8_SECONDS = {
+  type: 'settings:update',
+  payload: {
+    'duration:work': 8000
+  }
+}
+
 describe('with side effects', () => {
   beforeEach(() => {
     store = buildStore()
@@ -76,19 +83,69 @@ describe('without side effects', () => {
 
   test('timer:lap', () => {
     store.dispatch({ type: 'init' })
+    store.dispatch(SETTINGS_8_SECONDS)
+
     store.dispatch({ type: 'ticker:tick', now: DATE })
     store.dispatch({ type: 'timer:start', timerType: 'work' })
+
+    store.dispatch({ type: 'ticker:tick', now: new Date(+DATE + 8000) })
     store.dispatch({ type: 'timer:lap' })
 
     let state = store.getState()
     expect(state.timer).toMatchSnapshot()
   })
 
-  test('timer:lap 2x', () => {
+  test('timer:lap with extra seconds', () => {
     store.dispatch({ type: 'init' })
+    store.dispatch(SETTINGS_8_SECONDS)
+
     store.dispatch({ type: 'ticker:tick', now: DATE })
     store.dispatch({ type: 'timer:start', timerType: 'work' })
+
+    store.dispatch({ type: 'ticker:tick', now: new Date(+DATE + 8500) })
     store.dispatch({ type: 'timer:lap' })
+
+    let state = store.getState()
+    expect(state.timer).toMatchSnapshot()
+  })
+
+  test('timer:lap with extra seconds', () => {
+    store.dispatch({ type: 'init' })
+    store.dispatch(SETTINGS_8_SECONDS)
+
+    store.dispatch({ type: 'ticker:tick', now: DATE })
+    store.dispatch({ type: 'timer:start', timerType: 'work' })
+
+    store.dispatch({ type: 'ticker:tick', now: new Date(+DATE + 8500) })
+    store.dispatch({ type: 'timer:lap' })
+
+    let state = store.getState()
+    expect(state.timer).toMatchSnapshot()
+  })
+
+  test('timer:lap lacking seconds', () => {
+    store.dispatch({ type: 'init' })
+    store.dispatch(SETTINGS_8_SECONDS)
+
+    store.dispatch({ type: 'ticker:tick', now: DATE })
+    store.dispatch({ type: 'timer:start', timerType: 'work' })
+
+    store.dispatch({ type: 'ticker:tick', now: new Date(+DATE + 2000) })
+    store.dispatch({ type: 'timer:lap' })
+
+    let state = store.getState()
+    expect(state.timer.laps).toEqual(0)
+    expect(state.timer).toMatchSnapshot()
+  })
+
+  test('timer:lap 2x', () => {
+    store.dispatch({ type: 'init' })
+    store.dispatch(SETTINGS_8_SECONDS)
+    store.dispatch({ type: 'ticker:tick', now: DATE })
+    store.dispatch({ type: 'timer:start', timerType: 'work' })
+    store.dispatch({ type: 'ticker:tick', now: new Date(+DATE + 8000) })
+    store.dispatch({ type: 'timer:lap' })
+    store.dispatch({ type: 'ticker:tick', now: new Date(+DATE + 16000) })
     store.dispatch({ type: 'timer:lap' })
 
     let state = store.getState()
@@ -155,19 +212,46 @@ describe('without side effects', () => {
 
   test('log:addCurrent', () => {
     store.dispatch({ type: 'init' })
+    store.dispatch(SETTINGS_8_SECONDS)
+
     store.dispatch({ type: 'ticker:tick', now: DATE })
     store.dispatch({ type: 'timer:start', timerType: 'work' })
+
+    store.dispatch({ type: 'ticker:tick', now: new Date(+DATE + 8500) })
     store.dispatch({ type: 'log:addCurrent' })
 
+    let state = store.getState()
+    expect(state.timer.lastLap).toEqual(new Date(+DATE + 8000))
+
+    let keys = Object.keys(state.log)
+    let log = state.log[keys[0]]
+    expect(keys.length).toEqual(1)
+    expect(log.id).toEqual(keys[0])
+
+    let id = log.id
+    expect(state.timer.lastLogId).toEqual(id)
+
+    // Expect that it ended at 8 seconds, even if 8.5 seconds has elapsed.
+    expect(log.endedAt).toEqual(new Date(+DATE + 8000))
+    expect(log.duration).toEqual(8000)
+  })
+
+  test('log:addCurrent lacking seconds', () => {
+    store.dispatch({ type: 'init' })
+    store.dispatch(SETTINGS_8_SECONDS)
+
+    store.dispatch({ type: 'ticker:tick', now: DATE })
+    store.dispatch({ type: 'timer:start', timerType: 'work' })
+
+    store.dispatch({ type: 'ticker:tick', now: new Date(+DATE + 2000) })
+    store.dispatch({ type: 'log:addCurrent' })
+
+    // That lap should NOT be recorded
     let state = store.getState()
     expect(state.timer.lastLap).toEqual(DATE)
 
     let keys = Object.keys(state.log)
-    expect(keys.length).toEqual(1)
-    expect(state.log[keys[0]].id).toEqual(keys[0])
-
-    let id = state.log[keys[0]].id
-    expect(state.timer.lastLogId).toEqual(id)
+    expect(keys.length).toEqual(0)
   })
 
   test('settings:update', () => {

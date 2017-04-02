@@ -76,11 +76,11 @@ Object {
 exports[`without side effects timer:lap 1`] = `
 Object {
   "active": true,
-  "duration": 1500000,
-  "endsAt": 2010-09-02T00:25:00.000Z,
+  "duration": 8000,
+  "endsAt": 2010-09-02T00:00:08.000Z,
   "labelId": "_default",
   "laps": 1,
-  "lastLap": 2010-09-02T00:00:00.000Z,
+  "lastLap": 2010-09-02T00:00:08.000Z,
   "lastLogId": null,
   "startedAt": 2010-09-02T00:00:00.000Z,
   "type": "work",
@@ -90,11 +90,53 @@ Object {
 exports[`without side effects timer:lap 2x 1`] = `
 Object {
   "active": true,
-  "duration": 1500000,
-  "endsAt": 2010-09-02T00:25:00.000Z,
+  "duration": 8000,
+  "endsAt": 2010-09-02T00:00:08.000Z,
   "labelId": "_default",
   "laps": 2,
+  "lastLap": 2010-09-02T00:00:16.000Z,
+  "lastLogId": null,
+  "startedAt": 2010-09-02T00:00:00.000Z,
+  "type": "work",
+}
+`;
+
+exports[`without side effects timer:lap lacking seconds 1`] = `
+Object {
+  "active": true,
+  "duration": 8000,
+  "endsAt": 2010-09-02T00:00:08.000Z,
+  "labelId": "_default",
+  "laps": 0,
   "lastLap": 2010-09-02T00:00:00.000Z,
+  "lastLogId": null,
+  "startedAt": 2010-09-02T00:00:00.000Z,
+  "type": "work",
+}
+`;
+
+exports[`without side effects timer:lap with extra seconds 1`] = `
+Object {
+  "active": true,
+  "duration": 8000,
+  "endsAt": 2010-09-02T00:00:08.000Z,
+  "labelId": "_default",
+  "laps": 1,
+  "lastLap": 2010-09-02T00:00:08.000Z,
+  "lastLogId": null,
+  "startedAt": 2010-09-02T00:00:00.000Z,
+  "type": "work",
+}
+`;
+
+exports[`without side effects timer:lap with extra seconds 2`] = `
+Object {
+  "active": true,
+  "duration": 8000,
+  "endsAt": 2010-09-02T00:00:08.000Z,
+  "labelId": "_default",
+  "laps": 1,
+  "lastLap": 2010-09-02T00:00:08.000Z,
   "lastLogId": null,
   "startedAt": 2010-09-02T00:00:00.000Z,
   "type": "work",

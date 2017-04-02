@@ -7,8 +7,11 @@
 
 import buildReducer from 'build-reducer'
 import get from '101/pluck'
-import Settings from '../selectors/settings'
+import * as Settings from '../selectors/settings'
 import { INACTIVE } from '../selectors/timer'
+import Debug from 'debug'
+
+const debug = Debug('app:timer_reducer')
 
 /**
  * Timer reducer.
@@ -75,12 +78,20 @@ function haltTimer (state /*: State */) /*: State */ {
 
 function lapTimer (state /*: State */) /*: State */ {
   let timer /*: Timer */ = state.timer
-  const now = state.time && state.time.now
+  let now /*: Date */ = state.time && state.time.now
+  let duration /*: number */ = timer.duration || Settings.DEFAULTS['duration:work']
+  let lastLap /*: Date */ = timer.lastLap || timer.startedAt || now
+  let endsAt /*: Date */ = new Date(+lastLap + duration)
+
+  if (endsAt > now) {
+    debug('Lapping before we\'re due. Not supposed to happen!')
+    return state
+  }
 
   timer = {
     ...state.timer,
     'laps': (timer.laps || 0) + 1,
-    'lastLap': now
+    'lastLap': endsAt
   }
 
   return { ...state, timer }
