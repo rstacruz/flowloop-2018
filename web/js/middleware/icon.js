@@ -1,8 +1,6 @@
 import Piecon from 'piecon'
 import debounce from 'debounce'
 import Debug from 'debug'
-import * as Timer from '../selectors/timer'
-import * as Label from '../selectors/label'
 
 const debug = Debug('app:icon')
 
