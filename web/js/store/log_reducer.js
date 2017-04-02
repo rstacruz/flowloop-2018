@@ -77,11 +77,13 @@ function addCurrent (state /*: State */) /*: State */ {
   const now /*: Date */ = state.time && state.time.now
   const duration /*: number */ = timer.duration || Settings.DEFAULTS['duration:work']
   const startedAt /*: Date */ = timer.lastLap || timer.startedAt || now
-  const endedAt /*: Date */ = new Date(+startedAt + duration)
+  const endedAt /*: Date */ = timer.endsAt || now
 
   // If we're not scheduled ta addCurrent(), don't bother
   if (endedAt > now) {
-    debug('Not supposed to happen!')
+    debug('Lapping before we\'re due. Not supposed to happen!')
+    debug('... endsAt', endedAt)
+    debug('... now', now)
     return state
   }
 

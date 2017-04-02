@@ -1,11 +1,12 @@
 import get from '101/pluck'
 
 import Settings from '../selectors/settings'
-import Timer from '../selectors/timer'
+import * as Timer from '../selectors/timer'
+import * as Label from '../selectors/label'
 
 export default function TimerActions () {
   return store => dispatch => action => {
-    dispatch(action)
+    let result = dispatch(action)
 
     switch (action.type) {
       case 'ticker:tick':
@@ -28,6 +29,8 @@ export default function TimerActions () {
         store.dispatch({ type: 'router:nav!', to: '/timer', replace: true })
         break
     }
+
+    return result
   }
 }
 
@@ -54,6 +57,12 @@ function checkConclusion (action, dispatch, state) {
 
 function updateIcon (action, dispatch, state) {
   const timer = Timer.full(state)
+  const label = Label.full(state.labels[timer.labelId])
 
-  dispatch({ type: 'icon:update!', progress: timer.progress })
+  dispatch({
+    type: 'icon:update!',
+    progress: timer.progress,
+    timerType: timer.type,
+    color: label && label.cssColor
+  })
 }

@@ -1,6 +1,8 @@
 import Piecon from 'piecon'
-import throttle from 'lodash.throttle'
+import debounce from 'debounce'
 import Debug from 'debug'
+import * as Timer from '../selectors/timer'
+import * as Label from '../selectors/label'
 
 const debug = Debug('app:icon')
 
@@ -15,10 +17,10 @@ const COLORS = {
  * Canvas calls can be expensive!
  */
 
-const setProgress = throttle(progress => {
+const setProgress = debounce(progress => {
   debug('Update progress', progress)
   Piecon.setProgress(progress)
-}, 6000)
+}, 5000, true)
 
 /**
  * Redux middleware generator
@@ -26,7 +28,7 @@ const setProgress = throttle(progress => {
 
 export default function Icon () {
   return store => dispatch => action => {
-    dispatch(action)
+    const result = dispatch(action)
 
     switch (action.type) {
       case 'stop!':
@@ -35,34 +37,33 @@ export default function Icon () {
         break
 
       case 'icon:start!':
-        if (action.timerType === 'work') {
-          setWorkStyle()
-        } else {
-          setBreakStyle()
-        }
         break
 
       case 'icon:update!':
         if (!isNaN(action.progress)) {
+          if (action.timerType === 'work') {
+            setStyle(action.color || COLORS.accent)
+          } else {
+            setStyle(COLORS.secondary)
+          }
           setProgress((1 - action.progress) * 100)
         }
 
         break
     }
+
+    return result
   }
 }
 
-function setWorkStyle () {
-  Piecon.setOptions({
-    color: COLORS.accent,
-    background: COLORS.bg,
-    shadow: COLORS.bg
-  })
-}
+/**
+ * Updates the color of Piecon.
+ * @private
+ */
 
-function setBreakStyle () {
+function setStyle (color) {
   Piecon.setOptions({
-    color: COLORS.secondary,
+    color,
     background: COLORS.bg,
     shadow: COLORS.bg
   })

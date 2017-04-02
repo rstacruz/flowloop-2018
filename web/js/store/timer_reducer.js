@@ -81,17 +81,22 @@ function lapTimer (state /*: State */) /*: State */ {
   let now /*: Date */ = state.time && state.time.now
   let duration /*: number */ = timer.duration || Settings.DEFAULTS['duration:work']
   let lastLap /*: Date */ = timer.lastLap || timer.startedAt || now
-  let endsAt /*: Date */ = new Date(+lastLap + duration)
+  let endsAt /*: Date */ = timer.endsAt || now
 
   if (endsAt > now) {
     debug('Lapping before we\'re due. Not supposed to happen!')
+    debug('... lastLap', lastLap)
+    debug('... endsAt', endsAt)
+    debug('... duration', duration)
+    debug('... now', now)
     return state
   }
 
   timer = {
     ...state.timer,
     'laps': (timer.laps || 0) + 1,
-    'lastLap': endsAt
+    'lastLap': endsAt,
+    'endsAt': new Date(+endsAt + duration)
   }
 
   return { ...state, timer }
