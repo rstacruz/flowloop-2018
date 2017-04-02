@@ -1,5 +1,4 @@
 import Piecon from 'piecon'
-import debounce from 'debounce'
 import Debug from 'debug'
 
 const debug = Debug('app:icon')
@@ -15,10 +14,10 @@ const COLORS = {
  * Canvas calls can be expensive!
  */
 
-const setProgress = debounce(progress => {
+const setProgress = progress => {
   debug('Update progress', progress)
   Piecon.setProgress(progress)
-}, 5000, true)
+}
 
 /**
  * Redux middleware generator
