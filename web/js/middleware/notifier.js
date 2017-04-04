@@ -2,7 +2,7 @@
 
 import ding from '../helpers/ding'
 import { full } from '../selectors/timer'
-import ms from '../helpers/timer_display'
+import { letters as ms } from '../helpers/timer_display'
 
 const Notification = window.Notification
 
