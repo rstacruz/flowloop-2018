@@ -3,17 +3,17 @@
   "name": "Flowloop: Productivity Timer",
   "icons": [
     {
-      "src": "assets/launcher-icon@1x.png",
+      "src": "assets/launcher-icon@48.png",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "assets/launcher-icon@2x.png",
+      "src": "assets/launcher-icon@96.png",
       "type": "image/png",
       "sizes": "96x96"
     },
     {
-      "src": "assets/launcher-icon@4x.png",
+      "src": "assets/launcher-icon@192.png",
       "type": "image/png",
       "sizes": "192x192"
     }
