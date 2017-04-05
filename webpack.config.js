@@ -115,7 +115,12 @@ module.exports = {
     })
   ] : [
     // Offline (AppCache and Service Workers)
-    new OfflinePlugin()
+    new OfflinePlugin({
+      ServiceWorker: {
+        events: true,
+        navigateFallbackURL: '/'
+      }
+    })
   ]),
 
   // Hide source maps in production (no sourceMappingURL)
