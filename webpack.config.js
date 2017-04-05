@@ -117,8 +117,7 @@ module.exports = {
     // Offline (AppCache and Service Workers)
     new OfflinePlugin({
       ServiceWorker: {
-        events: true,
-        navigateFallbackURL: '/'
+        events: true
       }
     })
   ]),
