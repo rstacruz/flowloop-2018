@@ -1,0 +1,25 @@
+{
+  "short_name": "Flowloop",
+  "name": "Flowloop: Productivity Timer",
+  "icons": [
+    {
+      "src": "assets/launcher-icon@48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "assets/launcher-icon@96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "assets/launcher-icon@192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": ".",
+  "background_color": "#42a5f5",
+  "theme_color": "#eeeef1",
+  "display": "standalone"
+}

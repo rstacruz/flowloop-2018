@@ -1,0 +1,24 @@
+CACHE MANIFEST
+#ver:9/13/2017, 7:42:06 AM
+#plugin:4.6.2
+
+CACHE:
+../assets/flowloop-logo.93add7bc0ced.svg
+../assets/ionicons.bdf1d30681cf.eot
+../assets/ionicons.d9496a234c81.svg
+../assets/ionicons.74c652671225.ttf
+../assets/ionicons.81414686e99c.woff
+../assets/js/app.js
+../assets/css/app.js
+../assets/css/app.css
+../assets/favicon.png
+../assets/launcher-icon@192.png
+../assets/launcher-icon@96.png
+../
+../assets/sounds/echoed-ding.mp3
+../assets/sounds/echoed-ding.ogg
+../manifest.json
+../assets/launcher-icon@48.png
+
+NETWORK:
+*
