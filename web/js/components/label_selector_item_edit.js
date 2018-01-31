@@ -1,23 +1,21 @@
 /* @flow */
 
-/*::
-  import type { Label } from '../selectors/label'
+import type { Label } from '../selectors/label'
 
-  import type { Props as ParentProps } from './label_selector_item'
+import type { Props as ParentProps } from './label_selector_item'
 
-  type State = {
-    colorOpen: boolean
-  }
+type State = {
+  colorOpen: boolean
+}
 
-  type Props = ParentProps & State & {
-    // From State
-    focused: boolean,
-    onFocus: () => void,
-    onBlur: () => void,
-    onColorClose: () => void,
-    onColorOpen: () => void
-  }
-*/
+type Props = ParentProps & State & {
+  // From State
+  focused: boolean,
+  onFocus: () => void,
+  onBlur: () => void,
+  onColorClose: () => void,
+  onColorOpen: () => void
+}
 
 import React from 'react'
 import c from 'classnames'
@@ -29,7 +27,7 @@ import ColorPicker from './color_picker'
  * Edit mode
  */
 
-export function LabelSelectorItemEdit (props /*: Props */) {
+export function LabelSelectorItemEdit (props: Props) {
   const {
     label, focused, onFocus, onBlur, onLabelEdit, onLabelDelete,
     onLabelSetColor, onColorOpen, onColorClose, colorOpen
@@ -78,9 +76,13 @@ export function LabelSelectorItemEdit (props /*: Props */) {
   </span>
 }
 
+/*
+ * Stateful component
+ */
+
 export default class LabelSelectorItemEditStateful extends React.PureComponent {
-  /*:: state: State */
-  /*:: props: ParentProps */
+  state: State
+  props: ParentProps
 
   constructor () {
     super()
@@ -105,6 +107,8 @@ export default class LabelSelectorItemEditStateful extends React.PureComponent {
       onLabelSetColor={props.onLabelSetColor}
       onSelect={props.onSelect}
       selected={props.selected}
-      {...props} {...state} />
+      {...props}
+      {...state}
+    />
   }
 }

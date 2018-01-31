@@ -1,18 +1,16 @@
 /* @flow */
 
-/*::
-  import type { TimerMode } from '../selectors/settings'
+import type { TimerMode } from '../selectors/settings'
 
-  type Props = {
-    onSelect: (mode: TimerMode) => void,
-    selected: TimerMode
-  }
-*/
+type Props = {
+  onSelect: (mode: TimerMode) => void,
+  selected: TimerMode
+}
 
 import React from 'react'
 import c from 'classnames'
 
-export default function ModeSelectorDialog (props /*: Props */) {
+export default function ModeSelectorDialog (props: Props) {
   const { onSelect, selected } = props
 
   return <div className='mode-selector-dialog'>

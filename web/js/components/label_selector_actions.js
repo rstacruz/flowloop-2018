@@ -1,17 +1,15 @@
 /* @flow */
 
-/*::
-  type Props = {
-    editing: boolean,
-    onEdit: () => void,
-    onFinish: () => void,
-    onLabelAdd: () => void
-  }
-*/
+type Props = {
+  editing: boolean,
+  onEdit: () => void,
+  onFinish: () => void,
+  onLabelAdd: () => void
+}
 
 import React from 'react'
 
-export default function LabelSelectorActions (props /*: Props */) {
+export default function LabelSelectorActions (props: Props) {
   const { editing, onEdit, onFinish, onLabelAdd } = props
 
   return <div className='label-selector-actions actions'>
