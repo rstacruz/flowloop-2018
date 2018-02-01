@@ -1,5 +1,8 @@
 /* @flow */
 
+import { createSelector } from 'reselect'
+import { full as fullLabel } from '../selectors/label'
+
 import type { State } from './state'
 import type { Labels } from './label'
 
@@ -46,9 +49,6 @@ export type FullTimer = {
   progress: number // 0..1 of the current lap
 }
 
-import { createSelector } from 'reselect'
-import { full as fullLabel } from '../selectors/label'
-
 /**
  * Inactive timer default
  */
@@ -77,7 +77,12 @@ export const full: (state: State) => FullTimer = createSelector(
     const progress = (now - +lastLap) / (duration || 30000)
 
     return {
-      ...timer, elapsed, remaining, labelText, isOvertime, progress
+      ...timer,
+      elapsed,
+      remaining,
+      labelText,
+      isOvertime,
+      progress
     }
   }
 )

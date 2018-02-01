@@ -47,7 +47,7 @@ export default class App {
       <Provider store={store}>
         <Chrome />
       </Provider>
-    , div)
+      , div)
 
     return this
   }

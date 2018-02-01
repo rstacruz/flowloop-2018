@@ -12,20 +12,25 @@ export class Chrome extends React.PureComponent {
   render () {
     const { page } = this.props
 
-    return <TransitionGroup
-      transitionName='_page'
-      transitionEnterTimeout={400}
-      transitionLeaveTimeout={400}>
-      { page === 'HomeIndex'
-        ? <HomeIndex key='timer' />
-        : page === 'TimerShow'
-        ? <TimerShow key='timer' />
-        : page === 'LogIndex'
-        ? <LogIndex key='log' />
-        : page === 'SettingsIndex'
-        ? <SettingsIndex key='settings' />
-        : <div key='other' /> }
-    </TransitionGroup>
+    return (
+      <TransitionGroup
+        transitionName='_page'
+        transitionEnterTimeout={400}
+        transitionLeaveTimeout={400}
+      >
+        {page === 'HomeIndex' ? (
+          <HomeIndex key='timer' />
+        ) : page === 'TimerShow' ? (
+          <TimerShow key='timer' />
+        ) : page === 'LogIndex' ? (
+          <LogIndex key='log' />
+        ) : page === 'SettingsIndex' ? (
+          <SettingsIndex key='settings' />
+        ) : (
+          <div key='other' />
+        )}
+      </TransitionGroup>
+    )
   }
 }
 
@@ -33,6 +38,5 @@ export default connect(
   state => ({
     page: get(state, 'route.page')
   }),
-  dispatch => ({
-  })
+  dispatch => ({})
 )(Chrome)

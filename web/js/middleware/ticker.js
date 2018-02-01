@@ -19,26 +19,26 @@ export default function ticker (options /*: Options */ = {}) /*: Middleware<*, A
 
   return (store /*: MiddlewareAPI<*, Action> */) =>
     (dispatch /*: Dispatch<Action> */) =>
-    (action /*: Action */) => {
-      let result = dispatch(action)
+      (action /*: Action */) => {
+        let result = dispatch(action)
 
-      switch (action.type) {
-        case 'init':
-          dispatch({ type: 'ticker:tick', now: new Date() })
-          break
+        switch (action.type) {
+          case 'init':
+            dispatch({ type: 'ticker:tick', now: new Date() })
+            break
 
-        case 'ticker:start!':
-          start(store.dispatch)
-          break
+          case 'ticker:start!':
+            start(store.dispatch)
+            break
 
-        case 'stop!':
-        case 'ticker:stop!':
-          stop()
-          break
+          case 'stop!':
+          case 'ticker:stop!':
+            stop()
+            break
+        }
+
+        return result
       }
-
-      return result
-    }
 
   /**
    * Dispatches a tick

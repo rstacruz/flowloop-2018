@@ -14,17 +14,16 @@ export default function Notifier () {
       case 'notifier:request!':
         try {
           Notification.requestPermission(p => {})
-        } catch (e) { }
+        } catch (e) {}
         break
 
       case 'notifier:notifyLap!':
         const state = store.getState()
         const timer = full(state)
         const laps = timer.laps
-        new Notification(
-          `${laps} ${laps === 1 ? 'lap' : 'laps'} done!`,
-          { body: `${ms(timer.elapsed)} elapsed for ${timer.labelText}.` }
-        )
+        new Notification(`${laps} ${laps === 1 ? 'lap' : 'laps'} done!`, {
+          body: `${ms(timer.elapsed)} elapsed for ${timer.labelText}.`
+        })
         ding(laps)
         break
 

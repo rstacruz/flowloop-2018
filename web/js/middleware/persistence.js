@@ -1,15 +1,13 @@
 /* @flow */
 
-/*::
-  import type { MiddlewareAPI, Dispatch, Middleware } from 'redux'
-  import type { State } from '../selectors/state'
-  import type { DataStore } from '../selectors/data_store'
-
-  type Action = { type: string }
-*/
-
 import { migrate, LATEST_VERSION } from '../services/migrator'
 import Debug from 'debug'
+
+import type { MiddlewareAPI, Dispatch, Middleware } from 'redux'
+import type { State } from '../selectors/state'
+import type { DataStore } from '../selectors/data_store'
+
+type Action = { type: string }
 
 const debug = Debug('app:persistence')
 
@@ -19,31 +17,33 @@ const debug = Debug('app:persistence')
  * something interesting happens.
  */
 
-export default function Persistence () /*: Middleware<*, Action> */ {
-  return (store /*: MiddlewareAPI<*, Action> */) =>
-    (dispatch /*: Dispatch<Action> */) =>
-    (action /*: Action */) => {
-      let result = dispatch(action)
+export default function Persistence (): Middleware<*, Action> {
+  return (store: MiddlewareAPI<*, Action>) => (dispatch: Dispatch<Action>) => (
+    action: Action
+  ) => {
+    let result = dispatch(action)
 
-      switch (action.type) {
-        case 'persistence:load!':
-          load(store.dispatch)
-          break
+    switch (action.type) {
+      case 'persistence:load!':
+        load(store.dispatch)
+        break
 
-        case 'log:addCurrent':
-        case 'log:clear':
-        case 'label:update':
-        case 'label:delete':
-        case 'timer:setLabelId':
-        case 'settings:update':
-        case 'settings:cycleTimerMode':
-        case 'settings:reset':
-          setTimeout(() => { save(store.getState()) })
-          break
-      }
-
-      return result
+      case 'log:addCurrent':
+      case 'log:clear':
+      case 'label:update':
+      case 'label:delete':
+      case 'timer:setLabelId':
+      case 'settings:update':
+      case 'settings:cycleTimerMode':
+      case 'settings:reset':
+        setTimeout(() => {
+          save(store.getState())
+        })
+        break
     }
+
+    return result
+  }
 }
 
 /**
@@ -66,13 +66,13 @@ function load (dispatch /*: Dispatch<Action> */) {
  * @private
  */
 
-function save (state /*: State */) {
+function save (state: State) {
   if (!window.localStorage) return
 
   let previous = JSON.parse(window.localStorage.TimerData || '{}')
   previous = migrate(previous)
 
-  const payload /*: DataStore */ = {
+  const payload: DataStore = {
     version: LATEST_VERSION,
     log: { ...(previous.log || {}), ...state.log },
     labels: { ...(previous.labels || {}), ...state.labels },

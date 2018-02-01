@@ -71,7 +71,7 @@ export function LabelSelector (props /*: Props */) {
               onLabelEdit={onLabelEdit}
               onLabelSetColor={(color) => { onLabelSetColor(label.id, color) }}
               onSelect={() => { onDismiss(); onSelect(label.id) }} />
-            )}
+          )}
         </div>
 
         {/* Add and edit buttons */}
