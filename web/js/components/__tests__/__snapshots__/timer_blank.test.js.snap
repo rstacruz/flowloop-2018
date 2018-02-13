@@ -13,15 +13,6 @@ exports[`TimerBlank renders 1`] = `
   <div
     className="timer-spacer"
   />
-  <div
-    className="timer-actions"
-  >
-    <button
-      className="timer-button button -back"
-      onClick={[Function]}
-    >
-      Back
-    </button>
-  </div>
+  <Actions />
 </TimerLayout>
 `;
