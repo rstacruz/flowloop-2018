@@ -1,40 +1,38 @@
 /* @flow */
 
-/*::
-  import type { State as StoreState } from '../selectors/state'
-
-  type Action = {
-    label: string,
-    onClick?: () => void,
-    className?: string
-  }
-
-  type Props = {
-    id: string,
-    actions?: Array<Action>,
-    children: React$Element<any>,
-    isDismissed: boolean,
-    onDismiss?: () => void
-  }
-
-  type State = {
-    isDismissed: boolean
-  }
-*/
-
 import React from 'react'
 import { connect } from 'react-redux'
 import Settings from '../selectors/settings'
+
+import type { State as StoreState } from '../selectors/state'
+
+type Action = {
+  label: string,
+  onClick?: () => void,
+  className?: string
+}
+
+type Props = {
+  id: string,
+  actions?: Array<Action>,
+  children: React.Node,
+  isDismissed: boolean,
+  onDismiss?: () => void
+}
+
+type State = {
+  isDismissed: boolean
+}
 
 /**
  * Basis for all toast notifications
  */
 
-export class ToastBase extends React.PureComponent {
-  /*:: props: Props */
-  /*:: state: { isDismissed: boolean } */
+export class ToastBase extends React.PureComponent<Props, State> {
+  props: Props
+  state: State
 
-  constructor (props /*: Props */) {
+  constructor (props: Props) {
     super()
 
     this.state = {
@@ -54,7 +52,7 @@ export class ToastBase extends React.PureComponent {
 
           { actions && actions.length > 0
             ? <div className='actions'>
-              { actions.map((action /*: Action */, idx) =>
+              { actions.map((action: Action, idx: number) =>
                 <button
                   className={`action ${action.className || ''}`}
                   key={idx}
@@ -81,10 +79,10 @@ export class ToastBase extends React.PureComponent {
 }
 
 export default connect(
-  (state /*: StoreState */, props /*: any */) => ({
+  (state: StoreState, props: any) => ({
     isDismissed: Settings.full(state)[`toast:${props.id}`] || false
   }),
-  (dispatch /*: Dispatch<*> */, props /*: any */) => ({
+  (dispatch: Dispatch<*>, props: any) => ({
     onDismiss: () => {
       dispatch({
         type: 'settings:update',
