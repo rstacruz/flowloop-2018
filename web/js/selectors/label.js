@@ -1,34 +1,30 @@
 /* @flow */
 
-/*::
-  import type { State } from './state'
-
-  export type Labels = {
-    [key: string]: Label
-  }
-
-  export type Label = {
-    id: string,
-    name: string,
-    color: string
-  }
-
-  export type FullLabel = Label & {
-    isDeletable: boolean,
-    cssColor: string
-  }
-*/
-
 import { createSelector } from 'reselect'
 import { DEFAULT_LABEL_ID } from './settings'
 import { COLORS, COLOR_NAMES, toCSS } from './color'
 import values from 'object-loops/values'
 
+export type Label = {
+  id: string,
+  name: string,
+  color: string
+}
+
+export type Labels = {
+  [key: string]: Label
+}
+
+export type FullLabel = Label & {
+  isDeletable: boolean,
+  cssColor: string
+}
+
 /**
  * Default label
  */
 
-const DEFAULT_LABEL /*: FullLabel */ = {
+const DEFAULT_LABEL: FullLabel = {
   id: '',
   name: '(Unknown)',
   color: 'BLACK',
@@ -40,9 +36,9 @@ const DEFAULT_LABEL /*: FullLabel */ = {
  * Returns a full label, accounting for nulls.
  */
 
-export const full /*: (label: ?Label) => FullLabel */ = createSelector(
-  (label /*: ?Label */) => label,
-  (label /*: ?Label */) /*: FullLabel */ => {
+export const full: (label: ?Label) => FullLabel = createSelector(
+  (label: ?Label) => label,
+  (label: ?Label): FullLabel => {
     if (!label) return DEFAULT_LABEL
 
     return {
@@ -57,13 +53,16 @@ export const full /*: (label: ?Label) => FullLabel */ = createSelector(
  * Returns the next viable color.
  */
 
-export const nextColor /*: (labels: Labels) => string */ = createSelector(
-  (labels /*: Labels */) => labels,
-  (labels /*: Labels */) /*: string */ => {
-    const colors = values(labels).filter(Boolean).map(l => l.color)
+export const nextColor: (labels: Labels) => string = createSelector(
+  (labels: Labels) => labels,
+  (labels: Labels): string => {
+    const colors = values(labels)
+      .filter(Boolean)
+      .map(l => l.color)
     const next = COLOR_NAMES.find(name => !colors.includes(name))
     return next || 'BLUE'
-  })
+  }
+)
 
 /**
  * Full export
